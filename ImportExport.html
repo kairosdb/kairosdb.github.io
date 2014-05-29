@@ -1,0 +1,189 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Importing and Exporting Data &mdash; KairosDB 0.9.4 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/scrollwide.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '0.9.4',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="KairosDB 0.9.4 documentation" href="index.html" />
+    <link rel="next" title="Web UI" href="WebUI.html" />
+    <link rel="prev" title="Querying data" href="QueryingData.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="WebUI.html" title="Web UI"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="QueryingData.html" title="Querying data"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">KairosDB 0.9.4 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="importing-and-exporting-data">
+<h1>Importing and Exporting Data<a class="headerlink" href="#importing-and-exporting-data" title="Permalink to this headline">¶</a></h1>
+<p>Import and export is available on the KairosDB server from the command line.</p>
+<div class="section" id="exporting-data">
+<h2>Exporting Data<a class="headerlink" href="#exporting-data" title="Permalink to this headline">¶</a></h2>
+<p>To export data from KairosDB run the following command:</p>
+<div class="highlight-python"><pre>&gt; bin/kairosdb.sh export -f export.txt</pre>
+</div>
+<p>The format of the export is one metric per line in the form of a json object.  This can be really verbose but it lets you do interesting things with the data after exporting.  If size is an issue try this:</p>
+<div class="highlight-python"><pre>&gt; bin/kairosdb.sh export | gzip &gt; export.gz</pre>
+</div>
+<div class="section" id="export-switches">
+<h3>Export Switches<a class="headerlink" href="#export-switches" title="Permalink to this headline">¶</a></h3>
+<p>-f <cite>&lt;filename&gt;</cite> &#8211; file to write output to. If not specified, the output goes to stdout.</p>
+<p>-n <cite>&lt;metricName&gt;</cite> &#8211; name of metric to export. If not specified, then all metrics are exported.</p>
+</div>
+</div>
+<div class="section" id="importing-data">
+<h2>Importing Data<a class="headerlink" href="#importing-data" title="Permalink to this headline">¶</a></h2>
+<p>To import the data we exported in the step above you can do this:</p>
+<div class="highlight-python"><pre>&gt; bin/kairosdb.sh import -f export.txt</pre>
+</div>
+<p>If you happened to compress the export you can pipe it back into the system like this:</p>
+<div class="highlight-python"><pre>&gt; gzip -dc export.gz | bin/kairosdb.sh import</pre>
+</div>
+<div class="section" id="import-switches">
+<h3>Import Switches<a class="headerlink" href="#import-switches" title="Permalink to this headline">¶</a></h3>
+<p>-f <cite>&lt;filename&gt;</cite> &#8211; file to import. If not specified the input comes from stdin.</p>
+</div>
+</div>
+<div class="section" id="performance-numbers">
+<h2>Performance Numbers<a class="headerlink" href="#performance-numbers" title="Permalink to this headline">¶</a></h2>
+<p>Here is the performance of the import process.</p>
+<p>The machine: Intel i5 (4 cores) 12 Gigs ram.  The machine has two drives one SSD and the other is a platter drive.  Cassandra (single instance) and KairosDB are running on the same machine.</p>
+<p>The data:  31,341,782 metrics, the majority of which is the same metric and tags, which means it will be writing into a single row.</p>
+<p>Results</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="24%" />
+<col width="49%" />
+<col width="27%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Cassandra Memory</td>
+<td>Location of Data</td>
+<td>Metrics per second</td>
+</tr>
+<tr class="row-even"><td>1 Gig</td>
+<td>data and commit log on SSD</td>
+<td>74,623</td>
+</tr>
+<tr class="row-odd"><td>1 Gig</td>
+<td>data on platter, commit log on SSD</td>
+<td>93,837</td>
+</tr>
+<tr class="row-even"><td>2 Gig</td>
+<td>data on platter, commit log on SSD</td>
+<td>132,804</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Importing and Exporting Data</a><ul>
+<li><a class="reference internal" href="#exporting-data">Exporting Data</a><ul>
+<li><a class="reference internal" href="#export-switches">Export Switches</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#importing-data">Importing Data</a><ul>
+<li><a class="reference internal" href="#import-switches">Import Switches</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#performance-numbers">Performance Numbers</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="QueryingData.html"
+                        title="previous chapter">Querying data</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="WebUI.html"
+                        title="next chapter">Web UI</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/ImportExport.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="WebUI.html" title="Web UI"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="QueryingData.html" title="Querying data"
+             >previous</a> |</li>
+        <li><a href="index.html">KairosDB 0.9.4 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2014, Jeff Sabin.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

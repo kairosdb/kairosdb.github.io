@@ -1,0 +1,172 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Plugins &mdash; KairosDB 0.9.4 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/scrollwide.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.9.4',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="KairosDB 0.9.4 documentation" href="../index.html" />
+    <link rel="up" title="Kairos Development" href="index.html" />
+    <link rel="next" title="Editing Kairos with IntelliJ" href="IntelliJSetup.html" />
+    <link rel="prev" title="Kairos Development" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="IntelliJSetup.html" title="Editing Kairos with IntelliJ"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Kairos Development"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">KairosDB 0.9.4 documentation</a> &raquo;</li>
+          <li><a href="index.html" accesskey="U">Kairos Development</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="plugins">
+<h1>Plugins<a class="headerlink" href="#plugins" title="Permalink to this headline">¶</a></h1>
+<dl class="docutils">
+<dt>Plugins provide a way to extend Kairos in various ways.  With plugins you can:</dt>
+<dd><ol class="first last arabic simple">
+<li>Add data point listeners</li>
+<li>Add a new data store to put data points into</li>
+<li>Add a new protocol handler</li>
+<li>Add a custom system monitor</li>
+</ol>
+</dd>
+</dl>
+<p>For a good example of a simple plugin, see the [kairos-announce <a class="reference external" href="https://github.com/proofpoint/kairos-announce">https://github.com/proofpoint/kairos-announce</a>] project.</p>
+<div class="section" id="plugin-requirements">
+<h2>Plugin Requirements<a class="headerlink" href="#plugin-requirements" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt>To create a plugin you need to do the following things</dt>
+<dd><ol class="first last arabic simple">
+<li>Create a class that implements com.google.inject.AbstractModule.</li>
+<li>Create a properties file that has an entry kairosdb.service.[your_service_name] that is set to the full class name of your Module.</li>
+<li>Install a jar containing your class files to /opt/kairosdb/lib and install the properties file into /opt/kairosdb/conf</li>
+</ol>
+</dd>
+</dl>
+</div>
+<div class="section" id="plugin-loading-process">
+<h2>Plugin Loading Process<a class="headerlink" href="#plugin-loading-process" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt>Here is how the load process works:</dt>
+<dd><ol class="first arabic simple">
+<li>All jar files in lib are automatically added to the classpath by the startup script.</li>
+<li>Properties in kairosdb.properties are loaded.</li>
+<li>For every .properties file in the conf directory besides kairosdb.properties, the following happens:</li>
+</ol>
+<blockquote>
+<div><ol class="arabic simple">
+<li>Kairos attempts to load the file from the classpath.  (this lets you add default values to future releases of your plugin)</li>
+<li>Kairos loads the conf properties file.</li>
+</ol>
+</div></blockquote>
+<ol class="last arabic simple">
+<li>Kairos looks through all the loaded properties for ones starting with kairosdb.service.  These are expected to point to Guice modules.</li>
+<li>Load all discovered Guice modules.</li>
+<li>Look through Guice bindings for implementations of KairosDBService and start them.</li>
+</ol>
+</dd>
+</dl>
+<p>There is in essence only one Properties object in Kairos so, plugins can overwrite properties set in kairosdb.properties with their own.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Plugins</a><ul>
+<li><a class="reference internal" href="#plugin-requirements">Plugin Requirements</a></li>
+<li><a class="reference internal" href="#plugin-loading-process">Plugin Loading Process</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="index.html"
+                        title="previous chapter">Kairos Development</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="IntelliJSetup.html"
+                        title="next chapter">Editing Kairos with IntelliJ</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/kairosdevelopment/Plugins.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="IntelliJSetup.html" title="Editing Kairos with IntelliJ"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Kairos Development"
+             >previous</a> |</li>
+        <li><a href="../index.html">KairosDB 0.9.4 documentation</a> &raquo;</li>
+          <li><a href="index.html" >Kairos Development</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2014, Jeff Sabin.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

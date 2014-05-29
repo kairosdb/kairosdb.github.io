@@ -1,0 +1,160 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Delete Metric &mdash; KairosDB 0.9.4 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/scrollwide.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.9.4',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="KairosDB 0.9.4 documentation" href="../index.html" />
+    <link rel="up" title="REST API" href="index.html" />
+    <link rel="next" title="List Metric Names" href="ListMetricNames.html" />
+    <link rel="prev" title="Delete Data Points" href="DeleteDataPoints.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="ListMetricNames.html" title="List Metric Names"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="DeleteDataPoints.html" title="Delete Data Points"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">KairosDB 0.9.4 documentation</a> &raquo;</li>
+          <li><a href="index.html" accesskey="U">REST API</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="delete-metric">
+<h1>Delete Metric<a class="headerlink" href="#delete-metric" title="Permalink to this headline">¶</a></h1>
+<p>Deletes a metric and all data points associated with the metric.</p>
+<p>Note: Delete works for the Cassandra and H2 data stores only.</p>
+<div class="section" id="method">
+<h2>Method<a class="headerlink" href="#method" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div>Delete</div></blockquote>
+</div>
+<div class="section" id="request">
+<h2>Request<a class="headerlink" href="#request" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><a class="reference external" href="http://[host]:[port]/api/v1/metric">http://[host]:[port]/api/v1/metric</a>/{metric_name}</div></blockquote>
+</div>
+<div class="section" id="body">
+<h2>Body<a class="headerlink" href="#body" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div>None</div></blockquote>
+</div>
+<div class="section" id="response">
+<h2>Response<a class="headerlink" href="#response" title="Permalink to this headline">¶</a></h2>
+<p><em>Success</em></p>
+<blockquote>
+<div>The response will be 204 NO CONTENT with no body.</div></blockquote>
+<p><em>Failure</em></p>
+<blockquote>
+<div><p>The response will be 400 Bad Request if the request is invalid.</p>
+<p>The response will be 500 Internal Server Error if an error occurs.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+  <span class="s">&quot;errors&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;Connect to 10.92.4.1:4242 timed out&quot;</span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Delete Metric</a><ul>
+<li><a class="reference internal" href="#method">Method</a></li>
+<li><a class="reference internal" href="#request">Request</a></li>
+<li><a class="reference internal" href="#body">Body</a></li>
+<li><a class="reference internal" href="#response">Response</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="DeleteDataPoints.html"
+                        title="previous chapter">Delete Data Points</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="ListMetricNames.html"
+                        title="next chapter">List Metric Names</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/restapi/DeleteMetric.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="ListMetricNames.html" title="List Metric Names"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="DeleteDataPoints.html" title="Delete Data Points"
+             >previous</a> |</li>
+        <li><a href="../index.html">KairosDB 0.9.4 documentation</a> &raquo;</li>
+          <li><a href="index.html" >REST API</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2014, Jeff Sabin.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

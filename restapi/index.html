@@ -1,0 +1,191 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>REST API &mdash; KairosDB 0.9.4 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/scrollwide.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.9.4',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="KairosDB 0.9.4 documentation" href="../index.html" />
+    <link rel="next" title="Overview" href="Overview.html" />
+    <link rel="prev" title="Editing Kairos with IntelliJ" href="../kairosdevelopment/IntelliJSetup.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="Overview.html" title="Overview"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="../kairosdevelopment/IntelliJSetup.html" title="Editing Kairos with IntelliJ"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">KairosDB 0.9.4 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="rest-api">
+<h1>REST API<a class="headerlink" href="#rest-api" title="Permalink to this headline">¶</a></h1>
+<p>Contents:</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Overview.html">Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Overview.html#what-data-do-i-store">What Data do I Store?</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="AddDataPoints.html">Add Data Points</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="AddDataPoints.html#method">Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="AddDataPoints.html#request">Request</a></li>
+<li class="toctree-l2"><a class="reference internal" href="AddDataPoints.html#body">Body</a></li>
+<li class="toctree-l2"><a class="reference internal" href="AddDataPoints.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="AddDataPoints.html#response">Response</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="DeleteDataPoints.html">Delete Data Points</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="DeleteDataPoints.html#method">Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="DeleteDataPoints.html#request">Request</a></li>
+<li class="toctree-l2"><a class="reference internal" href="DeleteDataPoints.html#body">Body</a></li>
+<li class="toctree-l2"><a class="reference internal" href="DeleteDataPoints.html#response">Response</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="DeleteMetric.html">Delete Metric</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="DeleteMetric.html#method">Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="DeleteMetric.html#request">Request</a></li>
+<li class="toctree-l2"><a class="reference internal" href="DeleteMetric.html#body">Body</a></li>
+<li class="toctree-l2"><a class="reference internal" href="DeleteMetric.html#response">Response</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ListMetricNames.html">List Metric Names</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ListMetricNames.html#method">Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ListMetricNames.html#request">Request</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ListMetricNames.html#body">Body</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ListMetricNames.html#response">Response</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ListTagNames.html">List Tag Names</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ListTagNames.html#method">Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ListTagNames.html#request">Request</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ListTagNames.html#body">Body</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ListTagNames.html#response">Response</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ListTagValues.html">List Tag Values</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ListTagValues.html#method">Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ListTagValues.html#request">Request</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ListTagValues.html#body">Body</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ListTagValues.html#response">Response</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="QueryMetrics.html">Query Metrics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="QueryMetrics.html#method">Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QueryMetrics.html#request">Request</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QueryMetrics.html#body">Body</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QueryMetrics.html#query-properties">Query Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QueryMetrics.html#metric-properties">Metric Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QueryMetrics.html#response">Response</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="QueryMetricTags.html">Query Metric Tags</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="QueryMetricTags.html#filtering">Filtering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QueryMetricTags.html#method">Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QueryMetricTags.html#request">Request</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QueryMetricTags.html#body">Body</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QueryMetricTags.html#query-properties">Query Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QueryMetricTags.html#metric-properties">Metric Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QueryMetricTags.html#response">Response</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Version.html">Version</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Version.html#method">Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Version.html#request">Request</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Version.html#body">Body</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Version.html#response">Response</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="../kairosdevelopment/IntelliJSetup.html"
+                        title="previous chapter">Editing Kairos with IntelliJ</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="Overview.html"
+                        title="next chapter">Overview</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/restapi/index.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="Overview.html" title="Overview"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="../kairosdevelopment/IntelliJSetup.html" title="Editing Kairos with IntelliJ"
+             >previous</a> |</li>
+        <li><a href="../index.html">KairosDB 0.9.4 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2014, Jeff Sabin.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

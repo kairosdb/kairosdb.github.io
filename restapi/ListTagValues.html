@@ -1,0 +1,158 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>List Tag Values &mdash; KairosDB 0.9.4 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/scrollwide.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.9.4',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="KairosDB 0.9.4 documentation" href="../index.html" />
+    <link rel="up" title="REST API" href="index.html" />
+    <link rel="next" title="Query Metrics" href="QueryMetrics.html" />
+    <link rel="prev" title="List Tag Names" href="ListTagNames.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="QueryMetrics.html" title="Query Metrics"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="ListTagNames.html" title="List Tag Names"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">KairosDB 0.9.4 documentation</a> &raquo;</li>
+          <li><a href="index.html" accesskey="U">REST API</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="list-tag-values">
+<h1>List Tag Values<a class="headerlink" href="#list-tag-values" title="Permalink to this headline">¶</a></h1>
+<p>Returns a list of all tag values.</p>
+<div class="section" id="method">
+<h2>Method<a class="headerlink" href="#method" title="Permalink to this headline">¶</a></h2>
+<p>GET</p>
+</div>
+<div class="section" id="request">
+<h2>Request<a class="headerlink" href="#request" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><a class="reference external" href="http://[host]:[port]/api/v1/tagvalues">http://[host]:[port]/api/v1/tagvalues</a></div></blockquote>
+</div>
+<div class="section" id="body">
+<h2>Body<a class="headerlink" href="#body" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div>None</div></blockquote>
+</div>
+<div class="section" id="response">
+<h2>Response<a class="headerlink" href="#response" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt><em>Success</em></dt>
+<dd><p class="first">Returns 200 for successful queries.</p>
+<div class="last highlight-python"><div class="highlight"><pre><span class="p">{</span>
+  <span class="s">&quot;results&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="s">&quot;server1&quot;</span><span class="p">,</span>
+      <span class="s">&quot;bar&quot;</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">List Tag Values</a><ul>
+<li><a class="reference internal" href="#method">Method</a></li>
+<li><a class="reference internal" href="#request">Request</a></li>
+<li><a class="reference internal" href="#body">Body</a></li>
+<li><a class="reference internal" href="#response">Response</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="ListTagNames.html"
+                        title="previous chapter">List Tag Names</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="QueryMetrics.html"
+                        title="next chapter">Query Metrics</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/restapi/ListTagValues.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="QueryMetrics.html" title="Query Metrics"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="ListTagNames.html" title="List Tag Names"
+             >previous</a> |</li>
+        <li><a href="../index.html">KairosDB 0.9.4 documentation</a> &raquo;</li>
+          <li><a href="index.html" >REST API</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2014, Jeff Sabin.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

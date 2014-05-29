@@ -1,1 +1,186 @@
-hello world
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>KairosDB documentation &mdash; KairosDB 0.9.4 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/scrollwide.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '0.9.4',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="KairosDB 0.9.4 documentation" href="#" />
+    <link rel="next" title="Getting Started" href="GettingStarted.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="GettingStarted.html" title="Getting Started"
+             accesskey="N">next</a> |</li>
+        <li><a href="#">KairosDB 0.9.4 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="kairosdb-documentation">
+<h1>KairosDB documentation<a class="headerlink" href="#kairosdb-documentation" title="Permalink to this headline">¶</a></h1>
+<p>Contents:</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="GettingStarted.html">Getting Started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="GettingStarted.html#install">Install</a></li>
+<li class="toctree-l2"><a class="reference internal" href="GettingStarted.html#starting-and-stopping">Starting and Stopping</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="PushingData.html">Pushing data</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="PushingData.html#submitting-data-via-telnet">Submitting data via telnet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PushingData.html#submitting-data-via-rest">Submitting data via rest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PushingData.html#graphite-protocol">Graphite protocol</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="QueryingData.html">Querying data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ImportExport.html">Importing and Exporting Data</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ImportExport.html#exporting-data">Exporting Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ImportExport.html#importing-data">Importing Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ImportExport.html#performance-numbers">Performance Numbers</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="WebUI.html">Web UI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Configuration.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Statistics.html">KairosDB Statistics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Statistics.html#metrics-reported">Metrics Reported</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="KairosClient.html">Kairos DB Java Client Library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CassandraSchema.html">Cassandra Schema</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="CassandraSchema.html#column-families">Column Families</a></li>
+<li class="toctree-l2"><a class="reference internal" href="CassandraSchema.html#how-the-schema-is-used">How the Schema is Used</a></li>
+<li class="toctree-l2"><a class="reference internal" href="CassandraSchema.html#comparison-to-opentsdb-hbase">Comparison to OpenTSDB HBase</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="kairosdevelopment/index.html">Kairos Development</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="kairosdevelopment/Plugins.html">Plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kairosdevelopment/IntelliJSetup.html">Editing Kairos with IntelliJ</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="restapi/index.html">REST API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="restapi/Overview.html">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restapi/AddDataPoints.html">Add Data Points</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restapi/DeleteDataPoints.html">Delete Data Points</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restapi/DeleteMetric.html">Delete Metric</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restapi/ListMetricNames.html">List Metric Names</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restapi/ListTagNames.html">List Tag Names</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restapi/ListTagValues.html">List Tag Values</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restapi/QueryMetrics.html">Query Metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restapi/QueryMetricTags.html">Query Metric Tags</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restapi/Version.html">Version</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="telnetapi/index.html">Telnet API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="telnetapi/Overview.html">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="telnetapi/Put.html">Put</a></li>
+<li class="toctree-l2"><a class="reference internal" href="telnetapi/Version.html">Version</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Graphite.html">Graphite Protocol</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Graphite.html#enabling-graphite-protocol">Enabling Graphite Protocol</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Graphite.html#configuring-graphite-protocol">Configuring Graphite Protocol</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Graphite.html#custom-tag-parser">Custom Tag Parser</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="IssueTracking.html">Bug Tracking</a></li>
+</ul>
+</div>
+<div class="section" id="indices-and-tables">
+<h2>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference internal" href="genindex.html"><em>Index</em></a></li>
+<li><a class="reference internal" href="py-modindex.html"><em>Module Index</em></a></li>
+<li><a class="reference internal" href="search.html"><em>Search Page</em></a></li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="#">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">KairosDB documentation</a><ul>
+<li><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Next topic</h4>
+  <p class="topless"><a href="GettingStarted.html"
+                        title="next chapter">Getting Started</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/index.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="GettingStarted.html" title="Getting Started"
+             >next</a> |</li>
+        <li><a href="#">KairosDB 0.9.4 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2014, Jeff Sabin.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

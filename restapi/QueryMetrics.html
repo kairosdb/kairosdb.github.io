@@ -1,0 +1,321 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Query Metrics &mdash; KairosDB 0.9.4 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/scrollwide.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.9.4',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="KairosDB 0.9.4 documentation" href="../index.html" />
+    <link rel="up" title="REST API" href="index.html" />
+    <link rel="next" title="Query Metric Tags" href="QueryMetricTags.html" />
+    <link rel="prev" title="List Tag Values" href="ListTagValues.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="QueryMetricTags.html" title="Query Metric Tags"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="ListTagValues.html" title="List Tag Values"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">KairosDB 0.9.4 documentation</a> &raquo;</li>
+          <li><a href="index.html" accesskey="U">REST API</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="query-metrics">
+<h1>Query Metrics<a class="headerlink" href="#query-metrics" title="Permalink to this headline">¶</a></h1>
+<p>Returns a list of metric values based on a set of criteria. Also returns a set of all tag names and values that are found across the data points.</p>
+<p>The time range can be specified with absolute or relative time values. Absolute time values are in milliseconds.
+Relative time values are specified as an integer duration and a unit. Possible unit values are &#8220;milliseconds&#8221;, &#8220;seconds&#8221;, &#8220;minutes&#8221;, &#8220;hours&#8221;,
+&#8220;days&#8221;, &#8220;weeks&#8221;, &#8220;months&#8221;, and &#8220;years&#8221;. For example, &#8220;5 hours&#8221; means that metric values submitted 5 hours ago will be returned. The end time is
+optional.  If no end time is specified, the end time is assumed to be now (the current date and time).</p>
+<p><strong>Grouping</strong></p>
+<p>The results of the query can be grouped together.There are three ways to group the data; by tags, by a time range, and by value. Grouping is done with the <em>group_by</em> property which is an array of one or more groupers.</p>
+<p>Note that grouping by a time range or value can slow down the query.</p>
+<p><strong>Aggregators</strong></p>
+<p>Optionally you can specify aggregators. Aggregators perform an operation on data points and down samples. For example, you could sum all data points that exist in 5 minute periods.</p>
+<p>Aggregators can be combined together. For example, you could sum all data points in 5 minute periods then average them for a week period.</p>
+<p>Aggregators are processed in the order they are specified in the JSON. The output of one is send to the input of the next.</p>
+<p><strong>Filtering</strong></p>
+<p>It is possible to filter the data returned by specifying a tag. The data returned will only contain data points associated with the specified tag. Filtering is done using the &#8220;tags&#8221; property.</p>
+<div class="section" id="method">
+<h2>Method<a class="headerlink" href="#method" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div>POST</div></blockquote>
+</div>
+<div class="section" id="request">
+<h2>Request<a class="headerlink" href="#request" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><a class="reference external" href="http://[host]:[port]/api/v1/datapoints/query">http://[host]:[port]/api/v1/datapoints/query</a></div></blockquote>
+</div>
+<div class="section" id="body">
+<h2>Body<a class="headerlink" href="#body" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+   <span class="s">&quot;start_absolute&quot;</span><span class="p">:</span> <span class="mi">1357023600000</span><span class="p">,</span>
+   <span class="s">&quot;end_relative&quot;</span><span class="p">:</span> <span class="p">{</span>
+       <span class="s">&quot;value&quot;</span><span class="p">:</span> <span class="s">&quot;5&quot;</span><span class="p">,</span>
+       <span class="s">&quot;unit&quot;</span><span class="p">:</span> <span class="s">&quot;days&quot;</span>
+   <span class="p">},</span>
+   <span class="s">&quot;metrics&quot;</span><span class="p">:</span> <span class="p">[</span>
+       <span class="p">{</span>
+           <span class="s">&quot;tags&quot;</span><span class="p">:</span> <span class="p">{</span>
+               <span class="s">&quot;host&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;foo&quot;</span><span class="p">,</span> <span class="s">&quot;foo2&quot;</span><span class="p">],</span>
+               <span class="s">&quot;type&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;bar&quot;</span><span class="p">]</span>
+           <span class="p">},</span>
+           <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;abc.123&quot;</span><span class="p">,</span>
+           <span class="s">&quot;aggregators&quot;</span><span class="p">:</span> <span class="p">[</span>
+               <span class="p">{</span>
+                   <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;sum&quot;</span><span class="p">,</span>
+                   <span class="s">&quot;sampling&quot;</span><span class="p">:</span> <span class="p">{</span>
+                       <span class="s">&quot;value&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+                       <span class="s">&quot;unit&quot;</span><span class="p">:</span> <span class="s">&quot;minutes&quot;</span>
+                   <span class="p">}</span>
+               <span class="p">}</span>
+           <span class="p">]</span>
+       <span class="p">},</span>
+       <span class="p">{</span>
+           <span class="s">&quot;tags&quot;</span><span class="p">:</span> <span class="p">{</span>
+               <span class="s">&quot;host&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;foo&quot;</span><span class="p">,</span> <span class="s">&quot;foo2&quot;</span><span class="p">],</span>
+               <span class="s">&quot;type&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;bar&quot;</span><span class="p">]</span>
+           <span class="p">},</span>
+           <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;xyz.123&quot;</span><span class="p">,</span>
+           <span class="s">&quot;aggregators&quot;</span><span class="p">:</span> <span class="p">[</span>
+               <span class="p">{</span>
+                   <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;avg&quot;</span><span class="p">,</span>
+                   <span class="s">&quot;sampling&quot;</span><span class="p">:</span> <span class="p">{</span>
+                       <span class="s">&quot;value&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+                       <span class="s">&quot;unit&quot;</span><span class="p">:</span> <span class="s">&quot;minutes&quot;</span>
+                   <span class="p">}</span>
+               <span class="p">}</span>
+           <span class="p">]</span>
+       <span class="p">}</span>
+   <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="query-properties">
+<h2>Query Properties<a class="headerlink" href="#query-properties" title="Permalink to this headline">¶</a></h2>
+<p>You must specify either <em>start_absolute</em> or <em>start_relative</em> but not both. Similarly, you may specify either <em>end_absolute</em> or <em>end_relative</em> but not both. If either end time is not specified the current date and time is assumed.</p>
+<p><em>start_absolute</em>
+The time in milliseconds.</p>
+<p><em>start_relative</em>
+The relative start time is the current date and time minus the specified value and unit. Possible unit values are &#8220;milliseconds&#8221;, &#8220;seconds&#8221;, &#8220;minutes&#8221;, &#8220;hours&#8221;, &#8220;days&#8221;, &#8220;weeks&#8221;, &#8220;months&#8221;, and &#8220;years&#8221;. For example, if the start time is 5 minutes, the query will return all matching data points for the last 5 minutes.</p>
+<p><em>end_absolute</em>
+The time in milliseconds. This must be later in time than the start time. If not specified, the end time is assumed to be the current date and time.</p>
+<p><em>end_relative</em>
+The relative end time is the current date and time minus the specified value and unit. Possible unit values are &#8220;milliseconds&#8221;, &#8220;seconds&#8221;, &#8220;minutes&#8221;, &#8220;hours&#8221;, &#8220;days&#8221;, &#8220;weeks&#8221;, &#8220;months&#8221;, and &#8220;years&#8221;. For example, if the start time is 30 minutes and the end time is 10 minutes, the query returns matching data points that occurred between the last 30 minutes up to and including the last 10 minutes. If not specified, the end time is assumed to the current date and time.</p>
+<p><em>cache_time</em></p>
+<p>The amount of time in seconds to cache the output of the query. If the same query is executed before the cache time expired then cached data is returned.</p>
+</div>
+<div class="section" id="metric-properties">
+<h2>Metric Properties<a class="headerlink" href="#metric-properties" title="Permalink to this headline">¶</a></h2>
+<p><em>name</em></p>
+<p>The name of the metric(s) to return data points for. The name is required.</p>
+<p><em>aggregators</em></p>
+<p>This is an ordered array of aggregators. They are processed in the order specified. The output of an aggregator is passed to the input of the next until all have been processed.</p>
+<p>Aggregators perform an operation on all data points that exist in the sampling period. Some aggregators do not have a sampling period and simply perform the operation on all data points.</p>
+<p>If no aggregator is specified, then all data points are returned.</p>
+<p>The default aggregators are:</p>
+<blockquote>
+<div><ul class="simple">
+<li>avg - returns the average value</li>
+<li>dev - returns the standard deviation</li>
+<li>div - returns each data point divided by the a divisor. _</li>
+<li>histogram - Calculates a probability distribution and returns the specified percentile for the distribution. The &#8220;percentile&#8221; value is defined as 0 &lt; percentile &lt;= 1 where .5 is 50% and 1 is 100%. Note that this aggregator has been renamed to <em>percentile</em> in release 0.9.2.</li>
+<li>least_squares - returns two points for the range which represent the best fit line through the set of points.</li>
+<li>max - returns the largest value</li>
+<li>min - returns the smallest value</li>
+<li>rate - returns the rate of change between pair of data points.</li>
+<li>sum - returns the sum of all values</li>
+</ul>
+</div></blockquote>
+<p>All aggregators allow downsampling except <em>rate</em> and <em>div</em>.</p>
+<ul class="simple">
+<li>The rate aggregator takes a &#8220;unit&#8221; parameter that tells how to calculate the return data (ie rate in seconds, milliseconds, minutes, etc...).</li>
+<li>The div aggregator takes a &#8220;divisor&#8221; which is the value that all data points will be divided by. The &#8220;divisor&#8221; is an</li>
+</ul>
+<p>Downsampling allows you to reduce the sampling rate of the data points and aggregate these values over a longer period
+of time. For example, you could average all daily values over the last week. Rather than getting 7 values you would
+get one value which is the average for the week. Sampling is specified with a &#8220;value&#8221; and a &#8220;unit&#8221;.</p>
+<ul class="simple">
+<li>value - an integer value.</li>
+<li>unit - possible unit values are &#8220;milliseconds&#8221;, &#8220;seconds&#8221;, &#8220;minutes&#8221;, &#8220;hours&#8221;, &#8220;days&#8221;, &#8220;weeks&#8221;, &#8220;months&#8221;, and &#8220;years&#8221;.</li>
+</ul>
+<p><em>tags</em></p>
+<p>Tags narrow down the search. Only metrics that include the tag and matches one of the values are returned. Tags is optional.</p>
+<p><em>group_by</em></p>
+<p>The resulting data points can be grouped by one or more tags, a time range, or by value, or by a combination of the three.</p>
+<p>The &#8220;group_by&#8221; property in the query is an array of one or more groupers. Each grouper has a <em>name</em> and then additional properties specific to that grouper.</p>
+<p>See <a class="reference internal" href="TagGrouping.html"><em>Grouping by Tags</em></a> for information on grouping by tags.</p>
+<p>See <a class="reference internal" href="TimeGrouping.html"><em>Grouping by Time</em></a> for information on how to group by a time range.</p>
+<p>See <a class="reference internal" href="ValueGrouping.html"><em>Grouping by Value</em></a> for information on how to group by data point values.</p>
+<p>Note that grouping by a time range or by value can slow down the query.</p>
+<p><em>exclude_tags</em></p>
+<p>By default, the result of the query includes tags and tag values associated with the data points. If <em>exclude_tags</em> is set to true, the tags will be excluded from the response.</p>
+</div>
+<div class="section" id="response">
+<h2>Response<a class="headerlink" href="#response" title="Permalink to this headline">¶</a></h2>
+<p><em>Success</em></p>
+<blockquote>
+<div><p>The response contains either the metric values or possible error values. Returns 200 for successful queries.</p>
+<div class="highlight-python"><pre>{
+  "queries": [
+      {
+          "sample_size": 14368,
+          "results": [
+              {
+                  "name": "abc_123",
+                  "group_by": [
+                      {
+                          "name": "tag",
+                          "tags": [
+                              "host"
+                          ],
+                          "group": {
+                              "host": "server1"
+                          }
+                      }
+                  ],
+                  "tags": {
+                      "host": [
+                          "server1"
+                      ],
+                      "type": [
+                          "bar"
+                      ]
+                  },
+                  "values": [
+                      [
+                          1364968800000,
+                          11019
+                      ],
+                      [
+                          1366351200000,
+                          2843
+                      ]
+                  ]
+              }
+          ]
+      }
+  ]</pre>
+</div>
+<p>}</p>
+</div></blockquote>
+<p><em>Failure</em></p>
+<blockquote>
+<div><p>The response will be 400 Bad Request if the request is invalid.</p>
+<p>The response will be 500 Internal Server Error if an error occurs retrieving data.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s">&quot;errors&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s">&quot;metrics[0].aggregate must be one of MIN,SUM,MAX,AVG,DEV&quot;</span><span class="p">,</span>
+        <span class="s">&quot;metrics[0].sampling.unit must be one of  SECONDS,MINUTES,HOURS,DAYS,WEEKS,YEARS&quot;</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Query Metrics</a><ul>
+<li><a class="reference internal" href="#method">Method</a></li>
+<li><a class="reference internal" href="#request">Request</a></li>
+<li><a class="reference internal" href="#body">Body</a></li>
+<li><a class="reference internal" href="#query-properties">Query Properties</a></li>
+<li><a class="reference internal" href="#metric-properties">Metric Properties</a></li>
+<li><a class="reference internal" href="#response">Response</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="ListTagValues.html"
+                        title="previous chapter">List Tag Values</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="QueryMetricTags.html"
+                        title="next chapter">Query Metric Tags</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/restapi/QueryMetrics.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="QueryMetricTags.html" title="Query Metric Tags"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="ListTagValues.html" title="List Tag Values"
+             >previous</a> |</li>
+        <li><a href="../index.html">KairosDB 0.9.4 documentation</a> &raquo;</li>
+          <li><a href="index.html" >REST API</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2014, Jeff Sabin.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>
