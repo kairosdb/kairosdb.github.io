@@ -10,7 +10,7 @@
     
     <title>Cassandra Schema &mdash; KairosDB 0.9.4 documentation</title>
     
-    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/scrollwide.css" type="text/css" />
     
@@ -45,7 +45,50 @@
              accesskey="P">previous</a> |</li>
         <li><a href="index.html">KairosDB 0.9.4 documentation</a> &raquo;</li> 
       </ul>
-    </div>  
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Cassandra Schema</a><ul>
+<li><a class="reference internal" href="#column-families">Column Families</a><ul>
+<li><a class="reference internal" href="#data-points-column-family">Data Points Column Family</a></li>
+<li><a class="reference internal" href="#row-key-index-column-family">Row Key Index Column Family</a></li>
+<li><a class="reference internal" href="#string-index-column-family">String Index Column Family</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#how-the-schema-is-used">How the Schema is Used</a></li>
+<li><a class="reference internal" href="#comparison-to-opentsdb-hbase">Comparison to OpenTSDB HBase</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="KairosClient.html"
+                        title="previous chapter">Kairos DB Java Client Library</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="kairosdevelopment/index.html"
+                        title="next chapter">Kairos Development</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/CassandraSchema.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
 
     <div class="document">
       <div class="documentwrapper">
@@ -118,49 +161,6 @@
 
 
           </div>
-        </div>
-      </div>
-      <div class="sphinxsidebar">
-        <div class="sphinxsidebarwrapper">
-  <h3><a href="index.html">Table Of Contents</a></h3>
-  <ul>
-<li><a class="reference internal" href="#">Cassandra Schema</a><ul>
-<li><a class="reference internal" href="#column-families">Column Families</a><ul>
-<li><a class="reference internal" href="#data-points-column-family">Data Points Column Family</a></li>
-<li><a class="reference internal" href="#row-key-index-column-family">Row Key Index Column Family</a></li>
-<li><a class="reference internal" href="#string-index-column-family">String Index Column Family</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#how-the-schema-is-used">How the Schema is Used</a></li>
-<li><a class="reference internal" href="#comparison-to-opentsdb-hbase">Comparison to OpenTSDB HBase</a></li>
-</ul>
-</li>
-</ul>
-
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="KairosClient.html"
-                        title="previous chapter">Kairos DB Java Client Library</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="kairosdevelopment/index.html"
-                        title="next chapter">Kairos Development</a></p>
-  <h3>This Page</h3>
-  <ul class="this-page-menu">
-    <li><a href="_sources/CassandraSchema.txt"
-           rel="nofollow">Show Source</a></li>
-  </ul>
-<div id="searchbox" style="display: none">
-  <h3>Quick search</h3>
-    <form class="search" action="search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
-    </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
-</div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
       </div>
       <div class="clearer"></div>

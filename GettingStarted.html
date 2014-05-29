@@ -10,7 +10,7 @@
     
     <title>Getting Started &mdash; KairosDB 0.9.4 documentation</title>
     
-    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/scrollwide.css" type="text/css" />
     
@@ -45,7 +45,66 @@
              accesskey="P">previous</a> |</li>
         <li><a href="index.html">KairosDB 0.9.4 documentation</a> &raquo;</li> 
       </ul>
-    </div>  
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Getting Started</a><ul>
+<li><a class="reference internal" href="#install">Install</a><ul>
+<li><a class="reference internal" href="#changing-file-handle-limit-on-linux">Changing File Handle Limit on Linux</a><ul>
+<li><a class="reference internal" href="#changing-datastore">Changing Datastore</a><ul>
+<li><a class="reference internal" href="#using-with-h2">Using with H2</a></li>
+<li><a class="reference internal" href="#configuration-options">Configuration Options</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#configuring-cassandra">Configuring Cassandra</a><ul>
+<li><a class="reference internal" href="#id1">Configuration Options</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#configuring-hbase">Configuring HBase</a><ul>
+<li><a class="reference internal" href="#id2">Configuration Options</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#configuring-as-a-remote-datastore">Configuring as a Remote Datastore</a><ul>
+<li><a class="reference internal" href="#id3">Configuration Options</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#starting-and-stopping">Starting and Stopping</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="index.html"
+                        title="previous chapter">KairosDB documentation</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="PushingData.html"
+                        title="next chapter">Pushing data</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/GettingStarted.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
 
     <div class="document">
       <div class="documentwrapper">
@@ -58,11 +117,14 @@
 <h2>Install<a class="headerlink" href="#install" title="Permalink to this headline">¶</a></h2>
 <p>KairosDB runs with java 1.6 or later.</p>
 <blockquote>
-<div># Download the tar.gz file from the Downloads section
-# Extract to where you wish to run from
-# In conf/kairosdb.properties change the kairosdb.service.datastore property to the datastore you wish to use.  It defaults to an in memory H2 database (that is slow)
-# Make sure that JAVA_HOME is set to your java install.
-# Change to the bin directory and run &gt;./kairosdb.sh run</div></blockquote>
+<div><ol class="arabic simple">
+<li>Download the tar.gz file from the Downloads section</li>
+<li>Extract to where you wish to run from</li>
+<li>In conf/kairosdb.properties change the kairosdb.service.datastore property to the datastore you wish to use.  It defaults to an in memory H2 database (that is slow)</li>
+<li>Make sure that JAVA_HOME is set to your java install.</li>
+<li>Change to the bin directory and run &gt;./kairosdb.sh run</li>
+</ol>
+</div></blockquote>
 <div class="section" id="changing-file-handle-limit-on-linux">
 <h3>Changing File Handle Limit on Linux<a class="headerlink" href="#changing-file-handle-limit-on-linux" title="Permalink to this headline">¶</a></h3>
 <p>If you have a lot of clients pushing metrics, you may run out of file handles. We recommend increasing the number of file handles. Here is an example of [<a class="reference external" href="http://tech-torch.blogspot.com/2009/07/linux-ubuntu-tomcat-too-many-open-files.html">http://tech-torch.blogspot.com/2009/07/linux-ubuntu-tomcat-too-many-open-files.html</a> changing file handles on CentOS].</p>
@@ -215,65 +277,6 @@
 
 
           </div>
-        </div>
-      </div>
-      <div class="sphinxsidebar">
-        <div class="sphinxsidebarwrapper">
-  <h3><a href="index.html">Table Of Contents</a></h3>
-  <ul>
-<li><a class="reference internal" href="#">Getting Started</a><ul>
-<li><a class="reference internal" href="#install">Install</a><ul>
-<li><a class="reference internal" href="#changing-file-handle-limit-on-linux">Changing File Handle Limit on Linux</a><ul>
-<li><a class="reference internal" href="#changing-datastore">Changing Datastore</a><ul>
-<li><a class="reference internal" href="#using-with-h2">Using with H2</a></li>
-<li><a class="reference internal" href="#configuration-options">Configuration Options</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#configuring-cassandra">Configuring Cassandra</a><ul>
-<li><a class="reference internal" href="#id1">Configuration Options</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#configuring-hbase">Configuring HBase</a><ul>
-<li><a class="reference internal" href="#id2">Configuration Options</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#configuring-as-a-remote-datastore">Configuring as a Remote Datastore</a><ul>
-<li><a class="reference internal" href="#id3">Configuration Options</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a class="reference internal" href="#starting-and-stopping">Starting and Stopping</a></li>
-</ul>
-</li>
-</ul>
-
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="index.html"
-                        title="previous chapter">KairosDB documentation</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="PushingData.html"
-                        title="next chapter">Pushing data</a></p>
-  <h3>This Page</h3>
-  <ul class="this-page-menu">
-    <li><a href="_sources/GettingStarted.txt"
-           rel="nofollow">Show Source</a></li>
-  </ul>
-<div id="searchbox" style="display: none">
-  <h3>Quick search</h3>
-    <form class="search" action="search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
-    </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
-</div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
       </div>
       <div class="clearer"></div>
