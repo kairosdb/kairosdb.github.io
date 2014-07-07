@@ -26,6 +26,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="top" title="KairosDB 0.9.4 documentation" href="index.html" />
     <link rel="next" title="Kairos Development" href="kairosdevelopment/index.html" />
     <link rel="prev" title="Kairos DB Java Client Library" href="KairosClient.html" /> 
@@ -51,6 +52,7 @@
 <h3><a href="index.html">Table Of Contents</a></h3>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="GettingStarted.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FAQ.html">Frequently Asked Questions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="PushingData.html">Pushing data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="QueryingData.html">Querying data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ImportExport.html">Importing and Exporting Data</a></li>
@@ -59,7 +61,12 @@
 <li class="toctree-l1"><a class="reference internal" href="Statistics.html">KairosDB Statistics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="KairosClient.html">Kairos DB Java Client Library</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="">Cassandra Schema</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#column-families">Column Families</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#column-families">Column Families</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#data-points-column-family">Data Points Column Family</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#row-key-index-column-family">Row Key Index Column Family</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#string-index-column-family">String Index Column Family</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#how-the-schema-is-used">How the Schema is Used</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#comparison-to-opentsdb-hbase">Comparison to OpenTSDB HBase</a></li>
 </ul>
@@ -109,31 +116,16 @@
 <h3>Data Points Column Family<a class="headerlink" href="#data-points-column-family" title="Permalink to this headline">¶</a></h3>
 <dl class="docutils">
 <dt>The row key is made up of 3 parts all concatenated together.</dt>
-<dd># Metric name (UTF-8)
-# Row time stamp.  The time stamp for the row to begin at.
-# Concatenated string of tags (tag1=val1:tag2=val2...)</dd>
+<dd><ol class="first last arabic simple">
+<li>Metric name (UTF-8)</li>
+<li>Row time stamp.  The time stamp for the row to begin at.</li>
+<li>Datastore type.</li>
+<li>Concatenated string of tags (tag1=val1:tag2=val2...)</li>
+</ol>
+</dd>
 </dl>
-<p>The column name is 32 bits of data.  The first 31 bits is the unsigned time offset from the row key (in milliseconds).  The last bit is used to identify the type of value stored.  (long = 0x0, float = 0x1)</p>
-<p>The value of the column varies depending on the type of value.</p>
-<table border="1" class="docutils">
-<colgroup>
-<col width="9%" />
-<col width="91%" />
-</colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Type of value</th>
-<th class="head">Description</th>
-</tr>
-</thead>
-<tbody valign="top">
-<tr class="row-even"><td>long</td>
-<td>Only significant bytes are stored.  If the value is 1-255 then only one byte is stored, etc.</td>
-</tr>
-<tr class="row-odd"><td>float</td>
-<td>The value is stored as either 5 or 9 bytes.  The first byte identifies the value as either float or double and the remaining bytes are the data.</td>
-</tr>
-</tbody>
-</table>
+<p>The column name is 32 bits of data.  The first 31 bits is the unsigned time offset from the row key (in milliseconds).  The last bit is unused.</p>
+<p>The value of the column varies depending on the type of value.  The exact format is defined by the <tt class="docutils literal"><span class="pre">writeValueToBuffer</span></tt> method on the DataPoint.</p>
 <p>The length of the row is set to exactly three weeks of data or 1,814,400,000 columns.</p>
 </div>
 <div class="section" id="row-key-index-column-family">

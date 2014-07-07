@@ -26,9 +26,10 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="top" title="KairosDB 0.9.4 documentation" href="index.html" />
     <link rel="next" title="Querying data" href="QueryingData.html" />
-    <link rel="prev" title="Getting Started" href="GettingStarted.html" /> 
+    <link rel="prev" title="Frequently Asked Questions" href="FAQ.html" /> 
   </head>
   <body>
     <div class="related">
@@ -41,7 +42,7 @@
           <a href="QueryingData.html" title="Querying data"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="GettingStarted.html" title="Getting Started"
+          <a href="FAQ.html" title="Frequently Asked Questions"
              accesskey="P">previous</a> |</li>
         <li><a href="index.html">KairosDB 0.9.4 documentation</a> &raquo;</li> 
       </ul>
@@ -51,6 +52,7 @@
 <h3><a href="index.html">Table Of Contents</a></h3>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="GettingStarted.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FAQ.html">Frequently Asked Questions</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="">Pushing data</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#submitting-data-via-telnet">Submitting data via telnet</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#submitting-data-via-rest">Submitting data via rest</a></li>
@@ -94,7 +96,9 @@
             
   <div class="section" id="pushing-data">
 <h1>Pushing data<a class="headerlink" href="#pushing-data" title="Permalink to this headline">¶</a></h1>
-<p>You can submit data either with the telnet protocol on port 4242 or the rest protocol on port 8080 (ports can be changed in the kairosdb.properties file)</p>
+<p>You can submit data either with the telnet protocol on port 4242 or the rest protocol on port 8080 (ports can be changed in the kairosdb.properties file).  Other mechanisms exist for getting data into KairosDB.  A list of plugins and external projects can be found on the <a class="reference external" href="https://github.com/proofpoint/kairosdb/wiki/External-projects,-libraries-and-stuff.">external projects page</a>.</p>
+<blockquote>
+<div><strong>Note:</strong> Of the two default protocols only the rest protocol handles custom data types.</div></blockquote>
 <p>A great client for testing data in and out is [<a class="reference external" href="http://code.google.com/p/rest-client/">http://code.google.com/p/rest-client/</a>]</p>
 <div class="section" id="submitting-data-via-telnet">
 <h2>Submitting data via telnet<a class="headerlink" href="#submitting-data-via-telnet" title="Permalink to this headline">¶</a></h2>
@@ -102,7 +106,7 @@
 <div class="highlight-python"><pre>put &lt;metric name&gt; &lt;time stamp&gt; &lt;value&gt; &lt;tag&gt; &lt;tag&gt;... /n</pre>
 </div>
 <p><strong>Metric name</strong> must be one word and is limited to alpha numerics with &#8220;-_.&#8221;.</p>
-<p><strong>Time stamp</strong> can either be in milliseconds or in seconds since Jan 1, 1970 (unix epoch) - seconds are for backwards compatibility with the original opentsdb.  The Cassandra datastore supports milliseconds where as the HBase datastore only supports seconds.</p>
+<p><strong>Time stamp</strong> can either be in milliseconds or in seconds since Jan 1, 1970 (unix epoch) - seconds are for backwards compatibility with the original opentsdb.  The Cassandra datastore supports milliseconds.</p>
 <blockquote>
 <div><strong>Note:</strong> The REST API only supports a timestamp in milliseconds.</div></blockquote>
 <p><strong>Value</strong> can either be a long or double value.</p>
@@ -123,26 +127,27 @@ echo "put $metric $now $value host=A" | nc -w 30 $host 4242</pre>
 <div class="section" id="submitting-data-via-rest">
 <h2>Submitting data via rest<a class="headerlink" href="#submitting-data-via-rest" title="Permalink to this headline">¶</a></h2>
 <p>The url for submitting data is <a class="reference external" href="http://localhost:8080/api/v1/datapoints">http://localhost:8080/api/v1/datapoints</a></p>
-<div class="highlight-python"><div class="highlight"><pre><span class="p">[{</span>
-    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;archive.file.tracked&quot;</span><span class="p">,</span>
-    <span class="s">&quot;timestamp&quot;</span><span class="p">:</span> <span class="mi">1349109376</span><span class="p">,</span>
-    <span class="s">&quot;value&quot;</span><span class="p">:</span> <span class="mi">123</span><span class="p">,</span>
-    <span class="s">&quot;tags&quot;</span><span class="p">:{</span><span class="s">&quot;host&quot;</span><span class="p">:</span><span class="s">&quot;test&quot;</span><span class="p">}</span>
-<span class="p">},</span>
-<span class="p">{</span>
-    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;archive.file.search&quot;</span><span class="p">,</span>
-    <span class="s">&quot;timestamp&quot;</span><span class="p">:</span> <span class="mi">999</span><span class="p">,</span>
-    <span class="s">&quot;value&quot;</span><span class="p">:</span> <span class="mi">321</span><span class="p">,</span>
-    <span class="s">&quot;tags&quot;</span><span class="p">:{</span><span class="s">&quot;host&quot;</span><span class="p">:</span><span class="s">&quot;test&quot;</span><span class="p">}</span>
-<span class="p">}]</span>
-</pre></div>
+<div class="highlight-python"><pre>[{
+    "name": "archive.file.tracked",
+    "timestamp": 1349109376,
+    "type": "long",
+    "value": 123,
+    "tags":{"host":"test"}
+},
+{
+    "name": "archive.file.search",
+    "timestamp": 999,
+    "type: "double",
+    "value": 32.1,
+    "tags":{"host":"test"}
+}]</pre>
 </div>
 <p>In the case of the rest api the timestamp is always treated as milliseconds since Jan 1, 1970.  If you are writing to HBase it is truncated off to the second.</p>
 <p>See the <a class="reference internal" href="restapi/AddDataPoints.html"><em>REST API documentation</em></a> for more details</p>
 </div>
 <div class="section" id="graphite-protocol">
 <h2>Graphite protocol<a class="headerlink" href="#graphite-protocol" title="Permalink to this headline">¶</a></h2>
-<p>KairosDB now supports the Graphite plaintext and pickle protocol as explained [<a class="reference external" href="https://graphite.readthedocs.org/en/latest/feeding-carbon.html">https://graphite.readthedocs.org/en/latest/feeding-carbon.html</a> here].  This lets you integrate KairosDB with existing applications that push data to Graphite.</p>
+<p>KairosDB now supports the Graphite plaintext and pickle protocol as explained <a class="reference external" href="https://graphite.readthedocs.org/en/latest/feeding-carbon.html">here</a>.  This lets you integrate KairosDB with existing applications that push data to Graphite.  Please see the <a class="reference external" href="https://github.com/proofpoint/kairosdb/wiki/External-projects,-libraries-and-stuff.">external projects page</a> for a link to the plugin.</p>
 </div>
 </div>
 
@@ -162,7 +167,7 @@ echo "put $metric $now $value host=A" | nc -w 30 $host 4242</pre>
           <a href="QueryingData.html" title="Querying data"
              >next</a> |</li>
         <li class="right" >
-          <a href="GettingStarted.html" title="Getting Started"
+          <a href="FAQ.html" title="Frequently Asked Questions"
              >previous</a> |</li>
         <li><a href="index.html">KairosDB 0.9.4 documentation</a> &raquo;</li> 
       </ul>

@@ -26,8 +26,9 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="top" title="KairosDB 0.9.4 documentation" href="index.html" />
-    <link rel="next" title="Pushing data" href="PushingData.html" />
+    <link rel="next" title="Frequently Asked Questions" href="FAQ.html" />
     <link rel="prev" title="KairosDB documentation" href="index.html" /> 
   </head>
   <body>
@@ -38,7 +39,7 @@
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="PushingData.html" title="Pushing data"
+          <a href="FAQ.html" title="Frequently Asked Questions"
              accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="index.html" title="KairosDB documentation"
@@ -51,10 +52,19 @@
 <h3><a href="index.html">Table Of Contents</a></h3>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="">Getting Started</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#install">Install</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#install">Install</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#changing-file-handle-limit-on-linux">Changing File Handle Limit on Linux</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#changing-datastore">Changing Datastore</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#using-with-h2">Using with H2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#using-with-cassandra">Using with Cassandra</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configuring-hbase">Configuring HBase</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#using-as-a-remote-datastore">Using as a Remote Datastore</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#starting-and-stopping">Starting and Stopping</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="FAQ.html">Frequently Asked Questions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="PushingData.html">Pushing data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="QueryingData.html">Querying data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ImportExport.html">Importing and Exporting Data</a></li>
@@ -102,22 +112,23 @@
 <li>Extract to where you wish to run from</li>
 <li>In conf/kairosdb.properties change the kairosdb.service.datastore property to the datastore you wish to use.  It defaults to an in memory H2 database (that is slow)</li>
 <li>Make sure that JAVA_HOME is set to your java install.</li>
-<li>Change to the bin directory and run &gt;./kairosdb.sh run</li>
+<li>Change to the bin directory and run <tt class="docutils literal"><span class="pre">&gt;./kairosdb.sh</span> <span class="pre">run</span></tt></li>
 </ol>
 </div></blockquote>
 <div class="section" id="changing-file-handle-limit-on-linux">
 <h3>Changing File Handle Limit on Linux<a class="headerlink" href="#changing-file-handle-limit-on-linux" title="Permalink to this headline">¶</a></h3>
 <p>If you have a lot of clients pushing metrics, you may run out of file handles. We recommend increasing the number of file handles. Here is an example of [<a class="reference external" href="http://tech-torch.blogspot.com/2009/07/linux-ubuntu-tomcat-too-many-open-files.html">http://tech-torch.blogspot.com/2009/07/linux-ubuntu-tomcat-too-many-open-files.html</a> changing file handles on CentOS].</p>
+</div>
 <div class="section" id="changing-datastore">
-<h4>Changing Datastore<a class="headerlink" href="#changing-datastore" title="Permalink to this headline">¶</a></h4>
+<h3>Changing Datastore<a class="headerlink" href="#changing-datastore" title="Permalink to this headline">¶</a></h3>
 <p>KairosDB can be configured to use one of several backends for storing data.  By default KairosDB is configured to use an in memory H2 database to store datapoints.  To change the datastore that is used change the <tt class="docutils literal"><span class="pre">kairosdb.service.datastore</span></tt> property in the kairosdb.properties file.</p>
+</div>
 <div class="section" id="using-with-h2">
-<h5>Using with H2<a class="headerlink" href="#using-with-h2" title="Permalink to this headline">¶</a></h5>
+<h3>Using with H2<a class="headerlink" href="#using-with-h2" title="Permalink to this headline">¶</a></h3>
 <p><tt class="docutils literal"><span class="pre">kairosdb.service.datastore=org.kairosdb.datastore.h2.H2Module</span></tt></p>
 <p>By default KairosDB is configured to run using the H2 datbase.  This lets you do development work without setting up and running Cassandra or HBase.</p>
-</div>
 <div class="section" id="configuration-options">
-<h5>Configuration Options<a class="headerlink" href="#configuration-options" title="Permalink to this headline">¶</a></h5>
+<h4>Configuration Options<a class="headerlink" href="#configuration-options" title="Permalink to this headline">¶</a></h4>
 <table border="1" class="docutils">
 <colgroup>
 <col width="58%" />
@@ -132,8 +143,8 @@
 <p>Deleting the database folder and restarting KairosDB will cause the database to be recreated with no data.</p>
 </div>
 </div>
-<div class="section" id="configuring-cassandra">
-<h4>Configuring Cassandra<a class="headerlink" href="#configuring-cassandra" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="using-with-cassandra">
+<h3>Using with Cassandra<a class="headerlink" href="#using-with-cassandra" title="Permalink to this headline">¶</a></h3>
 <p><tt class="docutils literal"><span class="pre">kairosdb.service.datastore=org.kairosdb.datastore.cassandra.CassandraModule</span></tt></p>
 <p>The default configuration for Cassandra is to use wide rows.  Each row is set to contain 3 weeks of data.  The reason behind setting it to 3 weeks is if you wrote a metric every millisecond for 3 weeks it would be just over 1 billion columns.  Cassandra has a 2 billion column limit.</p>
 <p>The row size has been a point of some confusion.  Basically it comes down to this: The more data you can fit into a single row the better the system will perform when querying the data.  This does not mean that Cassandra only holds 3 weeks worth of data, it means data is written to the same row for 3 weeks before going to a new row.  See the [CassandraSchema cassandra schema for more details].</p>
@@ -144,7 +155,7 @@
 &gt; update column family string_index with read_repair_chance = 0.1;</pre>
 </div>
 <div class="section" id="id1">
-<h5>Configuration Options<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h5>
+<h4>Configuration Options<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
 <p>For a complete list of options please see the Cassandra section in kairosdb.properties.</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -178,47 +189,15 @@
 </div>
 </div>
 <div class="section" id="configuring-hbase">
-<h4>Configuring HBase<a class="headerlink" href="#configuring-hbase" title="Permalink to this headline">¶</a></h4>
-<p><tt class="docutils literal"><span class="pre">kairosdb.service.datastore=net.opentsdb.kairosdb.HBaseModule</span></tt></p>
-<p>You will need to create the tables in HBase manually.  The create table script is located in the bin directory you can run it like so:</p>
-<div class="highlight-python"><pre>&gt; env COMPRESSION=none HBASE_HOME=path/to/hbase-0.94.X ./src/create_table.sh</pre>
+<h3>Configuring HBase<a class="headerlink" href="#configuring-hbase" title="Permalink to this headline">¶</a></h3>
+<p>HBase is not longer supported.  Originally the HBase support was achieved by forking the OpenTSDB code base and making it into a Datastore plugin for KairosDB.  The functionality of KairosDB has moved beyond what HBase code can support.</p>
 </div>
-<p>Have a look at the original [<a class="reference external" href="http://opentsdb.net/getting-started.html">http://opentsdb.net/getting-started.html</a> OpenTSDB documentation] for explanations on setting up HBase.</p>
-<p>The HBase code was taken directly from the original [<a class="reference external" href="http://opentsdb.net/index.html">http://opentsdb.net/index.html</a> OpenTSDB] project.  Database layout and the finer points of configuration can be found on their web site.</p>
-<p>&lt;font color=&#8221;red&#8221;&gt;Note:  HBase currently only supports per second data.&lt;/font&gt;</p>
-<div class="section" id="id2">
-<h5>Configuration Options<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h5>
-<table border="1" class="docutils">
-<colgroup>
-<col width="35%" />
-<col width="65%" />
-</colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>kairosdb.datastore.hbase.timeseries_table</td>
-<td>Name of the time series table within HBase</td>
-</tr>
-<tr class="row-even"><td>kairosdb.datastore.hbase.uinqueids_table</td>
-<td>Name of the unique id table within HBase.</td>
-</tr>
-<tr class="row-odd"><td>kairosdb.datastore.hbase.zoo_keeper_quorum</td>
-<td>Host name of the zoo keeper quorum</td>
-</tr>
-<tr class="row-even"><td>kairosdb.datastore.hbase.zoo_keeper_base_dir</td>
-<td>&nbsp;</td>
-</tr>
-<tr class="row-odd"><td>kairosdb.datastore.hbase.auto_create_metrics</td>
-<td>You need to leave this as true for now as there is no api for adding metric names.</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<div class="section" id="configuring-as-a-remote-datastore">
-<h4>Configuring as a Remote Datastore<a class="headerlink" href="#configuring-as-a-remote-datastore" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="using-as-a-remote-datastore">
+<h3>Using as a Remote Datastore<a class="headerlink" href="#using-as-a-remote-datastore" title="Permalink to this headline">¶</a></h3>
 <p><tt class="docutils literal"><span class="pre">kairosdb.service.datastore=org.kairosdb.datastore.remote.RemoteModule</span></tt></p>
 <p>Configuring Kairos as a remote datastore sets up the local Kairos instance to store and forward incoming data points to a remote Kairos server.  Data is stored in a directory in json format.  On a configurable schedule a background thread will compress the data and upload the data points to a remote KairosDB instance.</p>
-<div class="section" id="id3">
-<h5>Configuration Options<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id2">
+<h4>Configuration Options<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h4>
 <table border="1" class="docutils">
 <colgroup>
 <col width="29%" />
@@ -236,7 +215,6 @@
 </tr>
 </tbody>
 </table>
-</div>
 </div>
 </div>
 </div>
@@ -268,7 +246,7 @@
           <a href="genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="PushingData.html" title="Pushing data"
+          <a href="FAQ.html" title="Frequently Asked Questions"
              >next</a> |</li>
         <li class="right" >
           <a href="index.html" title="KairosDB documentation"

@@ -26,9 +26,10 @@
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="top" title="KairosDB 0.9.4 documentation" href="../index.html" />
     <link rel="up" title="Kairos Development" href="index.html" />
-    <link rel="next" title="Editing Kairos with IntelliJ" href="IntelliJSetup.html" />
+    <link rel="next" title="Custom Data" href="CustomData.html" />
     <link rel="prev" title="Kairos Development" href="index.html" /> 
   </head>
   <body>
@@ -39,7 +40,7 @@
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="IntelliJSetup.html" title="Editing Kairos with IntelliJ"
+          <a href="CustomData.html" title="Custom Data"
              accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="index.html" title="Kairos Development"
@@ -53,6 +54,7 @@
 <h3><a href="../index.html">Table Of Contents</a></h3>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../GettingStarted.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../FAQ.html">Frequently Asked Questions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../PushingData.html">Pushing data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../QueryingData.html">Querying data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ImportExport.html">Importing and Exporting Data</a></li>
@@ -62,7 +64,12 @@
 <li class="toctree-l1"><a class="reference internal" href="../KairosClient.html">Kairos DB Java Client Library</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../CassandraSchema.html">Cassandra Schema</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Kairos Development</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="">Plugins</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Plugins</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#plugin-requirements">Plugin Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#plugin-loading-process">Plugin Loading Process</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="CustomData.html">Custom Data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="IntelliJSetup.html">Editing Kairos with IntelliJ</a></li>
 </ul>
 </li>
@@ -105,7 +112,7 @@
 </ol>
 </dd>
 </dl>
-<p>For a good example of a simple plugin, see the [kairos-announce <a class="reference external" href="https://github.com/proofpoint/kairos-announce">https://github.com/proofpoint/kairos-announce</a>] project.</p>
+<p>For a good example of a simple plugin, see the <a class="reference external" href="https://github.com/proofpoint/kairos-announce">kairos-announce</a> project.</p>
 <div class="section" id="plugin-requirements">
 <h2>Plugin Requirements<a class="headerlink" href="#plugin-requirements" title="Permalink to this headline">¶</a></h2>
 <dl class="docutils">
@@ -121,10 +128,10 @@
 <div class="section" id="plugin-loading-process">
 <h2>Plugin Loading Process<a class="headerlink" href="#plugin-loading-process" title="Permalink to this headline">¶</a></h2>
 <dl class="docutils">
-<dt>Here is how the load process works:</dt>
+<dt>Here is how KairosDB loads libraries and plugins:</dt>
 <dd><ol class="first arabic simple">
 <li>All jar files in lib are automatically added to the classpath by the startup script.</li>
-<li>Properties in kairosdb.properties are loaded.</li>
+<li>Properties in kairosdb.properties are loaded first from the classpath and then from the file.</li>
 <li>For every .properties file in the conf directory besides kairosdb.properties, the following happens:</li>
 </ol>
 <blockquote>
@@ -141,6 +148,8 @@
 </dd>
 </dl>
 <p>There is in essence only one Properties object in Kairos so, plugins can overwrite properties set in kairosdb.properties with their own.</p>
+<p>For clarity lets look at an example of how things get loaded.  Say I create a new plugin called xplugin, my install places two files, xpluing.jar in /opt/kairosdb/lib and xplugin.properties in /opt/kairosdb/conf.</p>
+<p>When KairosDB starts it first loads kairosdb.properties and then scans the conf directory for other .properties files.  KairosDB sees xplugin.properties and tries to find the file on the classpath.  This lets me as a plugin developer create a xplugin.properties that placed within my xplugin.jar file and contains default settings.  After loading the properties file on the classpath KairosDB loads the file from the conf directory.</p>
 </div>
 </div>
 
@@ -157,7 +166,7 @@
           <a href="../genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="IntelliJSetup.html" title="Editing Kairos with IntelliJ"
+          <a href="CustomData.html" title="Custom Data"
              >next</a> |</li>
         <li class="right" >
           <a href="index.html" title="Kairos Development"

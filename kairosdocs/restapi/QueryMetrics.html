@@ -26,6 +26,7 @@
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="top" title="KairosDB 0.9.4 documentation" href="../index.html" />
     <link rel="up" title="REST API" href="index.html" />
     <link rel="next" title="Query Metric Tags" href="QueryMetricTags.html" />
@@ -53,6 +54,7 @@
 <h3><a href="../index.html">Table Of Contents</a></h3>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../GettingStarted.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../FAQ.html">Frequently Asked Questions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../PushingData.html">Pushing data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../QueryingData.html">Querying data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ImportExport.html">Importing and Exporting Data</a></li>
@@ -70,7 +72,15 @@
 <li class="toctree-l2"><a class="reference internal" href="ListMetricNames.html">List Metric Names</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ListTagNames.html">List Tag Names</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ListTagValues.html">List Tag Values</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">Query Metrics</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Query Metrics</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#method">Method</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#request">Request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#body">Body</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#query-properties">Query Properties</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#metric-properties">Metric Properties</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#response">Response</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="QueryMetricTags.html">Query Metric Tags</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Version.html">Version</a></li>
 </ul>
@@ -129,48 +139,48 @@ optional.  If no end time is specified, the end time is assumed to be now (the c
 </div>
 <div class="section" id="body">
 <h2>Body<a class="headerlink" href="#body" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
-   <span class="s">&quot;start_absolute&quot;</span><span class="p">:</span> <span class="mi">1357023600000</span><span class="p">,</span>
-   <span class="s">&quot;end_relative&quot;</span><span class="p">:</span> <span class="p">{</span>
-       <span class="s">&quot;value&quot;</span><span class="p">:</span> <span class="s">&quot;5&quot;</span><span class="p">,</span>
-       <span class="s">&quot;unit&quot;</span><span class="p">:</span> <span class="s">&quot;days&quot;</span>
-   <span class="p">},</span>
-   <span class="s">&quot;metrics&quot;</span><span class="p">:</span> <span class="p">[</span>
-       <span class="p">{</span>
-           <span class="s">&quot;tags&quot;</span><span class="p">:</span> <span class="p">{</span>
-               <span class="s">&quot;host&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;foo&quot;</span><span class="p">,</span> <span class="s">&quot;foo2&quot;</span><span class="p">],</span>
-               <span class="s">&quot;type&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;bar&quot;</span><span class="p">]</span>
-           <span class="p">},</span>
-           <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;abc.123&quot;</span><span class="p">,</span>
-           <span class="s">&quot;aggregators&quot;</span><span class="p">:</span> <span class="p">[</span>
-               <span class="p">{</span>
-                   <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;sum&quot;</span><span class="p">,</span>
-                   <span class="s">&quot;sampling&quot;</span><span class="p">:</span> <span class="p">{</span>
-                       <span class="s">&quot;value&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
-                       <span class="s">&quot;unit&quot;</span><span class="p">:</span> <span class="s">&quot;minutes&quot;</span>
-                   <span class="p">}</span>
-               <span class="p">}</span>
-           <span class="p">]</span>
-       <span class="p">},</span>
-       <span class="p">{</span>
-           <span class="s">&quot;tags&quot;</span><span class="p">:</span> <span class="p">{</span>
-               <span class="s">&quot;host&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;foo&quot;</span><span class="p">,</span> <span class="s">&quot;foo2&quot;</span><span class="p">],</span>
-               <span class="s">&quot;type&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;bar&quot;</span><span class="p">]</span>
-           <span class="p">},</span>
-           <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;xyz.123&quot;</span><span class="p">,</span>
-           <span class="s">&quot;aggregators&quot;</span><span class="p">:</span> <span class="p">[</span>
-               <span class="p">{</span>
-                   <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;avg&quot;</span><span class="p">,</span>
-                   <span class="s">&quot;sampling&quot;</span><span class="p">:</span> <span class="p">{</span>
-                       <span class="s">&quot;value&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
-                       <span class="s">&quot;unit&quot;</span><span class="p">:</span> <span class="s">&quot;minutes&quot;</span>
-                   <span class="p">}</span>
-               <span class="p">}</span>
-           <span class="p">]</span>
-       <span class="p">}</span>
-   <span class="p">]</span>
-<span class="p">}</span>
-</pre></div>
+<div class="highlight-python"><pre>{
+   "start_absolute": 1357023600000,
+   "end_relative": {
+       "value": "5",
+       "unit": "days"
+   },
+   "metrics": [
+       {
+           "tags": {
+               "host": ["foo", "foo2"],
+               "customer": ["bar"]
+           },
+           "name": "abc.123",
+           "limit": 10000
+           "aggregators": [
+               {
+                   "name": "sum",
+                   "sampling": {
+                       "value": 10,
+                       "unit": "minutes"
+                   }
+               }
+           ]
+       },
+       {
+           "tags": {
+               "host": ["foo", "foo2"],
+               "customer": ["bar"]
+           },
+           "name": "xyz.123",
+           "aggregators": [
+               {
+                   "name": "avg",
+                   "sampling": {
+                       "value": 10,
+                       "unit": "minutes"
+                   }
+               }
+           ]
+       }
+   ]
+}</pre>
 </div>
 </div>
 <div class="section" id="query-properties">
@@ -232,12 +242,22 @@ get one value which is the average for the week. Sampling is specified with a &#
 <p>Note that grouping by a time range or by value can slow down the query.</p>
 <p><em>exclude_tags</em></p>
 <p>By default, the result of the query includes tags and tag values associated with the data points. If <em>exclude_tags</em> is set to true, the tags will be excluded from the response.</p>
+<p><em>limit</em></p>
+<p>Limits the number of data points returned from the data store. The limit is applied before any aggregator is executed.</p>
+<p><em>order</em></p>
+<dl class="docutils">
+<dt>Orders the returned data points. Values for <em>order</em> are &#8220;asc&#8221; for ascending or &#8220;desc&#8221; for descending. Defaults to ascending. This</dt>
+<dd>sorting is done before any aggregators are executed.</dd>
+</dl>
 </div>
 <div class="section" id="response">
 <h2>Response<a class="headerlink" href="#response" title="Permalink to this headline">¶</a></h2>
 <p><em>Success</em></p>
 <blockquote>
 <div><p>The response contains either the metric values or possible error values. Returns 200 for successful queries.</p>
+<p>Version 0.9.4 includes a group_by named &#8220;type&#8221;. The type is the custom data type. If the data returned is not a custom
+type then &#8220;number&#8221; is returned. See <a class="reference internal" href="../kairosdevelopment/CustomData.html"><em>Custom Types</em></a> for
+information on custom types.</p>
 <div class="highlight-python"><pre>{
   "queries": [
       {
@@ -246,6 +266,10 @@ get one value which is the average for the week. Sampling is specified with a &#
               {
                   "name": "abc_123",
                   "group_by": [
+                      {
+                         "name": "type",
+                         "type": "number"
+                      },
                       {
                           "name": "tag",
                           "tags": [
@@ -260,7 +284,7 @@ get one value which is the average for the week. Sampling is specified with a &#
                       "host": [
                           "server1"
                       ],
-                      "type": [
+                      "customer": [
                           "bar"
                       ]
                   },
