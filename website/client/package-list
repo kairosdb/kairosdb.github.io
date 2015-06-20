@@ -1,0 +1,10 @@
+
+org.kairosdb.client
+org.kairosdb.client.builder
+org.kairosdb.client.builder.aggregator
+org.kairosdb.client.builder.grouper
+org.kairosdb.client.deserializer
+org.kairosdb.client.response
+org.kairosdb.client.response.grouping
+org.kairosdb.client.serializer
+org.kairosdb.client.util

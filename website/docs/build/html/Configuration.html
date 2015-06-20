@@ -1,0 +1,322 @@
+
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Configuration &mdash; KairosDB 0.9.5 documentation</title>
+    
+    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-3.3.4/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-3.3.4/css/bootstrap-none.min.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="_static/kairosdb.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.9.5',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+    <link rel="top" title="KairosDB 0.9.5 documentation" href="index.html" />
+    <link rel="next" title="KairosDB Statistics" href="Statistics.html" />
+    <link rel="prev" title="Web UI" href="WebUI.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head>
+  <body role="document">
+
+
+
+
+ <!-- Fixed navbar -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand logo" href="http://kairosdb.github.io/"><img alt="Brand" src="_static/kairosdb.png"></a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+			<li><a href="http://kairosdb.github.io/">Overview</a></li>
+            <li class="active"><a href="index.html">Documentation</a></li>
+            <li ><a href="https://groups.google.com/forum/?hl=fr#!forum/kairosdb-group" target="_blank">Community</a></li>
+            <li><a href="https://github.com/kairosdb/kairosdb">Github</a></li>
+			
+            
+<form class="navbar-form navbar-right" action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+          </ul>
+		  
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+<div class="container">
+  <div class="row">
+      <div class="col-md-3">
+        <div id="sidebar" class="bs-sidenav"><h3><a href="index.html">Table Of Contents</a></h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="GettingStarted.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FAQ.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PushingData.html">Pushing data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="QueryingData.html">Querying data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ImportExport.html">Importing and Exporting Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="WebUI.html">Web UI</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Statistics.html">KairosDB Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="KairosClient.html">Kairos DB Java Client Library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CassandraSchema.html">Cassandra Schema</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kairosdevelopment/index.html">Kairos Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="restapi/index.html">REST API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="telnetapi/index.html">Telnet API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Graphite.html">Graphite Protocol</a></li>
+<li class="toctree-l1"><a class="reference internal" href="IssueTracking.html">Bug Tracking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="External.html">External links</a></li>
+</ul>
+
+<form action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+        </div>
+      </div>
+    <div class="col-md-9">
+      
+  <div class="section" id="configuration">
+<h1>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h1>
+<p>KairosDB is configured using the kairosdb.properties files in the conf directory.</p>
+<p>Here is a list of the properties and their purpose.</p>
+<table border="1" class="scrollwide docutils">
+<colgroup>
+<col width="12%" />
+<col width="55%" />
+<col width="18%" />
+<col width="15%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><em>Property</em></th>
+<th class="head"><em>Description</em></th>
+<th class="head"><em>Required</em></th>
+<th class="head"><em>Default Value</em></th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>kairosdb.hostname</td>
+<td>Name of the host which is used when reporting internal metrics.</td>
+<td>Optional</td>
+<td>The &#8220;hostname&#8221; command is used if this is not set</td>
+</tr>
+<tr class="row-odd"><td>kairosdb.telnetserver.port</td>
+<td>Port number for the Telnet server.</td>
+<td>Required</td>
+<td>4242</td>
+</tr>
+<tr class="row-even"><td>kairosdb.telnetserver.commands</td>
+<td>List of Telnet commands supported by KairosDB.</td>
+<td>Required</td>
+<td>put, version</td>
+</tr>
+<tr class="row-odd"><td>kairosdb.service.telnet</td>
+<td>Full package and class name for the class that handles the Telnet requests.</td>
+<td>Required</td>
+<td><cite>org.kairosdb.core.telnet.TelnetServerModule</cite></td>
+</tr>
+<tr class="row-even"><td>kairosdb.service.http</td>
+<td>Full package and class name for the class that handles HTTP requests.</td>
+<td>Required</td>
+<td><cite>org.kairosdb.core.http.WebServletModule</cite></td>
+</tr>
+<tr class="row-odd"><td>kairosdb.service.reporter</td>
+<td>Full package and class name for the class that handles internal metric reporting. If not specified, internal metrics are not reported.</td>
+<td>Optional</td>
+<td><cite>org.kairosdb.core.reporting.MetricReportingModule</cite></td>
+</tr>
+<tr class="row-even"><td>kairosdb.reporter.period</td>
+<td>Period for internal metric reporting.  Use in conjunction with kairosdb.reporter.period_unit.</td>
+<td>Required if kairosdb.service.reporter is specified.</td>
+<td>1</td>
+</tr>
+<tr class="row-odd"><td>kairosdb.reporter.period_unit</td>
+<td>Used in conjunction with kairosdb.reporter.period. Unit can be milliseconds, seconds, minutes, days</td>
+<td>Required if kairosdb.service.reporter is specified.</td>
+<td>minutes</td>
+</tr>
+<tr class="row-even"><td>kairosdb.jetty.port</td>
+<td>Port number for accessing the KairosDB UI. Set to 0 to disable the HTTP port.</td>
+<td>Optional. Must set either this property or kairosdb.jetty.ssl.port.</td>
+<td>8080</td>
+</tr>
+<tr class="row-odd"><td>kairosdb.jetty.static_web_root</td>
+<td>Location where pages are served by the Jetty server.</td>
+<td>Required</td>
+<td>webroot</td>
+</tr>
+<tr class="row-even"><td>kairosdb.jetty.basic_auth.user</td>
+<td>Use this with kairosdb.jetty.basic_auth.password setup the username and password for Basic authentication.</td>
+<td>Optional</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>kairosdb.jetty.basic_auth.password</td>
+<td>Used with kairosdb.jetty.basic_auth.user to turn on Basic authentication. This the password for the user.</td>
+<td>Optional</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>kairosdb.jetty.ssl.port</td>
+<td>Port for use with SSL.</td>
+<td>Optional</td>
+<td>443</td>
+</tr>
+<tr class="row-odd"><td>kairosdb.jetty.ssl.keystore.path</td>
+<td>Full path to the key store that contains the server certificate for SSL communication. This implementation of SSL assumes there is only one certificate in the key store.</td>
+<td>Optional</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>kairosdb.jetty.ssl.keystore.password</td>
+<td>Key store password.</td>
+<td>Required if kairosdb.jetty.ssl.keystore.path is set.</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>kairosdb.service.datastore</td>
+<td>Full package and class name for the class that handles data store requests.</td>
+<td><cite>org.kairosdb.datastore.h2.H2Module</cite> or <cite>org.kairosdb.datastore.cassandra.CassandraModule</cite></td>
+<td><cite>org.kairosdb.datastore.h2.H2Module</cite> or <cite>net.opentsdb.kairosdb.HBaseModule</cite></td>
+</tr>
+<tr class="row-even"><td>kairosdb.datastore.h2.database_path</td>
+<td>Path to the H2 database location.</td>
+<td>Required if H2 is the selected datastore.</td>
+<td>build/h2db</td>
+</tr>
+<tr class="row-odd"><td>kairosdb.datastore.cassandra.host_list</td>
+<td>List of Cassandra nodes. In the form of 1.1.1.1:9160,1.1.1.2:9160</td>
+<td>Required if Cassandra is the selected datastore.</td>
+<td>localhost:9160</td>
+</tr>
+<tr class="row-even"><td>kairosdb.datastore.cassandra.replication_factor</td>
+<td>Cassandra replication factor.</td>
+<td>Required if Cassandra is the selected datastore.</td>
+<td>1</td>
+</tr>
+<tr class="row-odd"><td>kairosdb.datastore.cassandra.write_delay</td>
+<td>Delay before cached metrics are written to Cassandra.</td>
+<td>Required if Cassandra is the selected datastore.</td>
+<td>1000</td>
+</tr>
+<tr class="row-even"><td>kairosdb.datastore.cassandra.write_buffer_max_size</td>
+<td>Maximum size of the write cache. Data is written when the cache is full.</td>
+<td>Required if Cassandra is the selected datastore.</td>
+<td>500000</td>
+</tr>
+<tr class="row-odd"><td>kairosdb.datastore.cassandra.single_row_read_size</td>
+<td>Buffer size when reading a single row of data from Cassandra.</td>
+<td>Required if Cassandra is the selected datastore.</td>
+<td>10240</td>
+</tr>
+<tr class="row-even"><td>kairosdb.datastore.cassandra.multi_row_read_size</td>
+<td>Buffer size when reading multiple rows of data from Cassandra.</td>
+<td>Required if Cassandra is the selected datastore.</td>
+<td>1024</td>
+</tr>
+<tr class="row-odd"><td>kairosdb.datastore.cassandra.auth.`[prop name]`</td>
+<td>Used to pass authentication information to cassandra. eg <cite>kairosdb.datastore.cassandra.auth.user=admin</cite></td>
+<td>Optional</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>kairosdb.datastore.cassandra.increase_buffer_size_schedule</td>
+<td>If the Cassandra becomes overwhelmed, KairosDB will reduce the write buffer size. This property identifies how often KairosDB will attempt to increase the buffer size incrementally until it is back up to kairosdb.datastore.cassandra.write_buffer_max_size. Uses Quartz Cron syntax.</td>
+<td>Required if Cassandra is the selected datastore.</td>
+<td>0 */5 * * * ?</td>
+</tr>
+<tr class="row-odd"><td>kairosdb.datastore.hbase.timeseries_table</td>
+<td>Name of the HBase table metrics are stored in.</td>
+<td>Required if HBase is the selected datastore.</td>
+<td>tsdb</td>
+</tr>
+<tr class="row-even"><td>kairosdb.datastore.hbase.uinqueids_table</td>
+<td>Name of the id table for HBase.</td>
+<td>Required if HBase is the selected datastore.</td>
+<td>tsdb-uid</td>
+</tr>
+<tr class="row-odd"><td>kairosdb.datastore.hbase.zoo_keeper_quorum</td>
+<td>Zookeeper quorum host.</td>
+<td>Required if HBase is the selected datastore.</td>
+<td>localhost</td>
+</tr>
+<tr class="row-even"><td>kairosdb.datastore.hbase.zoo_keeper_base_dir</td>
+<td>Zookeeper base directory.</td>
+<td>Required if using HBase with Zookeeper.</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>kairosdb.datastore.hbase.auto_create_metrics</td>
+<td>If true, new metric names are created if they don&#8217;t exist. If false, metrics with new metric names are rejected.</td>
+<td>Required if HBase is the selected datastore.</td>
+<td>true</td>
+</tr>
+<tr class="row-even"><td>kairosdb.service.oauth</td>
+<td>Full package and class name of the class that handles OAuth communications.</td>
+<td>Optional</td>
+<td><cite>org.kairosdb.core.oauth.OAuthModule</cite></td>
+</tr>
+<tr class="row-odd"><td>kairosdb.oauth.consumer.`[consumer key]`</td>
+<td>OAuth key.</td>
+<td>Required if using OAuth.</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>kairosdb.job.cache_file_cleaner_schedule</td>
+<td>Cache file cleaning schedule. Uses Quartz Cron syntax.</td>
+<td>&nbsp;</td>
+<td><cite>0 0 12 ? * SUN *</cite></td>
+</tr>
+</tbody>
+</table>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2015, KairosDB Team.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

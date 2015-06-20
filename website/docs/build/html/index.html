@@ -1,0 +1,315 @@
+
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>KairosDB documentation &mdash; KairosDB 0.9.5 documentation</title>
+    
+    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-3.3.4/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-3.3.4/css/bootstrap-none.min.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="_static/kairosdb.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.9.5',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+    <link rel="top" title="KairosDB 0.9.5 documentation" href="#" />
+    <link rel="next" title="Getting Started" href="GettingStarted.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head>
+  <body role="document">
+
+
+
+
+ <!-- Fixed navbar -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand logo" href="http://kairosdb.github.io/"><img alt="Brand" src="_static/kairosdb.png"></a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+			<li><a href="http://kairosdb.github.io/">Overview</a></li>
+            <li class="active"><a href="#">Documentation</a></li>
+            <li ><a href="https://groups.google.com/forum/?hl=fr#!forum/kairosdb-group" target="_blank">Community</a></li>
+            <li><a href="https://github.com/kairosdb/kairosdb">Github</a></li>
+			
+            
+<form class="navbar-form navbar-right" action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+          </ul>
+		  
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+<div class="container">
+  <div class="row">
+      <div class="col-md-3">
+        <div id="sidebar" class="bs-sidenav"><h3><a href="#">Table Of Contents</a></h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="GettingStarted.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FAQ.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PushingData.html">Pushing data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="QueryingData.html">Querying data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ImportExport.html">Importing and Exporting Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="WebUI.html">Web UI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Configuration.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Statistics.html">KairosDB Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="KairosClient.html">Kairos DB Java Client Library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CassandraSchema.html">Cassandra Schema</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kairosdevelopment/index.html">Kairos Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="restapi/index.html">REST API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="telnetapi/index.html">Telnet API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Graphite.html">Graphite Protocol</a></li>
+<li class="toctree-l1"><a class="reference internal" href="IssueTracking.html">Bug Tracking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="External.html">External links</a></li>
+</ul>
+
+<form action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+        </div>
+      </div>
+    <div class="col-md-9">
+      
+  <div class="section" id="kairosdb-documentation">
+<h1>KairosDB documentation<a class="headerlink" href="#kairosdb-documentation" title="Permalink to this headline">¶</a></h1>
+<p>Contents:</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="GettingStarted.html">Getting Started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="GettingStarted.html#install">Install</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="GettingStarted.html#changing-file-handle-limit-on-linux">Changing File Handle Limit on Linux</a></li>
+<li class="toctree-l3"><a class="reference internal" href="GettingStarted.html#changing-datastore">Changing Datastore</a></li>
+<li class="toctree-l3"><a class="reference internal" href="GettingStarted.html#using-with-h2">Using with H2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="GettingStarted.html#using-with-cassandra">Using with Cassandra</a></li>
+<li class="toctree-l3"><a class="reference internal" href="GettingStarted.html#configuring-hbase">Configuring HBase</a></li>
+<li class="toctree-l3"><a class="reference internal" href="GettingStarted.html#using-as-a-remote-datastore">Using as a Remote Datastore</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="GettingStarted.html#starting-and-stopping">Starting and Stopping</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="FAQ.html">Frequently Asked Questions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="FAQ.html#why-would-i-pre-aggregate">Why would I pre-aggregate?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="FAQ.html#why-can-tags-only-handle-ascii-characters-and">Why can tags only handle ascii characters, &#8216;-&#8216;, &#8216;_&#8217; and &#8216;/&#8217;?</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="PushingData.html">Pushing data</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="PushingData.html#submitting-data-via-telnet">Submitting data via telnet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PushingData.html#submitting-data-via-rest">Submitting data via rest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PushingData.html#graphite-protocol">Graphite protocol</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="QueryingData.html">Querying data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ImportExport.html">Importing and Exporting Data</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ImportExport.html#exporting-data">Exporting Data</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ImportExport.html#export-switches">Export Switches</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ImportExport.html#importing-data">Importing Data</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ImportExport.html#import-switches">Import Switches</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ImportExport.html#performance-numbers">Performance Numbers</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="WebUI.html">Web UI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Configuration.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Statistics.html">KairosDB Statistics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Statistics.html#metrics-reported">Metrics Reported</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="KairosClient.html">Kairos DB Java Client Library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CassandraSchema.html">Cassandra Schema</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="CassandraSchema.html#column-families">Column Families</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="CassandraSchema.html#data-points-column-family">Data Points Column Family</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CassandraSchema.html#row-key-index-column-family">Row Key Index Column Family</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CassandraSchema.html#string-index-column-family">String Index Column Family</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="CassandraSchema.html#how-the-schema-is-used">How the Schema is Used</a></li>
+<li class="toctree-l2"><a class="reference internal" href="CassandraSchema.html#comparison-to-opentsdb-hbase">Comparison to OpenTSDB HBase</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="kairosdevelopment/index.html">Kairos Development</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="kairosdevelopment/Plugins.html">Plugins</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="kairosdevelopment/Plugins.html#plugin-requirements">Plugin Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="kairosdevelopment/Plugins.html#plugin-loading-process">Plugin Loading Process</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="kairosdevelopment/CustomData.html">Custom Data</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="kairosdevelopment/CustomData.html#steps-for-creating-custom-data-type">Steps for creating custom data type</a></li>
+<li class="toctree-l3"><a class="reference internal" href="kairosdevelopment/CustomData.html#example-for-creating-custom-types">Example for creating custom types</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="kairosdevelopment/IntelliJSetup.html">Editing Kairos with IntelliJ</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="kairosdevelopment/IntelliJSetup.html#import-project">Import Project</a></li>
+<li class="toctree-l3"><a class="reference internal" href="kairosdevelopment/IntelliJSetup.html#configure-modules">Configure Modules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="kairosdevelopment/IntelliJSetup.html#alternative-approach">Alternative Approach</a></li>
+<li class="toctree-l3"><a class="reference internal" href="kairosdevelopment/IntelliJSetup.html#running-kairos">Running Kairos</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="restapi/index.html">REST API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="restapi/Overview.html">Overview</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="restapi/Overview.html#what-data-do-i-store">What Data do I Store?</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="restapi/AddDataPoints.html">Add Data Points</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="restapi/AddDataPoints.html#method">Method</a></li>
+<li class="toctree-l3"><a class="reference internal" href="restapi/AddDataPoints.html#request">Request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="restapi/AddDataPoints.html#body">Body</a></li>
+<li class="toctree-l3"><a class="reference internal" href="restapi/AddDataPoints.html#description">Description</a></li>
+<li class="toctree-l3"><a class="reference internal" href="restapi/AddDataPoints.html#response">Response</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="restapi/DeleteDataPoints.html">Delete Data Points</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="restapi/DeleteDataPoints.html#method">Method</a></li>
+<li class="toctree-l3"><a class="reference internal" href="restapi/DeleteDataPoints.html#request">Request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="restapi/DeleteDataPoints.html#body">Body</a></li>
+<li class="toctree-l3"><a class="reference internal" href="restapi/DeleteDataPoints.html#response">Response</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="restapi/DeleteMetric.html">Delete Metric</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="restapi/DeleteMetric.html#method">Method</a></li>
+<li class="toctree-l3"><a class="reference internal" href="restapi/DeleteMetric.html#request">Request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="restapi/DeleteMetric.html#body">Body</a></li>
+<li class="toctree-l3"><a class="reference internal" href="restapi/DeleteMetric.html#response">Response</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="restapi/ListMetricNames.html">List Metric Names</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="restapi/ListMetricNames.html#method">Method</a></li>
+<li class="toctree-l3"><a class="reference internal" href="restapi/ListMetricNames.html#request">Request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="restapi/ListMetricNames.html#body">Body</a></li>
+<li class="toctree-l3"><a class="reference internal" href="restapi/ListMetricNames.html#response">Response</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="restapi/ListTagNames.html">List Tag Names</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="restapi/ListTagNames.html#method">Method</a></li>
+<li class="toctree-l3"><a class="reference internal" href="restapi/ListTagNames.html#request">Request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="restapi/ListTagNames.html#body">Body</a></li>
+<li class="toctree-l3"><a class="reference internal" href="restapi/ListTagNames.html#response">Response</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="restapi/ListTagValues.html">List Tag Values</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="restapi/ListTagValues.html#method">Method</a></li>
+<li class="toctree-l3"><a class="reference internal" href="restapi/ListTagValues.html#request">Request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="restapi/ListTagValues.html#body">Body</a></li>
+<li class="toctree-l3"><a class="reference internal" href="restapi/ListTagValues.html#response">Response</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="restapi/QueryMetrics.html">Query Metrics</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="restapi/QueryMetrics.html#method">Method</a></li>
+<li class="toctree-l3"><a class="reference internal" href="restapi/QueryMetrics.html#request">Request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="restapi/QueryMetrics.html#body">Body</a></li>
+<li class="toctree-l3"><a class="reference internal" href="restapi/QueryMetrics.html#query-properties">Query Properties</a></li>
+<li class="toctree-l3"><a class="reference internal" href="restapi/QueryMetrics.html#metric-properties">Metric Properties</a></li>
+<li class="toctree-l3"><a class="reference internal" href="restapi/QueryMetrics.html#response">Response</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="restapi/QueryMetricTags.html">Query Metric Tags</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="restapi/QueryMetricTags.html#filtering">Filtering</a></li>
+<li class="toctree-l3"><a class="reference internal" href="restapi/QueryMetricTags.html#method">Method</a></li>
+<li class="toctree-l3"><a class="reference internal" href="restapi/QueryMetricTags.html#request">Request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="restapi/QueryMetricTags.html#body">Body</a></li>
+<li class="toctree-l3"><a class="reference internal" href="restapi/QueryMetricTags.html#query-properties">Query Properties</a></li>
+<li class="toctree-l3"><a class="reference internal" href="restapi/QueryMetricTags.html#metric-properties">Metric Properties</a></li>
+<li class="toctree-l3"><a class="reference internal" href="restapi/QueryMetricTags.html#response">Response</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="restapi/Version.html">Version</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="restapi/Version.html#method">Method</a></li>
+<li class="toctree-l3"><a class="reference internal" href="restapi/Version.html#request">Request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="restapi/Version.html#body">Body</a></li>
+<li class="toctree-l3"><a class="reference internal" href="restapi/Version.html#response">Response</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="telnetapi/index.html">Telnet API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="telnetapi/Overview.html">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="telnetapi/Put.html">Put</a></li>
+<li class="toctree-l2"><a class="reference internal" href="telnetapi/Version.html">Version</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Graphite.html">Graphite Protocol</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Graphite.html#enabling-graphite-protocol">Enabling Graphite Protocol</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Graphite.html#configuring-graphite-protocol">Configuring Graphite Protocol</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Graphite.html#custom-tag-parser">Custom Tag Parser</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="IssueTracking.html">Bug Tracking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="External.html">External links</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="External.html#kairosdb-plugins">KairosDB Plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="External.html#client-libraries">Client Libraries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="External.html#collector-libraries">Collector Libraries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="External.html#visualization-tools">Visualization Tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="External.html#business-intelligence-reporting">Business Intelligence &amp; Reporting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="External.html#papers-about-kairosdb">Papers about KairosDB</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2015, KairosDB Team.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

@@ -1,0 +1,312 @@
+
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Custom Data &mdash; KairosDB 0.9.5 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-3.3.4/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-3.3.4/css/bootstrap-none.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/kairosdb.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.9.5',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
+    <link rel="top" title="KairosDB 0.9.5 documentation" href="../index.html" />
+    <link rel="up" title="Kairos Development" href="index.html" />
+    <link rel="next" title="Editing Kairos with IntelliJ" href="IntelliJSetup.html" />
+    <link rel="prev" title="Plugins" href="Plugins.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head>
+  <body role="document">
+
+
+
+
+ <!-- Fixed navbar -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand logo" href="http://kairosdb.github.io/"><img alt="Brand" src="../_static/kairosdb.png"></a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+			<li><a href="http://kairosdb.github.io/">Overview</a></li>
+            <li class="active"><a href="../index.html">Documentation</a></li>
+            <li ><a href="https://groups.google.com/forum/?hl=fr#!forum/kairosdb-group" target="_blank">Community</a></li>
+            <li><a href="https://github.com/kairosdb/kairosdb">Github</a></li>
+			
+            
+<form class="navbar-form navbar-right" action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+          </ul>
+		  
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+<div class="container">
+  <div class="row">
+      <div class="col-md-3">
+        <div id="sidebar" class="bs-sidenav"><h3><a href="../index.html">Table Of Contents</a></h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../GettingStarted.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../FAQ.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PushingData.html">Pushing data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../QueryingData.html">Querying data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ImportExport.html">Importing and Exporting Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../WebUI.html">Web UI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Configuration.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Statistics.html">KairosDB Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../KairosClient.html">Kairos DB Java Client Library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CassandraSchema.html">Cassandra Schema</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Kairos Development</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Plugins.html">Plugins</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Custom Data</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#steps-for-creating-custom-data-type">Steps for creating custom data type</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#example-for-creating-custom-types">Example for creating custom types</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="IntelliJSetup.html">Editing Kairos with IntelliJ</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../restapi/index.html">REST API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../telnetapi/index.html">Telnet API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Graphite.html">Graphite Protocol</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../IssueTracking.html">Bug Tracking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../External.html">External links</a></li>
+</ul>
+
+<form action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+        </div>
+      </div>
+    <div class="col-md-9">
+      
+  <div class="section" id="custom-data">
+<h1>Custom Data<a class="headerlink" href="#custom-data" title="Permalink to this headline">¶</a></h1>
+<p>KairosDB provides a means for storing and aggregating custom data types.  By default KairosDB supports long, double and string values.</p>
+<div class="section" id="steps-for-creating-custom-data-type">
+<h2>Steps for creating custom data type<a class="headerlink" href="#steps-for-creating-custom-data-type" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>Create a <a class="reference external" href="Plugins.html">plugin</a>.</li>
+<li>Create a DataPointFactory implementation.</li>
+<li>Create a DataPoint implementation.</li>
+<li>Bind your DataPointFactory in your plugin module.</li>
+<li>Register custom type in the properties file.</li>
+</ol>
+<p>Look at StringDataPointFactory.java and StringDataPoint.java for examples of how to implement.</p>
+</div>
+<div class="section" id="example-for-creating-custom-types">
+<h2>Example for creating custom types<a class="headerlink" href="#example-for-creating-custom-types" title="Permalink to this headline">¶</a></h2>
+<p>For this example we want a custom type for complex numbers that have a real and imaginary part.  Following is the code for the DataPoint and DataPointFactory implementations:</p>
+<p>ComplexDataPoint</p>
+<div class="highlight-python"><div class="highlight"><pre>package org.kairosdb.core.datapoints;
+
+import org.json.JSONException;
+import org.json.JSONWriter;
+
+import java.io.DataOutput;
+import java.io.IOException;
+
+/**
+ Used to show how to create a custom data type
+ Created by bhawkins on 6/27/14.
+ */
+public class ComplexDataPoint extends DataPointHelper
+{
+        private static final String API_TYPE = &quot;complex&quot;;
+        private double m_real;
+        private double m_imaginary;
+
+        public ComplexDataPoint(long timestamp, double real, double imaginary)
+        {
+                super(timestamp);
+                m_real = real;
+                m_imaginary = imaginary;
+        }
+
+        @Override
+        public void writeValueToBuffer(DataOutput buffer) throws IOException
+        {
+                buffer.writeDouble(m_real);
+                buffer.writeDouble(m_imaginary);
+        }
+
+        @Override
+        public void writeValueToJson(JSONWriter writer) throws JSONException
+        {
+                writer.object();
+
+                writer.key(&quot;real&quot;).value(m_real);
+                writer.key(&quot;imaginary&quot;).value(m_imaginary);
+
+                writer.endObject();
+        }
+
+        @Override
+        public String getApiDataType()
+        {
+                return API_TYPE;
+        }
+
+        @Override
+        public String getDataStoreDataType()
+        {
+                return ComplexDataPointFactory.DST_COMPLEX;
+        }
+
+        @Override
+        public boolean isLong()
+        {
+                return false;
+        }
+
+        @Override
+        public long getLongValue()
+        {
+                return 0;
+        }
+
+        @Override
+        public boolean isDouble()
+        {
+                return false;
+        }
+
+        @Override
+        public double getDoubleValue()
+        {
+                return 0;
+        }
+}
+</pre></div>
+</div>
+<p>ComplexDataPointFactory</p>
+<div class="highlight-python"><div class="highlight"><pre>package org.kairosdb.core.datapoints;
+
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import org.kairosdb.core.DataPoint;
+
+import java.io.DataInput;
+import java.io.IOException;
+
+/**
+ Used to show how to create a custom data type
+ Created by bhawkins on 6/30/14.
+ */
+public class ComplexDataPointFactory implements DataPointFactory
+{
+        public static final String DST_COMPLEX = &quot;kairos_complex&quot;;
+        public static final String GROUP_TYPE = &quot;complex&quot;;
+
+        @Override
+        public String getDataStoreType()
+        {
+                return DST_COMPLEX;
+        }
+
+        @Override
+        public String getGroupType()
+        {
+                return GROUP_TYPE;
+        }
+
+        @Override
+        public DataPoint getDataPoint(long timestamp, JsonElement json) throws IOException
+        {
+                if (json.isJsonObject())
+                {
+                        JsonObject object = json.getAsJsonObject();
+                        double real = object.get(&quot;real&quot;).getAsDouble();
+                        double imaginary = object.get(&quot;imaginary&quot;).getAsDouble();
+
+                        return new ComplexDataPoint(timestamp, real, imaginary);
+                }
+                else
+                        throw new IOException(&quot;JSON object is not a valid complex data point&quot;);
+        }
+
+        @Override
+        public DataPoint getDataPoint(long timestamp, DataInput buffer) throws IOException
+        {
+                double real = buffer.readDouble();
+                double imaginary = buffer.readDouble();
+
+                return new ComplexDataPoint(timestamp, real, imaginary);
+        }
+}
+</pre></div>
+</div>
+<p>Inside our plugin module we&#8217;ll need to bind the ComplexDataPointFactory like so:</p>
+<div class="highlight-python"><div class="highlight"><pre>bind(ComplexDataPointFactory.class).in(Singleton.class);
+</pre></div>
+</div>
+<p>Inside our plugin properties file we&#8217;ll need to register our api type:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">kairosdb</span><span class="o">.</span><span class="n">datapoints</span><span class="o">.</span><span class="n">factory</span><span class="o">.</span><span class="n">complex</span><span class="o">=</span><span class="n">org</span><span class="o">.</span><span class="n">kairosdb</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">datapoints</span><span class="o">.</span><span class="n">ComplexDataPointFactory</span>
+</pre></div>
+</div>
+<p>So why are the above two steps separate and required?  The first step binds our factory into guice and registers the datastore type of &#8216;kairos_complex&#8217;.  The second step registers the api type.  Lets say down the road we change how we want to store the complex type.  Without this separation the only way to change is by exporting all the data in importing it using the new method.  With this separation I can register a new factory that defines the datastore type as &#8216;kairos_complex2&#8217; and bind it to the &#8216;complex&#8217; api type.  New data will now be stored in the new format and yet the system will still be able to read the old data.</p>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2015, KairosDB Team.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

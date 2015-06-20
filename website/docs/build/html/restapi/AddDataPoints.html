@@ -1,0 +1,256 @@
+
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Add Data Points &mdash; KairosDB 0.9.5 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-3.3.4/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-3.3.4/css/bootstrap-none.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/kairosdb.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.9.5',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
+    <link rel="top" title="KairosDB 0.9.5 documentation" href="../index.html" />
+    <link rel="up" title="REST API" href="index.html" />
+    <link rel="next" title="Delete Data Points" href="DeleteDataPoints.html" />
+    <link rel="prev" title="Overview" href="Overview.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head>
+  <body role="document">
+
+
+
+
+ <!-- Fixed navbar -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand logo" href="http://kairosdb.github.io/"><img alt="Brand" src="../_static/kairosdb.png"></a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+			<li><a href="http://kairosdb.github.io/">Overview</a></li>
+            <li class="active"><a href="../index.html">Documentation</a></li>
+            <li ><a href="https://groups.google.com/forum/?hl=fr#!forum/kairosdb-group" target="_blank">Community</a></li>
+            <li><a href="https://github.com/kairosdb/kairosdb">Github</a></li>
+			
+            
+<form class="navbar-form navbar-right" action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+          </ul>
+		  
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+<div class="container">
+  <div class="row">
+      <div class="col-md-3">
+        <div id="sidebar" class="bs-sidenav"><h3><a href="../index.html">Table Of Contents</a></h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../GettingStarted.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../FAQ.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PushingData.html">Pushing data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../QueryingData.html">Querying data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ImportExport.html">Importing and Exporting Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../WebUI.html">Web UI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Configuration.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Statistics.html">KairosDB Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../KairosClient.html">Kairos DB Java Client Library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CassandraSchema.html">Cassandra Schema</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../kairosdevelopment/index.html">Kairos Development</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">REST API</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Overview.html">Overview</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Add Data Points</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#method">Method</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#request">Request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#body">Body</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#description">Description</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#response">Response</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="DeleteDataPoints.html">Delete Data Points</a></li>
+<li class="toctree-l2"><a class="reference internal" href="DeleteMetric.html">Delete Metric</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ListMetricNames.html">List Metric Names</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ListTagNames.html">List Tag Names</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ListTagValues.html">List Tag Values</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QueryMetrics.html">Query Metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QueryMetricTags.html">Query Metric Tags</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Version.html">Version</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../telnetapi/index.html">Telnet API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Graphite.html">Graphite Protocol</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../IssueTracking.html">Bug Tracking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../External.html">External links</a></li>
+</ul>
+
+<form action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+        </div>
+      </div>
+    <div class="col-md-9">
+      
+  <div class="section" id="add-data-points">
+<h1>Add Data Points<a class="headerlink" href="#add-data-points" title="Permalink to this headline">¶</a></h1>
+<p>Records metric data points</p>
+<div class="section" id="method">
+<h2>Method<a class="headerlink" href="#method" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div>POST</div></blockquote>
+</div>
+<div class="section" id="request">
+<h2>Request<a class="headerlink" href="#request" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><a class="reference external" href="http://[host]:[port]/api/v1/datapoints">http://[host]:[port]/api/v1/datapoints</a></div></blockquote>
+<p><em>Note: you can gzip the json and upload with the content type set to application/gzip if you are batching large amounts of data.</em></p>
+</div>
+<div class="section" id="body">
+<h2>Body<a class="headerlink" href="#body" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">[</span>
+  <span class="p">{</span>
+      <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;archive_file_tracked&quot;</span><span class="p">,</span>
+      <span class="s">&quot;datapoints&quot;</span><span class="p">:</span> <span class="p">[[</span><span class="mi">1359788400000</span><span class="p">,</span> <span class="mi">123</span><span class="p">],</span> <span class="p">[</span><span class="mi">1359788300000</span><span class="p">,</span> <span class="mf">13.2</span><span class="p">],</span> <span class="p">[</span><span class="mi">1359788410000</span><span class="p">,</span> <span class="mf">23.1</span><span class="p">]],</span>
+      <span class="s">&quot;tags&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="s">&quot;host&quot;</span><span class="p">:</span> <span class="s">&quot;server1&quot;</span><span class="p">,</span>
+          <span class="s">&quot;data_center&quot;</span><span class="p">:</span> <span class="s">&quot;DC1&quot;</span>
+      <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+      <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;impedance&quot;</span><span class="p">,</span>
+      <span class="s">&quot;type&quot;</span><span class="p">:</span> <span class="s">&quot;complex-number&quot;</span><span class="p">,</span>
+      <span class="s">&quot;datapoints&quot;</span><span class="p">:</span> <span class="p">[</span>
+          <span class="p">[</span>
+              <span class="mi">1359788400000</span><span class="p">,</span>
+              <span class="p">{</span>
+                  <span class="s">&quot;real&quot;</span><span class="p">:</span> <span class="mf">2.3</span><span class="p">,</span>
+                  <span class="s">&quot;imaginary&quot;</span><span class="p">:</span> <span class="mf">3.4</span>
+              <span class="p">}</span>
+          <span class="p">],</span>
+          <span class="p">[</span>
+              <span class="mi">1359788300000</span><span class="p">,</span>
+              <span class="p">{</span>
+                  <span class="s">&quot;real&quot;</span><span class="p">:</span> <span class="mf">1.1</span><span class="p">,</span>
+                  <span class="s">&quot;imaginary&quot;</span><span class="p">:</span> <span class="mi">5</span>
+              <span class="p">}</span>
+          <span class="p">]</span>
+      <span class="p">],</span>
+      <span class="s">&quot;tags&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="s">&quot;host&quot;</span><span class="p">:</span> <span class="s">&quot;server1&quot;</span><span class="p">,</span>
+          <span class="s">&quot;data_center&quot;</span><span class="p">:</span> <span class="s">&quot;DC1&quot;</span>
+      <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+      <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;archive_file_search&quot;</span><span class="p">,</span>
+      <span class="s">&quot;timestamp&quot;</span><span class="p">:</span> <span class="mi">1359786400000</span><span class="p">,</span>
+      <span class="s">&quot;value&quot;</span><span class="p">:</span> <span class="mi">321</span><span class="p">,</span>
+      <span class="s">&quot;tags&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="s">&quot;host&quot;</span><span class="p">:</span> <span class="s">&quot;server2&quot;</span>
+      <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
+<p>You can either use <strong>&#8220;timestamp&#8221;</strong> with <strong>&#8220;value&#8221;</strong> for a single data point or you can use <strong>&#8220;datapoints&#8221;</strong> to post multiple data points. This example shows both approaches.</p>
+<p><strong>name</strong></p>
+<p>Metric names must be unique. Multiple words in a metric name are typically separated using an underscore (&#8220;_&#8221;) to separate words such as archive_search.</p>
+<p><strong>timestamp</strong></p>
+<p>The timestamp is the date and time when the data was measured. It&#8217;s a numeric value that is the number of milliseconds since January 1st, 1970 UTC.</p>
+<p><strong>value</strong></p>
+<p>The value is a number (i.e, 523 or 132.45).</p>
+<p><strong>datapoints</strong></p>
+<p>An array of data points. Each data point consists of a timestamp and value.</p>
+<p><strong>tags</strong></p>
+<p>The tags field is a list of named properties. At least one tag is required. The tags are used when querying
+metrics to narrow down the search. For example, if multiple metrics are measured on server1, you could
+add the &#8220;host&#8221;:&#8221;server1&#8221; tag to each of the metrics and queries could return all metrics for the &#8220;host&#8221;
+tagged with the value of &#8220;server1&#8221;.</p>
+<p><strong>type</strong></p>
+<p>Type identifies custom data types. This field is only needed if the data value is something other than a number.
+The type field is the name of the registered type for the custom data. See <a class="reference internal" href="../kairosdevelopment/CustomData.html"><em>Custom Types</em></a> for information on custom types.</p>
+</div>
+<div class="section" id="response">
+<h2>Response<a class="headerlink" href="#response" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt><em>Success</em></dt>
+<dd>The response will be 204 NO CONTENT with no body.</dd>
+</dl>
+<p><em>Failure Response</em></p>
+<blockquote>
+<div><p>The response will be 400 Bad Request if the request is invalid.</p>
+<p>The response will be 500 Internal Server Error if an error occurs.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+  <span class="s">&quot;errors&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="s">&quot;Connect to 10.92.4.1:4242 timed out&quot;</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2015, KairosDB Team.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>
