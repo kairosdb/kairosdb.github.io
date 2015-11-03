@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Querying data &mdash; KairosDB 0.9.5 documentation</title>
+    <title>Querying data &mdash; KairosDB 1.0.0 documentation</title>
     
     <link rel="stylesheet" href="_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -18,7 +18,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '0.9.5',
+        VERSION:     '1.0.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -31,7 +31,7 @@
     <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
     <script type="text/javascript" src="_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
-    <link rel="top" title="KairosDB 0.9.5 documentation" href="index.html" />
+    <link rel="top" title="KairosDB 1.0.0 documentation" href="index.html" />
     <link rel="next" title="Importing and Exporting Data" href="ImportExport.html" />
     <link rel="prev" title="Pushing data" href="PushingData.html" />
 <meta charset='utf-8'>
@@ -40,7 +40,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 
   </head>
-  <body role="document">
+  <body>
 
 
 
@@ -117,23 +117,22 @@
 <h1>Querying data<a class="headerlink" href="#querying-data" title="Permalink to this headline">¶</a></h1>
 <p>The URL for getting data out is <a class="reference external" href="http://localhost:8080/api/v1/datapoints/query">http://localhost:8080/api/v1/datapoints/query</a></p>
 <p>Getting data out with an absolute date</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
-  <span class="s">&quot;start_absolute&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span>
-  <span class="s">&quot;metrics&quot;</span><span class="p">:</span> <span class="p">[</span>
+<div class="highlight-json"><div class="highlight"><pre><span class="p">{</span>
+  <span class="nt">&quot;start_absolute&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span>
+  <span class="nt">&quot;metrics&quot;</span><span class="p">:</span> <span class="p">[</span>
     <span class="p">{</span>
-      <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;archive.file.tracked&quot;</span>
+      <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;archive.file.tracked&quot;</span>
     <span class="p">}</span>
   <span class="p">]</span>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>}</p>
 <p>Getting data out with a relative date</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
-  <span class="s">&quot;start_relative&quot;</span><span class="p">:{</span><span class="s">&quot;value&quot;</span><span class="p">:</span><span class="mi">20</span><span class="p">,</span><span class="s">&quot;unit&quot;</span><span class="p">:</span><span class="s">&quot;weeks&quot;</span><span class="p">},</span>
-  <span class="s">&quot;metrics&quot;</span><span class="p">:</span> <span class="p">[</span>
+<div class="highlight-json"><div class="highlight"><pre><span class="p">{</span>
+  <span class="nt">&quot;start_relative&quot;</span><span class="p">:{</span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="mi">20</span><span class="p">,</span><span class="nt">&quot;unit&quot;</span><span class="p">:</span><span class="s2">&quot;weeks&quot;</span><span class="p">},</span>
+  <span class="nt">&quot;metrics&quot;</span><span class="p">:</span> <span class="p">[</span>
     <span class="p">{</span>
-      <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;archive.file.tracked&quot;</span>
+      <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;archive.file.tracked&quot;</span>
     <span class="p">}</span>
   <span class="p">]</span>
 <span class="p">}</span>
@@ -156,7 +155,7 @@
     </p>
     <p>
         &copy; Copyright 2015, KairosDB Team.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.<br/>
     </p>
   </div>
 </footer>

@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Getting Started &mdash; KairosDB 0.9.5 documentation</title>
+    <title>Getting Started &mdash; KairosDB 1.0.0 documentation</title>
     
     <link rel="stylesheet" href="_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -18,7 +18,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '0.9.5',
+        VERSION:     '1.0.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -31,7 +31,7 @@
     <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
     <script type="text/javascript" src="_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
-    <link rel="top" title="KairosDB 0.9.5 documentation" href="index.html" />
+    <link rel="top" title="KairosDB 1.0.0 documentation" href="index.html" />
     <link rel="next" title="Frequently Asked Questions" href="FAQ.html" />
     <link rel="prev" title="KairosDB documentation" href="index.html" />
 <meta charset='utf-8'>
@@ -40,7 +40,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 
   </head>
-  <body role="document">
+  <body>
 
 
 
@@ -136,7 +136,7 @@
 <li>Extract to where you wish to run from</li>
 <li>In conf/kairosdb.properties change the kairosdb.service.datastore property to the datastore you wish to use.  It defaults to an in memory H2 database (that is slow)</li>
 <li>Make sure that JAVA_HOME is set to your java install.</li>
-<li>Change to the bin directory and run <code class="docutils literal"><span class="pre">&gt;./kairosdb.sh</span> <span class="pre">run</span></code></li>
+<li>Change to the bin directory and run <tt class="docutils literal"><span class="pre">&gt;./kairosdb.sh</span> <span class="pre">run</span></tt></li>
 </ol>
 </div></blockquote>
 <div class="section" id="changing-file-handle-limit-on-linux">
@@ -145,11 +145,11 @@
 </div>
 <div class="section" id="changing-datastore">
 <h3>Changing Datastore<a class="headerlink" href="#changing-datastore" title="Permalink to this headline">¶</a></h3>
-<p>KairosDB can be configured to use one of several backends for storing data.  By default KairosDB is configured to use an in memory H2 database to store datapoints.  To change the datastore that is used change the <code class="docutils literal"><span class="pre">kairosdb.service.datastore</span></code> property in the kairosdb.properties file.</p>
+<p>KairosDB can be configured to use one of several backends for storing data.  By default KairosDB is configured to use an in memory H2 database to store datapoints.  To change the datastore that is used change the <tt class="docutils literal"><span class="pre">kairosdb.service.datastore</span></tt> property in the kairosdb.properties file.</p>
 </div>
 <div class="section" id="using-with-h2">
 <h3>Using with H2<a class="headerlink" href="#using-with-h2" title="Permalink to this headline">¶</a></h3>
-<p><code class="docutils literal"><span class="pre">kairosdb.service.datastore=org.kairosdb.datastore.h2.H2Module</span></code></p>
+<p><tt class="docutils literal"><span class="pre">kairosdb.service.datastore=org.kairosdb.datastore.h2.H2Module</span></tt></p>
 <p>By default KairosDB is configured to run using the H2 datbase.  This lets you do development work without setting up and running Cassandra or HBase.</p>
 <div class="section" id="configuration-options">
 <h4>Configuration Options<a class="headerlink" href="#configuration-options" title="Permalink to this headline">¶</a></h4>
@@ -169,7 +169,7 @@
 </div>
 <div class="section" id="using-with-cassandra">
 <h3>Using with Cassandra<a class="headerlink" href="#using-with-cassandra" title="Permalink to this headline">¶</a></h3>
-<p><code class="docutils literal"><span class="pre">kairosdb.service.datastore=org.kairosdb.datastore.cassandra.CassandraModule</span></code></p>
+<p><tt class="docutils literal"><span class="pre">kairosdb.service.datastore=org.kairosdb.datastore.cassandra.CassandraModule</span></tt></p>
 <p>The default configuration for Cassandra is to use wide rows.  Each row is set to contain 3 weeks of data.  The reason behind setting it to 3 weeks is if you wrote a metric every millisecond for 3 weeks it would be just over 1 billion columns.  Cassandra has a 2 billion column limit.</p>
 <p>The row size has been a point of some confusion.  Basically it comes down to this: The more data you can fit into a single row the better the system will perform when querying the data.  This does not mean that Cassandra only holds 3 weeks worth of data, it means data is written to the same row for 3 weeks before going to a new row.  See the [CassandraSchema cassandra schema for more details].</p>
 <p>Changing the read_repair_chance:  This value tells cassandra how often to perform a read repair.  The read repair chance will default to 1 (100% chance).  The recommended value is 0.1 (10% chance).  To change this log into the cassandra-cli client and run the following commands</p>
@@ -219,7 +219,7 @@
 </div>
 <div class="section" id="using-as-a-remote-datastore">
 <h3>Using as a Remote Datastore<a class="headerlink" href="#using-as-a-remote-datastore" title="Permalink to this headline">¶</a></h3>
-<p><code class="docutils literal"><span class="pre">kairosdb.service.datastore=org.kairosdb.datastore.remote.RemoteModule</span></code></p>
+<p><tt class="docutils literal"><span class="pre">kairosdb.service.datastore=org.kairosdb.datastore.remote.RemoteModule</span></tt></p>
 <p>Configuring Kairos as a remote datastore sets up the local Kairos instance to store and forward incoming data points to a remote Kairos server.  Data is stored in a directory in json format.  On a configurable schedule a background thread will compress the data and upload the data points to a remote KairosDB instance.</p>
 <div class="section" id="id2">
 <h4>Configuration Options<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h4>
@@ -274,7 +274,7 @@
     </p>
     <p>
         &copy; Copyright 2015, KairosDB Team.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.<br/>
     </p>
   </div>
 </footer>
