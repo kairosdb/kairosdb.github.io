@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>KairosDB documentation &mdash; KairosDB 0.9.5 documentation</title>
+    <title>KairosDB documentation &mdash; KairosDB 1.0.1 documentation</title>
     
     <link rel="stylesheet" href="_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -18,7 +18,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '0.9.5',
+        VERSION:     '1.0.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -31,7 +31,7 @@
     <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
     <script type="text/javascript" src="_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
-    <link rel="top" title="KairosDB 0.9.5 documentation" href="#" />
+    <link rel="top" title="KairosDB 1.0.1 documentation" href="#" />
     <link rel="next" title="Getting Started" href="GettingStarted.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
@@ -39,7 +39,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 
   </head>
-  <body role="document">
+  <body>
 
 
 
@@ -132,7 +132,6 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="FAQ.html">Frequently Asked Questions</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="FAQ.html#why-would-i-pre-aggregate">Why would I pre-aggregate?</a></li>
-<li class="toctree-l2"><a class="reference internal" href="FAQ.html#why-can-tags-only-handle-ascii-characters-and">Why can tags only handle ascii characters, &#8216;-&#8216;, &#8216;_&#8217; and &#8216;/&#8217;?</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="PushingData.html">Pushing data</a><ul>
@@ -219,6 +218,11 @@
 <li class="toctree-l3"><a class="reference internal" href="restapi/DeleteMetric.html#response">Response</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="restapi/Health.html">Health Checks</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="restapi/Health.html#status">Status</a></li>
+<li class="toctree-l3"><a class="reference internal" href="restapi/Health.html#check">Check</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="restapi/ListMetricNames.html">List Metric Names</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="restapi/ListMetricNames.html#method">Method</a></li>
 <li class="toctree-l3"><a class="reference internal" href="restapi/ListMetricNames.html#request">Request</a></li>
@@ -241,12 +245,40 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="restapi/QueryMetrics.html">Query Metrics</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="restapi/QueryMetrics.html#request-methods">Request Methods</a></li>
 <li class="toctree-l3"><a class="reference internal" href="restapi/QueryMetrics.html#method">Method</a></li>
 <li class="toctree-l3"><a class="reference internal" href="restapi/QueryMetrics.html#request">Request</a></li>
 <li class="toctree-l3"><a class="reference internal" href="restapi/QueryMetrics.html#body">Body</a></li>
+<li class="toctree-l3"><a class="reference internal" href="restapi/QueryMetrics.html#id1">Method</a></li>
+<li class="toctree-l3"><a class="reference internal" href="restapi/QueryMetrics.html#id2">Request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="restapi/QueryMetrics.html#id3">Body</a></li>
 <li class="toctree-l3"><a class="reference internal" href="restapi/QueryMetrics.html#query-properties">Query Properties</a></li>
 <li class="toctree-l3"><a class="reference internal" href="restapi/QueryMetrics.html#metric-properties">Metric Properties</a></li>
 <li class="toctree-l3"><a class="reference internal" href="restapi/QueryMetrics.html#response">Response</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="restapi/Aggregators.html">Aggregators</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="restapi/Aggregators.html#aggregator-parameters">Aggregator Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="restapi/Aggregators.html#range-aggregator">Range Aggregator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="restapi/Aggregators.html#average">Average</a></li>
+<li class="toctree-l3"><a class="reference internal" href="restapi/Aggregators.html#standard-deviation">Standard Deviation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="restapi/Aggregators.html#count">Count</a></li>
+<li class="toctree-l3"><a class="reference internal" href="restapi/Aggregators.html#first">First</a></li>
+<li class="toctree-l3"><a class="reference internal" href="restapi/Aggregators.html#gaps">Gaps</a></li>
+<li class="toctree-l3"><a class="reference internal" href="restapi/Aggregators.html#histogram">Histogram</a></li>
+<li class="toctree-l3"><a class="reference internal" href="restapi/Aggregators.html#last">Last</a></li>
+<li class="toctree-l3"><a class="reference internal" href="restapi/Aggregators.html#least-squares">Least Squares</a></li>
+<li class="toctree-l3"><a class="reference internal" href="restapi/Aggregators.html#max">Max</a></li>
+<li class="toctree-l3"><a class="reference internal" href="restapi/Aggregators.html#min">Min</a></li>
+<li class="toctree-l3"><a class="reference internal" href="restapi/Aggregators.html#percentile">Percentile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="restapi/Aggregators.html#sum">Sum</a></li>
+<li class="toctree-l3"><a class="reference internal" href="restapi/Aggregators.html#diff">Diff</a></li>
+<li class="toctree-l3"><a class="reference internal" href="restapi/Aggregators.html#divide">Divide</a></li>
+<li class="toctree-l3"><a class="reference internal" href="restapi/Aggregators.html#rate">Rate</a></li>
+<li class="toctree-l3"><a class="reference internal" href="restapi/Aggregators.html#sampler">Sampler</a></li>
+<li class="toctree-l3"><a class="reference internal" href="restapi/Aggregators.html#scale">Scale</a></li>
+<li class="toctree-l3"><a class="reference internal" href="restapi/Aggregators.html#trim">Trim</a></li>
+<li class="toctree-l3"><a class="reference internal" href="restapi/Aggregators.html#save-as">Save As</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="restapi/QueryMetricTags.html">Query Metric Tags</a><ul>
@@ -271,6 +303,7 @@
 <li class="toctree-l1"><a class="reference internal" href="telnetapi/index.html">Telnet API</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="telnetapi/Overview.html">Overview</a></li>
 <li class="toctree-l2"><a class="reference internal" href="telnetapi/Put.html">Put</a></li>
+<li class="toctree-l2"><a class="reference internal" href="telnetapi/Putm.html">Putm</a></li>
 <li class="toctree-l2"><a class="reference internal" href="telnetapi/Version.html">Version</a></li>
 </ul>
 </li>
@@ -307,7 +340,7 @@
     </p>
     <p>
         &copy; Copyright 2015, KairosDB Team.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.<br/>
     </p>
   </div>
 </footer>

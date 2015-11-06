@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Query Metric Tags &mdash; KairosDB 0.9.5 documentation</title>
+    <title>Query Metric Tags &mdash; KairosDB 1.0.1 documentation</title>
     
     <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -18,7 +18,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.9.5',
+        VERSION:     '1.0.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -31,17 +31,17 @@
     <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
     <script type="text/javascript" src="../_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
-    <link rel="top" title="KairosDB 0.9.5 documentation" href="../index.html" />
+    <link rel="top" title="KairosDB 1.0.1 documentation" href="../index.html" />
     <link rel="up" title="REST API" href="index.html" />
     <link rel="next" title="Version" href="Version.html" />
-    <link rel="prev" title="Query Metrics" href="QueryMetrics.html" />
+    <link rel="prev" title="Aggregators" href="Aggregators.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
 <meta name="apple-mobile-web-app-capable" content="yes">
 
   </head>
-  <body role="document">
+  <body>
 
 
 
@@ -101,10 +101,12 @@
 <li class="toctree-l2"><a class="reference internal" href="AddDataPoints.html">Add Data Points</a></li>
 <li class="toctree-l2"><a class="reference internal" href="DeleteDataPoints.html">Delete Data Points</a></li>
 <li class="toctree-l2"><a class="reference internal" href="DeleteMetric.html">Delete Metric</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Health.html">Health Checks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ListMetricNames.html">List Metric Names</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ListTagNames.html">List Tag Names</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ListTagValues.html">List Tag Values</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QueryMetrics.html">Query Metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Aggregators.html">Aggregators</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="">Query Metric Tags</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#filtering">Filtering</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#method">Method</a></li>
@@ -155,24 +157,24 @@
 </div>
 <div class="section" id="body">
 <h2>Body<a class="headerlink" href="#body" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
-   <span class="s">&quot;start_absolute&quot;</span><span class="p">:</span> <span class="mi">1357023600000</span><span class="p">,</span>
-   <span class="s">&quot;end_relative&quot;</span><span class="p">:</span> <span class="p">{</span>
-       <span class="s">&quot;value&quot;</span><span class="p">:</span> <span class="s">&quot;5&quot;</span><span class="p">,</span>
-       <span class="s">&quot;unit&quot;</span><span class="p">:</span> <span class="s">&quot;days&quot;</span>
+<div class="highlight-json"><div class="highlight"><pre><span class="p">{</span>
+   <span class="nt">&quot;start_absolute&quot;</span><span class="p">:</span> <span class="mi">1357023600000</span><span class="p">,</span>
+   <span class="nt">&quot;end_relative&quot;</span><span class="p">:</span> <span class="p">{</span>
+       <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;5&quot;</span><span class="p">,</span>
+       <span class="nt">&quot;unit&quot;</span><span class="p">:</span> <span class="s2">&quot;days&quot;</span>
    <span class="p">},</span>
-   <span class="s">&quot;metrics&quot;</span><span class="p">:</span> <span class="p">[</span>
+   <span class="nt">&quot;metrics&quot;</span><span class="p">:</span> <span class="p">[</span>
        <span class="p">{</span>
-           <span class="s">&quot;tags&quot;</span><span class="p">:</span> <span class="p">{</span>
-               <span class="s">&quot;host&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;foo&quot;</span><span class="p">]</span>
+           <span class="nt">&quot;tags&quot;</span><span class="p">:</span> <span class="p">{</span>
+               <span class="nt">&quot;host&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;foo&quot;</span><span class="p">]</span>
            <span class="p">},</span>
-           <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;abc.123&quot;</span><span class="p">,</span>
+           <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;abc.123&quot;</span><span class="p">,</span>
        <span class="p">},</span>
        <span class="p">{</span>
-           <span class="s">&quot;tags&quot;</span><span class="p">:</span> <span class="p">{</span>
-               <span class="s">&quot;host&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;foo&quot;</span><span class="p">]</span>
+           <span class="nt">&quot;tags&quot;</span><span class="p">:</span> <span class="p">{</span>
+               <span class="nt">&quot;host&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;foo&quot;</span><span class="p">]</span>
            <span class="p">},</span>
-           <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;xyz.123&quot;</span><span class="p">,</span>
+           <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;xyz.123&quot;</span><span class="p">,</span>
        <span class="p">}</span>
    <span class="p">]</span>
 <span class="p">}</span>
@@ -202,28 +204,29 @@ The relative end time is the current date and time minus the specified value and
 <h2>Response<a class="headerlink" href="#response" title="Permalink to this headline">¶</a></h2>
 <dl class="docutils">
 <dt><em>Success</em></dt>
-<dd>The response contains either the metric values or possible error values. Returns 200 for successful queries.</dd>
-</dl>
-<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
-    <span class="s">&quot;results&quot;</span><span class="p">:</span> <span class="p">[</span>
+<dd><p class="first">The response contains either the metric values or possible error values. Returns 200 for successful queries.</p>
+<div class="last highlight-json"><div class="highlight"><pre><span class="p">{</span>
+    <span class="nt">&quot;results&quot;</span><span class="p">:</span> <span class="p">[</span>
         <span class="p">{</span>
-            <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;abc_123&quot;</span><span class="p">,</span>
-            <span class="s">&quot;tags&quot;</span><span class="p">:</span> <span class="p">{</span>
-                <span class="s">&quot;host&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;server1&quot;</span><span class="p">,</span><span class="s">&quot;server2&quot;</span><span class="p">],</span>
-                <span class="s">&quot;type&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;bar&quot;</span><span class="p">]</span>
+            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;abc_123&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;tags&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;host&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;server1&quot;</span><span class="p">,</span><span class="s2">&quot;server2&quot;</span><span class="p">],</span>
+                <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;bar&quot;</span><span class="p">]</span>
             <span class="p">}</span>
         <span class="p">},</span>
         <span class="p">{</span>
-            <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;xyz_123&quot;</span><span class="p">,</span>
-            <span class="s">&quot;tags&quot;</span><span class="p">:</span> <span class="p">{</span>
-                <span class="s">&quot;host&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;server1&quot;</span><span class="p">,</span><span class="s">&quot;server2&quot;</span><span class="p">],</span>
-                <span class="s">&quot;type&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;bar&quot;</span><span class="p">]</span>
+            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;xyz_123&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;tags&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;host&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;server1&quot;</span><span class="p">,</span><span class="s2">&quot;server2&quot;</span><span class="p">],</span>
+                <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;bar&quot;</span><span class="p">]</span>
             <span class="p">}</span>
         <span class="p">}</span>
     <span class="p">]</span>
 <span class="p">}</span>
 </pre></div>
 </div>
+</dd>
+</dl>
 <p><em>Failure</em></p>
 <blockquote>
 <div><p>The response will be 400 Bad Request if the request is invalid.</p>
@@ -245,7 +248,7 @@ The relative end time is the current date and time minus the specified value and
     </p>
     <p>
         &copy; Copyright 2015, KairosDB Team.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.<br/>
     </p>
   </div>
 </footer>

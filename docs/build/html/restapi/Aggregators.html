@@ -1,0 +1,468 @@
+
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Aggregators &mdash; KairosDB 1.0.1 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-3.3.4/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-3.3.4/css/bootstrap-none.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/kairosdb.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
+    <link rel="top" title="KairosDB 1.0.1 documentation" href="../index.html" />
+    <link rel="up" title="REST API" href="index.html" />
+    <link rel="next" title="Query Metric Tags" href="QueryMetricTags.html" />
+    <link rel="prev" title="Query Metrics" href="QueryMetrics.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head>
+  <body>
+
+
+
+
+ <!-- Fixed navbar -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand logo" href="http://kairosdb.github.io/"><img alt="Brand" src="../_static/kairosdb.png"></a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+			<li><a href="http://kairosdb.github.io/">Overview</a></li>
+            <li class="active"><a href="../index.html">Documentation</a></li>
+            <li ><a href="https://groups.google.com/forum/?hl=fr#!forum/kairosdb-group" target="_blank">Community</a></li>
+            <li><a href="https://github.com/kairosdb/kairosdb">Github</a></li>
+			
+            
+<form class="navbar-form navbar-right" action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+          </ul>
+		  
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+<div class="container">
+  <div class="row">
+      <div class="col-md-3">
+        <div id="sidebar" class="bs-sidenav"><h3><a href="../index.html">Table Of Contents</a></h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../GettingStarted.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../FAQ.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PushingData.html">Pushing data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../QueryingData.html">Querying data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ImportExport.html">Importing and Exporting Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../WebUI.html">Web UI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Configuration.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Statistics.html">KairosDB Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../KairosClient.html">Kairos DB Java Client Library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CassandraSchema.html">Cassandra Schema</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../kairosdevelopment/index.html">Kairos Development</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">REST API</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Overview.html">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="AddDataPoints.html">Add Data Points</a></li>
+<li class="toctree-l2"><a class="reference internal" href="DeleteDataPoints.html">Delete Data Points</a></li>
+<li class="toctree-l2"><a class="reference internal" href="DeleteMetric.html">Delete Metric</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Health.html">Health Checks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ListMetricNames.html">List Metric Names</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ListTagNames.html">List Tag Names</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ListTagValues.html">List Tag Values</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QueryMetrics.html">Query Metrics</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Aggregators</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#aggregator-parameters">Aggregator Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#range-aggregator">Range Aggregator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#average">Average</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#standard-deviation">Standard Deviation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#count">Count</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#first">First</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#gaps">Gaps</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#histogram">Histogram</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#last">Last</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#least-squares">Least Squares</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#max">Max</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#min">Min</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#percentile">Percentile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sum">Sum</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#diff">Diff</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#divide">Divide</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#rate">Rate</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sampler">Sampler</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#scale">Scale</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#trim">Trim</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#save-as">Save As</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="QueryMetricTags.html">Query Metric Tags</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Version.html">Version</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../telnetapi/index.html">Telnet API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Graphite.html">Graphite Protocol</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../IssueTracking.html">Bug Tracking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../External.html">External links</a></li>
+</ul>
+
+<form action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+        </div>
+      </div>
+    <div class="col-md-9">
+      
+  <div class="section" id="aggregators">
+<h1>Aggregators<a class="headerlink" href="#aggregators" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="aggregator-parameters">
+<h2>Aggregator Parameters<a class="headerlink" href="#aggregator-parameters" title="Permalink to this headline">¶</a></h2>
+<p>The following are parameters that are common to more than one aggregator.</p>
+<span class="target" id="unit"></span><dl class="data">
+<dt>
+<tt class="descname">unit</tt></dt>
+<dd><p>Unit is a time unit represented as a string and must be one of (
+MILLISECONDS, SECONDS, MINUTES, HOURS, DAYS, WEEKS, MONTHS, YEARS)</p>
+</dd></dl>
+
+<span class="target" id="sampling"></span><dl class="data">
+<dt>
+<tt class="descname">sampling</tt></dt>
+<dd><p>A sampling is a json object containing two values a <tt class="docutils literal"><span class="pre">value</span></tt> and a <tt class="docutils literal"><span class="pre">unit</span></tt>.
+The value is a long and the unit is see <em class="xref std std-ref">unit</em>.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="range-aggregator">
+<span id="id1"></span><h2>Range Aggregator<a class="headerlink" href="#range-aggregator" title="Permalink to this headline">¶</a></h2>
+<p>Many of the below aggregators inherit from the range aggregator.  You can set
+the following parameters on any range aggregator.</p>
+<p><strong>sampling</strong> (Sampling {value (long), unit (See <em class="xref std std-ref">unit</em>)})</p>
+<blockquote>
+<div>Sampling is the length of the interval on which to aggregate data.</div></blockquote>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="s2">&quot;aggregators&quot;</span><span class="o">:</span> <span class="p">[</span>
+<span class="p">{</span>
+  <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;sum&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;align_sampling&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="s2">&quot;align_start_time&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="s2">&quot;sampling&quot;</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s2">&quot;value&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="s2">&quot;unit&quot;</span><span class="o">:</span> <span class="s2">&quot;minutes&quot;</span>
+  <span class="p">}</span>
+<span class="p">}]</span>
+</pre></div>
+</div>
+<p><strong>align_start_time</strong> - (boolean)</p>
+<blockquote>
+<div>When set to true the time for the aggregated data point for each range will
+fall on the start of the range instead of being the value for the first
+data point within that range.</div></blockquote>
+<p><strong>align_sampling</strong> - (boolean)</p>
+<blockquote>
+<div>Setting this to true will cause the aggregation range to be aligned based on
+the sampling size.  For example if your sample size is either milliseconds,
+seconds, minutes or hours then the start of the range will always be at the top
+of the hour.  The effect of setting this to true is that your data will
+take the same shape when graphed as you refresh the data.</div></blockquote>
+<p><strong>start_time</strong> - (long)</p>
+<blockquote>
+<div>Start time to calculate the ranges from.  Typically this is the start of the query</div></blockquote>
+<p><strong>time_zone</strong> - (long time zone format)</p>
+<blockquote>
+<div>Time zone to use when doing time based calculations.</div></blockquote>
+</div>
+<div class="section" id="average">
+<h2>Average<a class="headerlink" href="#average" title="Permalink to this headline">¶</a></h2>
+<dl class="data">
+<dt id="avg">
+<tt class="descname">avg</tt><a class="headerlink" href="#avg" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes average value.
+Extends <a class="reference internal" href="#range-aggregator"><em>Range Aggregator</em></a>.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="standard-deviation">
+<h2>Standard Deviation<a class="headerlink" href="#standard-deviation" title="Permalink to this headline">¶</a></h2>
+<dl class="data">
+<dt id="dev">
+<tt class="descname">dev</tt><a class="headerlink" href="#dev" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes standard deviation.
+Extends <a class="reference internal" href="#range-aggregator"><em>Range Aggregator</em></a>.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="count">
+<h2>Count<a class="headerlink" href="#count" title="Permalink to this headline">¶</a></h2>
+<dl class="data">
+<dt>
+<tt class="descname">count</tt></dt>
+<dd><p>Counts the number of data points.
+Extends <a class="reference internal" href="#range-aggregator"><em>Range Aggregator</em></a>.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="first">
+<h2>First<a class="headerlink" href="#first" title="Permalink to this headline">¶</a></h2>
+<dl class="data">
+<dt>
+<tt class="descname">first</tt></dt>
+<dd><p>Returns the first data point for the interval.
+Extends <a class="reference internal" href="#range-aggregator"><em>Range Aggregator</em></a>.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="gaps">
+<h2>Gaps<a class="headerlink" href="#gaps" title="Permalink to this headline">¶</a></h2>
+<dl class="data">
+<dt>
+<tt class="descname">gaps</tt></dt>
+<dd><p>Marks gaps in data according to sampling rate with a null data point.
+Extends <a class="reference internal" href="#range-aggregator"><em>Range Aggregator</em></a>.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="histogram">
+<h2>Histogram<a class="headerlink" href="#histogram" title="Permalink to this headline">¶</a></h2>
+<dl class="data">
+<dt>
+<tt class="descname">histogram</tt></dt>
+<dd><p>Calculates a probability distribution and returns the specified percentile
+for the distribution. The &#8220;percentile&#8221; value is defined as 0 &lt; percentile &lt;= 1
+where .5 is 50% and 1 is 100%. Note that this aggregator has been renamed to
+<em>percentile</em> in release 0.9.2.
+See <a class="reference internal" href="#percentile-aggregator"><em>Percentile</em></a>.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="last">
+<h2>Last<a class="headerlink" href="#last" title="Permalink to this headline">¶</a></h2>
+<dl class="data">
+<dt>
+<tt class="descname">last</tt></dt>
+<dd><p>Returns the last data point for the interval.
+Extends <a class="reference internal" href="#range-aggregator"><em>Range Aggregator</em></a>.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="least-squares">
+<h2>Least Squares<a class="headerlink" href="#least-squares" title="Permalink to this headline">¶</a></h2>
+<dl class="data">
+<dt id="least_squares">
+<tt class="descname">least_squares</tt><a class="headerlink" href="#least_squares" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns two points for the range which represent the best fit line through the set of points.
+Extends <a class="reference internal" href="#range-aggregator"><em>Range Aggregator</em></a>.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="max">
+<h2>Max<a class="headerlink" href="#max" title="Permalink to this headline">¶</a></h2>
+<dl class="data">
+<dt>
+<tt class="descname">max</tt></dt>
+<dd><p>Returns the largest value in the interval.
+Extends <a class="reference internal" href="#range-aggregator"><em>Range Aggregator</em></a>.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="min">
+<h2>Min<a class="headerlink" href="#min" title="Permalink to this headline">¶</a></h2>
+<dl class="data">
+<dt>
+<tt class="descname">min</tt></dt>
+<dd><p>Returns the smallest value in the interval.
+Extends <a class="reference internal" href="#range-aggregator"><em>Range Aggregator</em></a>.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="percentile">
+<span id="percentile-aggregator"></span><h2>Percentile<a class="headerlink" href="#percentile" title="Permalink to this headline">¶</a></h2>
+<dl class="data">
+<dt>
+<tt class="descname">percentile</tt></dt>
+<dd><p>Finds the percentile of the data range. Calculates a probability distribution
+and returns the specified percentile for the distribution. The “percentile”
+value is defined as 0 &lt; percentile &lt;= 1 where .5 is 50% and 1 is 100%.
+Extends <a class="reference internal" href="#range-aggregator"><em>Range Aggregator</em></a>.</p>
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd><strong>percentile</strong> (double) - Percentile to count.</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="sum">
+<h2>Sum<a class="headerlink" href="#sum" title="Permalink to this headline">¶</a></h2>
+<dl class="data">
+<dt>
+<tt class="descname">sum</tt></dt>
+<dd><p>Sums all values
+Extends <a class="reference internal" href="#range-aggregator"><em>Range Aggregator</em></a>.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="diff">
+<h2>Diff<a class="headerlink" href="#diff" title="Permalink to this headline">¶</a></h2>
+<dl class="data">
+<dt>
+<tt class="descname">diff</tt></dt>
+<dd><p>Computes the difference between successive data points.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="divide">
+<h2>Divide<a class="headerlink" href="#divide" title="Permalink to this headline">¶</a></h2>
+<dl class="data">
+<dt id="div">
+<tt class="descname">div</tt><a class="headerlink" href="#div" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns each data point divided by a divisor. Requires a &#8220;divisor&#8221; property
+which is the value that all data points will be divided by.</p>
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd><strong>divisor</strong> (double) - Value to divide data points by.</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="rate">
+<h2>Rate<a class="headerlink" href="#rate" title="Permalink to this headline">¶</a></h2>
+<dl class="data">
+<dt>
+<tt class="descname">rate</tt></dt>
+<dd><p>Returns the rate of change between a pair of data points. Requires a &#8220;unit&#8221;
+property which is the sampling duration (ie rate in seconds, milliseconds,
+minutes, etc...).</p>
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd><p class="first"><strong>sampling</strong> (See <em class="xref std std-ref">sampling</em>) - Sets the sampling for calculating
+the rate.</p>
+<p><strong>unit</strong> (See <em class="xref std std-ref">unit</em>) - Shortcut for setting the sampling to a single unit.
+If you set the unit to <tt class="docutils literal"><span class="pre">SECONDS</span></tt> then the sampling is over one second.</p>
+<p class="last"><strong>time_zone</strong> (Long format time zone) - Time zone for doing time calculations.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="sampler">
+<h2>Sampler<a class="headerlink" href="#sampler" title="Permalink to this headline">¶</a></h2>
+<dl class="data">
+<dt>
+<tt class="descname">sampler</tt></dt>
+<dd><p>Computes the sampling rate of change for the data points. Requires a &#8220;unit&#8221;
+property which is the sampling duration  (ie rate in seconds, milliseconds,
+minutes, etc...).</p>
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd><p class="first"><strong>unit</strong> (See <em class="xref std std-ref">unit</em>) - Sets the sampling unit.
+If you set the unit to <tt class="docutils literal"><span class="pre">SECONDS</span></tt> then the sampling rate is over one second.</p>
+<p class="last"><strong>time_zone</strong> (Long format time zone) - Time zone for doing time calculations.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="scale">
+<h2>Scale<a class="headerlink" href="#scale" title="Permalink to this headline">¶</a></h2>
+<dl class="data">
+<dt>
+<tt class="descname">scale</tt></dt>
+<dd><p>Scales each data point by a factor. Requires a &#8220;factor&#8221; property which is
+the scaling value.</p>
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd><strong>factor</strong> (double) - Scale factor.</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="trim">
+<h2>Trim<a class="headerlink" href="#trim" title="Permalink to this headline">¶</a></h2>
+<dl class="data">
+<dt>
+<tt class="descname">trim</tt></dt>
+<dd><p>Trims off the first, last or both data points for the interval.  Useful in
+conjunction with the save_as aggregator to remove partial intervals.</p>
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd><strong>trim</strong> (FIRST, LAST, BOTH) - Trims either first, last or both end data points.</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="save-as">
+<h2>Save As<a class="headerlink" href="#save-as" title="Permalink to this headline">¶</a></h2>
+<dl class="data">
+<dt id="save_as">
+<tt class="descname">save_as</tt><a class="headerlink" href="#save_as" title="Permalink to this definition">¶</a></dt>
+<dd><p>Saves the result to another metric.  Any data point with a unique tag value will also
+have that tag set.  So if a data point is returned with tags <tt class="docutils literal"><span class="pre">{&quot;dc&quot;:[&quot;DC1&quot;],&quot;host&quot;:[&quot;hostA&quot;,</span> <span class="pre">&quot;hostB&quot;]}</span></tt>
+only the dc tag will be set when saved.  If you do a group by query the group by tags are saved.</p>
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd><p class="first"><strong>metric_name</strong> (string) - Metric name to save the results to.</p>
+<p><strong>tags</strong> (Map of key values) - Additional tags to set on the metrics <tt class="docutils literal"><span class="pre">{&quot;tag1&quot;:&quot;value1&quot;,&quot;tag2&quot;:&quot;value2&quot;}</span></tt></p>
+<p class="last"><strong>ttl</strong> (integer) - Sets the ttl on the newly saved metrics</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2015, KairosDB Team.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

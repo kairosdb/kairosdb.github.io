@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Custom Data &mdash; KairosDB 0.9.5 documentation</title>
+    <title>Custom Data &mdash; KairosDB 1.0.1 documentation</title>
     
     <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -18,7 +18,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.9.5',
+        VERSION:     '1.0.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -31,7 +31,7 @@
     <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
     <script type="text/javascript" src="../_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
-    <link rel="top" title="KairosDB 0.9.5 documentation" href="../index.html" />
+    <link rel="top" title="KairosDB 1.0.1 documentation" href="../index.html" />
     <link rel="up" title="Kairos Development" href="index.html" />
     <link rel="next" title="Editing Kairos with IntelliJ" href="IntelliJSetup.html" />
     <link rel="prev" title="Plugins" href="Plugins.html" />
@@ -41,7 +41,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 
   </head>
-  <body role="document">
+  <body>
 
 
 
@@ -141,150 +141,150 @@
 <h2>Example for creating custom types<a class="headerlink" href="#example-for-creating-custom-types" title="Permalink to this headline">¶</a></h2>
 <p>For this example we want a custom type for complex numbers that have a real and imaginary part.  Following is the code for the DataPoint and DataPointFactory implementations:</p>
 <p>ComplexDataPoint</p>
-<div class="highlight-python"><div class="highlight"><pre>package org.kairosdb.core.datapoints;
+<div class="highlight-java"><div class="highlight"><pre><span class="kn">package</span> <span class="n">org</span><span class="o">.</span><span class="na">kairosdb</span><span class="o">.</span><span class="na">core</span><span class="o">.</span><span class="na">datapoints</span><span class="o">;</span>
 
-import org.json.JSONException;
-import org.json.JSONWriter;
+<span class="kn">import</span> <span class="nn">org.json.JSONException</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.json.JSONWriter</span><span class="o">;</span>
 
-import java.io.DataOutput;
-import java.io.IOException;
+<span class="kn">import</span> <span class="nn">java.io.DataOutput</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.IOException</span><span class="o">;</span>
 
-/**
- Used to show how to create a custom data type
- Created by bhawkins on 6/27/14.
- */
-public class ComplexDataPoint extends DataPointHelper
-{
-        private static final String API_TYPE = &quot;complex&quot;;
-        private double m_real;
-        private double m_imaginary;
+<span class="cm">/**</span>
+<span class="cm"> Used to show how to create a custom data type</span>
+<span class="cm"> Created by bhawkins on 6/27/14.</span>
+<span class="cm"> */</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ComplexDataPoint</span> <span class="kd">extends</span> <span class="n">DataPointHelper</span>
+<span class="o">{</span>
+        <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">API_TYPE</span> <span class="o">=</span> <span class="s">&quot;complex&quot;</span><span class="o">;</span>
+        <span class="kd">private</span> <span class="kt">double</span> <span class="n">m_real</span><span class="o">;</span>
+        <span class="kd">private</span> <span class="kt">double</span> <span class="n">m_imaginary</span><span class="o">;</span>
 
-        public ComplexDataPoint(long timestamp, double real, double imaginary)
-        {
-                super(timestamp);
-                m_real = real;
-                m_imaginary = imaginary;
-        }
+        <span class="kd">public</span> <span class="nf">ComplexDataPoint</span><span class="o">(</span><span class="kt">long</span> <span class="n">timestamp</span><span class="o">,</span> <span class="kt">double</span> <span class="n">real</span><span class="o">,</span> <span class="kt">double</span> <span class="n">imaginary</span><span class="o">)</span>
+        <span class="o">{</span>
+                <span class="kd">super</span><span class="o">(</span><span class="n">timestamp</span><span class="o">);</span>
+                <span class="n">m_real</span> <span class="o">=</span> <span class="n">real</span><span class="o">;</span>
+                <span class="n">m_imaginary</span> <span class="o">=</span> <span class="n">imaginary</span><span class="o">;</span>
+        <span class="o">}</span>
 
-        @Override
-        public void writeValueToBuffer(DataOutput buffer) throws IOException
-        {
-                buffer.writeDouble(m_real);
-                buffer.writeDouble(m_imaginary);
-        }
+        <span class="nd">@Override</span>
+        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">writeValueToBuffer</span><span class="o">(</span><span class="n">DataOutput</span> <span class="n">buffer</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">IOException</span>
+        <span class="o">{</span>
+                <span class="n">buffer</span><span class="o">.</span><span class="na">writeDouble</span><span class="o">(</span><span class="n">m_real</span><span class="o">);</span>
+                <span class="n">buffer</span><span class="o">.</span><span class="na">writeDouble</span><span class="o">(</span><span class="n">m_imaginary</span><span class="o">);</span>
+        <span class="o">}</span>
 
-        @Override
-        public void writeValueToJson(JSONWriter writer) throws JSONException
-        {
-                writer.object();
+        <span class="nd">@Override</span>
+        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">writeValueToJson</span><span class="o">(</span><span class="n">JSONWriter</span> <span class="n">writer</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">JSONException</span>
+        <span class="o">{</span>
+                <span class="n">writer</span><span class="o">.</span><span class="na">object</span><span class="o">();</span>
 
-                writer.key(&quot;real&quot;).value(m_real);
-                writer.key(&quot;imaginary&quot;).value(m_imaginary);
+                <span class="n">writer</span><span class="o">.</span><span class="na">key</span><span class="o">(</span><span class="s">&quot;real&quot;</span><span class="o">).</span><span class="na">value</span><span class="o">(</span><span class="n">m_real</span><span class="o">);</span>
+                <span class="n">writer</span><span class="o">.</span><span class="na">key</span><span class="o">(</span><span class="s">&quot;imaginary&quot;</span><span class="o">).</span><span class="na">value</span><span class="o">(</span><span class="n">m_imaginary</span><span class="o">);</span>
 
-                writer.endObject();
-        }
+                <span class="n">writer</span><span class="o">.</span><span class="na">endObject</span><span class="o">();</span>
+        <span class="o">}</span>
 
-        @Override
-        public String getApiDataType()
-        {
-                return API_TYPE;
-        }
+        <span class="nd">@Override</span>
+        <span class="kd">public</span> <span class="n">String</span> <span class="nf">getApiDataType</span><span class="o">()</span>
+        <span class="o">{</span>
+                <span class="k">return</span> <span class="n">API_TYPE</span><span class="o">;</span>
+        <span class="o">}</span>
 
-        @Override
-        public String getDataStoreDataType()
-        {
-                return ComplexDataPointFactory.DST_COMPLEX;
-        }
+        <span class="nd">@Override</span>
+        <span class="kd">public</span> <span class="n">String</span> <span class="nf">getDataStoreDataType</span><span class="o">()</span>
+        <span class="o">{</span>
+                <span class="k">return</span> <span class="n">ComplexDataPointFactory</span><span class="o">.</span><span class="na">DST_COMPLEX</span><span class="o">;</span>
+        <span class="o">}</span>
 
-        @Override
-        public boolean isLong()
-        {
-                return false;
-        }
+        <span class="nd">@Override</span>
+        <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">isLong</span><span class="o">()</span>
+        <span class="o">{</span>
+                <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+        <span class="o">}</span>
 
-        @Override
-        public long getLongValue()
-        {
-                return 0;
-        }
+        <span class="nd">@Override</span>
+        <span class="kd">public</span> <span class="kt">long</span> <span class="nf">getLongValue</span><span class="o">()</span>
+        <span class="o">{</span>
+                <span class="k">return</span> <span class="mi">0</span><span class="o">;</span>
+        <span class="o">}</span>
 
-        @Override
-        public boolean isDouble()
-        {
-                return false;
-        }
+        <span class="nd">@Override</span>
+        <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">isDouble</span><span class="o">()</span>
+        <span class="o">{</span>
+                <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+        <span class="o">}</span>
 
-        @Override
-        public double getDoubleValue()
-        {
-                return 0;
-        }
-}
+        <span class="nd">@Override</span>
+        <span class="kd">public</span> <span class="kt">double</span> <span class="nf">getDoubleValue</span><span class="o">()</span>
+        <span class="o">{</span>
+                <span class="k">return</span> <span class="mi">0</span><span class="o">;</span>
+        <span class="o">}</span>
+<span class="o">}</span>
 </pre></div>
 </div>
 <p>ComplexDataPointFactory</p>
-<div class="highlight-python"><div class="highlight"><pre>package org.kairosdb.core.datapoints;
+<div class="highlight-java"><div class="highlight"><pre><span class="kn">package</span> <span class="n">org</span><span class="o">.</span><span class="na">kairosdb</span><span class="o">.</span><span class="na">core</span><span class="o">.</span><span class="na">datapoints</span><span class="o">;</span>
 
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import org.kairosdb.core.DataPoint;
+<span class="kn">import</span> <span class="nn">com.google.gson.JsonElement</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.google.gson.JsonObject</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.kairosdb.core.DataPoint</span><span class="o">;</span>
 
-import java.io.DataInput;
-import java.io.IOException;
+<span class="kn">import</span> <span class="nn">java.io.DataInput</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.IOException</span><span class="o">;</span>
 
-/**
- Used to show how to create a custom data type
- Created by bhawkins on 6/30/14.
- */
-public class ComplexDataPointFactory implements DataPointFactory
-{
-        public static final String DST_COMPLEX = &quot;kairos_complex&quot;;
-        public static final String GROUP_TYPE = &quot;complex&quot;;
+<span class="cm">/**</span>
+<span class="cm"> Used to show how to create a custom data type</span>
+<span class="cm"> Created by bhawkins on 6/30/14.</span>
+<span class="cm"> */</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ComplexDataPointFactory</span> <span class="kd">implements</span> <span class="n">DataPointFactory</span>
+<span class="o">{</span>
+        <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">DST_COMPLEX</span> <span class="o">=</span> <span class="s">&quot;kairos_complex&quot;</span><span class="o">;</span>
+        <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">GROUP_TYPE</span> <span class="o">=</span> <span class="s">&quot;complex&quot;</span><span class="o">;</span>
 
-        @Override
-        public String getDataStoreType()
-        {
-                return DST_COMPLEX;
-        }
+        <span class="nd">@Override</span>
+        <span class="kd">public</span> <span class="n">String</span> <span class="nf">getDataStoreType</span><span class="o">()</span>
+        <span class="o">{</span>
+                <span class="k">return</span> <span class="n">DST_COMPLEX</span><span class="o">;</span>
+        <span class="o">}</span>
 
-        @Override
-        public String getGroupType()
-        {
-                return GROUP_TYPE;
-        }
+        <span class="nd">@Override</span>
+        <span class="kd">public</span> <span class="n">String</span> <span class="nf">getGroupType</span><span class="o">()</span>
+        <span class="o">{</span>
+                <span class="k">return</span> <span class="n">GROUP_TYPE</span><span class="o">;</span>
+        <span class="o">}</span>
 
-        @Override
-        public DataPoint getDataPoint(long timestamp, JsonElement json) throws IOException
-        {
-                if (json.isJsonObject())
-                {
-                        JsonObject object = json.getAsJsonObject();
-                        double real = object.get(&quot;real&quot;).getAsDouble();
-                        double imaginary = object.get(&quot;imaginary&quot;).getAsDouble();
+        <span class="nd">@Override</span>
+        <span class="kd">public</span> <span class="n">DataPoint</span> <span class="nf">getDataPoint</span><span class="o">(</span><span class="kt">long</span> <span class="n">timestamp</span><span class="o">,</span> <span class="n">JsonElement</span> <span class="n">json</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">IOException</span>
+        <span class="o">{</span>
+                <span class="k">if</span> <span class="o">(</span><span class="n">json</span><span class="o">.</span><span class="na">isJsonObject</span><span class="o">())</span>
+                <span class="o">{</span>
+                        <span class="n">JsonObject</span> <span class="n">object</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="na">getAsJsonObject</span><span class="o">();</span>
+                        <span class="kt">double</span> <span class="n">real</span> <span class="o">=</span> <span class="n">object</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">&quot;real&quot;</span><span class="o">).</span><span class="na">getAsDouble</span><span class="o">();</span>
+                        <span class="kt">double</span> <span class="n">imaginary</span> <span class="o">=</span> <span class="n">object</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">&quot;imaginary&quot;</span><span class="o">).</span><span class="na">getAsDouble</span><span class="o">();</span>
 
-                        return new ComplexDataPoint(timestamp, real, imaginary);
-                }
-                else
-                        throw new IOException(&quot;JSON object is not a valid complex data point&quot;);
-        }
+                        <span class="k">return</span> <span class="k">new</span> <span class="nf">ComplexDataPoint</span><span class="o">(</span><span class="n">timestamp</span><span class="o">,</span> <span class="n">real</span><span class="o">,</span> <span class="n">imaginary</span><span class="o">);</span>
+                <span class="o">}</span>
+                <span class="k">else</span>
+                        <span class="k">throw</span> <span class="k">new</span> <span class="nf">IOException</span><span class="o">(</span><span class="s">&quot;JSON object is not a valid complex data point&quot;</span><span class="o">);</span>
+        <span class="o">}</span>
 
-        @Override
-        public DataPoint getDataPoint(long timestamp, DataInput buffer) throws IOException
-        {
-                double real = buffer.readDouble();
-                double imaginary = buffer.readDouble();
+        <span class="nd">@Override</span>
+        <span class="kd">public</span> <span class="n">DataPoint</span> <span class="nf">getDataPoint</span><span class="o">(</span><span class="kt">long</span> <span class="n">timestamp</span><span class="o">,</span> <span class="n">DataInput</span> <span class="n">buffer</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">IOException</span>
+        <span class="o">{</span>
+                <span class="kt">double</span> <span class="n">real</span> <span class="o">=</span> <span class="n">buffer</span><span class="o">.</span><span class="na">readDouble</span><span class="o">();</span>
+                <span class="kt">double</span> <span class="n">imaginary</span> <span class="o">=</span> <span class="n">buffer</span><span class="o">.</span><span class="na">readDouble</span><span class="o">();</span>
 
-                return new ComplexDataPoint(timestamp, real, imaginary);
-        }
-}
+                <span class="k">return</span> <span class="k">new</span> <span class="nf">ComplexDataPoint</span><span class="o">(</span><span class="n">timestamp</span><span class="o">,</span> <span class="n">real</span><span class="o">,</span> <span class="n">imaginary</span><span class="o">);</span>
+        <span class="o">}</span>
+<span class="o">}</span>
 </pre></div>
 </div>
 <p>Inside our plugin module we&#8217;ll need to bind the ComplexDataPointFactory like so:</p>
-<div class="highlight-python"><div class="highlight"><pre>bind(ComplexDataPointFactory.class).in(Singleton.class);
+<div class="highlight-java"><div class="highlight"><pre><span class="n">bind</span><span class="o">(</span><span class="n">ComplexDataPointFactory</span><span class="o">.</span><span class="na">class</span><span class="o">).</span><span class="na">in</span><span class="o">(</span><span class="n">Singleton</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
 </pre></div>
 </div>
 <p>Inside our plugin properties file we&#8217;ll need to register our api type:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">kairosdb</span><span class="o">.</span><span class="n">datapoints</span><span class="o">.</span><span class="n">factory</span><span class="o">.</span><span class="n">complex</span><span class="o">=</span><span class="n">org</span><span class="o">.</span><span class="n">kairosdb</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">datapoints</span><span class="o">.</span><span class="n">ComplexDataPointFactory</span>
+<div class="highlight-java"><div class="highlight"><pre><span class="n">kairosdb</span><span class="o">.</span><span class="na">datapoints</span><span class="o">.</span><span class="na">factory</span><span class="o">.</span><span class="na">complex</span><span class="o">=</span><span class="n">org</span><span class="o">.</span><span class="na">kairosdb</span><span class="o">.</span><span class="na">core</span><span class="o">.</span><span class="na">datapoints</span><span class="o">.</span><span class="na">ComplexDataPointFactory</span>
 </pre></div>
 </div>
 <p>So why are the above two steps separate and required?  The first step binds our factory into guice and registers the datastore type of &#8216;kairos_complex&#8217;.  The second step registers the api type.  Lets say down the road we change how we want to store the complex type.  Without this separation the only way to change is by exporting all the data in importing it using the new method.  With this separation I can register a new factory that defines the datastore type as &#8216;kairos_complex2&#8217; and bind it to the &#8216;complex&#8217; api type.  New data will now be stored in the new format and yet the system will still be able to read the old data.</p>
@@ -304,7 +304,7 @@ public class ComplexDataPointFactory implements DataPointFactory
     </p>
     <p>
         &copy; Copyright 2015, KairosDB Team.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.<br/>
     </p>
   </div>
 </footer>

@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Editing Kairos with IntelliJ &mdash; KairosDB 0.9.5 documentation</title>
+    <title>Editing Kairos with IntelliJ &mdash; KairosDB 1.0.1 documentation</title>
     
     <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -18,7 +18,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.9.5',
+        VERSION:     '1.0.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -31,7 +31,7 @@
     <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
     <script type="text/javascript" src="../_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
-    <link rel="top" title="KairosDB 0.9.5 documentation" href="../index.html" />
+    <link rel="top" title="KairosDB 1.0.1 documentation" href="../index.html" />
     <link rel="up" title="Kairos Development" href="index.html" />
     <link rel="next" title="REST API" href="../restapi/index.html" />
     <link rel="prev" title="Custom Data" href="CustomData.html" />
@@ -41,7 +41,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 
   </head>
-  <body role="document">
+  <body>
 
 
 
@@ -132,7 +132,7 @@
 <p>Go to File-&gt;Import Project</p>
 <p>Select the root of the Kairosdb project.</p>
 <p>Select the main source and web root modules.</p>
-<img alt="kairosdevelopment\idea_kairos_select_source.png" src="kairosdevelopment\idea_kairos_select_source.png" />
+<img alt="../_images/idea_kairos_select_source.png" src="../_images/idea_kairos_select_source.png" />
 <p>Click next until the end.</p>
 </div>
 <div class="section" id="configure-modules">
@@ -142,57 +142,57 @@ Go to Modules and select the main module.</p>
 <ul class="simple">
 <li>Under the &#8216;Sources&#8217; tab remove the existing content root and add a new one that points to the root of the project.  Then add the following source and test folders:</li>
 </ul>
-<img alt="kairosdevelopment\idea_kairos_paths.png" src="kairosdevelopment\idea_kairos_paths.png" />
+<img alt="../_images/idea_kairos_paths.png" src="../_images/idea_kairos_paths.png" />
 <ul class="simple">
 <li>Under the Dependencies tab change it to look like this</li>
 </ul>
-<img alt="kairosdevelopment\idea_kairos_dependencies.png" src="kairosdevelopment\idea_kairos_dependencies.png" />
+<img alt="../_images/idea_kairos_dependencies.png" src="../_images/idea_kairos_dependencies.png" />
 </div>
 <div class="section" id="alternative-approach">
 <h2>Alternative Approach<a class="headerlink" href="#alternative-approach" title="Permalink to this headline">¶</a></h2>
 <p>Create &#8216;kairosdb.iml&#8217; at the root of your kairos project and copy the following into it:</p>
-<div class="highlight-python"><div class="highlight"><pre>&lt;module type=&quot;JAVA_MODULE&quot; version=&quot;4&quot;&gt;
-  &lt;component name=&quot;NewModuleRootManager&quot; inherit-compiler-output=&quot;true&quot;&gt;
-    &lt;exclude-output /&gt;
-    &lt;content url=&quot;file://$MODULE_DIR$&quot;&gt;
-      &lt;sourceFolder url=&quot;file://$MODULE_DIR$/src/main/conf&quot; isTestSource=&quot;false&quot; /&gt;
-      &lt;sourceFolder url=&quot;file://$MODULE_DIR$/src/main/java&quot; isTestSource=&quot;false&quot; /&gt;
-      &lt;sourceFolder url=&quot;file://$MODULE_DIR$/src/main/resources&quot; isTestSource=&quot;false&quot; /&gt;
-      &lt;sourceFolder url=&quot;file://$MODULE_DIR$/src/test/java&quot; isTestSource=&quot;true&quot; /&gt;
-      &lt;sourceFolder url=&quot;file://$MODULE_DIR$/src/test/resources&quot; isTestSource=&quot;true&quot; /&gt;
-      &lt;excludeFolder url=&quot;file://$MODULE_DIR$/build&quot; /&gt;
-    &lt;/content&gt;
-    &lt;orderEntry type=&quot;inheritedJdk&quot; /&gt;
-    &lt;orderEntry type=&quot;sourceFolder&quot; forTests=&quot;false&quot; /&gt;
-    &lt;orderEntry type=&quot;module-library&quot;&gt;
-      &lt;library&gt;
-        &lt;CLASSES&gt;
-          &lt;root url=&quot;file://$MODULE_DIR$/lib&quot; /&gt;
-        &lt;/CLASSES&gt;
-        &lt;JAVADOC /&gt;
-        &lt;SOURCES&gt;
-          &lt;root url=&quot;file://$MODULE_DIR$/lib&quot; /&gt;
-        &lt;/SOURCES&gt;
-        &lt;jarDirectory url=&quot;file://$MODULE_DIR$/lib&quot; recursive=&quot;false&quot; /&gt;
-        &lt;jarDirectory url=&quot;file://$MODULE_DIR$/lib&quot; recursive=&quot;false&quot; type=&quot;SOURCES&quot; /&gt;
-      &lt;/library&gt;
-    &lt;/orderEntry&gt;
-    &lt;orderEntry type=&quot;module-library&quot;&gt;
-      &lt;library&gt;
-        &lt;CLASSES&gt;
-          &lt;root url=&quot;file://$MODULE_DIR$/lib/ivy/default&quot; /&gt;
-        &lt;/CLASSES&gt;
-        &lt;JAVADOC /&gt;
-        &lt;SOURCES&gt;
-          &lt;root url=&quot;file://$MODULE_DIR$/lib/ivy/default&quot; /&gt;
-        &lt;/SOURCES&gt;
-        &lt;jarDirectory url=&quot;file://$MODULE_DIR$/lib/ivy/default&quot; recursive=&quot;false&quot; /&gt;
-        &lt;jarDirectory url=&quot;file://$MODULE_DIR$/lib/ivy/default&quot; recursive=&quot;false&quot; type=&quot;SOURCES&quot; /&gt;
-      &lt;/library&gt;
-    &lt;/orderEntry&gt;
-    &lt;orderEntry type=&quot;library&quot; name=&quot;tools&quot; level=&quot;project&quot; /&gt;
-  &lt;/component&gt;
-&lt;/module&gt;
+<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;module</span> <span class="na">type=</span><span class="s">&quot;JAVA_MODULE&quot;</span> <span class="na">version=</span><span class="s">&quot;4&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;component</span> <span class="na">name=</span><span class="s">&quot;NewModuleRootManager&quot;</span> <span class="na">inherit-compiler-output=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;exclude-output</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;content</span> <span class="na">url=</span><span class="s">&quot;file://$MODULE_DIR$&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;sourceFolder</span> <span class="na">url=</span><span class="s">&quot;file://$MODULE_DIR$/src/main/conf&quot;</span> <span class="na">isTestSource=</span><span class="s">&quot;false&quot;</span> <span class="nt">/&gt;</span>
+      <span class="nt">&lt;sourceFolder</span> <span class="na">url=</span><span class="s">&quot;file://$MODULE_DIR$/src/main/java&quot;</span> <span class="na">isTestSource=</span><span class="s">&quot;false&quot;</span> <span class="nt">/&gt;</span>
+      <span class="nt">&lt;sourceFolder</span> <span class="na">url=</span><span class="s">&quot;file://$MODULE_DIR$/src/main/resources&quot;</span> <span class="na">isTestSource=</span><span class="s">&quot;false&quot;</span> <span class="nt">/&gt;</span>
+      <span class="nt">&lt;sourceFolder</span> <span class="na">url=</span><span class="s">&quot;file://$MODULE_DIR$/src/test/java&quot;</span> <span class="na">isTestSource=</span><span class="s">&quot;true&quot;</span> <span class="nt">/&gt;</span>
+      <span class="nt">&lt;sourceFolder</span> <span class="na">url=</span><span class="s">&quot;file://$MODULE_DIR$/src/test/resources&quot;</span> <span class="na">isTestSource=</span><span class="s">&quot;true&quot;</span> <span class="nt">/&gt;</span>
+      <span class="nt">&lt;excludeFolder</span> <span class="na">url=</span><span class="s">&quot;file://$MODULE_DIR$/build&quot;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;/content&gt;</span>
+    <span class="nt">&lt;orderEntry</span> <span class="na">type=</span><span class="s">&quot;inheritedJdk&quot;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;orderEntry</span> <span class="na">type=</span><span class="s">&quot;sourceFolder&quot;</span> <span class="na">forTests=</span><span class="s">&quot;false&quot;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;orderEntry</span> <span class="na">type=</span><span class="s">&quot;module-library&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;library&gt;</span>
+        <span class="nt">&lt;CLASSES&gt;</span>
+          <span class="nt">&lt;root</span> <span class="na">url=</span><span class="s">&quot;file://$MODULE_DIR$/lib&quot;</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;/CLASSES&gt;</span>
+        <span class="nt">&lt;JAVADOC</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;SOURCES&gt;</span>
+          <span class="nt">&lt;root</span> <span class="na">url=</span><span class="s">&quot;file://$MODULE_DIR$/lib&quot;</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;/SOURCES&gt;</span>
+        <span class="nt">&lt;jarDirectory</span> <span class="na">url=</span><span class="s">&quot;file://$MODULE_DIR$/lib&quot;</span> <span class="na">recursive=</span><span class="s">&quot;false&quot;</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;jarDirectory</span> <span class="na">url=</span><span class="s">&quot;file://$MODULE_DIR$/lib&quot;</span> <span class="na">recursive=</span><span class="s">&quot;false&quot;</span> <span class="na">type=</span><span class="s">&quot;SOURCES&quot;</span> <span class="nt">/&gt;</span>
+      <span class="nt">&lt;/library&gt;</span>
+    <span class="nt">&lt;/orderEntry&gt;</span>
+    <span class="nt">&lt;orderEntry</span> <span class="na">type=</span><span class="s">&quot;module-library&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;library&gt;</span>
+        <span class="nt">&lt;CLASSES&gt;</span>
+          <span class="nt">&lt;root</span> <span class="na">url=</span><span class="s">&quot;file://$MODULE_DIR$/lib/ivy/default&quot;</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;/CLASSES&gt;</span>
+        <span class="nt">&lt;JAVADOC</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;SOURCES&gt;</span>
+          <span class="nt">&lt;root</span> <span class="na">url=</span><span class="s">&quot;file://$MODULE_DIR$/lib/ivy/default&quot;</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;/SOURCES&gt;</span>
+        <span class="nt">&lt;jarDirectory</span> <span class="na">url=</span><span class="s">&quot;file://$MODULE_DIR$/lib/ivy/default&quot;</span> <span class="na">recursive=</span><span class="s">&quot;false&quot;</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;jarDirectory</span> <span class="na">url=</span><span class="s">&quot;file://$MODULE_DIR$/lib/ivy/default&quot;</span> <span class="na">recursive=</span><span class="s">&quot;false&quot;</span> <span class="na">type=</span><span class="s">&quot;SOURCES&quot;</span> <span class="nt">/&gt;</span>
+      <span class="nt">&lt;/library&gt;</span>
+    <span class="nt">&lt;/orderEntry&gt;</span>
+    <span class="nt">&lt;orderEntry</span> <span class="na">type=</span><span class="s">&quot;library&quot;</span> <span class="na">name=</span><span class="s">&quot;tools&quot;</span> <span class="na">level=</span><span class="s">&quot;project&quot;</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;/component&gt;</span>
+<span class="nt">&lt;/module&gt;</span>
 </pre></div>
 </div>
 <p>IntelliJ will see this as a new module and you can remove all the others it created during the initial import.</p>
@@ -222,7 +222,7 @@ Go to Modules and select the main module.</p>
     </p>
     <p>
         &copy; Copyright 2015, KairosDB Team.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.<br/>
     </p>
   </div>
 </footer>

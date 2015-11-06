@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Overview &mdash; KairosDB 1.0.1 documentation</title>
+    <title>Grouping by Value &mdash; KairosDB 1.0.1 documentation</title>
     
     <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -32,9 +32,6 @@
     <script type="text/javascript" src="../_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
     <link rel="top" title="KairosDB 1.0.1 documentation" href="../index.html" />
-    <link rel="up" title="Telnet API" href="index.html" />
-    <link rel="next" title="Put" href="Put.html" />
-    <link rel="prev" title="Telnet API" href="index.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
@@ -84,7 +81,7 @@
   <div class="row">
       <div class="col-md-3">
         <div id="sidebar" class="bs-sidenav"><h3><a href="../index.html">Table Of Contents</a></h3>
-<ul class="current">
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../GettingStarted.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../FAQ.html">Frequently Asked Questions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../PushingData.html">Pushing data</a></li>
@@ -96,14 +93,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../KairosClient.html">Kairos DB Java Client Library</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../CassandraSchema.html">Cassandra Schema</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../kairosdevelopment/index.html">Kairos Development</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../restapi/index.html">REST API</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">Telnet API</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="">Overview</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Put.html">Put</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Putm.html">Putm</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Version.html">Version</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="index.html">REST API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../telnetapi/index.html">Telnet API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Graphite.html">Graphite Protocol</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../IssueTracking.html">Bug Tracking</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../External.html">External links</a></li>
@@ -120,13 +111,123 @@
       </div>
     <div class="col-md-9">
       
-  <div class="section" id="overview">
-<h1>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h1>
-<p>This API provides an operation to store metrics and query for the current version of Kairosdb.</p>
-<p>Data points have a metric name, a value, a timestamp, and a list of one or more tags. Tags are named properties that identify the data, such as its type and where it comes from.</p>
-<p>Metric names, tag names and values are case sensitive and can only contain the following characters: alphanumeric characters, period &#8221;.&#8221;, slash &#8220;/&#8221;, dash &#8220;-&#8221;, and underscore &#8220;<cite>_</cite>&#8221;.</p>
-<p>If a data point names a metric that does not exist, the metric is created.</p>
-<p>The timestamp is the number of milliseconds since January 1st, 1970 UTC.</p>
+  <div class="section" id="grouping-by-value">
+<h1>Grouping by Value<a class="headerlink" href="#grouping-by-value" title="Permalink to this headline">¶</a></h1>
+<p>The Bin grouper groups data point values into bins or buckets. Values are placed into groups based on a list of bin values. For example, if the list of bins is 10, 20, 30, then values less than 10 are placed in the first group, values between 10-19 into the second group, and so forth.</p>
+<div class="section" id="syntax">
+<h2>Syntax<a class="headerlink" href="#syntax" title="Permalink to this headline">¶</a></h2>
+<p>The name for this grouper is &#8220;bin&#8221;.</p>
+<div class="highlight-python"><div class="highlight"><pre>&quot;name&quot;: &quot;bin&quot;
+</pre></div>
+</div>
+<p>The grouper requires a bins property. This is a list of bin values.</p>
+<div class="highlight-python"><div class="highlight"><pre>&quot;bins&quot;: [bin1, bin2, bin3, ...]
+</pre></div>
+</div>
+</div>
+<div class="section" id="example">
+<h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
+<p>This example groups values into groups of 2.</p>
+<div class="highlight-python"><div class="highlight"><pre>&quot;group_by&quot;: [
+      {
+        &quot;name&quot;: &quot;bin&quot;,
+        &quot;bins&quot;: [&quot;2&quot;, &quot;4&quot;, &quot;6&quot;, &quot;8&quot;]
+      }
+]
+</pre></div>
+</div>
+<p>Each object of the response JSON contains the <em>group_by</em> information you specified in the query as well as a <em>group</em> object. The <em>group</em> object contains the group number starting with a group number of 0. For example,
+the first group (bin number 0) contains data points whose values are between 0 and 2. The second group (bin number 1) contains data points whose values are between 2 and 4, etc.</p>
+<div class="highlight-python"><div class="highlight"><pre>{
+  &quot;queries&quot;: [
+      {
+          &quot;results&quot;: [
+              {
+                  &quot;name&quot;: &quot;metric1&quot;,
+                  &quot;group_by&quot;: [
+                   {
+                      &quot;name&quot;: &quot;bin&quot;,
+                      &quot;bins&quot;: [&quot;2&quot;, &quot;4&quot;, &quot; 6&quot;, &quot; 8&quot;],
+                       &quot;group&quot;: {
+                          &quot;bin_number&quot;: 0
+                       }
+                  }
+                  ],
+                  &quot;tags&quot;: {
+                      &quot;data_center&quot;: [&quot;dc1&quot;],
+                      &quot;host&quot;: [server1&quot;]
+                  },
+                  &quot;values&quot;: [
+                      [1353222000000, 1],
+                      [1353567600000, 1]
+                  ]
+              },
+              {
+                  &quot;name&quot;: &quot;metric1&quot;,
+                  &quot;group_by&quot;: [
+                      {
+                          &quot;name&quot;: &quot;bin&quot;,
+                          &quot;bins&quot;: [&quot;2&quot;, &quot;4&quot;, &quot; 6&quot;, &quot; 8&quot;],
+                          &quot;group&quot;: {
+                              &quot;bin_number&quot;: 1
+                          }
+                      }
+                  ],
+                  &quot;tags&quot;: {
+                      &quot;data_center&quot;: [&quot;dc1&quot;],
+                      &quot;host&quot;: [&quot;server2&quot;]
+                  },
+                  &quot;values&quot;: [
+                      [1353567600000, 2],
+                      [1353913200000, 2],
+                      [1353999600000, 3]
+                  ]
+              },
+              {
+                  &quot;name&quot;: &quot;metric1&quot;,
+                  &quot;group_by&quot;: [
+                      {
+                          &quot;name&quot;: &quot;bin&quot;,
+                          &quot;bins&quot;: [&quot;2&quot;, &quot;4&quot;, &quot; 6&quot;, &quot; 8&quot;],
+                          &quot;group&quot;: {
+                              &quot;bin_number&quot;: 2
+                          }
+                      }
+                  ],
+                  &quot;tags&quot;: {
+                      &quot;data_center&quot;: [&quot;dc1&quot;],
+                      &quot;host&quot;: [&quot;server2&quot;]
+                  },
+                  &quot;values&quot;: [
+                      [1353567600000, 4],
+                  ]
+              },
+              {
+                  &quot;name&quot;: &quot;metric1&quot;,
+                  &quot;group_by&quot;: [
+                      {
+                          &quot;name&quot;: &quot;bin&quot;,
+                          &quot;bins&quot;: [&quot;2&quot;, &quot;4&quot;, &quot; 6&quot;, &quot; 8&quot;],
+                          &quot;group&quot;: {
+                              &quot;bin_number&quot;: 3
+                          }
+                      }
+                  ],
+                  &quot;tags&quot;: {
+                      &quot;data_center&quot;: [&quot;dc1&quot;],
+                      &quot;host&quot;: [&quot;server2&quot;]
+                  },
+                  &quot;values&quot;: [
+                      [1353567600000, 6],
+                  ]
+              }
+          ]
+      }
+  ]
+}
+</pre></div>
+</div>
+</div>
 </div>
 
 

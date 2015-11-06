@@ -30,6 +30,7 @@ KairosDB can be configured to use one of several backends for storing data.  By 
 Using with H2
 -------------
 
+
 ``kairosdb.service.datastore=org.kairosdb.datastore.h2.H2Module``
 
 By default KairosDB is configured to run using the H2 datbase.  This lets you do development work without setting up and running Cassandra or HBase.
@@ -75,8 +76,6 @@ For a complete list of options please see the Cassandra section in kairosdb.prop
 | kairosdb.datastore.cassandra.port                 | Port number of Cassandra server                                                                                                                                                                                                                    |
 +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | kairosdb.datastore.cassandra.replication_factor   | Replication factor when writing data to Cassandra [http://www.datastax.com/docs/1.0/cluster_architecture/replication more info]                                                                                                                    |
-+---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| kairosdb.datastore.cassandra.row_width            | The number of milliseconds in a row.  The default is 7257600000 which equates to about 12 weeks.  Changing this value after loading data into the system could cause unexpected results.                                                           |
 +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | kairosdb.datastore.cassandra.write_delay          | The amount of time a background thread waits before writing data to Cassandra.  This allows batching data to the datastore.                                                                                                                        |
 +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
