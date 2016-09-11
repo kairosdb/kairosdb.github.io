@@ -31,6 +31,7 @@
     <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
     <script type="text/javascript" src="../_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.png"/>
     <link rel="top" title="KairosDB 1.0.1 documentation" href="../index.html" />
     <link rel="up" title="REST API" href="index.html" />
     <link rel="next" title="Query Metric Tags" href="QueryMetricTags.html" />
@@ -92,9 +93,11 @@
 <li class="toctree-l1"><a class="reference internal" href="../ImportExport.html">Importing and Exporting Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../WebUI.html">Web UI</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Configuration.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Logging.html">Logging</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Statistics.html">KairosDB Statistics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../KairosClient.html">Kairos DB Java Client Library</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../CassandraSchema.html">Cassandra Schema</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Roll-ups.html">Roll-ups</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../kairosdevelopment/index.html">Kairos Development</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">REST API</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="Overview.html">Overview</a></li>
@@ -131,6 +134,12 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="QueryMetricTags.html">Query Metric Tags</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Roll-ups.html">Roll-ups</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Roll-ups.html#create-roll-up-task">Create Roll-up Task</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Roll-ups.html#list-roll-up-tasks">List Roll-up Tasks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Roll-ups.html#get-roll-up-task">Get Roll-up Task</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Roll-ups.html#delete-roll-up-task">Delete Roll-up Task</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Roll-ups.html#update-roll-up-task">Update Roll-up Task</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Version.html">Version</a></li>
 </ul>
 </li>
@@ -190,19 +199,22 @@ the following parameters on any range aggregator.</p>
 <span class="p">}]</span>
 </pre></div>
 </div>
-<p><strong>align_start_time</strong> - (boolean)</p>
+<p><strong>align_start_time</strong> - (boolean, optional, default value: false)</p>
 <blockquote>
 <div>When set to true the time for the aggregated data point for each range will
 fall on the start of the range instead of being the value for the first
-data point within that range.</div></blockquote>
-<p><strong>align_sampling</strong> - (boolean)</p>
+data point within that range. Note that align_sampling and align_start_time
+are mutually exclusive. If both are set, unexpected results will occur.</div></blockquote>
+<p><strong>align_sampling</strong> - (boolean, optional, default value: false)</p>
 <blockquote>
 <div>Setting this to true will cause the aggregation range to be aligned based on
 the sampling size.  For example if your sample size is either milliseconds,
 seconds, minutes or hours then the start of the range will always be at the top
 of the hour.  The effect of setting this to true is that your data will
-take the same shape when graphed as you refresh the data.</div></blockquote>
-<p><strong>start_time</strong> - (long)</p>
+take the same shape when graphed as you refresh the data. Note that
+align_sampling and align_start_time are mutually exclusive. If both are set,
+unexpected results will occur.</div></blockquote>
+<p><strong>start_time</strong> - (long, optional, default value: 0)</p>
 <blockquote>
 <div>Start time to calculate the ranges from.  Typically this is the start of the query</div></blockquote>
 <p><strong>time_zone</strong> - (long time zone format)</p>
@@ -439,7 +451,8 @@ only the dc tag will be set when saved.  If you do a group by query the group by
 <dt>Parameters:</dt>
 <dd><p class="first"><strong>metric_name</strong> (string) - Metric name to save the results to.</p>
 <p><strong>tags</strong> (Map of key values) - Additional tags to set on the metrics <tt class="docutils literal"><span class="pre">{&quot;tag1&quot;:&quot;value1&quot;,&quot;tag2&quot;:&quot;value2&quot;}</span></tt></p>
-<p class="last"><strong>ttl</strong> (integer) - Sets the ttl on the newly saved metrics</p>
+<p><strong>ttl</strong> (integer) - Sets the ttl on the newly saved metrics</p>
+<p class="last"><strong>add_saved_from</strong> (boolean) - Tells the aggregator to add the saved_from tag to the new metric.  Defaults to true.</p>
 </dd>
 </dl>
 </dd></dl>

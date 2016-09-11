@@ -12,11 +12,14 @@ Contents:
    AddDataPoints
    DeleteDataPoints
    DeleteMetric
+   Health
    ListMetricNames
    ListTagNames
    ListTagValues
    QueryMetrics
+   Aggregators
    QueryMetricTags
+   Roll-ups
    Version
 
 

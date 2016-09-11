@@ -31,6 +31,7 @@
     <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
     <script type="text/javascript" src="../_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.png"/>
     <link rel="top" title="KairosDB 1.0.1 documentation" href="../index.html" />
     <link rel="up" title="REST API" href="index.html" />
     <link rel="next" title="Delete Data Points" href="DeleteDataPoints.html" />
@@ -92,9 +93,11 @@
 <li class="toctree-l1"><a class="reference internal" href="../ImportExport.html">Importing and Exporting Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../WebUI.html">Web UI</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Configuration.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Logging.html">Logging</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Statistics.html">KairosDB Statistics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../KairosClient.html">Kairos DB Java Client Library</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../CassandraSchema.html">Cassandra Schema</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Roll-ups.html">Roll-ups</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../kairosdevelopment/index.html">Kairos Development</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">REST API</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="Overview.html">Overview</a></li>
@@ -115,6 +118,12 @@
 <li class="toctree-l2"><a class="reference internal" href="QueryMetrics.html">Query Metrics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Aggregators.html">Aggregators</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QueryMetricTags.html">Query Metric Tags</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Roll-ups.html">Roll-ups</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Roll-ups.html#create-roll-up-task">Create Roll-up Task</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Roll-ups.html#list-roll-up-tasks">List Roll-up Tasks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Roll-ups.html#get-roll-up-task">Get Roll-up Task</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Roll-ups.html#delete-roll-up-task">Delete Roll-up Task</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Roll-ups.html#update-roll-up-task">Update Roll-up Task</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Version.html">Version</a></li>
 </ul>
 </li>
@@ -218,7 +227,8 @@ tagged with the value of &#8220;server1&#8221;.</p>
 The type field is the name of the registered type for the custom data. See <a class="reference internal" href="../kairosdevelopment/CustomData.html"><em>Custom Types</em></a> for information on custom types.</p>
 <p><strong>ttl</strong></p>
 <p>Sets the Cassandra ttl for the data points.  In the example above the data points for metric <tt class="docutils literal"><span class="pre">archive_file_tracked</span></tt>
-will have the ttl set for 5 min.  Leaving the ttl off or setting it to 0 will not set a ttl in Cassandra.</p>
+will have the ttl set for 5 min.  Leaving the ttl off or setting it to 0 will use the default TTL value specified in
+settings.</p>
 </div>
 <div class="section" id="response">
 <h2>Response<a class="headerlink" href="#response" title="Permalink to this headline">¶</a></h2>

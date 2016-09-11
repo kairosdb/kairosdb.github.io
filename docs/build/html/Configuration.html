@@ -31,8 +31,9 @@
     <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
     <script type="text/javascript" src="_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+    <link rel="shortcut icon" href="_static/favicon.png"/>
     <link rel="top" title="KairosDB 1.0.1 documentation" href="index.html" />
-    <link rel="next" title="KairosDB Statistics" href="Statistics.html" />
+    <link rel="next" title="Logging" href="Logging.html" />
     <link rel="prev" title="Web UI" href="WebUI.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
@@ -91,9 +92,11 @@
 <li class="toctree-l1"><a class="reference internal" href="ImportExport.html">Importing and Exporting Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="WebUI.html">Web UI</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Logging.html">Logging</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Statistics.html">KairosDB Statistics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="KairosClient.html">Kairos DB Java Client Library</a></li>
 <li class="toctree-l1"><a class="reference internal" href="CassandraSchema.html">Cassandra Schema</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Roll-ups.html">Roll-ups</a></li>
 <li class="toctree-l1"><a class="reference internal" href="kairosdevelopment/index.html">Kairos Development</a></li>
 <li class="toctree-l1"><a class="reference internal" href="restapi/index.html">REST API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="telnetapi/index.html">Telnet API</a></li>
@@ -227,6 +230,26 @@
 <td>Optional</td>
 <td>&nbsp;</td>
 </tr>
+<tr class="row-odd"><td>kairosdb.jetty.threads.queue_size</td>
+<td>The capacity of this queue. See Jetty&#8217;s ExecutorThreadPool using a LinkedBlockingQueue</td>
+<td>Required if any kairosdb.jetty.threads property is specified</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>kairosdb.jetty.threads.min</td>
+<td>The number of threads to keep in the pool, even if they are idle. See Jetty&#8217;s ExecutorThreadPool using a LinkedBlockingQueue</td>
+<td>Required if any kairosdb.jetty.threads property is specified</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>kairosdb.jetty.threads.max</td>
+<td>The maximum number of threads to allow in the pool. See Jetty&#8217;s ExecutorThreadPool using a LinkedBlockingQueue</td>
+<td>Required if any kairosdb.jetty.threads property is specified</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>kairosdb.jetty.threads.keep_alive_ms</td>
+<td>The max time a thread can remain idle, in milliseconds. See Jetty&#8217;s ExecutorThreadPool using a LinkedBlockingQueue</td>
+<td>Required if any kairosdb.jetty.threads property is specified</td>
+<td>&nbsp;</td>
+</tr>
 <tr class="row-odd"><td>kairosdb.service.datastore</td>
 <td>Full package and class name for the class that handles data store requests.</td>
 <td><cite>org.kairosdb.datastore.h2.H2Module</cite> or <cite>org.kairosdb.datastore.cassandra.CassandraModule</cite></td>
@@ -277,42 +300,47 @@
 <td>Required if Cassandra is the selected datastore.</td>
 <td>0 */5 * * * ?</td>
 </tr>
-<tr class="row-odd"><td>kairosdb.datastore.hbase.timeseries_table</td>
+<tr class="row-odd"><td>kairosdb.datastore.cassandra.datapoint_ttl</td>
+<td>Default TTL in seconds for data points stored in Cassandra if it isn&#8217;t set in the data point itself.</td>
+<td>Optional</td>
+<td>0 (forever)</td>
+</tr>
+<tr class="row-even"><td>kairosdb.datastore.hbase.timeseries_table</td>
 <td>Name of the HBase table metrics are stored in.</td>
 <td>Required if HBase is the selected datastore.</td>
 <td>tsdb</td>
 </tr>
-<tr class="row-even"><td>kairosdb.datastore.hbase.uinqueids_table</td>
+<tr class="row-odd"><td>kairosdb.datastore.hbase.uinqueids_table</td>
 <td>Name of the id table for HBase.</td>
 <td>Required if HBase is the selected datastore.</td>
 <td>tsdb-uid</td>
 </tr>
-<tr class="row-odd"><td>kairosdb.datastore.hbase.zoo_keeper_quorum</td>
+<tr class="row-even"><td>kairosdb.datastore.hbase.zoo_keeper_quorum</td>
 <td>Zookeeper quorum host.</td>
 <td>Required if HBase is the selected datastore.</td>
 <td>localhost</td>
 </tr>
-<tr class="row-even"><td>kairosdb.datastore.hbase.zoo_keeper_base_dir</td>
+<tr class="row-odd"><td>kairosdb.datastore.hbase.zoo_keeper_base_dir</td>
 <td>Zookeeper base directory.</td>
 <td>Required if using HBase with Zookeeper.</td>
 <td>&nbsp;</td>
 </tr>
-<tr class="row-odd"><td>kairosdb.datastore.hbase.auto_create_metrics</td>
+<tr class="row-even"><td>kairosdb.datastore.hbase.auto_create_metrics</td>
 <td>If true, new metric names are created if they don&#8217;t exist. If false, metrics with new metric names are rejected.</td>
 <td>Required if HBase is the selected datastore.</td>
 <td>true</td>
 </tr>
-<tr class="row-even"><td>kairosdb.service.oauth</td>
+<tr class="row-odd"><td>kairosdb.service.oauth</td>
 <td>Full package and class name of the class that handles OAuth communications.</td>
 <td>Optional</td>
 <td><cite>org.kairosdb.core.oauth.OAuthModule</cite></td>
 </tr>
-<tr class="row-odd"><td>kairosdb.oauth.consumer.`[consumer key]`</td>
+<tr class="row-even"><td>kairosdb.oauth.consumer.`[consumer key]`</td>
 <td>OAuth key.</td>
 <td>Required if using OAuth.</td>
 <td>&nbsp;</td>
 </tr>
-<tr class="row-even"><td>kairosdb.job.cache_file_cleaner_schedule</td>
+<tr class="row-odd"><td>kairosdb.job.cache_file_cleaner_schedule</td>
 <td>Cache file cleaning schedule. Uses Quartz Cron syntax.</td>
 <td>&nbsp;</td>
 <td><cite>0 0 12 ? * SUN *</cite></td>

@@ -31,6 +31,7 @@
     <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
     <script type="text/javascript" src="_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+    <link rel="shortcut icon" href="_static/favicon.png"/>
     <link rel="top" title="KairosDB 1.0.1 documentation" href="#" />
     <link rel="next" title="Getting Started" href="GettingStarted.html" />
 <meta charset='utf-8'>
@@ -90,9 +91,11 @@
 <li class="toctree-l1"><a class="reference internal" href="ImportExport.html">Importing and Exporting Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="WebUI.html">Web UI</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Configuration.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Logging.html">Logging</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Statistics.html">KairosDB Statistics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="KairosClient.html">Kairos DB Java Client Library</a></li>
 <li class="toctree-l1"><a class="reference internal" href="CassandraSchema.html">Cassandra Schema</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Roll-ups.html">Roll-ups</a></li>
 <li class="toctree-l1"><a class="reference internal" href="kairosdevelopment/index.html">Kairos Development</a></li>
 <li class="toctree-l1"><a class="reference internal" href="restapi/index.html">REST API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="telnetapi/index.html">Telnet API</a></li>
@@ -155,6 +158,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="WebUI.html">Web UI</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Configuration.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Logging.html">Logging</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Statistics.html">KairosDB Statistics</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="Statistics.html#metrics-reported">Metrics Reported</a></li>
 </ul>
@@ -169,6 +173,11 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="CassandraSchema.html#how-the-schema-is-used">How the Schema is Used</a></li>
 <li class="toctree-l2"><a class="reference internal" href="CassandraSchema.html#comparison-to-opentsdb-hbase">Comparison to OpenTSDB HBase</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Roll-ups.html">Roll-ups</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Roll-ups.html#installing">Installing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Roll-ups.html#example">Example</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="kairosdevelopment/index.html">Kairos Development</a><ul>
@@ -289,6 +298,43 @@
 <li class="toctree-l3"><a class="reference internal" href="restapi/QueryMetricTags.html#query-properties">Query Properties</a></li>
 <li class="toctree-l3"><a class="reference internal" href="restapi/QueryMetricTags.html#metric-properties">Metric Properties</a></li>
 <li class="toctree-l3"><a class="reference internal" href="restapi/QueryMetricTags.html#response">Response</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="restapi/Roll-ups.html">Roll-ups</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restapi/Roll-ups.html#create-roll-up-task">Create Roll-up Task</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="restapi/Roll-ups.html#method">Method</a></li>
+<li class="toctree-l3"><a class="reference internal" href="restapi/Roll-ups.html#request">Request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="restapi/Roll-ups.html#body">Body</a></li>
+<li class="toctree-l3"><a class="reference internal" href="restapi/Roll-ups.html#roll-up-properties">Roll-up Properties</a></li>
+<li class="toctree-l3"><a class="reference internal" href="restapi/Roll-ups.html#response">Response</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="restapi/Roll-ups.html#list-roll-up-tasks">List Roll-up Tasks</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="restapi/Roll-ups.html#id1">Method</a></li>
+<li class="toctree-l3"><a class="reference internal" href="restapi/Roll-ups.html#id2">Request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="restapi/Roll-ups.html#id3">Body</a></li>
+<li class="toctree-l3"><a class="reference internal" href="restapi/Roll-ups.html#id4">Response</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="restapi/Roll-ups.html#get-roll-up-task">Get Roll-up Task</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="restapi/Roll-ups.html#id5">Method</a></li>
+<li class="toctree-l3"><a class="reference internal" href="restapi/Roll-ups.html#id6">Request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="restapi/Roll-ups.html#id7">Body</a></li>
+<li class="toctree-l3"><a class="reference internal" href="restapi/Roll-ups.html#id8">Response</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="restapi/Roll-ups.html#delete-roll-up-task">Delete Roll-up Task</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="restapi/Roll-ups.html#id9">Method</a></li>
+<li class="toctree-l3"><a class="reference internal" href="restapi/Roll-ups.html#id10">Request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="restapi/Roll-ups.html#id11">Body</a></li>
+<li class="toctree-l3"><a class="reference internal" href="restapi/Roll-ups.html#id12">Response</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="restapi/Roll-ups.html#update-roll-up-task">Update Roll-up Task</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="restapi/Roll-ups.html#id13">Method</a></li>
+<li class="toctree-l3"><a class="reference internal" href="restapi/Roll-ups.html#id14">Request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="restapi/Roll-ups.html#id15">Body</a></li>
+<li class="toctree-l3"><a class="reference internal" href="restapi/Roll-ups.html#id16">Response</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="restapi/Version.html">Version</a><ul>

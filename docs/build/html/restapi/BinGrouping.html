@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Grouping by Value &mdash; KairosDB 1.0.1 documentation</title>
+    <title>Grouping by Bin &mdash; KairosDB 1.0.1 documentation</title>
     
     <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -31,6 +31,7 @@
     <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
     <script type="text/javascript" src="../_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.png"/>
     <link rel="top" title="KairosDB 1.0.1 documentation" href="../index.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
@@ -89,9 +90,11 @@
 <li class="toctree-l1"><a class="reference internal" href="../ImportExport.html">Importing and Exporting Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../WebUI.html">Web UI</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Configuration.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Logging.html">Logging</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Statistics.html">KairosDB Statistics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../KairosClient.html">Kairos DB Java Client Library</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../CassandraSchema.html">Cassandra Schema</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Roll-ups.html">Roll-ups</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../kairosdevelopment/index.html">Kairos Development</a></li>
 <li class="toctree-l1"><a class="reference internal" href="index.html">REST API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../telnetapi/index.html">Telnet API</a></li>
@@ -111,8 +114,8 @@
       </div>
     <div class="col-md-9">
       
-  <div class="section" id="grouping-by-value">
-<h1>Grouping by Value<a class="headerlink" href="#grouping-by-value" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="grouping-by-bin">
+<h1>Grouping by Bin<a class="headerlink" href="#grouping-by-bin" title="Permalink to this headline">¶</a></h1>
 <p>The Bin grouper groups data point values into bins or buckets. Values are placed into groups based on a list of bin values. For example, if the list of bins is 10, 20, 30, then values less than 10 are placed in the first group, values between 10-19 into the second group, and so forth.</p>
 <div class="section" id="syntax">
 <h2>Syntax<a class="headerlink" href="#syntax" title="Permalink to this headline">¶</a></h2>

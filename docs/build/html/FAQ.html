@@ -31,6 +31,7 @@
     <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
     <script type="text/javascript" src="_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+    <link rel="shortcut icon" href="_static/favicon.png"/>
     <link rel="top" title="KairosDB 1.0.1 documentation" href="index.html" />
     <link rel="next" title="Pushing data" href="PushingData.html" />
     <link rel="prev" title="Getting Started" href="GettingStarted.html" />
@@ -94,9 +95,11 @@
 <li class="toctree-l1"><a class="reference internal" href="ImportExport.html">Importing and Exporting Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="WebUI.html">Web UI</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Configuration.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Logging.html">Logging</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Statistics.html">KairosDB Statistics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="KairosClient.html">Kairos DB Java Client Library</a></li>
 <li class="toctree-l1"><a class="reference internal" href="CassandraSchema.html">Cassandra Schema</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Roll-ups.html">Roll-ups</a></li>
 <li class="toctree-l1"><a class="reference internal" href="kairosdevelopment/index.html">Kairos Development</a></li>
 <li class="toctree-l1"><a class="reference internal" href="restapi/index.html">REST API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="telnetapi/index.html">Telnet API</a></li>
@@ -127,6 +130,7 @@
 <li>Only query the new data.  The idea here is that your visualization tool is smart enough to only query the new data and merge it into the graph.  Cubism.js is a tool that claims such functionality.</li>
 <li>Batch jobs that pre-aggregate and write to a new metric.  The new metric can then be queried and used to graph the data.  This could be done with a cron job.  There is some discussion about making the batch job part of K* but, there is work to be done before this can happen.</li>
 </ol>
+<p>Additional FAQ can be found here: <a class="reference external" href="https://github.com/kairosdb/kairosdb/wiki/Frequently-Asked-Questions">https://github.com/kairosdb/kairosdb/wiki/Frequently-Asked-Questions</a></p>
 </div>
 </div>
 
