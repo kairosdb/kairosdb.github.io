@@ -19,6 +19,7 @@ Client Libraries
 -  `metrics-kairosdb`_
 -  `A node.js KairosDB client`_
 -  `PHP Client`_
+_  `Golang Client`_
 
 Collector Libraries
 ===================
@@ -65,6 +66,7 @@ Papers about KairosDB
 .. _metrics-kairosdb: https://github.com/burtonator/metrics-kairosdb
 .. _A node.js KairosDB client: https://www.npmjs.com/package/kairosdb
 .. _PHP Client: https://github.com/danibrutal/KairosDB-Client
+.. _Golang Client: https://github.com/ajityagaty/go-kairosdb
 .. _TCollector - collects system stats: https://github.com/OpenTSDB/tcollector
 .. _Collectd plugin for KairosDB: https://github.com/gregdurham/collectd-kairosdb
 .. _Grafana: http://grafana.org/
