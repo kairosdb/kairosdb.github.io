@@ -2,9 +2,10 @@
 Query Metric Tags
 =================
 
-You can think of this as the exact same as the query but it leaves off the data and just returns the tag information.  
-
-Note: Currently this is not implemented in the HBase datastore.
+Similar to a query but only returns the tags (no data points returned). This can potentially return more tags than a
+query because it is optimized for speed and does not query all rows to narrow down the time range. This queries only
+the Row Key Index and thus the time range is the starting time range. Since the Cassandra row is set to 3 weeks, this
+can return tags for up to a 3 week period. See :doc:`Cassandra Schema </CassandraSchema>`.
 
 ---------
 Filtering
@@ -38,15 +39,15 @@ Body
     "metrics": [
         {
             "tags": {
-                "host": ["foo"]
+                "host": ["server1"]
             },
-            "name": "abc.123"
+            "name": "abc_123"
         },
         {
             "tags": {
-                "host": ["foo"]
+                "dc": ["awsuse"]
             },
-            "name": "xyz.123"
+            "name": "xyz_123"
         }
     ]
  }
@@ -94,16 +95,20 @@ Response
             {
                 "name": "abc_123",
                 "tags": {
-                    "host": ["server1","server2"],
+                    "host": ["server1"],
+                    "dc": ["awsuse", "awsusw"],
                     "type": ["bar"]
-                }
+                },
+                "values": [[1492602706055,0],[1492602711000,0],[1492602712000,0],[1492602716055,0]]
             },
             {
                 "name": "xyz_123",
                 "tags": {
                     "host": ["server1","server2"],
+                    "dc": ["awsuse"],
                     "type": ["bar"]
-                }
+                },
+                "values": [[1492602706055,0],[1492602711000,42],[1492602712000,0],[1492602716055,42]]
             }
         ]
     }

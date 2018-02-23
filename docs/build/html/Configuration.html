@@ -1,29 +1,18 @@
 
 <!DOCTYPE html>
 
-
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
-    <title>Configuration &mdash; KairosDB 1.0.1 documentation</title>
-    
+    <title>Configuration &#8212; KairosDB 1.0.1 documentation</title>
     <link rel="stylesheet" href="_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/bootstrap-3.3.4/css/bootstrap.min.css" type="text/css" />
     <link rel="stylesheet" href="_static/bootstrap-3.3.4/css/bootstrap-none.min.css" type="text/css" />
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="_static/kairosdb.css" type="text/css" />
-    
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    './',
-        VERSION:     '1.0.1',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
-      };
-    </script>
+    <script type="text/javascript" src="_static/documentation_options.js"></script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
@@ -32,7 +21,8 @@
     <script type="text/javascript" src="_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
     <link rel="shortcut icon" href="_static/favicon.png"/>
-    <link rel="top" title="KairosDB 1.0.1 documentation" href="index.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Logging" href="Logging.html" />
     <link rel="prev" title="Web UI" href="WebUI.html" />
 <meta charset='utf-8'>
@@ -40,8 +30,7 @@
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
 <meta name="apple-mobile-web-app-capable" content="yes">
 
-  </head>
-  <body>
+  </head><body>
 
 
 
@@ -91,7 +80,7 @@
 <li class="toctree-l1"><a class="reference internal" href="QueryingData.html">Querying data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ImportExport.html">Importing and Exporting Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="WebUI.html">Web UI</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">Configuration</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Configuration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Logging.html">Logging</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Statistics.html">KairosDB Statistics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="KairosClient.html">Kairos DB Java Client Library</a></li>
@@ -119,234 +108,9 @@
   <div class="section" id="configuration">
 <h1>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h1>
 <p>KairosDB is configured using the kairosdb.properties files in the conf directory.</p>
-<p>Here is a list of the properties and their purpose.</p>
-<table border="1" class="scrollwide docutils">
-<colgroup>
-<col width="10%" />
-<col width="47%" />
-<col width="15%" />
-<col width="28%" />
-</colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head"><em>Property</em></th>
-<th class="head"><em>Description</em></th>
-<th class="head"><em>Required</em></th>
-<th class="head"><em>Default Value</em></th>
-</tr>
-</thead>
-<tbody valign="top">
-<tr class="row-even"><td>kairosdb.hostname</td>
-<td>Name of the host which is used when reporting internal metrics.</td>
-<td>Optional</td>
-<td>The &#8220;hostname&#8221; command is used if this is not set</td>
-</tr>
-<tr class="row-odd"><td>kairosdb.telnetserver.address</td>
-<td>IPv4 or IPv6 address (see Java&#8217;s InetAddress class for more details)</td>
-<td>Required</td>
-<td>0.0.0.0</td>
-</tr>
-<tr class="row-even"><td>kairosdb.telnetserver.port</td>
-<td>Port number for the Telnet server.</td>
-<td>Required</td>
-<td>4242</td>
-</tr>
-<tr class="row-odd"><td>kairosdb.telnetserver.commands</td>
-<td>List of Telnet commands supported by KairosDB.</td>
-<td>Required</td>
-<td>put, version</td>
-</tr>
-<tr class="row-even"><td>kairosdb.service.telnet</td>
-<td>Full package and class name for the class that handles the Telnet requests.</td>
-<td>Required</td>
-<td><cite>org.kairosdb.core.telnet.TelnetServerModule</cite></td>
-</tr>
-<tr class="row-odd"><td>kairosdb.service.http</td>
-<td>Full package and class name for the class that handles HTTP requests.</td>
-<td>Required</td>
-<td><cite>org.kairosdb.core.http.WebServletModule</cite></td>
-</tr>
-<tr class="row-even"><td>kairosdb.service.reporter</td>
-<td>Full package and class name for the class that handles internal metric reporting. If not specified, internal metrics are not reported.</td>
-<td>Optional</td>
-<td><cite>org.kairosdb.core.reporting.MetricReportingModule</cite></td>
-</tr>
-<tr class="row-odd"><td>kairosdb.reporter.period</td>
-<td>Period for internal metric reporting.  Use in conjunction with kairosdb.reporter.period_unit.</td>
-<td>Required if kairosdb.service.reporter is specified.</td>
-<td>1</td>
-</tr>
-<tr class="row-even"><td>kairosdb.reporter.period_unit</td>
-<td>Used in conjunction with kairosdb.reporter.period. Unit can be milliseconds, seconds, minutes, days</td>
-<td>Required if kairosdb.service.reporter is specified.</td>
-<td>minutes</td>
-</tr>
-<tr class="row-odd"><td>kairosdb.jetty.address</td>
-<td>IPv4 or IPv6 address (see Java&#8217;s InetAddress class for more details).</td>
-<td>Required</td>
-<td>0.0.0.0</td>
-</tr>
-<tr class="row-even"><td>kairosdb.jetty.port</td>
-<td>Port number for accessing the KairosDB UI. Set to 0 to disable the HTTP port.</td>
-<td>Optional. Must set either this property or kairosdb.jetty.ssl.port.</td>
-<td>8080</td>
-</tr>
-<tr class="row-odd"><td>kairosdb.jetty.static_web_root</td>
-<td>Location where pages are served by the Jetty server.</td>
-<td>Required</td>
-<td>webroot</td>
-</tr>
-<tr class="row-even"><td>kairosdb.jetty.basic_auth.user</td>
-<td>Use this with kairosdb.jetty.basic_auth.password setup the username and password for Basic authentication.</td>
-<td>Optional</td>
-<td>&nbsp;</td>
-</tr>
-<tr class="row-odd"><td>kairosdb.jetty.basic_auth.password</td>
-<td>Used with kairosdb.jetty.basic_auth.user to turn on Basic authentication. This the password for the user.</td>
-<td>Optional</td>
-<td>&nbsp;</td>
-</tr>
-<tr class="row-even"><td>kairosdb.jetty.ssl.port</td>
-<td>Port for use with SSL.</td>
-<td>Optional</td>
-<td>443</td>
-</tr>
-<tr class="row-odd"><td>kairosdb.jetty.ssl.keystore.path</td>
-<td>Full path to the key store that contains the server certificate for SSL communication. This implementation of SSL assumes there is only one certificate in the key store.</td>
-<td>Optional</td>
-<td>&nbsp;</td>
-</tr>
-<tr class="row-even"><td>kairosdb.jetty.ssl.keystore.password</td>
-<td>Key store password.</td>
-<td>Required if kairosdb.jetty.ssl.keystore.path is set.</td>
-<td>See the <a class="reference external" href="http://wiki.eclipse.org/Jetty/Howto/Configure_SSL#Loading_Keys_and_Certificates_via_PKCS12">Jetty</a> documentation for information on creating the keystore.</td>
-</tr>
-<tr class="row-odd"><td>kairosdb.jetty.ssl.protocols</td>
-<td>SSL protocols supported.</td>
-<td>Optional</td>
-<td>&nbsp;</td>
-</tr>
-<tr class="row-even"><td>kairosdb.jetty.ssl.cipherSuites</td>
-<td>SSL cipher suites supported.</td>
-<td>Optional</td>
-<td>&nbsp;</td>
-</tr>
-<tr class="row-odd"><td>kairosdb.jetty.threads.queue_size</td>
-<td>The capacity of this queue. See Jetty&#8217;s ExecutorThreadPool using a LinkedBlockingQueue</td>
-<td>Required if any kairosdb.jetty.threads property is specified</td>
-<td>&nbsp;</td>
-</tr>
-<tr class="row-even"><td>kairosdb.jetty.threads.min</td>
-<td>The number of threads to keep in the pool, even if they are idle. See Jetty&#8217;s ExecutorThreadPool using a LinkedBlockingQueue</td>
-<td>Required if any kairosdb.jetty.threads property is specified</td>
-<td>&nbsp;</td>
-</tr>
-<tr class="row-odd"><td>kairosdb.jetty.threads.max</td>
-<td>The maximum number of threads to allow in the pool. See Jetty&#8217;s ExecutorThreadPool using a LinkedBlockingQueue</td>
-<td>Required if any kairosdb.jetty.threads property is specified</td>
-<td>&nbsp;</td>
-</tr>
-<tr class="row-even"><td>kairosdb.jetty.threads.keep_alive_ms</td>
-<td>The max time a thread can remain idle, in milliseconds. See Jetty&#8217;s ExecutorThreadPool using a LinkedBlockingQueue</td>
-<td>Required if any kairosdb.jetty.threads property is specified</td>
-<td>&nbsp;</td>
-</tr>
-<tr class="row-odd"><td>kairosdb.service.datastore</td>
-<td>Full package and class name for the class that handles data store requests.</td>
-<td><cite>org.kairosdb.datastore.h2.H2Module</cite> or <cite>org.kairosdb.datastore.cassandra.CassandraModule</cite></td>
-<td><cite>org.kairosdb.datastore.h2.H2Module</cite> or <cite>net.opentsdb.kairosdb.HBaseModule</cite></td>
-</tr>
-<tr class="row-even"><td>kairosdb.datastore.h2.database_path</td>
-<td>Path to the H2 database location.</td>
-<td>Required if H2 is the selected datastore.</td>
-<td>build/h2db</td>
-</tr>
-<tr class="row-odd"><td>kairosdb.datastore.cassandra.host_list</td>
-<td>List of Cassandra nodes. In the form of 1.1.1.1:9160,1.1.1.2:9160</td>
-<td>Required if Cassandra is the selected datastore.</td>
-<td>localhost:9160</td>
-</tr>
-<tr class="row-even"><td>kairosdb.datastore.cassandra.replication_factor</td>
-<td>Cassandra replication factor.</td>
-<td>Required if Cassandra is the selected datastore.</td>
-<td>1</td>
-</tr>
-<tr class="row-odd"><td>kairosdb.datastore.cassandra.write_delay</td>
-<td>Delay before cached metrics are written to Cassandra.</td>
-<td>Required if Cassandra is the selected datastore.</td>
-<td>1000</td>
-</tr>
-<tr class="row-even"><td>kairosdb.datastore.cassandra.write_buffer_max_size</td>
-<td>Maximum size of the write cache. Data is written when the cache is full.</td>
-<td>Required if Cassandra is the selected datastore.</td>
-<td>500000</td>
-</tr>
-<tr class="row-odd"><td>kairosdb.datastore.cassandra.single_row_read_size</td>
-<td>Buffer size when reading a single row of data from Cassandra.</td>
-<td>Required if Cassandra is the selected datastore.</td>
-<td>10240</td>
-</tr>
-<tr class="row-even"><td>kairosdb.datastore.cassandra.multi_row_read_size</td>
-<td>Buffer size when reading multiple rows of data from Cassandra.</td>
-<td>Required if Cassandra is the selected datastore.</td>
-<td>1024</td>
-</tr>
-<tr class="row-odd"><td>kairosdb.datastore.cassandra.auth.`[prop name]`</td>
-<td>Used to pass authentication information to cassandra. eg <cite>kairosdb.datastore.cassandra.auth.user=admin</cite></td>
-<td>Optional</td>
-<td>&nbsp;</td>
-</tr>
-<tr class="row-even"><td>kairosdb.datastore.cassandra.increase_buffer_size_schedule</td>
-<td>If the Cassandra becomes overwhelmed, KairosDB will reduce the write buffer size. This property identifies how often KairosDB will attempt to increase the buffer size incrementally until it is back up to kairosdb.datastore.cassandra.write_buffer_max_size. Uses Quartz Cron syntax.</td>
-<td>Required if Cassandra is the selected datastore.</td>
-<td>0 */5 * * * ?</td>
-</tr>
-<tr class="row-odd"><td>kairosdb.datastore.cassandra.datapoint_ttl</td>
-<td>Default TTL in seconds for data points stored in Cassandra if it isn&#8217;t set in the data point itself.</td>
-<td>Optional</td>
-<td>0 (forever)</td>
-</tr>
-<tr class="row-even"><td>kairosdb.datastore.hbase.timeseries_table</td>
-<td>Name of the HBase table metrics are stored in.</td>
-<td>Required if HBase is the selected datastore.</td>
-<td>tsdb</td>
-</tr>
-<tr class="row-odd"><td>kairosdb.datastore.hbase.uinqueids_table</td>
-<td>Name of the id table for HBase.</td>
-<td>Required if HBase is the selected datastore.</td>
-<td>tsdb-uid</td>
-</tr>
-<tr class="row-even"><td>kairosdb.datastore.hbase.zoo_keeper_quorum</td>
-<td>Zookeeper quorum host.</td>
-<td>Required if HBase is the selected datastore.</td>
-<td>localhost</td>
-</tr>
-<tr class="row-odd"><td>kairosdb.datastore.hbase.zoo_keeper_base_dir</td>
-<td>Zookeeper base directory.</td>
-<td>Required if using HBase with Zookeeper.</td>
-<td>&nbsp;</td>
-</tr>
-<tr class="row-even"><td>kairosdb.datastore.hbase.auto_create_metrics</td>
-<td>If true, new metric names are created if they don&#8217;t exist. If false, metrics with new metric names are rejected.</td>
-<td>Required if HBase is the selected datastore.</td>
-<td>true</td>
-</tr>
-<tr class="row-odd"><td>kairosdb.service.oauth</td>
-<td>Full package and class name of the class that handles OAuth communications.</td>
-<td>Optional</td>
-<td><cite>org.kairosdb.core.oauth.OAuthModule</cite></td>
-</tr>
-<tr class="row-even"><td>kairosdb.oauth.consumer.`[consumer key]`</td>
-<td>OAuth key.</td>
-<td>Required if using OAuth.</td>
-<td>&nbsp;</td>
-</tr>
-<tr class="row-odd"><td>kairosdb.job.cache_file_cleaner_schedule</td>
-<td>Cache file cleaning schedule. Uses Quartz Cron syntax.</td>
-<td>&nbsp;</td>
-<td><cite>0 0 12 ? * SUN *</cite></td>
-</tr>
-</tbody>
-</table>
+<p>Because keeping this document in sync with the properties file we are just going
+to link you to it as it has comments that explain what each setting means.</p>
+<p><a class="reference external" href="https://github.com/kairosdb/kairosdb/blob/master/src/main/resources/kairosdb.properties">https://github.com/kairosdb/kairosdb/blob/master/src/main/resources/kairosdb.properties</a></p>
 </div>
 
 
@@ -362,7 +126,7 @@
     </p>
     <p>
         &copy; Copyright 2015, KairosDB Team.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.0.<br/>
     </p>
   </div>
 </footer>
