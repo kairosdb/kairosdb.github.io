@@ -1,0 +1,361 @@
+
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Features &mdash; KairosDB 1.0.1 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-3.3.4/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-3.3.4/css/bootstrap-none.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/kairosdb.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.png"/>
+    <link rel="top" title="KairosDB 1.0.1 documentation" href="../index.html" />
+    <link rel="up" title="REST API" href="index.html" />
+    <link rel="next" title="Health Checks" href="Health.html" />
+    <link rel="prev" title="Delete Metric" href="DeleteMetric.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head>
+  <body role="document">
+
+
+
+
+ <!-- Fixed navbar -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand logo" href="http://kairosdb.github.io/"><img alt="Brand" src="../_static/kairosdb.png"></a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+			<li><a href="http://kairosdb.github.io/">Overview</a></li>
+            <li class="active"><a href="../index.html">Documentation</a></li>
+            <li ><a href="https://groups.google.com/forum/?hl=en#!forum/kairosdb-group" target="_blank">Community</a></li>
+            <li><a href="https://github.com/kairosdb/kairosdb">Github</a></li>
+			
+            
+<form class="navbar-form navbar-right" action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+          </ul>
+		  
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+<div class="container">
+  <div class="row">
+      <div class="col-md-3">
+        <div id="sidebar" class="bs-sidenav"><h3><a href="../index.html">Table Of Contents</a></h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../GettingStarted.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../FAQ.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PushingData.html">Pushing data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../QueryingData.html">Querying data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ImportExport.html">Importing and Exporting Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../WebUI.html">Web UI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Configuration.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Logging.html">Logging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Statistics.html">KairosDB Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../KairosClient.html">Kairos DB Java Client Library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CassandraSchema.html">Cassandra Schema</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Roll-ups.html">Roll-ups</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../kairosdevelopment/index.html">Kairos Development</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">REST API</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Overview.html">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Aggregators.html">Aggregators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="AddDataPoints.html">Add Data Points</a></li>
+<li class="toctree-l2"><a class="reference internal" href="DeleteDataPoints.html">Delete Data Points</a></li>
+<li class="toctree-l2"><a class="reference internal" href="DeleteMetric.html">Delete Metric</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Features</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#method">Method</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#request">Request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#body">Body</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#response">Response</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">Method</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">Request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">Body</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">Response</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Health.html">Health Checks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ListMetricNames.html">List Metric Names</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ListTagNames.html">List Tag Names</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ListTagValues.html">List Tag Values</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Metadata.html">Metadata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Metadata.html#add-the-value">Add the Value</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Metadata.html#get-the-value">Get the Value</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Metadata.html#list-service-keys">List Service Keys</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Metadata.html#list-keys">List Keys</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Metadata.html#delete-key">Delete Key</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QueryMetrics.html">Query Metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QueryMetricTags.html">Query Metric Tags</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Roll-ups.html">Roll-ups</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Roll-ups.html#create-roll-up-task">Create Roll-up Task</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Roll-ups.html#list-roll-up-tasks">List Roll-up Tasks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Roll-ups.html#get-roll-up-task">Get Roll-up Task</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Roll-ups.html#delete-roll-up-task">Delete Roll-up Task</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Roll-ups.html#update-roll-up-task">Update Roll-up Task</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Version.html">Version</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../telnetapi/index.html">Telnet API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Graphite.html">Graphite Protocol</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../IssueTracking.html">Bug Tracking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../External.html">External links</a></li>
+</ul>
+
+<form action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+        </div>
+      </div>
+    <div class="col-md-9">
+      
+  <div class="section" id="features">
+<h1>Features<a class="headerlink" href="#features" title="Permalink to this headline">¶</a></h1>
+<p>The Features API returns metadata about various components of KairosDB. For example, this
+API will return metadata about aggregators and GroupBys.</p>
+<hr class="docutils" />
+<p>Returns metadata for all features.</p>
+<div class="section" id="method">
+<h2>Method<a class="headerlink" href="#method" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div>GET</div></blockquote>
+</div>
+<div class="section" id="request">
+<h2>Request<a class="headerlink" href="#request" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><a class="reference external" href="http://[host]:[port]/api/v1/features">http://[host]:[port]/api/v1/features</a></div></blockquote>
+</div>
+<div class="section" id="body">
+<h2>Body<a class="headerlink" href="#body" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div>None</div></blockquote>
+</div>
+<div class="section" id="response">
+<h2>Response<a class="headerlink" href="#response" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt><em>Success</em></dt>
+<dd><p class="first">Returns 200 when successful.</p>
+<div class="last highlight-python"><div class="highlight"><pre>[{
+    &quot;name&quot;: &quot;groupby&quot;,
+            &quot;label&quot;: &quot;Group By&quot;,
+            &quot;properties&quot;: [{
+                    &quot;name&quot;: &quot;tag&quot;,
+                    &quot;label&quot;: &quot;Tag&quot;,
+                    &quot;description&quot;: &quot;Groups data points by tag names.&quot;,
+                    &quot;properties&quot;: [{
+                            &quot;name&quot;: &quot;tags&quot;,
+                            &quot;label&quot;: &quot;Tags&quot;,
+                            &quot;description&quot;: &quot;A list of tags to group by.&quot;,
+                            &quot;optional&quot;: false,
+                            &quot;type&quot;: &quot;array&quot;,
+                            &quot;options&quot;: [],
+                            &quot;defaultValue&quot;: &quot;[]&quot;,
+                            &quot;autocomplete&quot;: &quot;tags&quot;,
+                            &quot;multiline&quot;: false,
+                            &quot;validations&quot;: [{
+                                    &quot;expression&quot;: &quot;value.length \u003e 0&quot;,
+                                    &quot;type&quot;: &quot;js&quot;,
+                                    &quot;message&quot;: &quot;Tags can\u0027t be empty.&quot;
+                            }]
+                    }]
+            },
+            ...
+    },
+    {
+            &quot;name&quot;: &quot;aggregators&quot;,
+            &quot;label&quot;: &quot;Aggregator&quot;,
+            &quot;properties&quot;: [{
+                    &quot;name&quot;: &quot;avg&quot;,
+                    &quot;label&quot;: &quot;AVG&quot;,
+                    &quot;description&quot;: &quot;Averages the data points together.&quot;,
+                    &quot;properties&quot;: [{
+                            &quot;name&quot;: &quot;align_sampling&quot;,
+                            &quot;label&quot;: &quot;Align sampling&quot;,
+                            &quot;description&quot;: &quot;When set to true the time for the aggregated data point for each range will fall on the start of the range instead of being the value for the first data point within that range. Note that align_sampling, align_start_time, and align_end_time are mutually exclusive. If more than one are set, unexpected results will occur.&quot;,
+                            &quot;optional&quot;: false,
+                            &quot;type&quot;: &quot;boolean&quot;,
+                            &quot;options&quot;: [],
+                            &quot;defaultValue&quot;: &quot;true&quot;,
+                            &quot;autocomplete&quot;: &quot;&quot;,
+                            &quot;multiline&quot;: false,
+                            &quot;validations&quot;: []
+                    }]
+            },
+            ...
+            }]
+    }]
+</pre></div>
+</div>
+</dd>
+</dl>
+<hr class="docutils" />
+<p>Returns metadata for a particular feature.</p>
+</div>
+<div class="section" id="id1">
+<h2>Method<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div>GET</div></blockquote>
+</div>
+<div class="section" id="id2">
+<h2>Request<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><a class="reference external" href="http://[host]:[port]/api/v1/features">http://[host]:[port]/api/v1/features</a>/{feature}</div></blockquote>
+</div>
+<div class="section" id="id3">
+<h2>Body<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div>None</div></blockquote>
+</div>
+<div class="section" id="id4">
+<h2>Response<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt><em>Success</em></dt>
+<dd><p class="first">Returns 200 when successful.</p>
+<div class="last highlight-python"><div class="highlight"><pre>{
+            &quot;name&quot;: &quot;aggregators&quot;,
+            &quot;label&quot;: &quot;Aggregator&quot;,
+            &quot;properties&quot;: [{
+                    &quot;name&quot;: &quot;avg&quot;,
+                    &quot;label&quot;: &quot;AVG&quot;,
+                    &quot;description&quot;: &quot;Averages the data points together.&quot;,
+                    &quot;properties&quot;: [{
+                            &quot;name&quot;: &quot;align_sampling&quot;,
+                            &quot;label&quot;: &quot;Align sampling&quot;,
+                            &quot;description&quot;: &quot;When set to true the time for the aggregated data point for each range will fall on the start of the range instead of being the value for the first data point within that range. Note that align_sampling, align_start_time, and align_end_time are mutually exclusive. If more than one are set, unexpected results will occur.&quot;,
+                            &quot;optional&quot;: false,
+                            &quot;type&quot;: &quot;boolean&quot;,
+                            &quot;options&quot;: [],
+                            &quot;defaultValue&quot;: &quot;true&quot;,
+                            &quot;autocomplete&quot;: &quot;&quot;,
+                            &quot;multiline&quot;: false,
+                            &quot;validations&quot;: []
+                    }, {
+                            &quot;name&quot;: &quot;align_start_time&quot;,
+                            &quot;label&quot;: &quot;Align start time&quot;,
+                            &quot;description&quot;: &quot;Setting this to true will cause the aggregation range to be aligned based on the sampling size. For example if your sample size is either milliseconds, seconds, minutes or hours then the start of the range will always be at the top of the hour. The effect of setting this to true is that your data will take the same shape when graphed as you refresh the data. Note that align_sampling, align_start_time, and align_end_time are mutually exclusive. If more than one are set, unexpected results will occur.&quot;,
+                            &quot;optional&quot;: false,
+                            &quot;type&quot;: &quot;boolean&quot;,
+                            &quot;options&quot;: [],
+                            &quot;defaultValue&quot;: &quot;false&quot;,
+                            &quot;autocomplete&quot;: &quot;&quot;,
+                            &quot;multiline&quot;: false,
+                            &quot;validations&quot;: []
+                    }, {
+    &quot;name&quot;: &quot;align_end_time&quot;,
+    &quot;label&quot;: &quot;Align end time&quot;,
+    &quot;description&quot;: &quot;Setting this to true will cause the aggregation range to be aligned based on the sampling size. For example if your sample size is either milliseconds, seconds, minutes or hours then the start of the range will always be at the top of the hour. The difference between align_start_time and align_end_time is that align_end_time sets the timestamp for the datapoint to the beginning of the following period versus the beginning of the current period. As with align_start_time, setting this to true will cause your data to take the same shape when graphed as you refresh the data. Note that align_start_time and align_end_time are mutually exclusive. If more than one are set, unexpected results will occur.&quot;,
+    &quot;optional&quot;: false,
+    &quot;type&quot;: &quot;boolean&quot;,
+    &quot;options&quot;: [],
+    &quot;defaultValue&quot;: &quot;false&quot;,
+    &quot;autocomplete&quot;: &quot;&quot;,
+    &quot;multiline&quot;: false,
+    &quot;validations&quot;: []
+  }, {
+                            &quot;name&quot;: &quot;sampling&quot;,
+                            &quot;label&quot;: &quot;Sampling&quot;,
+                            &quot;optional&quot;: false,
+                            &quot;type&quot;: &quot;Object&quot;,
+                            &quot;multiline&quot;: false,
+                            &quot;properties&quot;: [{
+                                    &quot;name&quot;: &quot;value&quot;,
+                                    &quot;label&quot;: &quot;Value&quot;,
+                                    &quot;description&quot;: &quot;The number of units for the aggregation buckets&quot;,
+                                    &quot;optional&quot;: false,
+                                    &quot;type&quot;: &quot;long&quot;,
+                                    &quot;options&quot;: [],
+                                    &quot;defaultValue&quot;: &quot;1&quot;,
+                                    &quot;autocomplete&quot;: &quot;&quot;,
+                                    &quot;multiline&quot;: false,
+                                    &quot;validations&quot;: [{
+                                            &quot;expression&quot;: &quot;value \u003e 0&quot;,
+                                            &quot;type&quot;: &quot;js&quot;,
+                                            &quot;message&quot;: &quot;Value must be greater than 0.&quot;
+                                    }]
+                            }, {
+                                    &quot;name&quot;: &quot;unit&quot;,
+                                    &quot;label&quot;: &quot;Unit&quot;,
+                                    &quot;description&quot;: &quot;The time unit for the sampling rate&quot;,
+                                    &quot;optional&quot;: false,
+                                    &quot;type&quot;: &quot;enum&quot;,
+                                    &quot;options&quot;: [&quot;MILLISECONDS&quot;, &quot;SECONDS&quot;, &quot;MINUTES&quot;, &quot;HOURS&quot;, &quot;DAYS&quot;, &quot;WEEKS&quot;, &quot;MONTHS&quot;, &quot;YEARS&quot;],
+                                    &quot;defaultValue&quot;: &quot;MILLISECONDS&quot;,
+                                    &quot;autocomplete&quot;: &quot;&quot;,
+                                    &quot;multiline&quot;: false,
+                                    &quot;validations&quot;: []
+                            }]
+                    }]
+            }
+            ...
+    }]
+</pre></div>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2015, KairosDB Team.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.6.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

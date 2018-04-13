@@ -1,18 +1,29 @@
 
 <!DOCTYPE html>
 
+
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-        <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Getting Started &#8212; KairosDB 1.0.1 documentation</title>
+    
+    <title>Getting Started &mdash; KairosDB 1.0.1 documentation</title>
+    
     <link rel="stylesheet" href="_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/bootstrap-3.3.4/css/bootstrap.min.css" type="text/css" />
     <link rel="stylesheet" href="_static/bootstrap-3.3.4/css/bootstrap-none.min.css" type="text/css" />
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="_static/kairosdb.css" type="text/css" />
-    <script type="text/javascript" src="_static/documentation_options.js"></script>
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
@@ -21,8 +32,7 @@
     <script type="text/javascript" src="_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
     <link rel="shortcut icon" href="_static/favicon.png"/>
-    <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" />
+    <link rel="top" title="KairosDB 1.0.1 documentation" href="index.html" />
     <link rel="next" title="Frequently Asked Questions" href="FAQ.html" />
     <link rel="prev" title="KairosDB documentation v1.2.0" href="index.html" />
 <meta charset='utf-8'>
@@ -30,7 +40,8 @@
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
 <meta name="apple-mobile-web-app-capable" content="yes">
 
-  </head><body>
+  </head>
+  <body role="document">
 
 
 
@@ -74,7 +85,7 @@
       <div class="col-md-3">
         <div id="sidebar" class="bs-sidenav"><h3><a href="index.html">Table Of Contents</a></h3>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Getting Started</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Getting Started</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#install">Install</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#changing-file-handle-limit-on-linux">Changing File Handle Limit on Linux</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#changing-datastore">Changing Datastore</a></li>
@@ -127,7 +138,7 @@
 <li>Extract to where you wish to run from</li>
 <li>In conf/kairosdb.properties change the kairosdb.service.datastore property to the datastore you wish to use.  It defaults to an in memory H2 database (that is slow)</li>
 <li>Make sure that JAVA_HOME is set to your java install.</li>
-<li>Change to the bin directory and run <code class="docutils literal notranslate"><span class="pre">&gt;./kairosdb.sh</span> <span class="pre">run</span></code></li>
+<li>Change to the bin directory and run <code class="docutils literal"><span class="pre">&gt;./kairosdb.sh</span> <span class="pre">run</span></code></li>
 </ol>
 <div class="section" id="changing-file-handle-limit-on-linux">
 <h3>Changing File Handle Limit on Linux<a class="headerlink" href="#changing-file-handle-limit-on-linux" title="Permalink to this headline">¶</a></h3>
@@ -135,11 +146,11 @@
 </div>
 <div class="section" id="changing-datastore">
 <h3>Changing Datastore<a class="headerlink" href="#changing-datastore" title="Permalink to this headline">¶</a></h3>
-<p>KairosDB can be configured to use one of several backends for storing data.  By default KairosDB is configured to use an in memory H2 database to store datapoints.  To change the datastore that is used change the <code class="docutils literal notranslate"><span class="pre">kairosdb.service.datastore</span></code> property in the kairosdb.properties file.</p>
+<p>KairosDB can be configured to use one of several backends for storing data.  By default KairosDB is configured to use an in memory H2 database to store datapoints.  To change the datastore that is used change the <code class="docutils literal"><span class="pre">kairosdb.service.datastore</span></code> property in the kairosdb.properties file.</p>
 </div>
 <div class="section" id="using-with-h2">
 <h3>Using with H2<a class="headerlink" href="#using-with-h2" title="Permalink to this headline">¶</a></h3>
-<p><code class="docutils literal notranslate"><span class="pre">kairosdb.service.datastore=org.kairosdb.datastore.h2.H2Module</span></code></p>
+<p><code class="docutils literal"><span class="pre">kairosdb.service.datastore=org.kairosdb.datastore.h2.H2Module</span></code></p>
 <p>By default KairosDB is configured to run using the H2 datbase.  This lets you do development work without setting up and running Cassandra.</p>
 <div class="section" id="configuration-options">
 <h4>Configuration Options<a class="headerlink" href="#configuration-options" title="Permalink to this headline">¶</a></h4>
@@ -159,21 +170,21 @@
 </div>
 <div class="section" id="using-with-cassandra">
 <h3>Using with Cassandra<a class="headerlink" href="#using-with-cassandra" title="Permalink to this headline">¶</a></h3>
-<p><code class="docutils literal notranslate"><span class="pre">kairosdb.service.datastore=org.kairosdb.datastore.cassandra.CassandraModule</span></code></p>
+<p><code class="docutils literal"><span class="pre">kairosdb.service.datastore=org.kairosdb.datastore.cassandra.CassandraModule</span></code></p>
 <p>The default configuration for Cassandra is to use wide rows.  Each row is set to contain 3 weeks of data.  The reason behind setting it to 3 weeks is if you wrote a metric every millisecond for 3 weeks it would be just over 1 billion columns.  Cassandra has a 2 billion column limit.</p>
 <p>The row size has been a point of some confusion.  Basically it comes down to this: The more data you can fit into a single row the better the system will perform when querying the data.  This does not mean that Cassandra only holds 3 weeks worth of data, it means data is written to the same row for 3 weeks before going to a new row.  See the [CassandraSchema cassandra schema for more details].</p>
 <p>Changing the read_repair_chance:  This value tells cassandra how often to perform a read repair.  The read repair chance will default to 1 (100% chance).  The recommended value is 0.1 (10% chance).  To change this log into the cassandra-cli client and run the following commands</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">use</span> <span class="n">kairosdb</span><span class="p">;</span>
-<span class="o">&gt;</span> <span class="n">update</span> <span class="n">column</span> <span class="n">family</span> <span class="n">data_points</span> <span class="k">with</span> <span class="n">read_repair_chance</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">;</span>
-<span class="o">&gt;</span> <span class="n">update</span> <span class="n">column</span> <span class="n">family</span> <span class="n">row_key_index</span> <span class="k">with</span> <span class="n">read_repair_chance</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">;</span>
-<span class="o">&gt;</span> <span class="n">update</span> <span class="n">column</span> <span class="n">family</span> <span class="n">string_index</span> <span class="k">with</span> <span class="n">read_repair_chance</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">;</span>
+<div class="highlight-python"><div class="highlight"><pre>&gt; use kairosdb;
+&gt; update column family data_points with read_repair_chance = 0.1;
+&gt; update column family row_key_index with read_repair_chance = 0.1;
+&gt; update column family string_index with read_repair_chance = 0.1;
 </pre></div>
 </div>
-<p>Note: If you are using the newer <code class="docutils literal notranslate"><span class="pre">cqlsh</span></code> command, you will need to use the alter syntax</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">use</span> <span class="n">kairosdb</span><span class="p">;</span>
-<span class="o">&gt;</span> <span class="n">ALTER</span> <span class="n">TABLE</span> <span class="n">data_points</span> <span class="n">WITH</span> <span class="n">read_repair_chance</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">;</span>
-<span class="o">&gt;</span> <span class="n">ALTER</span> <span class="n">TABLE</span> <span class="n">row_key_index</span> <span class="n">WITH</span> <span class="n">read_repair_chance</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">;</span>
-<span class="o">&gt;</span> <span class="n">ALTER</span> <span class="n">TABLE</span> <span class="n">string_index</span> <span class="n">WITH</span> <span class="n">read_repair_chance</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">;</span>
+<p>Note: If you are using the newer <code class="docutils literal"><span class="pre">cqlsh</span></code> command, you will need to use the alter syntax</p>
+<div class="highlight-python"><div class="highlight"><pre>&gt; use kairosdb;
+&gt; ALTER TABLE data_points WITH read_repair_chance = 0.1;
+&gt; ALTER TABLE row_key_index WITH read_repair_chance = 0.1;
+&gt; ALTER TABLE string_index WITH read_repair_chance = 0.1;
 </pre></div>
 </div>
 <div class="section" id="id1">
@@ -213,7 +224,7 @@
 </div>
 <div class="section" id="using-as-a-remote-datastore">
 <h3>Using as a Remote Datastore<a class="headerlink" href="#using-as-a-remote-datastore" title="Permalink to this headline">¶</a></h3>
-<p><code class="docutils literal notranslate"><span class="pre">kairosdb.service.datastore=org.kairosdb.datastore.remote.RemoteModule</span></code></p>
+<p><code class="docutils literal"><span class="pre">kairosdb.service.datastore=org.kairosdb.datastore.remote.RemoteModule</span></code></p>
 <p>Configuring Kairos as a remote datastore sets up the local Kairos instance to store and forward incoming data points to a remote Kairos server.  Data is stored in a directory in json format.  On a configurable schedule a background thread will compress the data and upload the data points to a remote KairosDB instance.</p>
 <div class="section" id="id2">
 <h4>Configuration Options<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h4>
@@ -241,15 +252,15 @@
 <h2>Starting and Stopping<a class="headerlink" href="#starting-and-stopping" title="Permalink to this headline">¶</a></h2>
 <p>Starting and stoping KairosDB is done by running the kairosdb.sh script from within the bin directory.</p>
 <p>To start KairosDB and run in the foreground type</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="o">./</span><span class="n">kairosdb</span><span class="o">.</span><span class="n">sh</span> <span class="n">run</span>
+<div class="highlight-python"><div class="highlight"><pre>&gt; ./kairosdb.sh run
 </pre></div>
 </div>
 <p>To run KairosDB as a background process type</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="o">./</span><span class="n">kairosdb</span><span class="o">.</span><span class="n">sh</span> <span class="n">start</span>
+<div class="highlight-python"><div class="highlight"><pre>&gt; ./kairosdb.sh start
 </pre></div>
 </div>
 <p>To stop KairosDB when running as a background process type</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="o">./</span><span class="n">kairosdb</span><span class="o">.</span><span class="n">sh</span> <span class="n">stop</span>
+<div class="highlight-python"><div class="highlight"><pre>&gt; ./kairosdb.sh stop
 </pre></div>
 </div>
 </div>
@@ -268,7 +279,7 @@
     </p>
     <p>
         &copy; Copyright 2015, KairosDB Team.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.0.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.6.<br/>
     </p>
   </div>
 </footer>

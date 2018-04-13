@@ -1,18 +1,29 @@
 
 <!DOCTYPE html>
 
+
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-        <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Roll-ups &#8212; KairosDB 1.0.1 documentation</title>
+    
+    <title>Roll-ups &mdash; KairosDB 1.0.1 documentation</title>
+    
     <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../_static/bootstrap-3.3.4/css/bootstrap.min.css" type="text/css" />
     <link rel="stylesheet" href="../_static/bootstrap-3.3.4/css/bootstrap-none.min.css" type="text/css" />
     <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="../_static/kairosdb.css" type="text/css" />
-    <script type="text/javascript" src="../_static/documentation_options.js"></script>
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
@@ -21,8 +32,8 @@
     <script type="text/javascript" src="../_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.png"/>
-    <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" />
+    <link rel="top" title="KairosDB 1.0.1 documentation" href="../index.html" />
+    <link rel="up" title="REST API" href="index.html" />
     <link rel="next" title="Version" href="Version.html" />
     <link rel="prev" title="Query Metric Tags" href="QueryMetricTags.html" />
 <meta charset='utf-8'>
@@ -30,7 +41,8 @@
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
 <meta name="apple-mobile-web-app-capable" content="yes">
 
-  </head><body>
+  </head>
+  <body role="document">
 
 
 
@@ -106,7 +118,7 @@
 <li class="toctree-l2"><a class="reference internal" href="Metadata.html#delete-key">Delete Key</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QueryMetrics.html">Query Metrics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QueryMetricTags.html">Query Metric Tags</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Roll-ups</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Roll-ups</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#create-roll-up-task">Create Roll-up Task</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#method">Method</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#request">Request</a></li>
@@ -169,7 +181,7 @@
 Roll-ups perform queries on existing data, aggregate the data, and write the results to another metric. The original data is left intact.
 Roll-ups are continuously run on a schedule rolling up a small time period of data on each execution.
 Roll-ups are scheduled by creating a roll-up task. A task contains one or more roll-ups and an execution interval (how often the task is executed).
-A roll-up is a query (see <a class="reference internal" href="QueryMetrics.html"><span class="doc">QueryMetrics</span></a>) and the name of a new metric where it will be saved (save_as).</p>
+A roll-up is a query (see <a class="reference internal" href="QueryMetrics.html"><em>QueryMetrics</em></a>) and the name of a new metric where it will be saved (save_as).</p>
 </div>
 <hr class="docutils" />
 <div class="section" id="create-roll-up-task">
@@ -187,7 +199,7 @@ A roll-up is a query (see <a class="reference internal" href="QueryMetrics.html"
 </div>
 <div class="section" id="body">
 <h2>Body<a class="headerlink" href="#body" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;MyRollup&quot;</span><span class="p">,</span>
        <span class="s2">&quot;execution_interval&quot;</span><span class="p">:</span> <span class="p">{</span>
                <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
@@ -233,12 +245,12 @@ A roll-up is a query (see <a class="reference internal" href="QueryMetrics.html"
 <p><em>name</em>
 The name of the roll-up task.</p>
 <p><em>execution_interval</em>
-When the roll-up task is exected specified as value and unit. Possible unit values are “milliseconds”, “seconds”, “minutes”, “hours”, “days”, “weeks”, “months”, and “years”.</p>
+When the roll-up task is exected specified as value and unit. Possible unit values are &#8220;milliseconds&#8221;, &#8220;seconds&#8221;, &#8220;minutes&#8221;, &#8220;hours&#8221;, &#8220;days&#8221;, &#8220;weeks&#8221;, &#8220;months&#8221;, and &#8220;years&#8221;.</p>
 <p><em>rollups</em>
 An array of roll-ups. A roll-up consists of</p>
 <ul class="simple">
 <li><em>save_as</em> - the name of the metric where the roll-up data points are stored.</li>
-<li><em>query</em> - the query that is performed (see <a class="reference internal" href="QueryMetrics.html"><span class="doc">QueryMetrics</span></a>).</li>
+<li><em>query</em> - the query that is performed (see <a class="reference internal" href="QueryMetrics.html"><em>QueryMetrics</em></a>).</li>
 </ul>
 </div>
 <div class="section" id="response">
@@ -246,7 +258,7 @@ An array of roll-ups. A roll-up consists of</p>
 <p><em>Success</em></p>
 <blockquote>
 <div><p>The response contains either the metric resource created. Returns 200 when successful.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
     <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;7b2893fc-7654-4764-851a-a311e854ee75&quot;</span><span class="p">,</span>
     <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;MyRollupTaskName&quot;</span><span class="p">,</span>
     <span class="s2">&quot;attributes&quot;</span><span class="p">:</span> <span class="p">{</span>
@@ -260,7 +272,7 @@ An array of roll-ups. A roll-up consists of</p>
 <blockquote>
 <div><p>The response will be 400 Bad Request if the request is invalid.</p>
 <p>The response will be 500 Internal Server Error if an error occurs retrieving data.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
     <span class="s2">&quot;errors&quot;</span><span class="p">:</span> <span class="p">[</span>
         <span class="s2">&quot;metrics[0].aggregate must be one of MIN,SUM,MAX,AVG,DEV&quot;</span><span class="p">,</span>
         <span class="s2">&quot;metrics[0].sampling.unit must be one of  SECONDS,MINUTES,HOURS,DAYS,WEEKS,YEARS&quot;</span>
@@ -294,7 +306,7 @@ An array of roll-ups. A roll-up consists of</p>
 <p><em>Success</em></p>
 <blockquote>
 <div><p>The response contains a list of roll-up tasks. Returns 200 for success.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[{</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">[{</span>
     <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;ce55e623-0610-4451-a725-3daee896afd9&quot;</span><span class="p">,</span>
     <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;MyRollup&quot;</span><span class="p">,</span>
     <span class="s2">&quot;execution_interval&quot;</span><span class="p">:</span> <span class="p">{</span>
@@ -364,7 +376,7 @@ An array of roll-ups. A roll-up consists of</p>
 <p><em>Success</em></p>
 <blockquote>
 <div><p>The response contains the roll-up for the given id. Returns 200 for success.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
     <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;ce55e623-0610-4451-a725-3daee896afd9&quot;</span><span class="p">,</span>
     <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;MyRollup&quot;</span><span class="p">,</span>
     <span class="s2">&quot;execution_interval&quot;</span><span class="p">:</span> <span class="p">{</span>
@@ -459,7 +471,7 @@ An array of roll-ups. A roll-up consists of</p>
 <div class="section" id="id15">
 <h2>Body<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h2>
 <blockquote>
-<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<div><div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
         <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;MyRollup&quot;</span><span class="p">,</span>
         <span class="s2">&quot;execution_interval&quot;</span><span class="p">:</span> <span class="p">{</span>
                 <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
@@ -506,7 +518,7 @@ An array of roll-ups. A roll-up consists of</p>
 <p><em>Success</em></p>
 <blockquote>
 <div><p>The response contains the roll-up for the given id. Returns 200 for success.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
     <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;ce55e623-0610-4451-a725-3daee896afd9&quot;</span><span class="p">,</span>
     <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;MyRollup&quot;</span><span class="p">,</span>
     <span class="s2">&quot;execution_interval&quot;</span><span class="p">:</span> <span class="p">{</span>
@@ -570,7 +582,7 @@ An array of roll-ups. A roll-up consists of</p>
     </p>
     <p>
         &copy; Copyright 2015, KairosDB Team.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.0.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.6.<br/>
     </p>
   </div>
 </footer>

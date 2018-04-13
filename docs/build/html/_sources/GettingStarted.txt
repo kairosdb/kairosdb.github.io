@@ -6,13 +6,13 @@ Getting Started
 Install
 =======
 
-KairosDB runs with java 1.6 or later.
+KairosDB runs with Java 1.8 or later.
 
-  #. Download the tar.gz file from the Downloads section
-  #. Extract to where you wish to run from
-  #. In conf/kairosdb.properties change the kairosdb.service.datastore property to the datastore you wish to use.  It defaults to an in memory H2 database (that is slow)
-  #. Make sure that JAVA_HOME is set to your java install.
-  #. Change to the bin directory and run ``>./kairosdb.sh run``
+#. Download the tar.gz file from the Downloads section
+#. Extract to where you wish to run from
+#. In conf/kairosdb.properties change the kairosdb.service.datastore property to the datastore you wish to use.  It defaults to an in memory H2 database (that is slow)
+#. Make sure that JAVA_HOME is set to your java install.
+#. Change to the bin directory and run ``>./kairosdb.sh run``
 
 -----------------------------------
 Changing File Handle Limit on Linux
@@ -33,7 +33,7 @@ Using with H2
 
 ``kairosdb.service.datastore=org.kairosdb.datastore.h2.H2Module``
 
-By default KairosDB is configured to run using the H2 datbase.  This lets you do development work without setting up and running Cassandra or HBase.
+By default KairosDB is configured to run using the H2 datbase.  This lets you do development work without setting up and running Cassandra.
 
 """""""""""""""""""""
 Configuration Options
@@ -63,6 +63,13 @@ Changing the read_repair_chance:  This value tells cassandra how often to perfor
 	> update column family data_points with read_repair_chance = 0.1;
 	> update column family row_key_index with read_repair_chance = 0.1;
 	> update column family string_index with read_repair_chance = 0.1;
+
+Note: If you are using the newer ``cqlsh`` command, you will need to use the alter syntax
+::
+       > use kairosdb;
+       > ALTER TABLE data_points WITH read_repair_chance = 0.1;
+       > ALTER TABLE row_key_index WITH read_repair_chance = 0.1;
+       > ALTER TABLE string_index WITH read_repair_chance = 0.1;
 
 """""""""""""""""""""
 Configuration Options

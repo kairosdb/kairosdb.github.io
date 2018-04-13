@@ -1,0 +1,241 @@
+
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Adding Aggregators and GroupBys &mdash; KairosDB 1.0.1 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-3.3.4/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-3.3.4/css/bootstrap-none.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/kairosdb.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.png"/>
+    <link rel="top" title="KairosDB 1.0.1 documentation" href="../index.html" />
+    <link rel="up" title="Kairos Development" href="index.html" />
+    <link rel="next" title="REST API" href="../restapi/index.html" />
+    <link rel="prev" title="Editing Kairos with IntelliJ" href="IntelliJSetup.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head>
+  <body role="document">
+
+
+
+
+ <!-- Fixed navbar -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand logo" href="http://kairosdb.github.io/"><img alt="Brand" src="../_static/kairosdb.png"></a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+			<li><a href="http://kairosdb.github.io/">Overview</a></li>
+            <li class="active"><a href="../index.html">Documentation</a></li>
+            <li ><a href="https://groups.google.com/forum/?hl=en#!forum/kairosdb-group" target="_blank">Community</a></li>
+            <li><a href="https://github.com/kairosdb/kairosdb">Github</a></li>
+			
+            
+<form class="navbar-form navbar-right" action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+          </ul>
+		  
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+<div class="container">
+  <div class="row">
+      <div class="col-md-3">
+        <div id="sidebar" class="bs-sidenav"><h3><a href="../index.html">Table Of Contents</a></h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../GettingStarted.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../FAQ.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PushingData.html">Pushing data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../QueryingData.html">Querying data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ImportExport.html">Importing and Exporting Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../WebUI.html">Web UI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Configuration.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Logging.html">Logging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Statistics.html">KairosDB Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../KairosClient.html">Kairos DB Java Client Library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CassandraSchema.html">Cassandra Schema</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Roll-ups.html">Roll-ups</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Kairos Development</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Plugins.html">Plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="CustomData.html">Custom Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="IntelliJSetup.html">Editing Kairos with IntelliJ</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Adding Aggregators and GroupBys</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#add-a-new-aggregator">Add a new Aggregator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#add-a-new-groupby">Add a new GroupBy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#annotations">Annotations</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../restapi/index.html">REST API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../telnetapi/index.html">Telnet API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Graphite.html">Graphite Protocol</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../IssueTracking.html">Bug Tracking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../External.html">External links</a></li>
+</ul>
+
+<form action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+        </div>
+      </div>
+    <div class="col-md-9">
+      
+  <div class="section" id="adding-aggregators-and-groupbys">
+<h1>Adding Aggregators and GroupBys<a class="headerlink" href="#adding-aggregators-and-groupbys" title="Permalink to this headline">¶</a></h1>
+<p>KariosDB ships with a predefined set of aggregators and groupBys. If these don&#8217;t meet your purpose it is easy to add new ones.
+These are added as plugins. See the <a class="reference internal" href="Plugins.html"><em>Plugins documentation</em></a> for information about creating plugins.</p>
+<div class="section" id="add-a-new-aggregator">
+<h2>Add a new Aggregator<a class="headerlink" href="#add-a-new-aggregator" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt>Aggregators are added as a plugin:</dt>
+<dd><ol class="first last arabic simple">
+<li>Create a class that implements the Aggregator interface. If your aggregator needs to evaluate over a range of time, then your aggregators should extend RangeAggregator.</li>
+<li>Implement the logic for the aggregator.</li>
+<li>Add <a class="reference internal" href="#annotations">Annotations</a>.</li>
+<li>Create a properties file named kairosdb-&lt;aggregatorName&gt;.properties that contains<ol class="arabic">
+<li>kairosdb.service.&lt;aggregator&gt;=org.kairosdb.plugin.aggs.&lt;AggregatorName&gt;Module where &lt;AggregatorName&gt;Module is a Guice module which binds your new aggregator.</li>
+</ol>
+</li>
+</ol>
+</dd>
+</dl>
+</div>
+<div class="section" id="add-a-new-groupby">
+<h2>Add a new GroupBy<a class="headerlink" href="#add-a-new-groupby" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt>GroupBys are also added as a plugin:</dt>
+<dd><ol class="first last arabic simple">
+<li>Create a class that implements the GroupBy interface.</li>
+<li>Implement the logic for the groupBy.</li>
+<li>Add <a class="reference internal" href="#annotations">Annotations</a>.</li>
+<li>Create a properties file named kairosdb-&lt;groupByName&gt;.properties that contains<ol class="arabic">
+<li>kairosdb.service.&lt;groupBy&gt;=org.kairosdb.plugin.aggs.&lt;GroupByName&gt;Module where &lt;GroupByName&gt;Module is a Guice module which binds your new groupBy.</li>
+</ol>
+</li>
+</ol>
+</dd>
+</dl>
+</div>
+<div class="section" id="annotations">
+<h2>Annotations<a class="headerlink" href="#annotations" title="Permalink to this headline">¶</a></h2>
+<p>GroupBys and aggregators require annotations. They require a name annotation (AggregatorName and GroupByName)
+which is applied to the class and QueryPropery or QueryCompoundProperty annotations which are applied to member
+variables (properties of the aggregator or groupBy).</p>
+<p>The <code class="xref doc docutils literal"><span class="pre">groupbys</span></code> and <code class="xref doc docutils literal"><span class="pre">aggregators</span></code> REST APIs return a list of groupBys and aggregators and their properties.
+These APIs are used by clients such as the UI to help facilitate the creation of queries.</p>
+<div class="section" id="aggregatorname">
+<h3>AggregatorName<a class="headerlink" href="#aggregatorname" title="Permalink to this headline">¶</a></h3>
+<p>This annotation is applied to the Aggregator class. It defines the name of the aggregator and its description.</p>
+<p><strong>name</strong></p>
+<p>The name of the aggregator (required).</p>
+<p><strong>description</strong></p>
+<p>A description of the aggregator (required).</p>
+</div>
+<div class="section" id="groupbyname">
+<h3>GroupByName<a class="headerlink" href="#groupbyname" title="Permalink to this headline">¶</a></h3>
+<p>This annotation is applied to the GroupBy class. It defines the name of the groupBy and its description.</p>
+<p><strong>name</strong></p>
+<p>The name of the groupBy (required).</p>
+<p><strong>description</strong></p>
+<p>A description of the groupBy (required).</p>
+</div>
+<div class="section" id="queryproperty">
+<h3>QueryProperty<a class="headerlink" href="#queryproperty" title="Permalink to this headline">¶</a></h3>
+<p>The QueryProperty annotation defines the properties of a groupBy or aggregator. It is applied to member variables that will be exposed as properties.</p>
+<p><strong>name</strong></p>
+<p>The name of the property (optional). By default this is the name of the member variable.</p>
+<p><strong>label</strong></p>
+<p>The display name of the property (required). This is the value used by the UI.</p>
+<p><strong>description</strong></p>
+<p>A description of the property (required).</p>
+<p><strong>optional</strong></p>
+<p>Whether the property is optional or not (optional). Defaults to false.</p>
+<p><strong>type</strong></p>
+<p>The data type of the property (optional). By default, the type is calculated by using reflection on the member variable.</p>
+<p><strong>options</strong></p>
+<p>The list of values if the type is &#8220;enum&#8221; (optional).</p>
+<p><strong>default_value</strong></p>
+<p>The default value for the property (optional). If not specified, a default value is calculated.</p>
+<p><strong>validation</strong></p>
+<p>A boolean expression used to test if the value is valid (optional). The expression is written in Javascript.</p>
+</div>
+<div class="section" id="querycompoundproperty">
+<h3>QueryCompoundProperty<a class="headerlink" href="#querycompoundproperty" title="Permalink to this headline">¶</a></h3>
+<p>The QueryCompoundProperty annotation defines the properties of a groupBy or aggregator for a member variable that contains multiple variables.</p>
+<p><strong>name</strong></p>
+<p>The name of the property (optional). By default this is the name of the member variable.</p>
+<p><strong>label</strong></p>
+<p>The display name of the property (required). This is the value used by the UI.</p>
+<p><strong>order</strong></p>
+<p>This defines the order of properties (optional). This is a list of labels of the properties.</p>
+</div>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2015, KairosDB Team.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.6.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

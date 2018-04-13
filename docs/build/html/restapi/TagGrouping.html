@@ -1,18 +1,29 @@
 
 <!DOCTYPE html>
 
+
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-        <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Grouping by Tags &#8212; KairosDB 1.0.1 documentation</title>
+    
+    <title>Grouping by Tags &mdash; KairosDB 1.0.1 documentation</title>
+    
     <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../_static/bootstrap-3.3.4/css/bootstrap.min.css" type="text/css" />
     <link rel="stylesheet" href="../_static/bootstrap-3.3.4/css/bootstrap-none.min.css" type="text/css" />
     <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="../_static/kairosdb.css" type="text/css" />
-    <script type="text/javascript" src="../_static/documentation_options.js"></script>
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
@@ -21,14 +32,14 @@
     <script type="text/javascript" src="../_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.png"/>
-    <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" />
+    <link rel="top" title="KairosDB 1.0.1 documentation" href="../index.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
 <meta name="apple-mobile-web-app-capable" content="yes">
 
-  </head><body>
+  </head>
+  <body role="document">
 
 
 
@@ -109,12 +120,12 @@
 <p>Multiple tag names can be used to further group the data points.</p>
 <div class="section" id="syntax">
 <h2>Syntax<a class="headerlink" href="#syntax" title="Permalink to this headline">¶</a></h2>
-<p>The name for this grouper is “tag”.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;tag&quot;</span>
+<p>The name for this grouper is &#8220;tag&#8221;.</p>
+<div class="highlight-python"><div class="highlight"><pre>&quot;name&quot;: &quot;tag&quot;
 </pre></div>
 </div>
 <p>The grouper takes an array of tag names.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;tags&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;tagName1&quot;</span><span class="p">,</span> <span class="s2">&quot;tagName2&quot;</span><span class="p">]</span>
+<div class="highlight-python"><div class="highlight"><pre>&quot;tags&quot;: [&quot;tagName1&quot;, &quot;tagName2&quot;]
 </pre></div>
 </div>
 </div>
@@ -122,16 +133,16 @@
 <h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
 <p>The example below groups by both <em>data_center</em> and <em>host</em>. If, for example, there were two data centers <em>dc1</em> and <em>dc2</em> and two hosts <em>server1</em> and <em>server2</em>, you could group by the combination of <em>host</em> and <em>data_center</em> by listing both tag names in the <em>tags</em> property.</p>
 <p>The response JSON would contain four objects, one for each combination of data center and host (assuming there were data points for all four combinations).</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;group_by&quot;</span><span class="p">:</span> <span class="p">[</span>
-        <span class="p">{</span>
-          <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;tag&quot;</span><span class="p">,</span>
-          <span class="s2">&quot;tags&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;data_center&quot;</span><span class="p">,</span> <span class="s2">&quot;host&quot;</span><span class="p">]</span>
-        <span class="p">}</span>
-      <span class="p">]</span>
+<div class="highlight-python"><div class="highlight"><pre>&quot;group_by&quot;: [
+        {
+          &quot;name&quot;: &quot;tag&quot;,
+          &quot;tags&quot;: [&quot;data_center&quot;, &quot;host&quot;]
+        }
+      ]
 </pre></div>
 </div>
 <p>Each object of the response JSON contains the <em>group_by</em> information you specified in the query as well as a <em>group</em> object. The <em>group</em> object contains the tags names and their corresponding values for the particular  grouping. The first group in the results below include data points for the <em>dc1</em> data center and <em>server1</em> host.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
   <span class="s2">&quot;queries&quot;</span><span class="p">:</span> <span class="p">[</span>
       <span class="p">{</span>
           <span class="s2">&quot;results&quot;</span><span class="p">:</span> <span class="p">[</span>
@@ -202,7 +213,7 @@
     </p>
     <p>
         &copy; Copyright 2015, KairosDB Team.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.0.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.6.<br/>
     </p>
   </div>
 </footer>
