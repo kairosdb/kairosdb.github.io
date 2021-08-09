@@ -1,0 +1,616 @@
+
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Roll-ups &mdash; KairosDB 1.0.1 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-3.3.4/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-3.3.4/css/bootstrap-none.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/kairosdb.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.png"/>
+    <link rel="top" title="KairosDB 1.0.1 documentation" href="../index.html" />
+    <link rel="up" title="REST API" href="index.html" />
+    <link rel="next" title="Version" href="Version.html" />
+    <link rel="prev" title="Query Metric Tags" href="QueryMetricTags.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head>
+  <body role="document">
+
+
+
+
+ <!-- Fixed navbar -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand logo" href="http://kairosdb.github.io/"><img alt="Brand" src="../_static/kairosdb.png"></a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+			<li><a href="http://kairosdb.github.io/">Overview</a></li>
+            <li class="active"><a href="../index.html">Documentation</a></li>
+            <li ><a href="https://groups.google.com/forum/?hl=en#!forum/kairosdb-group" target="_blank">Community</a></li>
+            <li><a href="https://github.com/kairosdb/kairosdb">Github</a></li>
+			
+            
+<form class="navbar-form navbar-right" action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+          </ul>
+		  
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+<div class="container">
+  <div class="row">
+      <div class="col-md-3">
+        <div id="sidebar" class="bs-sidenav"><h3><a href="../index.html">Table Of Contents</a></h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../GettingStarted.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../FAQ.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PushingData.html">Pushing data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../QueryingData.html">Querying data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ImportExport.html">Importing and Exporting Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../WebUI.html">Web UI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Configuration.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Logging.html">Logging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Statistics.html">KairosDB Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../KairosClient.html">Kairos DB Java Client Library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CassandraSchema.html">Cassandra Schema</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../MultiCluster.html">Multi Cluster Cassandra</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Roll-ups.html">Roll-ups</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../kairosdevelopment/index.html">Kairos Development</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">REST API</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Overview.html">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Aggregators.html">Aggregators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="AddDataPoints.html">Add Data Points</a></li>
+<li class="toctree-l2"><a class="reference internal" href="DeleteDataPoints.html">Delete Data Points</a></li>
+<li class="toctree-l2"><a class="reference internal" href="DeleteMetric.html">Delete Metric</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Features.html">Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Health.html">Health Checks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ListMetricNames.html">List Metric Names</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Metadata.html">Metadata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Metadata.html#add-the-value">Add the Value</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Metadata.html#get-the-value">Get the Value</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Metadata.html#list-service-keys">List Service Keys</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Metadata.html#list-keys">List Keys</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Metadata.html#delete-key">Delete Key</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QueryMetrics.html">Query Metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QueryMetricTags.html">Query Metric Tags</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Roll-ups</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#create-roll-up-task">Create Roll-up Task</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#method">Method</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#request">Request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#body">Body</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#roll-up-properties">Roll-up Properties</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#response">Response</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#list-roll-up-tasks">List Roll-up Tasks</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">Method</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">Request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">Body</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">Response</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#get-roll-up-task">Get Roll-up Task</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id5">Method</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">Request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">Body</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id8">Response</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#delete-roll-up-task">Delete Roll-up Task</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id9">Method</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id10">Request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id11">Body</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id12">Response</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#update-roll-up-task">Update Roll-up Task</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id13">Method</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id14">Request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id15">Body</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id16">Response</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#backfill-roll-up-task">Backfill Roll-up Task</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id17">Method</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id18">Request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#parameters">Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id19">Body</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id20">Response</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Version.html">Version</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../telnetapi/index.html">Telnet API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Graphite.html">Graphite Protocol</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../IssueTracking.html">Bug Tracking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../External.html">External links</a></li>
+</ul>
+
+<form action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+        </div>
+      </div>
+    <div class="col-md-9">
+      
+  <div class="section" id="roll-ups">
+<h1>Roll-ups<a class="headerlink" href="#roll-ups" title="Permalink to this headline">¶</a></h1>
+<p>Roll-ups are a way to improve query performance by aggregating or rolling up data into a larger time range such as averaging millisecond data over a minute.
+Roll-ups perform queries on existing data, aggregate the data, and write the results to another metric. The original data is left intact.
+Roll-ups are continuously run on a schedule rolling up a small time period of data on each execution.
+Roll-ups are scheduled by creating a roll-up task. A task contains one or more roll-ups and an execution interval (how often the task is executed).
+A roll-up is a query (see <a class="reference internal" href="QueryMetrics.html"><em>QueryMetrics</em></a>) and the name of a new metric where it will be saved (save_as).</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="create-roll-up-task">
+<h1>Create Roll-up Task<a class="headerlink" href="#create-roll-up-task" title="Permalink to this headline">¶</a></h1>
+<p>A roll-up task is executed on a schedule to create one or more roll-ups.</p>
+<div class="section" id="method">
+<h2>Method<a class="headerlink" href="#method" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div>POST</div></blockquote>
+</div>
+<div class="section" id="request">
+<h2>Request<a class="headerlink" href="#request" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><a class="reference external" href="http://[host]:[port]/api/v1/rollups">http://[host]:[port]/api/v1/rollups</a></div></blockquote>
+</div>
+<div class="section" id="body">
+<h2>Body<a class="headerlink" href="#body" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+       <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;MyRollup&quot;</span><span class="p">,</span>
+       <span class="s2">&quot;execution_interval&quot;</span><span class="p">:</span> <span class="p">{</span>
+               <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+               <span class="s2">&quot;unit&quot;</span><span class="p">:</span> <span class="s2">&quot;hours&quot;</span>
+       <span class="p">},</span>
+       <span class="s2">&quot;rollups&quot;</span><span class="p">:</span> <span class="p">[{</span>
+               <span class="s2">&quot;save_as&quot;</span><span class="p">:</span> <span class="s2">&quot;kairosdb.http.query_time_rollup&quot;</span><span class="p">,</span>
+               <span class="s2">&quot;query&quot;</span><span class="p">:</span> <span class="p">{</span>
+                       <span class="s2">&quot;cache_time&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+                       <span class="s2">&quot;metrics&quot;</span><span class="p">:</span> <span class="p">[{</span>
+                               <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;kairosdb.http.query_time&quot;</span><span class="p">,</span>
+                               <span class="s2">&quot;limit&quot;</span><span class="p">:</span> <span class="mi">10000</span><span class="p">,</span>
+                               <span class="s2">&quot;tags&quot;</span><span class="p">:</span> <span class="p">{</span>
+                                       <span class="s2">&quot;host&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;foo&quot;</span><span class="p">,</span> <span class="s2">&quot;bar&quot;</span><span class="p">],</span>
+                                       <span class="s2">&quot;customer&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;foobar&quot;</span><span class="p">]</span>
+                               <span class="p">},</span>
+                               <span class="s2">&quot;aggregators&quot;</span><span class="p">:</span> <span class="p">[{</span>
+                                       <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;sum&quot;</span><span class="p">,</span>
+                                       <span class="s2">&quot;sampling&quot;</span><span class="p">:</span> <span class="p">{</span>
+                                               <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+                                               <span class="s2">&quot;unit&quot;</span><span class="p">:</span> <span class="s2">&quot;minutes&quot;</span>
+                                       <span class="p">}</span>
+                               <span class="p">},</span> <span class="p">{</span>
+                                       <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;avg&quot;</span><span class="p">,</span>
+                                       <span class="s2">&quot;sampling&quot;</span><span class="p">:</span> <span class="p">{</span>
+                                               <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+                                               <span class="s2">&quot;unit&quot;</span><span class="p">:</span> <span class="s2">&quot;minutes&quot;</span>
+                                       <span class="p">}</span>
+                               <span class="p">}]</span>
+                       <span class="p">}]</span>
+               <span class="p">}</span>
+       <span class="p">}]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="roll-up-properties">
+<h2>Roll-up Properties<a class="headerlink" href="#roll-up-properties" title="Permalink to this headline">¶</a></h2>
+<p><em>name</em>
+The name of the roll-up task.</p>
+<p><em>execution_interval</em>
+When the roll-up task is exected specified as value and unit. Possible unit values are &#8220;milliseconds&#8221;, &#8220;seconds&#8221;, &#8220;minutes&#8221;, &#8220;hours&#8221;, &#8220;days&#8221;, &#8220;weeks&#8221;, &#8220;months&#8221;, and &#8220;years&#8221;.</p>
+<p><em>rollups</em>
+An array of roll-ups. A roll-up consists of</p>
+<ul class="simple">
+<li><em>save_as</em> - the name of the metric where the roll-up data points are stored.</li>
+<li><em>query</em> - the query that is performed (see <a class="reference internal" href="QueryMetrics.html"><em>QueryMetrics</em></a>).</li>
+</ul>
+</div>
+<div class="section" id="response">
+<h2>Response<a class="headerlink" href="#response" title="Permalink to this headline">¶</a></h2>
+<p><em>Success</em></p>
+<blockquote>
+<div><p>The response contains either the metric resource created. Returns 200 when successful.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;7b2893fc-7654-4764-851a-a311e854ee75&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;MyRollupTaskName&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;attributes&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;/api/v1/rollups/7b2893fc-7654-4764-851a-a311e854ee75&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p><em>Failure</em></p>
+<blockquote>
+<div><p>The response will be 400 Bad Request if the request is invalid.</p>
+<p>The response will be 500 Internal Server Error if an error occurs retrieving data.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;errors&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;metrics[0].aggregate must be one of MIN,SUM,MAX,AVG,DEV&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;metrics[0].sampling.unit must be one of  SECONDS,MINUTES,HOURS,DAYS,WEEKS,YEARS&quot;</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="list-roll-up-tasks">
+<h1>List Roll-up Tasks<a class="headerlink" href="#list-roll-up-tasks" title="Permalink to this headline">¶</a></h1>
+<p>Lists all defined roll-up tasks.</p>
+<div class="section" id="id1">
+<h2>Method<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div>GET</div></blockquote>
+</div>
+<div class="section" id="id2">
+<h2>Request<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><a class="reference external" href="http://[host]:[port]/api/v1/rollups">http://[host]:[port]/api/v1/rollups</a></div></blockquote>
+</div>
+<div class="section" id="id3">
+<h2>Body<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div>None</div></blockquote>
+</div>
+<div class="section" id="id4">
+<h2>Response<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<p><em>Success</em></p>
+<blockquote>
+<div><p>The response contains a list of roll-up tasks. Returns 200 for success.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">[{</span>
+    <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;ce55e623-0610-4451-a725-3daee896afd9&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;MyRollup&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;execution_interval&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="s2">&quot;unit&quot;</span><span class="p">:</span> <span class="s2">&quot;hours&quot;</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;rollups&quot;</span><span class="p">:</span> <span class="p">[{</span>
+            <span class="s2">&quot;save_as&quot;</span><span class="p">:</span> <span class="s2">&quot;kairosdb.http.query_time_rollup&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;query&quot;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;cache_time&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+                    <span class="s2">&quot;metrics&quot;</span><span class="p">:</span> <span class="p">[{</span>
+                            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;kairosdb.http.query_time&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;limit&quot;</span><span class="p">:</span> <span class="mi">10000</span><span class="p">,</span>
+                            <span class="s2">&quot;tags&quot;</span><span class="p">:</span> <span class="p">{</span>
+                                    <span class="s2">&quot;host&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;foo&quot;</span><span class="p">,</span> <span class="s2">&quot;bar&quot;</span><span class="p">],</span>
+                                    <span class="s2">&quot;customer&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;foobar&quot;</span><span class="p">]</span>
+                            <span class="p">},</span>
+                            <span class="s2">&quot;aggregators&quot;</span><span class="p">:</span> <span class="p">[{</span>
+                                    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;sum&quot;</span><span class="p">,</span>
+                                    <span class="s2">&quot;sampling&quot;</span><span class="p">:</span> <span class="p">{</span>
+                                            <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+                                            <span class="s2">&quot;unit&quot;</span><span class="p">:</span> <span class="s2">&quot;minutes&quot;</span>
+                                    <span class="p">}</span>
+                            <span class="p">},</span> <span class="p">{</span>
+                                    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;avg&quot;</span><span class="p">,</span>
+                                    <span class="s2">&quot;sampling&quot;</span><span class="p">:</span> <span class="p">{</span>
+                                            <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+                                            <span class="s2">&quot;unit&quot;</span><span class="p">:</span> <span class="s2">&quot;minutes&quot;</span>
+                                    <span class="p">}</span>
+                            <span class="p">}]</span>
+                    <span class="p">}]</span>
+            <span class="p">}</span>
+    <span class="p">}]</span>
+<span class="p">}]</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p><em>Failure</em></p>
+<blockquote>
+<div>The response will be 500 Internal Server Error if an error occurs retrieving data.</div></blockquote>
+</div>
+</div>
+<div class="section" id="get-roll-up-task">
+<h1>Get Roll-up Task<a class="headerlink" href="#get-roll-up-task" title="Permalink to this headline">¶</a></h1>
+<p>Returns the roll-up task by Id.</p>
+<div class="section" id="id5">
+<h2>Method<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div>GET</div></blockquote>
+</div>
+<div class="section" id="id6">
+<h2>Request<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><a class="reference external" href="http://[host]:[port]/api/v1/rollups">http://[host]:[port]/api/v1/rollups</a>/{id}</div></blockquote>
+</div>
+<div class="section" id="id7">
+<h2>Body<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div>None</div></blockquote>
+</div>
+<div class="section" id="id8">
+<h2>Response<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
+<p><em>Success</em></p>
+<blockquote>
+<div><p>The response contains the roll-up for the given id. Returns 200 for success.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;ce55e623-0610-4451-a725-3daee896afd9&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;MyRollup&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;execution_interval&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="s2">&quot;unit&quot;</span><span class="p">:</span> <span class="s2">&quot;hours&quot;</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;rollups&quot;</span><span class="p">:</span> <span class="p">[{</span>
+            <span class="s2">&quot;save_as&quot;</span><span class="p">:</span> <span class="s2">&quot;kairosdb.http.query_time_rollup&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;query&quot;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;cache_time&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+                    <span class="s2">&quot;metrics&quot;</span><span class="p">:</span> <span class="p">[{</span>
+                            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;kairosdb.http.query_time&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;limit&quot;</span><span class="p">:</span> <span class="mi">10000</span><span class="p">,</span>
+                            <span class="s2">&quot;tags&quot;</span><span class="p">:</span> <span class="p">{</span>
+                                    <span class="s2">&quot;host&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;foo&quot;</span><span class="p">,</span> <span class="s2">&quot;bar&quot;</span><span class="p">],</span>
+                                    <span class="s2">&quot;customer&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;foobar&quot;</span><span class="p">]</span>
+                            <span class="p">},</span>
+                            <span class="s2">&quot;aggregators&quot;</span><span class="p">:</span> <span class="p">[{</span>
+                                    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;sum&quot;</span><span class="p">,</span>
+                                    <span class="s2">&quot;sampling&quot;</span><span class="p">:</span> <span class="p">{</span>
+                                            <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+                                            <span class="s2">&quot;unit&quot;</span><span class="p">:</span> <span class="s2">&quot;minutes&quot;</span>
+                                    <span class="p">}</span>
+                            <span class="p">},</span> <span class="p">{</span>
+                                    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;avg&quot;</span><span class="p">,</span>
+                                    <span class="s2">&quot;sampling&quot;</span><span class="p">:</span> <span class="p">{</span>
+                                            <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+                                            <span class="s2">&quot;unit&quot;</span><span class="p">:</span> <span class="s2">&quot;minutes&quot;</span>
+                                    <span class="p">}</span>
+                            <span class="p">}]</span>
+                    <span class="p">}]</span>
+            <span class="p">}</span>
+    <span class="p">}]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p><em>Failure</em></p>
+<blockquote>
+<div><p>The response will be 404 if the roll-up resource specified does not exist.</p>
+<p>The response will be 500 Internal Server Error if an error occurs retrieving data.</p>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="delete-roll-up-task">
+<h1>Delete Roll-up Task<a class="headerlink" href="#delete-roll-up-task" title="Permalink to this headline">¶</a></h1>
+<p>Deletes the roll-up task specified for the given Id.</p>
+<div class="section" id="id9">
+<h2>Method<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div>DELETE</div></blockquote>
+</div>
+<div class="section" id="id10">
+<h2>Request<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><a class="reference external" href="http://[host]:[port]/api/v1/rollups">http://[host]:[port]/api/v1/rollups</a>/{id}</div></blockquote>
+</div>
+<div class="section" id="id11">
+<h2>Body<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div>None</div></blockquote>
+</div>
+<div class="section" id="id12">
+<h2>Response<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h2>
+<p><em>Success</em></p>
+<blockquote>
+<div>No data is returned. Returns 204 if the task was successfully deleted.</div></blockquote>
+<p><em>Failure</em></p>
+<blockquote>
+<div><p>The response will be 404 if the roll-up resource specified does not exist.</p>
+<p>The response will be 500 Internal Server Error if an error occurs retrieving data.</p>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="update-roll-up-task">
+<h1>Update Roll-up Task<a class="headerlink" href="#update-roll-up-task" title="Permalink to this headline">¶</a></h1>
+<p>Updates the roll-up task specified by the Id.</p>
+<div class="section" id="id13">
+<h2>Method<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div>PUT</div></blockquote>
+</div>
+<div class="section" id="id14">
+<h2>Request<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><a class="reference external" href="http://[host]:[port]/api/v1/rollups">http://[host]:[port]/api/v1/rollups</a>/{id}</div></blockquote>
+</div>
+<div class="section" id="id15">
+<h2>Body<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;MyRollup&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;execution_interval&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+                <span class="s2">&quot;unit&quot;</span><span class="p">:</span> <span class="s2">&quot;hours&quot;</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;rollups&quot;</span><span class="p">:</span> <span class="p">[{</span>
+                <span class="s2">&quot;save_as&quot;</span><span class="p">:</span> <span class="s2">&quot;kairosdb.http.query_time_rollup&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;query&quot;</span><span class="p">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;cache_time&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+                        <span class="s2">&quot;metrics&quot;</span><span class="p">:</span> <span class="p">[{</span>
+                                <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;kairosdb.http.query_time&quot;</span><span class="p">,</span>
+                                <span class="s2">&quot;limit&quot;</span><span class="p">:</span> <span class="mi">10000</span><span class="p">,</span>
+                                <span class="s2">&quot;tags&quot;</span><span class="p">:</span> <span class="p">{</span>
+                                        <span class="s2">&quot;host&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;foo&quot;</span><span class="p">,</span> <span class="s2">&quot;bar&quot;</span><span class="p">],</span>
+                                        <span class="s2">&quot;customer&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;foobar&quot;</span><span class="p">]</span>
+                                <span class="p">},</span>
+                                <span class="s2">&quot;aggregators&quot;</span><span class="p">:</span> <span class="p">[{</span>
+                                        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;sum&quot;</span><span class="p">,</span>
+                                        <span class="s2">&quot;sampling&quot;</span><span class="p">:</span> <span class="p">{</span>
+                                                <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+                                                <span class="s2">&quot;unit&quot;</span><span class="p">:</span> <span class="s2">&quot;minutes&quot;</span>
+                                        <span class="p">}</span>
+                                <span class="p">},</span> <span class="p">{</span>
+                                        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;avg&quot;</span><span class="p">,</span>
+                                        <span class="s2">&quot;sampling&quot;</span><span class="p">:</span> <span class="p">{</span>
+                                                <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+                                                <span class="s2">&quot;unit&quot;</span><span class="p">:</span> <span class="s2">&quot;minutes&quot;</span>
+                                        <span class="p">}</span>
+                                <span class="p">}]</span>
+                        <span class="p">}]</span>
+                <span class="p">}</span>
+        <span class="p">}]</span>
+ <span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="id16">
+<h2>Response<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h2>
+<p><em>Success</em></p>
+<blockquote>
+<div><p>The response contains the roll-up for the given id. Returns 200 for success.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;ce55e623-0610-4451-a725-3daee896afd9&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;MyRollup&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;execution_interval&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="s2">&quot;unit&quot;</span><span class="p">:</span> <span class="s2">&quot;hours&quot;</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;rollups&quot;</span><span class="p">:</span> <span class="p">[{</span>
+            <span class="s2">&quot;save_as&quot;</span><span class="p">:</span> <span class="s2">&quot;kairosdb.http.query_time_rollup&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;query&quot;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;cache_time&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+                    <span class="s2">&quot;metrics&quot;</span><span class="p">:</span> <span class="p">[{</span>
+                            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;kairosdb.http.query_time&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;limit&quot;</span><span class="p">:</span> <span class="mi">10000</span><span class="p">,</span>
+                            <span class="s2">&quot;tags&quot;</span><span class="p">:</span> <span class="p">{</span>
+                                    <span class="s2">&quot;host&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;foo&quot;</span><span class="p">,</span> <span class="s2">&quot;bar&quot;</span><span class="p">],</span>
+                                    <span class="s2">&quot;customer&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;foobar&quot;</span><span class="p">]</span>
+                            <span class="p">},</span>
+                            <span class="s2">&quot;aggregators&quot;</span><span class="p">:</span> <span class="p">[{</span>
+                                    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;sum&quot;</span><span class="p">,</span>
+                                    <span class="s2">&quot;sampling&quot;</span><span class="p">:</span> <span class="p">{</span>
+                                            <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+                                            <span class="s2">&quot;unit&quot;</span><span class="p">:</span> <span class="s2">&quot;minutes&quot;</span>
+                                    <span class="p">}</span>
+                            <span class="p">},</span> <span class="p">{</span>
+                                    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;avg&quot;</span><span class="p">,</span>
+                                    <span class="s2">&quot;sampling&quot;</span><span class="p">:</span> <span class="p">{</span>
+                                            <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+                                            <span class="s2">&quot;unit&quot;</span><span class="p">:</span> <span class="s2">&quot;minutes&quot;</span>
+                                    <span class="p">}</span>
+                            <span class="p">}]</span>
+                    <span class="p">}]</span>
+            <span class="p">}</span>
+    <span class="p">}]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p><em>Failure</em></p>
+<blockquote>
+<div><p>The response will be 400 Bad Request if the request is invalid.</p>
+<p>The response will be 404 if the roll-up resource specified does not exist.</p>
+<p>The response will be 500 Internal Server Error if an error occurs retrieving data.</p>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="backfill-roll-up-task">
+<h1>Backfill Roll-up Task<a class="headerlink" href="#backfill-roll-up-task" title="Permalink to this headline">¶</a></h1>
+<p>Executes a roll-up task for the given time range. This allows you to back fill a roll-up.
+This is a one time operation.</p>
+<div class="section" id="id17">
+<h2>Method<a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div>GET</div></blockquote>
+</div>
+<div class="section" id="id18">
+<h2>Request<a class="headerlink" href="#id18" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><a class="reference external" href="http://[host]:[port]/api/v1/rollups/backfill">http://[host]:[port]/api/v1/rollups/backfill</a>/{id}?startTime=&lt;time&gt;&amp;endTime=&lt;time&gt;</div></blockquote>
+</div>
+<div class="section" id="parameters">
+<h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
+<p><strong>startTime</strong> - (Required) The start time to execute the roll-up. The format is yyyy-MM-dd-HH-mm-ss-SSS.
+That is year-month-day-hour-minute-seconds-milliseconds.</p>
+<p><strong>endTime</strong> - (Optional). The end time for the roll-up execution. If not specified the current time is used.
+The format is yyyy-MM-dd-HH-mm-ss-SSS. That is year-month-day-hour-minute-seconds-milliseconds.</p>
+</div>
+<div class="section" id="id19">
+<h2>Body<a class="headerlink" href="#id19" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div>none</div></blockquote>
+</div>
+<div class="section" id="id20">
+<h2>Response<a class="headerlink" href="#id20" title="Permalink to this headline">¶</a></h2>
+<p><em>Success</em></p>
+<blockquote>
+<div>204 - no content</div></blockquote>
+<p><em>Failure</em></p>
+<blockquote>
+<div><p>The response will be 400 Bad Request if the request is invalid.</p>
+<p>The response will be 404 if the roll-up resource specified does not exist.</p>
+<p>The response will be 500 Internal Server Error if an error occurs retrieving data.</p>
+</div></blockquote>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2015, KairosDB Team.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.6.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

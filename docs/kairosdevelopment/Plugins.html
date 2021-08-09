@@ -1,0 +1,221 @@
+
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Plugins &mdash; KairosDB 1.0.1 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-3.3.4/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-3.3.4/css/bootstrap-none.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/kairosdb.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.png"/>
+    <link rel="top" title="KairosDB 1.0.1 documentation" href="../index.html" />
+    <link rel="up" title="Kairos Development" href="index.html" />
+    <link rel="next" title="Custom Data" href="CustomData.html" />
+    <link rel="prev" title="Kairos Development" href="index.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head>
+  <body role="document">
+
+
+
+
+ <!-- Fixed navbar -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand logo" href="http://kairosdb.github.io/"><img alt="Brand" src="../_static/kairosdb.png"></a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+			<li><a href="http://kairosdb.github.io/">Overview</a></li>
+            <li class="active"><a href="../index.html">Documentation</a></li>
+            <li ><a href="https://groups.google.com/forum/?hl=en#!forum/kairosdb-group" target="_blank">Community</a></li>
+            <li><a href="https://github.com/kairosdb/kairosdb">Github</a></li>
+			
+            
+<form class="navbar-form navbar-right" action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+          </ul>
+		  
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+<div class="container">
+  <div class="row">
+      <div class="col-md-3">
+        <div id="sidebar" class="bs-sidenav"><h3><a href="../index.html">Table Of Contents</a></h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../GettingStarted.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../FAQ.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PushingData.html">Pushing data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../QueryingData.html">Querying data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ImportExport.html">Importing and Exporting Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../WebUI.html">Web UI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Configuration.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Logging.html">Logging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Statistics.html">KairosDB Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../KairosClient.html">Kairos DB Java Client Library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CassandraSchema.html">Cassandra Schema</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../MultiCluster.html">Multi Cluster Cassandra</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Roll-ups.html">Roll-ups</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Kairos Development</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="">Plugins</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#plugin-requirements">Plugin Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#plugin-loading-process">Plugin Loading Process</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#plugins-with-extra-dependencies">Plugins with extra dependencies</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="CustomData.html">Custom Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="EventBus.html">Using The Event Buss</a></li>
+<li class="toctree-l2"><a class="reference internal" href="IntelliJSetup.html">Editing Kairos with IntelliJ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Aggregators_and_GroupBys.html">Adding Aggregators and GroupBys</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../restapi/index.html">REST API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../telnetapi/index.html">Telnet API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Graphite.html">Graphite Protocol</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../IssueTracking.html">Bug Tracking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../External.html">External links</a></li>
+</ul>
+
+<form action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+        </div>
+      </div>
+    <div class="col-md-9">
+      
+  <div class="section" id="plugins">
+<h1>Plugins<a class="headerlink" href="#plugins" title="Permalink to this headline">¶</a></h1>
+<dl class="docutils">
+<dt>Plugins provide a way to extend Kairos in various ways.  With plugins you can:</dt>
+<dd><ol class="first last arabic simple">
+<li>Add data point listeners</li>
+<li>Add a new data store to put data points into</li>
+<li>Add a new protocol handler</li>
+<li>Add a custom system monitor</li>
+</ol>
+</dd>
+</dl>
+<p>For a good example of a simple plugin, see the <a class="reference external" href="https://github.com/proofpoint/kairos-announce">kairos-announce</a> project.</p>
+<div class="section" id="plugin-requirements">
+<h2>Plugin Requirements<a class="headerlink" href="#plugin-requirements" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt>To create a plugin you need to do the following things</dt>
+<dd><ol class="first last arabic simple">
+<li>Create a class that implements com.google.inject.AbstractModule.</li>
+<li>Create a properties file that has an entry kairosdb.service.[your_service_name] that is set to the full class name of your Module.</li>
+<li>Install a jar containing your class files to /opt/kairosdb/lib and install the properties file into /opt/kairosdb/conf</li>
+</ol>
+</dd>
+</dl>
+</div>
+<div class="section" id="plugin-loading-process">
+<h2>Plugin Loading Process<a class="headerlink" href="#plugin-loading-process" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt>Here is how KairosDB loads libraries and plugins:</dt>
+<dd><ol class="first last arabic simple">
+<li>All jar files in lib are automatically added to the classpath by the startup script.</li>
+<li>Properties in kairosdb.properties are loaded first from the classpath and then from the file.</li>
+<li>For every .properties file in the conf directory besides kairosdb.properties, the following happens:<ol class="arabic">
+<li>Kairos attempts to load the file from the classpath.  (this lets you add default values to future releases of your plugin)</li>
+<li>Kairos loads the conf properties file.</li>
+</ol>
+</li>
+<li>Kairos looks through all the loaded properties for ones starting with kairosdb.service.  These are expected to point to Guice modules.</li>
+<li>Load all discovered Guice modules.</li>
+<li>Look through Guice bindings for implementations of KairosDBService and start them.</li>
+</ol>
+</dd>
+</dl>
+<p>There is in essence only one Properties object in Kairos so, plugins can overwrite properties set in kairosdb.properties with their own.</p>
+<p>For clarity lets look at an example of how things get loaded.  Say I create a new plugin called xplugin, my install places two files, xpluing.jar in /opt/kairosdb/lib and xplugin.properties in /opt/kairosdb/conf.</p>
+<p>When KairosDB starts it first loads kairosdb.properties and then scans the conf directory for other .properties files.  KairosDB sees xplugin.properties and tries to find the file on the classpath.  This lets me as a plugin developer create a xplugin.properties that placed within my xplugin.jar file and contains default settings.  After loading the properties file on the classpath KairosDB loads the file from the conf directory.</p>
+</div>
+<div class="section" id="plugins-with-extra-dependencies">
+<h2>Plugins with extra dependencies<a class="headerlink" href="#plugins-with-extra-dependencies" title="Permalink to this headline">¶</a></h2>
+<p>What do you do if you have a plugin that includes some client library that
+requires some old version of guava that conflicts with what is in Kairos?
+You can optionally specify a location to load your plugin from by specifying
+the kairosdb.service_folder.[your_plugin_name] property.  When you specify this
+property Kairos will use a new ClassLoader to load your jar and dependencies.</p>
+<blockquote>
+<div><strong>Note:</strong> The one downside of this is that you cannot use the method above where by
+properties are loaded from your jar before the external properties file (chicken
+and egg problem with the properties file).</div></blockquote>
+<p>Lets say you have a plugin called foo.  You install a properties file that contains</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">kairosdb</span><span class="o">.</span><span class="n">service</span><span class="o">.</span><span class="n">foo</span><span class="o">=</span><span class="n">com</span><span class="o">.</span><span class="n">foo</span><span class="o">.</span><span class="n">MyPluginModule</span>
+<span class="n">kairosdb</span><span class="o">.</span><span class="n">service_folder</span><span class="o">.</span><span class="n">foo</span><span class="o">=</span><span class="n">lib</span><span class="o">/</span><span class="n">foo</span>
+</pre></div>
+</div>
+<p>You can then place your jar and dependencies in the folder</p>
+<div class="highlight-python"><div class="highlight"><pre>lib/foo/
+</pre></div>
+</div>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2015, KairosDB Team.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.6.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

@@ -1,0 +1,481 @@
+
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Metadata &mdash; KairosDB 1.0.1 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-3.3.4/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-3.3.4/css/bootstrap-none.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/kairosdb.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.png"/>
+    <link rel="top" title="KairosDB 1.0.1 documentation" href="../index.html" />
+    <link rel="up" title="REST API" href="index.html" />
+    <link rel="next" title="Query Metrics" href="QueryMetrics.html" />
+    <link rel="prev" title="List Metric Names" href="ListMetricNames.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head>
+  <body role="document">
+
+
+
+
+ <!-- Fixed navbar -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand logo" href="http://kairosdb.github.io/"><img alt="Brand" src="../_static/kairosdb.png"></a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+			<li><a href="http://kairosdb.github.io/">Overview</a></li>
+            <li class="active"><a href="../index.html">Documentation</a></li>
+            <li ><a href="https://groups.google.com/forum/?hl=en#!forum/kairosdb-group" target="_blank">Community</a></li>
+            <li><a href="https://github.com/kairosdb/kairosdb">Github</a></li>
+			
+            
+<form class="navbar-form navbar-right" action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+          </ul>
+		  
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+<div class="container">
+  <div class="row">
+      <div class="col-md-3">
+        <div id="sidebar" class="bs-sidenav"><h3><a href="../index.html">Table Of Contents</a></h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../GettingStarted.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../FAQ.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PushingData.html">Pushing data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../QueryingData.html">Querying data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ImportExport.html">Importing and Exporting Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../WebUI.html">Web UI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Configuration.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Logging.html">Logging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Statistics.html">KairosDB Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../KairosClient.html">Kairos DB Java Client Library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CassandraSchema.html">Cassandra Schema</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../MultiCluster.html">Multi Cluster Cassandra</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Roll-ups.html">Roll-ups</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../kairosdevelopment/index.html">Kairos Development</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">REST API</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Overview.html">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Aggregators.html">Aggregators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="AddDataPoints.html">Add Data Points</a></li>
+<li class="toctree-l2"><a class="reference internal" href="DeleteDataPoints.html">Delete Data Points</a></li>
+<li class="toctree-l2"><a class="reference internal" href="DeleteMetric.html">Delete Metric</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Features.html">Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Health.html">Health Checks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ListMetricNames.html">List Metric Names</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Metadata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#add-the-value">Add the Value</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#method">Method</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#request">Request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#body">Body</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#description">Description</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#response">Response</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#get-the-value">Get the Value</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">Method</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">Request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">Body</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">Description</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">Response</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#list-service-keys">List Service Keys</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id6">Method</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">Request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id8">Body</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id9">Description</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id10">Response</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#list-keys">List Keys</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id11">Method</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id12">Request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id13">Body</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id14">Description</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id15">Response</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#delete-key">Delete Key</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id16">Method</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id17">Request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id18">Body</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id19">Description</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id20">Response</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="QueryMetrics.html">Query Metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QueryMetricTags.html">Query Metric Tags</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Roll-ups.html">Roll-ups</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Roll-ups.html#create-roll-up-task">Create Roll-up Task</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Roll-ups.html#list-roll-up-tasks">List Roll-up Tasks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Roll-ups.html#get-roll-up-task">Get Roll-up Task</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Roll-ups.html#delete-roll-up-task">Delete Roll-up Task</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Roll-ups.html#update-roll-up-task">Update Roll-up Task</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Roll-ups.html#backfill-roll-up-task">Backfill Roll-up Task</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Version.html">Version</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../telnetapi/index.html">Telnet API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Graphite.html">Graphite Protocol</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../IssueTracking.html">Bug Tracking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../External.html">External links</a></li>
+</ul>
+
+<form action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+        </div>
+      </div>
+    <div class="col-md-9">
+      
+  <div class="section" id="metadata">
+<h1>Metadata<a class="headerlink" href="#metadata" title="Permalink to this headline">¶</a></h1>
+<p>The Metadata Rest API is a way to write data to the datastore in name/value pairs. Data is written
+separate from the time series data. Metadata is partitioned by a service name. A service partition
+can have multiple service keys. Each service key holds name/value pairs. A value is a string.</p>
+<p><strong>Example</strong></p>
+<p>Assume you have a service that maintains metadata about each metric. Let&#8217;s call it the Metric Service.
+Your service associates each metric with a description, owner, and the unit type. The service name
+is &#8220;Metric Service&#8221;, the metric is the service key and the name/value pairs are the owner, unit, and
+description and their values.</p>
+<p><strong>Metric Service</strong></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="38%" />
+<col width="16%" />
+<col width="14%" />
+<col width="33%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Metric</th>
+<th class="head">Owner</th>
+<th class="head">Unit</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>disk.available</td>
+<td>OPs team</td>
+<td>MB</td>
+<td>Available disk space</td>
+</tr>
+<tr class="row-odd"><td>foo.throughput</td>
+<td>Foo team</td>
+<td>Bytes</td>
+<td>Number of bytes</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr class="docutils" />
+<div class="section" id="add-the-value">
+<h1>Add the Value<a class="headerlink" href="#add-the-value" title="Permalink to this headline">¶</a></h1>
+<p>Add a value to service metadata.</p>
+<div class="section" id="method">
+<h2>Method<a class="headerlink" href="#method" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div>POST</div></blockquote>
+</div>
+<div class="section" id="request">
+<h2>Request<a class="headerlink" href="#request" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><a class="reference external" href="http://[host]:[port]/api/v1/metadata">http://[host]:[port]/api/v1/metadata</a>/{service}/{serviceKey}/{key}</div></blockquote>
+</div>
+<div class="section" id="body">
+<h2>Body<a class="headerlink" href="#body" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><div class="highlight"><pre>&lt;The Value&gt;
+</pre></div>
+</div>
+</div>
+<div class="section" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
+<p>Writes the value for the given service, service key, and key.</p>
+<p><em>service</em>
+The name of the service.</p>
+<p><em>serviceKey</em>
+The name of the service key.</p>
+<p><em>key</em>
+The name of the key.</p>
+<p><em>value</em>
+The value to store. The value must be a string.</p>
+</div>
+<div class="section" id="response">
+<h2>Response<a class="headerlink" href="#response" title="Permalink to this headline">¶</a></h2>
+<p><em>Success</em></p>
+<blockquote>
+<div>Returns 204 when successful.</div></blockquote>
+<p><em>Failure</em></p>
+<blockquote>
+<div><p>The response will be 500 Internal Server Error if an error occurs writing the value.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;errors&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;Failed to add value&quot;</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="get-the-value">
+<h1>Get the Value<a class="headerlink" href="#get-the-value" title="Permalink to this headline">¶</a></h1>
+<p>Returns the value for the given service.</p>
+<div class="section" id="id1">
+<h2>Method<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div>GET</div></blockquote>
+</div>
+<div class="section" id="id2">
+<h2>Request<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><a class="reference external" href="http://[host]:[port]/api/v1/metadata">http://[host]:[port]/api/v1/metadata</a>/{service}/{serviceKey}/{key}</div></blockquote>
+</div>
+<div class="section" id="id3">
+<h2>Body<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div>None</div></blockquote>
+</div>
+<div class="section" id="id4">
+<h2>Description<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<p>Returns the value for the given service, service key, and key if it exists or an empty response if it
+does not exist.</p>
+<p><em>service</em>
+The name of the service.</p>
+<p><em>serviceKey</em>
+The name of the service key.</p>
+<p><em>key</em>
+The name of the key.</p>
+</div>
+<div class="section" id="id5">
+<h2>Response<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<p><em>Success</em></p>
+<blockquote>
+<div>The response contains the value or an empty string if not found. Returns 200 when successful.</div></blockquote>
+<p><em>Failure</em></p>
+<blockquote>
+<div><p>The response will be 500 Internal Server Error if an error occurs writing the value.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;errors&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;Failed to retrieve value&quot;</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="list-service-keys">
+<h1>List Service Keys<a class="headerlink" href="#list-service-keys" title="Permalink to this headline">¶</a></h1>
+<p>Returns all service keys for the given service</p>
+<div class="section" id="id6">
+<h2>Method<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div>GET</div></blockquote>
+</div>
+<div class="section" id="id7">
+<h2>Request<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><a class="reference external" href="http://[host]:[port]/api/v1/metadata">http://[host]:[port]/api/v1/metadata</a>/{service}</div></blockquote>
+</div>
+<div class="section" id="id8">
+<h2>Body<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div>None</div></blockquote>
+</div>
+<div class="section" id="id9">
+<h2>Description<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
+<p>Returns all keys for the given service or an empty list if no service keys exist for the given service.</p>
+<p><em>service</em>
+The name of the service.</p>
+</div>
+<div class="section" id="id10">
+<h2>Response<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h2>
+<p><em>Success</em></p>
+<blockquote>
+<div><div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+   <span class="s2">&quot;results&quot;</span><span class="p">:[</span><span class="s2">&quot;service_key_1&quot;</span><span class="p">,</span> <span class="s2">&quot;service_key_2&quot;</span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The response contains a list of service keys for the given service or an empty string if not found. Returns 200 when successful.</p>
+</div></blockquote>
+<p><em>Failure</em></p>
+<blockquote>
+<div><p>The response will be 500 Internal Server Error if an error occurs writing the value.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;errors&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;Failed to get keys&quot;</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="list-keys">
+<h1>List Keys<a class="headerlink" href="#list-keys" title="Permalink to this headline">¶</a></h1>
+<p>Returns all keys for the given service and service key.</p>
+<div class="section" id="id11">
+<h2>Method<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div>GET</div></blockquote>
+</div>
+<div class="section" id="id12">
+<h2>Request<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><a class="reference external" href="http://[host]:[port]/api/v1/metadata">http://[host]:[port]/api/v1/metadata</a>/{service}/{serviceKey}</div></blockquote>
+</div>
+<div class="section" id="id13">
+<h2>Body<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div>None</div></blockquote>
+</div>
+<div class="section" id="id14">
+<h2>Description<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h2>
+<p>Returns all keys for the given service key or an empty list if no keys exist.</p>
+<p><em>service</em>
+The name of the service.</p>
+<p><em>serviceKey</em>
+The name of the service key.</p>
+</div>
+<div class="section" id="id15">
+<h2>Response<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h2>
+<p><em>Success</em></p>
+<blockquote>
+<div><div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+   <span class="s2">&quot;results&quot;</span><span class="p">:[</span><span class="s2">&quot;key_1&quot;</span><span class="p">,</span> <span class="s2">&quot;key_2&quot;</span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The response contains a list of keys for the given service key or an empty string if not found. Returns 200 when successful.</p>
+</div></blockquote>
+<p><em>Failure</em></p>
+<blockquote>
+<div><p>The response will be 500 Internal Server Error if an error occurs writing the value.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;errors&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;Failed to get keys&quot;</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="delete-key">
+<h1>Delete Key<a class="headerlink" href="#delete-key" title="Permalink to this headline">¶</a></h1>
+<p>Deletes the specified key.</p>
+<div class="section" id="id16">
+<h2>Method<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div>DELETE</div></blockquote>
+</div>
+<div class="section" id="id17">
+<h2>Request<a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><a class="reference external" href="http://[host]:[port]/api/v1/metadata">http://[host]:[port]/api/v1/metadata</a>/{service}/{serviceKey}/{key}</div></blockquote>
+</div>
+<div class="section" id="id18">
+<h2>Body<a class="headerlink" href="#id18" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div>None</div></blockquote>
+</div>
+<div class="section" id="id19">
+<h2>Description<a class="headerlink" href="#id19" title="Permalink to this headline">¶</a></h2>
+<p>Delete the given key if it exists.</p>
+<p><em>service</em>
+The name of the service.</p>
+<p><em>serviceKey</em>
+The name of the service key.</p>
+<p><em>key</em>
+The name of the key.</p>
+</div>
+<div class="section" id="id20">
+<h2>Response<a class="headerlink" href="#id20" title="Permalink to this headline">¶</a></h2>
+<p><em>Success</em></p>
+<blockquote>
+<div>Returns 204 when successful.</div></blockquote>
+<p><em>Failure</em></p>
+<blockquote>
+<div><p>The response will be 500 Internal Server Error if an error occurs writing the value.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;errors&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;Failed to delete key&quot;</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2015, KairosDB Team.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.6.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

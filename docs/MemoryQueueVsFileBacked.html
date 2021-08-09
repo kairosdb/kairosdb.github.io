@@ -1,0 +1,183 @@
+
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Memory Queue vs File Backed Queue &mdash; KairosDB 1.0.1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-3.3.4/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-3.3.4/css/bootstrap-none.min.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="_static/kairosdb.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+    <link rel="shortcut icon" href="_static/favicon.png"/>
+    <link rel="top" title="KairosDB 1.0.1 documentation" href="index.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head>
+  <body role="document">
+
+
+
+
+ <!-- Fixed navbar -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand logo" href="http://kairosdb.github.io/"><img alt="Brand" src="_static/kairosdb.png"></a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+			<li><a href="http://kairosdb.github.io/">Overview</a></li>
+            <li class="active"><a href="index.html">Documentation</a></li>
+            <li ><a href="https://groups.google.com/forum/?hl=en#!forum/kairosdb-group" target="_blank">Community</a></li>
+            <li><a href="https://github.com/kairosdb/kairosdb">Github</a></li>
+			
+            
+<form class="navbar-form navbar-right" action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+          </ul>
+		  
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+<div class="container">
+  <div class="row">
+      <div class="col-md-3">
+        <div id="sidebar" class="bs-sidenav"><h3><a href="index.html">Table Of Contents</a></h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="GettingStarted.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FAQ.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PushingData.html">Pushing data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="QueryingData.html">Querying data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ImportExport.html">Importing and Exporting Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="WebUI.html">Web UI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Configuration.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Logging.html">Logging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Statistics.html">KairosDB Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="KairosClient.html">Kairos DB Java Client Library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CassandraSchema.html">Cassandra Schema</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MultiCluster.html">Multi Cluster Cassandra</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Roll-ups.html">Roll-ups</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kairosdevelopment/index.html">Kairos Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="restapi/index.html">REST API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="telnetapi/index.html">Telnet API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Graphite.html">Graphite Protocol</a></li>
+<li class="toctree-l1"><a class="reference internal" href="IssueTracking.html">Bug Tracking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="External.html">External links</a></li>
+</ul>
+
+<form action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+        </div>
+      </div>
+    <div class="col-md-9">
+      
+  <div class="section" id="memory-queue-vs-file-backed-queue">
+<h1>Memory Queue vs File Backed Queue<a class="headerlink" href="#memory-queue-vs-file-backed-queue" title="Permalink to this headline">¶</a></h1>
+<p>In the kairosdb.conf file there is a sub section for queue_processor.  The queue
+processor class can be set to either MemoryQueueProcessor or FileQueueProcessor.
+The primary job of the queue processor is to batch up data so it can be efficiently
+sent to whatever data store you have configured.  The queue also helps smooth
+out spikes of incoming data.</p>
+<p>Regardless of what queue you configure the queue processor works the same.  Data
+is first inserted into the queue.  A single worker thread waits for data to be inserted
+into the queue.  The thread waits for a minimum batch size or a time limit before
+grabbing data to be inserted.  The minimum limits are configured in kairosdb.conf.
+A batch of data is then handed off to a pool of ingest threads that send the data
+to the configured datastore.</p>
+<div class="section" id="memory-queue">
+<h2>Memory Queue<a class="headerlink" href="#memory-queue" title="Permalink to this headline">¶</a></h2>
+<p>The Memory Queue is a circular queue that is allocated up front and used to store
+data points as they come in.  If the memory queue fills up, ingest of data points will block
+until there is room in the queue for the additional data.</p>
+</div>
+<div class="section" id="file-backed-queue">
+<h2>File Backed Queue<a class="headerlink" href="#file-backed-queue" title="Permalink to this headline">¶</a></h2>
+<p>The file backed queue uses both the above mentioned memory queue and a file backed
+queue (the bigqueue project that has been forked into the KairosDB git hub project).
+Data is always written to both the memory queue and to the file backed queue.
+While the memory queue is not full the ingest thread pulls data from the memory queue.
+When the memory queue fills up and start overwriting itself the ingest thread switches
+to read data from file until it can catch up and switch back to the memory queue.</p>
+<p>The file backed queue is a bit slower as it writes data to both locations it offeres
+two advantages.</p>
+<ol class="arabic simple">
+<li>Almost unlimited queueing (depending on disk space)</li>
+<li>Data recovery in case of a crash.  Upon startup if there is data in the file
+backed queue it is read first and sent to the backend.</li>
+</ol>
+<p>There are several metrics that help diagnose problems with the queue.</p>
+<ul class="simple">
+<li>kairosdb.queue.file_queue.size - size of queue on file.</li>
+<li>kairosdb.queue.read_from_file - count of data points read from file instead of memory (indicator that the memory queue has filled up).</li>
+<li>kairosdb.queue.process_count - number of data points read from queue</li>
+</ul>
+<p>You may be wondering how useful these metircs are if the queue is full.  The above
+metrics are special in that they get to jump to the head of the line when the ingest
+thread reads from the queue, so no matter how far behind the queue is these metrics will
+always be up to date.</p>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2015, KairosDB Team.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.6.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

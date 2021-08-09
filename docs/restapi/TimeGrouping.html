@@ -1,0 +1,239 @@
+
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Grouping by Time &mdash; KairosDB 1.0.1 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-3.3.4/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-3.3.4/css/bootstrap-none.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/kairosdb.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.png"/>
+    <link rel="top" title="KairosDB 1.0.1 documentation" href="../index.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head>
+  <body role="document">
+
+
+
+
+ <!-- Fixed navbar -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand logo" href="http://kairosdb.github.io/"><img alt="Brand" src="../_static/kairosdb.png"></a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+			<li><a href="http://kairosdb.github.io/">Overview</a></li>
+            <li class="active"><a href="../index.html">Documentation</a></li>
+            <li ><a href="https://groups.google.com/forum/?hl=en#!forum/kairosdb-group" target="_blank">Community</a></li>
+            <li><a href="https://github.com/kairosdb/kairosdb">Github</a></li>
+			
+            
+<form class="navbar-form navbar-right" action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+          </ul>
+		  
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+<div class="container">
+  <div class="row">
+      <div class="col-md-3">
+        <div id="sidebar" class="bs-sidenav"><h3><a href="../index.html">Table Of Contents</a></h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../GettingStarted.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../FAQ.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PushingData.html">Pushing data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../QueryingData.html">Querying data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ImportExport.html">Importing and Exporting Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../WebUI.html">Web UI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Configuration.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Logging.html">Logging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Statistics.html">KairosDB Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../KairosClient.html">Kairos DB Java Client Library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CassandraSchema.html">Cassandra Schema</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../MultiCluster.html">Multi Cluster Cassandra</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Roll-ups.html">Roll-ups</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../kairosdevelopment/index.html">Kairos Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index.html">REST API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../telnetapi/index.html">Telnet API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Graphite.html">Graphite Protocol</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../IssueTracking.html">Bug Tracking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../External.html">External links</a></li>
+</ul>
+
+<form action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+        </div>
+      </div>
+    <div class="col-md-9">
+      
+  <div class="section" id="grouping-by-time">
+<h1>Grouping by Time<a class="headerlink" href="#grouping-by-time" title="Permalink to this headline">¶</a></h1>
+<p>The time grouper groups results by time ranges. For example, you could group data by day of week.</p>
+<p><em>Note that the grouper calculates ranges based on the start time of the query.</em> So if you wanted to group by day of week and wanted the first group to be Sunday, then you need to set the query&#8217;s start time to be on Sunday.</p>
+<div class="section" id="syntax">
+<h2>Syntax<a class="headerlink" href="#syntax" title="Permalink to this headline">¶</a></h2>
+<p>The name for this grouper is &#8220;time&#8221;.</p>
+<div class="highlight-python"><div class="highlight"><pre>&quot;name&quot;: &quot;time&quot;
+</pre></div>
+</div>
+<p>The grouper takes a range size and a group count. The range is a value and a unit. For example, 1 day would group by day of the week (Sunday - Saturday). The group count is the number of groups. This would typically be 7 to group by day of week. But you could set this to 14 to group by fortnight.</p>
+<div class="highlight-python"><div class="highlight"><pre>&quot;range_size&quot;: {
+    &quot;value&quot;: &quot;the value&quot;,
+    &quot;unit&quot;: &quot;the unit&quot;
+},
+&quot;group_count&quot;: &quot;count&quot;
+</pre></div>
+</div>
+</div>
+<div class="section" id="example">
+<h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
+<p>The example below groups data points by hours of the day for a week. This
+creates 168 groups (number of hours in a week). The first group is the first hour on Sunday, the second group is the second hour of Sunday, etc., until the last group which is the last hour on Saturday. Again this assumes that the query start time is set to Sunday at the first hour of the day.</p>
+<div class="highlight-python"><div class="highlight"><pre>&quot;group_by&quot;: [
+      {
+        &quot;name&quot;: &quot;time&quot;,
+        &quot;group_count&quot;: &quot;168&quot;,
+        &quot;range_size&quot;: {
+          &quot;value&quot;: &quot;1&quot;,
+          &quot;unit&quot;: &quot;hours&quot;
+        }
+      }
+]
+</pre></div>
+</div>
+<p>Each object of the response JSON contains the _group_by_ information you specified in the query as well as a _group_ object. The _group_ object contains the group number. In this example, the group number will be a number between 0 and 167 because there are 168 groups.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+  <span class="s2">&quot;queries&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+          <span class="s2">&quot;results&quot;</span><span class="p">:</span> <span class="p">[</span>
+              <span class="p">{</span>
+                 <span class="o">...</span>
+              <span class="p">}</span> <span class="p">,</span>
+              <span class="p">{</span>
+                  <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;metric1&quot;</span><span class="p">,</span>
+                  <span class="s2">&quot;group_by&quot;</span><span class="p">:</span> <span class="p">[</span>
+                      <span class="p">{</span>
+                          <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;time&quot;</span><span class="p">,</span>
+                          <span class="s2">&quot;range_size&quot;</span><span class="p">:</span> <span class="p">{</span>
+                              <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+                              <span class="s2">&quot;unit&quot;</span><span class="p">:</span> <span class="s2">&quot;HOURS&quot;</span>
+                          <span class="p">},</span>
+                          <span class="s2">&quot;group_count&quot;</span><span class="p">:</span> <span class="mi">168</span><span class="p">,</span>
+                          <span class="s2">&quot;group&quot;</span><span class="p">:</span> <span class="p">{</span>
+                              <span class="s2">&quot;group_number&quot;</span><span class="p">:</span> <span class="mi">60</span>
+                          <span class="p">}</span>
+                      <span class="p">}</span>
+                  <span class="p">],</span>
+                  <span class="s2">&quot;tags&quot;</span><span class="p">:</span> <span class="p">{</span>
+                      <span class="s2">&quot;data_center&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;dc1&quot;</span><span class="p">],</span>
+                      <span class="s2">&quot;host&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;server1&quot;</span><span class="p">]</span>
+                  <span class="p">},</span>
+                  <span class="s2">&quot;values&quot;</span><span class="p">:</span> <span class="p">[</span>
+                      <span class="p">[</span><span class="mi">1353222000000</span><span class="p">,</span> <span class="mi">146</span><span class="p">],</span>
+                      <span class="p">[</span><span class="mi">1353826800000</span><span class="p">,</span> <span class="mi">241</span><span class="p">]</span>
+                  <span class="p">]</span>
+              <span class="p">},</span>
+              <span class="p">{</span>
+                 <span class="o">....</span>
+              <span class="p">},</span>
+              <span class="p">{</span>
+                  <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;metric1&quot;</span><span class="p">,</span>
+                  <span class="s2">&quot;group_by&quot;</span><span class="p">:</span> <span class="p">[</span>
+                      <span class="p">{</span>
+                          <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;time&quot;</span><span class="p">,</span>
+                          <span class="s2">&quot;range_size&quot;</span><span class="p">:</span> <span class="p">{</span>
+                              <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+                              <span class="s2">&quot;unit&quot;</span><span class="p">:</span> <span class="s2">&quot;HOURS&quot;</span>
+                          <span class="p">},</span>
+                          <span class="s2">&quot;group_count&quot;</span><span class="p">:</span> <span class="mi">168</span><span class="p">,</span>
+                          <span class="s2">&quot;group&quot;</span><span class="p">:</span> <span class="p">{</span>
+                              <span class="s2">&quot;group_number&quot;</span><span class="p">:</span> <span class="mi">156</span>
+                          <span class="p">}</span>
+                      <span class="p">}</span>
+                  <span class="p">],</span>
+                  <span class="s2">&quot;tags&quot;</span><span class="p">:</span> <span class="p">{</span>
+                      <span class="s2">&quot;data_center&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;dc1&quot;</span><span class="p">],</span>
+                      <span class="s2">&quot;host&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;server1&quot;</span><span class="p">]</span>
+                  <span class="p">},</span>
+                  <span class="s2">&quot;values&quot;</span><span class="p">:</span> <span class="p">[</span>
+                      <span class="p">[</span><span class="mi">1353567600000</span><span class="p">,</span> <span class="mi">2188</span><span class="p">],</span>
+                      <span class="p">[</span><span class="mi">1354172400000</span><span class="p">,</span> <span class="mi">3398</span><span class="p">],</span>
+                  <span class="p">]</span>
+              <span class="p">}</span>
+          <span class="p">]</span>
+      <span class="p">}</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2015, KairosDB Team.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.6.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

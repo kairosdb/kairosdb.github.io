@@ -1,0 +1,253 @@
+
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Cassandra Schema &mdash; KairosDB 1.0.1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-3.3.4/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-3.3.4/css/bootstrap-none.min.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="_static/kairosdb.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+    <link rel="shortcut icon" href="_static/favicon.png"/>
+    <link rel="top" title="KairosDB 1.0.1 documentation" href="index.html" />
+    <link rel="next" title="Multi Cluster Cassandra" href="MultiCluster.html" />
+    <link rel="prev" title="Kairos DB Java Client Library" href="KairosClient.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head>
+  <body role="document">
+
+
+
+
+ <!-- Fixed navbar -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand logo" href="http://kairosdb.github.io/"><img alt="Brand" src="_static/kairosdb.png"></a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+			<li><a href="http://kairosdb.github.io/">Overview</a></li>
+            <li class="active"><a href="index.html">Documentation</a></li>
+            <li ><a href="https://groups.google.com/forum/?hl=en#!forum/kairosdb-group" target="_blank">Community</a></li>
+            <li><a href="https://github.com/kairosdb/kairosdb">Github</a></li>
+			
+            
+<form class="navbar-form navbar-right" action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+          </ul>
+		  
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+<div class="container">
+  <div class="row">
+      <div class="col-md-3">
+        <div id="sidebar" class="bs-sidenav"><h3><a href="index.html">Table Of Contents</a></h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="GettingStarted.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FAQ.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PushingData.html">Pushing data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="QueryingData.html">Querying data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ImportExport.html">Importing and Exporting Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="WebUI.html">Web UI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Configuration.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Logging.html">Logging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Statistics.html">KairosDB Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="KairosClient.html">Kairos DB Java Client Library</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Cassandra Schema</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#column-families">Column Families</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#data-points-column-family">Data Points Column Family</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#row-key-index-column-family">Row Key Index Column Family</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#row-key-time-index-column-family">Row Key Time Index Column Family</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#row-keys-column-family">Row Keys Column Family</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#tag-indexed-row-keys-column-family">Tag Indexed Row Keys Column Family</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#string-index-column-family">String Index Column Family</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#service-index-column-family">Service Index Column Family</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#spec-column-family">Spec Column Family</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#how-the-schema-is-used">How the Schema is Used</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#row-width-and-second-granularity">Row width and second granularity</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="MultiCluster.html">Multi Cluster Cassandra</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Roll-ups.html">Roll-ups</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kairosdevelopment/index.html">Kairos Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="restapi/index.html">REST API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="telnetapi/index.html">Telnet API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Graphite.html">Graphite Protocol</a></li>
+<li class="toctree-l1"><a class="reference internal" href="IssueTracking.html">Bug Tracking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="External.html">External links</a></li>
+</ul>
+
+<form action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+        </div>
+      </div>
+    <div class="col-md-9">
+      
+  <div class="section" id="cassandra-schema">
+<h1>Cassandra Schema<a class="headerlink" href="#cassandra-schema" title="Permalink to this headline">¶</a></h1>
+<p>The cassandra schema consists of 7 column families, 8 if you have the legacy row_key_index.</p>
+<ul class="simple">
+<li>data_points - where the data is kept.</li>
+<li>row_key_index - (legacy) index to lookup what rows to get during a query.</li>
+<li>row_key_time_index - Index for what time frame a metrics is stored in.</li>
+<li>row_keys - Index of row keys for data_points tables.</li>
+<li>tag_indexed_row_keys - Used to index high cardinality tags for faster lookup.</li>
+<li>string_index - Used to answer the query of what metrics are in the system.</li>
+<li>service_index - Used for storing metadata.</li>
+<li>spec - Place to store internal settings like row width.</li>
+</ul>
+<p>The schema for each of the column families are defined in <cite>ClusterConnection.java</cite></p>
+<div class="section" id="column-families">
+<h2>Column Families<a class="headerlink" href="#column-families" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="data-points-column-family">
+<h3>Data Points Column Family<a class="headerlink" href="#data-points-column-family" title="Permalink to this headline">¶</a></h3>
+<p>The row key is made up of 3 parts all concatenated together.</p>
+<ol class="arabic simple">
+<li>Metric name (UTF-8) null terminated.</li>
+<li>Row time stamp (64 bits).  The time stamp for the row to begin at.</li>
+<li>Datastore type (UTF-8).  Length preceded (1 byte) utf-8 string with null at the end.  Yes kinda redundant but it works nice.</li>
+<li>Concatenated string of tags (tag1=val1:tag2=val2...) (UTF-8)</li>
+</ol>
+<p>The column name is different depending on of it from the legacy row_key_index or not.</p>
+<p><strong>Legacy Column Name</strong>:
+The column name is 32 bits of data.  The first 31 bits is the unsigned time offset
+from the row key (in milliseconds).  The last bit is unused.</p>
+<p><strong>Current Column Name</strong>: 32 bit value (no shifting and unsigned) that represents the number of time units
+from the row key timestamp.  The time unit is either seconds or milliseconds
+depending on how the cluster was configured when first created.</p>
+<p>The value of the column varies depending on the type of value.  The exact format
+is defined by the <code class="docutils literal"><span class="pre">writeValueToBuffer</span></code> method on the DataPoint.</p>
+<p>The length of the row defaults to exactly three weeks of data or 1,814,400,000 columns.
+The width of the row can be changed in the cluster configuration when the cluster
+is created.  It cannot be changed after the schema has been created.</p>
+</div>
+<div class="section" id="row-key-index-column-family">
+<h3>Row Key Index Column Family<a class="headerlink" href="#row-key-index-column-family" title="Permalink to this headline">¶</a></h3>
+<p><strong>Legacy</strong> This row is primarily used when querying the data.  The row key is the name of
+the metric.  The names of the columns are the row keys from the data_points column
+family.  The columns have no values.</p>
+</div>
+<div class="section" id="row-key-time-index-column-family">
+<h3>Row Key Time Index Column Family<a class="headerlink" href="#row-key-time-index-column-family" title="Permalink to this headline">¶</a></h3>
+<p>The purpose of this table is to index the time frame a metric shows up for.  It also
+provides a future mapping if we ever want to get away from the data points table.
+This is the first table hit when doing a query.</p>
+</div>
+<div class="section" id="row-keys-column-family">
+<h3>Row Keys Column Family<a class="headerlink" href="#row-keys-column-family" title="Permalink to this headline">¶</a></h3>
+<p>This is the second table hit when doing a query.  The values in this table have
+all the combinations of tags that show up for the specified metric.  Results from
+this table are filtered if any tags are specified in the query.  The results are then
+used to lookup the actual data in the data points table.</p>
+</div>
+<div class="section" id="tag-indexed-row-keys-column-family">
+<h3>Tag Indexed Row Keys Column Family<a class="headerlink" href="#tag-indexed-row-keys-column-family" title="Permalink to this headline">¶</a></h3>
+<p>When a metric is configured with an additional index this table is used for queries
+under certain circumstances.  When you configure a metric to be indexed on a tag,
+say the host tag, data will be written to this table as well as the row keys table.
+If you do a lookup on the metric and specify a host tag in the query the query will use
+this table to speed up the query results.  if no host tag is specified then the query
+will use the row keys table like usual.</p>
+</div>
+<div class="section" id="string-index-column-family">
+<h3>String Index Column Family<a class="headerlink" href="#string-index-column-family" title="Permalink to this headline">¶</a></h3>
+<p>Just an index to lookup what metric names, tag names and tag values are in the
+system.  There are three rows one for each of the above mentioned.</p>
+</div>
+<div class="section" id="service-index-column-family">
+<h3>Service Index Column Family<a class="headerlink" href="#service-index-column-family" title="Permalink to this headline">¶</a></h3>
+<p>All of the information stored using the metadata api is stored in this table.</p>
+</div>
+<div class="section" id="spec-column-family">
+<h3>Spec Column Family<a class="headerlink" href="#spec-column-family" title="Permalink to this headline">¶</a></h3>
+<p>This is an internal table currently only used for storing row width and time granularity.
+The values in this table are not to be changed by external means.</p>
+</div>
+</div>
+<div class="section" id="how-the-schema-is-used">
+<h2>How the Schema is Used<a class="headerlink" href="#how-the-schema-is-used" title="Permalink to this headline">¶</a></h2>
+<p>When a query comes in a column slice of the row key index is done for the
+particular metric, this returns the rows that will contain the data.  The row
+keys are then filtered based on if any tags were specified.  A multi get hector
+call is made to fetch the data from the various rows.  If any row has more data
+then the remainder is fetched individually using a larger buffer.</p>
+</div>
+<div class="section" id="row-width-and-second-granularity">
+<h2>Row width and second granularity<a class="headerlink" href="#row-width-and-second-granularity" title="Permalink to this headline">¶</a></h2>
+<p>By default the width of a row of data in the data points table is about 3 weeks and
+the time granularity of the data is in milliseconds.  In the 1.3.0 release configuration
+options were introduced to allow the user to change those values durring the creation of
+the schema.  (See <cite>kairosdb.conf</cite> file)  The values for row_time_unit and row_width are
+only read when creating the schema for the write cluster.  After the initial creation
+the values are stored in the spec table and must not be changed or data loss will occur.</p>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2015, KairosDB Team.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.6.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>
