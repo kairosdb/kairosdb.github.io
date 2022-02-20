@@ -1,27 +1,24 @@
 
 <!DOCTYPE html>
 
-
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
-    <title>KairosDB documentation v1.3.0 &mdash; KairosDB 1.0.1 documentation</title>
-    
+    <title>KairosDB documentation v1.3.0 &#8212; KairosDB 1.3.0 documentation</title>
     <link rel="stylesheet" href="_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/bootstrap-3.3.4/css/bootstrap.min.css" type="text/css" />
     <link rel="stylesheet" href="_static/bootstrap-3.3.4/css/bootstrap-none.min.css" type="text/css" />
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="_static/kairosdb.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '1.0.1',
+        VERSION:     '1.3.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
@@ -32,7 +29,8 @@
     <script type="text/javascript" src="_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
     <link rel="shortcut icon" href="_static/favicon.png"/>
-    <link rel="top" title="KairosDB 1.0.1 documentation" href="#" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Getting Started" href="GettingStarted.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
@@ -40,7 +38,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 
   </head>
-  <body role="document">
+  <body>
 
 
 
@@ -123,11 +121,11 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="GettingStarted.html">Getting Started</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="GettingStarted.html#install">Install</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="GettingStarted.html#understanding-the-configuration-file">Understanding the configuration file</a></li>
 <li class="toctree-l3"><a class="reference internal" href="GettingStarted.html#changing-file-handle-limit-on-linux">Changing File Handle Limit on Linux</a></li>
 <li class="toctree-l3"><a class="reference internal" href="GettingStarted.html#changing-datastore">Changing Datastore</a></li>
 <li class="toctree-l3"><a class="reference internal" href="GettingStarted.html#using-with-h2">Using with H2</a></li>
 <li class="toctree-l3"><a class="reference internal" href="GettingStarted.html#using-with-cassandra">Using with Cassandra</a></li>
-<li class="toctree-l3"><a class="reference internal" href="GettingStarted.html#configuring-hbase">Configuring HBase</a></li>
 <li class="toctree-l3"><a class="reference internal" href="GettingStarted.html#using-as-a-remote-datastore">Using as a Remote Datastore</a></li>
 </ul>
 </li>
@@ -137,6 +135,7 @@
 <li class="toctree-l1"><a class="reference internal" href="FAQ.html">Frequently Asked Questions</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="FAQ.html#why-do-i-need-a-time-series-database">Why do I need a Time-Series database?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="FAQ.html#why-would-i-pre-aggregate">Why would I pre-aggregate?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="FAQ.html#can-i-run-kairos-in-kubernetes">Can I run Kairos in Kubernetes?</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="PushingData.html">Pushing data</a><ul>
@@ -454,8 +453,8 @@
       
     </p>
     <p>
-        &copy; Copyright 2015, KairosDB Team.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.6.<br/>
+        &copy; Copyright 2022, KairosDB Team.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.7.<br/>
     </p>
   </div>
 </footer>

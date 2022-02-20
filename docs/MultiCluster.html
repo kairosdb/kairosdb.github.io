@@ -1,27 +1,24 @@
 
 <!DOCTYPE html>
 
-
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
-    <title>Multi Cluster Cassandra &mdash; KairosDB 1.0.1 documentation</title>
-    
+    <title>Multi Cluster Cassandra &#8212; KairosDB 1.3.0 documentation</title>
     <link rel="stylesheet" href="_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/bootstrap-3.3.4/css/bootstrap.min.css" type="text/css" />
     <link rel="stylesheet" href="_static/bootstrap-3.3.4/css/bootstrap-none.min.css" type="text/css" />
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="_static/kairosdb.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '1.0.1',
+        VERSION:     '1.3.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
@@ -32,7 +29,8 @@
     <script type="text/javascript" src="_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
     <link rel="shortcut icon" href="_static/favicon.png"/>
-    <link rel="top" title="KairosDB 1.0.1 documentation" href="index.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Roll-ups" href="Roll-ups.html" />
     <link rel="prev" title="Cassandra Schema" href="CassandraSchema.html" />
 <meta charset='utf-8'>
@@ -41,7 +39,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 
   </head>
-  <body role="document">
+  <body>
 
 
 
@@ -96,7 +94,7 @@
 <li class="toctree-l1"><a class="reference internal" href="Statistics.html">KairosDB Statistics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="KairosClient.html">Kairos DB Java Client Library</a></li>
 <li class="toctree-l1"><a class="reference internal" href="CassandraSchema.html">Cassandra Schema</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">Multi Cluster Cassandra</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Multi Cluster Cassandra</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#what-is-it">What is it?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#how-to-use-it">How to use it</a></li>
 </ul>
@@ -122,7 +120,7 @@
     <div class="col-md-9">
       
   <div class="section" id="multi-cluster-cassandra">
-<h1>Multi Cluster Cassandra<a class="headerlink" href="#multi-cluster-cassandra" title="Permalink to this headline">¶</a></h1>
+<span id="multi-cluster"></span><h1>Multi Cluster Cassandra<a class="headerlink" href="#multi-cluster-cassandra" title="Permalink to this headline">¶</a></h1>
 <p>Multi cluster was added in 1.3.0.  Multi cluster lets you configure a single write
 cluster and multiple read clusters for metric data.  Here is a list of use cases this
 feature was designed to help with:</p>
@@ -153,9 +151,9 @@ write_cluster and configure the current cluster as a read cluster.  Incoming dat
 will be written to the new cluster and queries will be sent to both clusters.
 Read clusters can also be configured with a start_time and end_time to limit what
 queries are sent to the read cluster otherwise all queries are sent to all clusters
-(cassandra is pretty fast at identifying if it doesn&#8217;t have the data you are looking for).</p>
+(cassandra is pretty fast at identifying if it doesn’t have the data you are looking for).</p>
 <p>When doing this cut over to the new write cluster it is a great time to install a
-new version of Cassandra if one is available.  Maybe you&#8217;ve decide to go with Scylla
+new version of Cassandra if one is available.  Maybe you’ve decide to go with Scylla
 instead, so Scylla will take all the new data but your legacy Cassandra data is still
 available.</p>
 <p>After changing the write cluster to a read cluster you can downsize the cluster depending
@@ -179,8 +177,8 @@ clusters.  When you create a new cluster you can drop the old one.</p>
       
     </p>
     <p>
-        &copy; Copyright 2015, KairosDB Team.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.6.<br/>
+        &copy; Copyright 2022, KairosDB Team.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.7.<br/>
     </p>
   </div>
 </footer>

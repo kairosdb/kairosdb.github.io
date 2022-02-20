@@ -1,27 +1,24 @@
 
 <!DOCTYPE html>
 
-
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
-    <title>Query Metrics &mdash; KairosDB 1.0.1 documentation</title>
-    
+    <title>Query Metrics &#8212; KairosDB 1.3.0 documentation</title>
     <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../_static/bootstrap-3.3.4/css/bootstrap.min.css" type="text/css" />
     <link rel="stylesheet" href="../_static/bootstrap-3.3.4/css/bootstrap-none.min.css" type="text/css" />
     <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="../_static/kairosdb.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '1.0.1',
+        VERSION:     '1.3.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
@@ -32,8 +29,8 @@
     <script type="text/javascript" src="../_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.png"/>
-    <link rel="top" title="KairosDB 1.0.1 documentation" href="../index.html" />
-    <link rel="up" title="REST API" href="index.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Query Metric Tags" href="QueryMetricTags.html" />
     <link rel="prev" title="Metadata" href="Metadata.html" />
 <meta charset='utf-8'>
@@ -42,7 +39,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 
   </head>
-  <body role="document">
+  <body>
 
 
 
@@ -115,7 +112,7 @@
 <li class="toctree-l2"><a class="reference internal" href="Metadata.html#list-service-keys">List Service Keys</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Metadata.html#list-keys">List Keys</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Metadata.html#delete-key">Delete Key</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">Query Metrics</a><ul>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Query Metrics</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#request-methods">Request Methods</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#method">Method</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#request">Request</a></li>
@@ -160,8 +157,8 @@
 <h1>Query Metrics<a class="headerlink" href="#query-metrics" title="Permalink to this headline">¶</a></h1>
 <p>Returns a list of metric values based on a set of criteria. Also returns a set of all tag names and values that are found across the data points.</p>
 <p>The time range can be specified with absolute or relative time values. Absolute time values are in milliseconds.
-Relative time values are specified as an integer duration and a unit. Possible unit values are &#8220;milliseconds&#8221;, &#8220;seconds&#8221;, &#8220;minutes&#8221;, &#8220;hours&#8221;,
-&#8220;days&#8221;, &#8220;weeks&#8221;, &#8220;months&#8221;, and &#8220;years&#8221;. For example, &#8220;5 hours&#8221; means that metric values submitted 5 hours ago will be returned. The end time is
+Relative time values are specified as an integer duration and a unit. Possible unit values are “milliseconds”, “seconds”, “minutes”, “hours”,
+“days”, “weeks”, “months”, and “years”. For example, “5 hours” means that metric values submitted 5 hours ago will be returned. The end time is
 optional.  If no end time is specified, the end time is assumed to be now (the current date and time).</p>
 <p><strong>Grouping</strong></p>
 <p>The results of the query can be grouped together.There are three ways to group the data; by tags, by a time range, and by value. Grouping is done with the <em>group_by</em> property which is an array of one or more groupers.</p>
@@ -172,14 +169,14 @@ points and down samples. For example, you could sum all data points that exist i
 <p>Aggregators can be combined together. For example, you could sum all data points
 in 5 minute periods then average them for a week period.</p>
 <p>Aggregators are processed in the order they are specified in the JSON. The output of one is send to the input of the next.</p>
-<p>See the <a class="reference internal" href="Aggregators.html"><em>Aggregators documentation</em></a> for a complete list of aggregators.</p>
+<p>See the <a class="reference internal" href="Aggregators.html"><span class="doc">Aggregators documentation</span></a> for a complete list of aggregators.</p>
 <p><strong>Filtering</strong></p>
-<p>It is possible to filter the data returned by specifying a tag. The data returned will only contain data points associated with the specified tag. Filtering is done using the &#8220;tags&#8221; property.</p>
+<p>It is possible to filter the data returned by specifying a tag. The data returned will only contain data points associated with the specified tag. Filtering is done using the “tags” property.</p>
 <div class="section" id="request-methods">
 <h2>Request Methods<a class="headerlink" href="#request-methods" title="Permalink to this headline">¶</a></h2>
 <p>Queries can be done using either a GET or POST method.</p>
 <hr class="docutils" />
-<p>The GET version requires that the JSON is encoded and passed to the &#8220;query&#8221; parameter.</p>
+<p>The GET version requires that the JSON is encoded and passed to the “query” parameter.</p>
 </div>
 <div class="section" id="method">
 <h2>Method<a class="headerlink" href="#method" title="Permalink to this headline">¶</a></h2>
@@ -210,7 +207,7 @@ in 5 minute periods then average them for a week period.</p>
 </div>
 <div class="section" id="id3">
 <h2>Body<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-json"><div class="highlight"><pre><span class="p">{</span>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
    <span class="nt">&quot;start_absolute&quot;</span><span class="p">:</span> <span class="mi">1357023600000</span><span class="p">,</span>
    <span class="nt">&quot;end_relative&quot;</span><span class="p">:</span> <span class="p">{</span>
        <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;5&quot;</span><span class="p">,</span>
@@ -262,11 +259,11 @@ in 5 minute periods then average them for a week period.</p>
 <p><em>start_absolute</em>
 The time in milliseconds.</p>
 <p><em>start_relative</em>
-The relative start time is the current date and time minus the specified value and unit. Possible unit values are &#8220;milliseconds&#8221;, &#8220;seconds&#8221;, &#8220;minutes&#8221;, &#8220;hours&#8221;, &#8220;days&#8221;, &#8220;weeks&#8221;, &#8220;months&#8221;, and &#8220;years&#8221;. For example, if the start time is 5 minutes, the query will return all matching data points for the last 5 minutes.</p>
+The relative start time is the current date and time minus the specified value and unit. Possible unit values are “milliseconds”, “seconds”, “minutes”, “hours”, “days”, “weeks”, “months”, and “years”. For example, if the start time is 5 minutes, the query will return all matching data points for the last 5 minutes.</p>
 <p><em>end_absolute</em>
 The time in milliseconds. This must be later in time than the start time. If not specified, the end time is assumed to be the current date and time.</p>
 <p><em>end_relative</em>
-The relative end time is the current date and time minus the specified value and unit. Possible unit values are &#8220;milliseconds&#8221;, &#8220;seconds&#8221;, &#8220;minutes&#8221;, &#8220;hours&#8221;, &#8220;days&#8221;, &#8220;weeks&#8221;, &#8220;months&#8221;, and &#8220;years&#8221;. For example, if the start time is 30 minutes and the end time is 10 minutes, the query returns matching data points that occurred between the last 30 minutes up to and including the last 10 minutes. If not specified, the end time is assumed to the current date and time.</p>
+The relative end time is the current date and time minus the specified value and unit. Possible unit values are “milliseconds”, “seconds”, “minutes”, “hours”, “days”, “weeks”, “months”, and “years”. For example, if the start time is 30 minutes and the end time is 10 minutes, the query returns matching data points that occurred between the last 30 minutes up to and including the last 10 minutes. If not specified, the end time is assumed to the current date and time.</p>
 <p><em>time_zone</em>
 The time zone for the time range of the query. If not specified, UTC is used.</p>
 <dl class="docutils">
@@ -288,10 +285,10 @@ The output of an aggregator is passed to the input of the next until all have be
 <p>If no aggregator is specified, then all data points are returned.</p>
 <p>Most aggregators support downsampling. Downsampling allows you to reduce the sampling rate of the data points and aggregate these values over a longer period
 of time. For example, you could average all daily values over the last week. Rather than getting 7 values you would
-get one value which is the average for the week. Sampling is specified with a &#8220;value&#8221; and a &#8220;unit&#8221;.</p>
+get one value which is the average for the week. Sampling is specified with a “value” and a “unit”.</p>
 <ul class="simple">
 <li>value - An integer value.</li>
-<li>unit - The time range. Possible unit values are &#8220;milliseconds&#8221;, &#8220;seconds&#8221;, &#8220;minutes&#8221;, &#8220;hours&#8221;, &#8220;days&#8221;, &#8220;weeks&#8221;, &#8220;months&#8221;, and &#8220;years&#8221;.</li>
+<li>unit - The time range. Possible unit values are “milliseconds”, “seconds”, “minutes”, “hours”, “days”, “weeks”, “months”, and “years”.</li>
 <li>align_sampling - An optional property. Setting this to true will cause the aggregation range to be aligned based on the sampling size.  For example if your sample size is either milliseconds, seconds, minutes or hours then the start of the range will always be at the top of the hour.  The effect of setting this to true is that your data will take the same shape when graphed as you refresh the data. This is false by default.</li>
 <li>align_start_time - An optional property. When set to true the time for the aggregated data point for each range will fall on the start of the range instead of being the value for the first data point within that range. This is false by default.</li>
 <li>align_end_time - An optional property. Setting this to true will cause the aggregation range to be aligned based on the sampling size. For example if your sample size is either milliseconds, seconds, minutes or hours then the start of the range will always be at the top of the hour. The difference between align_start_time and align_end_time is that align_end_time sets the timestamp for the datapoint to the beginning of the following period versus the beginning of the current period. As with align_start_time, setting this to true will cause your data to take the same shape when graphed as you refresh the data. Note that align_start_time and align_end_time are mutually exclusive. If more than one are set, unexpected results will occur.</li>
@@ -301,11 +298,11 @@ get one value which is the average for the week. Sampling is specified with a &#
 <p>Tags narrow down the search. Only metrics that include the tag and matches one of the values are returned. Tags is optional.</p>
 <p><em>group_by</em></p>
 <p>The resulting data points can be grouped by one or more tags, a time range, or by value, or by a combination of the three.</p>
-<p>The &#8220;group_by&#8221; property in the query is an array of one or more groupers. Each grouper has a <em>name</em> and then additional properties specific to that grouper.</p>
-<p>See <a class="reference internal" href="TagGrouping.html"><em>Grouping by Tags</em></a> for information on grouping by tags.</p>
-<p>See <a class="reference internal" href="TimeGrouping.html"><em>Grouping by Time</em></a> for information on how to group by a time range.</p>
-<p>See <a class="reference internal" href="ValueGrouping.html"><em>Grouping by Value</em></a> for information on how to group by data point values.</p>
-<p>See <a class="reference internal" href="BinGrouping.html"><em>Grouping by Bins</em></a> for information on how to group by bins.</p>
+<p>The “group_by” property in the query is an array of one or more groupers. Each grouper has a <em>name</em> and then additional properties specific to that grouper.</p>
+<p>See <a class="reference internal" href="TagGrouping.html"><span class="doc">Grouping by Tags</span></a> for information on grouping by tags.</p>
+<p>See <a class="reference internal" href="TimeGrouping.html"><span class="doc">Grouping by Time</span></a> for information on how to group by a time range.</p>
+<p>See <a class="reference internal" href="ValueGrouping.html"><span class="doc">Grouping by Value</span></a> for information on how to group by data point values.</p>
+<p>See <a class="reference internal" href="BinGrouping.html"><span class="doc">Grouping by Bins</span></a> for information on how to group by bins.</p>
 <p>Note that grouping by a time range, by value, or by bins can slow down the query.</p>
 <p><em>exclude_tags</em></p>
 <p>By default, the result of the query includes tags and tag values associated with the data points. If <em>exclude_tags</em> is set to true, the tags will be excluded from the response.</p>
@@ -313,7 +310,7 @@ get one value which is the average for the week. Sampling is specified with a &#
 <p>Limits the number of data points returned from the data store. The limit is applied before any aggregator is executed.</p>
 <p><em>order</em></p>
 <dl class="docutils">
-<dt>Orders the returned data points. Values for <em>order</em> are &#8220;asc&#8221; for ascending or &#8220;desc&#8221; for descending. Defaults to ascending. This</dt>
+<dt>Orders the returned data points. Values for <em>order</em> are “asc” for ascending or “desc” for descending. Defaults to ascending. This</dt>
 <dd>sorting is done before any aggregators are executed.</dd>
 </dl>
 </div>
@@ -322,10 +319,10 @@ get one value which is the average for the week. Sampling is specified with a &#
 <p><em>Success</em></p>
 <blockquote>
 <div><p>The response contains either the metric values or possible error values. Returns 200 for successful queries.</p>
-<p>Version 0.9.4 includes a group_by named &#8220;type&#8221;. The type is the custom data type. If the data returned is not a custom
-type then &#8220;number&#8221; is returned. See <a class="reference internal" href="../kairosdevelopment/CustomData.html"><em>Custom Types</em></a> for
+<p>Version 0.9.4 includes a group_by named “type”. The type is the custom data type. If the data returned is not a custom
+type then “number” is returned. See <a class="reference internal" href="../kairosdevelopment/CustomData.html"><span class="doc">Custom Types</span></a> for
 information on custom types.</p>
-<div class="highlight-json"><div class="highlight"><pre><span class="p">{</span>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="nt">&quot;queries&quot;</span><span class="p">:</span> <span class="p">[</span>
       <span class="p">{</span>
           <span class="nt">&quot;sample_size&quot;</span><span class="p">:</span> <span class="mi">14368</span><span class="p">,</span>
@@ -377,7 +374,7 @@ information on custom types.</p>
 <blockquote>
 <div><p>The response will be 400 Bad Request if the request is invalid.</p>
 <p>The response will be 500 Internal Server Error if an error occurs retrieving data.</p>
-<div class="highlight-json"><div class="highlight"><pre><span class="p">{</span>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="nt">&quot;errors&quot;</span><span class="p">:</span> <span class="p">[</span>
         <span class="s2">&quot;metrics[0].aggregate must be one of MIN,SUM,MAX,AVG,DEV&quot;</span><span class="p">,</span>
         <span class="s2">&quot;metrics[0].sampling.unit must be one of  SECONDS,MINUTES,HOURS,DAYS,WEEKS,YEARS&quot;</span>
@@ -401,8 +398,8 @@ information on custom types.</p>
       
     </p>
     <p>
-        &copy; Copyright 2015, KairosDB Team.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.6.<br/>
+        &copy; Copyright 2022, KairosDB Team.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.7.<br/>
     </p>
   </div>
 </footer>

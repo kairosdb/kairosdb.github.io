@@ -1,27 +1,24 @@
 
 <!DOCTYPE html>
 
-
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
-    <title>Query Metric Tags &mdash; KairosDB 1.0.1 documentation</title>
-    
+    <title>Query Metric Tags &#8212; KairosDB 1.3.0 documentation</title>
     <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../_static/bootstrap-3.3.4/css/bootstrap.min.css" type="text/css" />
     <link rel="stylesheet" href="../_static/bootstrap-3.3.4/css/bootstrap-none.min.css" type="text/css" />
     <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="../_static/kairosdb.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '1.0.1',
+        VERSION:     '1.3.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
@@ -32,8 +29,8 @@
     <script type="text/javascript" src="../_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.png"/>
-    <link rel="top" title="KairosDB 1.0.1 documentation" href="../index.html" />
-    <link rel="up" title="REST API" href="index.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Roll-ups" href="Roll-ups.html" />
     <link rel="prev" title="Query Metrics" href="QueryMetrics.html" />
 <meta charset='utf-8'>
@@ -42,7 +39,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 
   </head>
-  <body role="document">
+  <body>
 
 
 
@@ -116,7 +113,7 @@
 <li class="toctree-l2"><a class="reference internal" href="Metadata.html#list-keys">List Keys</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Metadata.html#delete-key">Delete Key</a></li>
 <li class="toctree-l2"><a class="reference internal" href="QueryMetrics.html">Query Metrics</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">Query Metric Tags</a><ul>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Query Metric Tags</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#filtering">Filtering</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#method">Method</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#request">Request</a></li>
@@ -158,7 +155,7 @@
 <p>Similar to a query but only returns the tags (no data points returned). This can potentially return more tags than a
 query because it is optimized for speed and does not query all rows to narrow down the time range. This queries only
 the Row Key Index and thus the time range is the starting time range. Since the Cassandra row is set to 3 weeks, this
-can return tags for up to a 3 week period. See <a class="reference internal" href="../CassandraSchema.html"><em>Cassandra Schema</em></a>.</p>
+can return tags for up to a 3 week period. See <a class="reference internal" href="../CassandraSchema.html"><span class="doc">Cassandra Schema</span></a>.</p>
 <div class="section" id="filtering">
 <h2>Filtering<a class="headerlink" href="#filtering" title="Permalink to this headline">¶</a></h2>
 <p>It is possible to filter the tags returned by specifying a tag.</p>
@@ -175,7 +172,7 @@ can return tags for up to a 3 week period. See <a class="reference internal" hre
 </div>
 <div class="section" id="body">
 <h2>Body<a class="headerlink" href="#body" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-json"><div class="highlight"><pre><span class="p">{</span>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
    <span class="nt">&quot;start_absolute&quot;</span><span class="p">:</span> <span class="mi">1357023600000</span><span class="p">,</span>
    <span class="nt">&quot;end_relative&quot;</span><span class="p">:</span> <span class="p">{</span>
        <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;5&quot;</span><span class="p">,</span>
@@ -205,11 +202,11 @@ can return tags for up to a 3 week period. See <a class="reference internal" hre
 <p><em>start_absolute</em>
 The time in milliseconds.</p>
 <p><em>start_relative</em>
-The relative start time is the current date and time minus the specified value and unit. Possible unit values are &#8220;milliseconds&#8221;, &#8220;seconds&#8221;, &#8220;minutes&#8221;, &#8220;hours&#8221;, &#8220;days&#8221;, &#8220;weeks&#8221;, &#8220;months&#8221;, and &#8220;years&#8221;. For example, if the start time is 5 minutes, the query will return all matching data points for the last 5 minutes.</p>
+The relative start time is the current date and time minus the specified value and unit. Possible unit values are “milliseconds”, “seconds”, “minutes”, “hours”, “days”, “weeks”, “months”, and “years”. For example, if the start time is 5 minutes, the query will return all matching data points for the last 5 minutes.</p>
 <p><em>end_absolute</em>
 The time in milliseconds. This must be later in time than the start time. If not specified, the end time is assumed to be the current date and time.</p>
 <p><em>end_relative</em>
-The relative end time is the current date and time minus the specified value and unit. Possible unit values are &#8220;milliseconds&#8221;, &#8220;seconds&#8221;, &#8220;minutes&#8221;, &#8220;hours&#8221;, &#8220;days&#8221;, &#8220;weeks&#8221;, &#8220;months&#8221;, and &#8220;years&#8221;. For example, if the start time is 30 minutes and the end time is 10 minutes, the query returns matching data points that occurred between the last 30 minutes up to and including the last 10 minutes. If not specified, the end time is assumed to the current date and time.</p>
+The relative end time is the current date and time minus the specified value and unit. Possible unit values are “milliseconds”, “seconds”, “minutes”, “hours”, “days”, “weeks”, “months”, and “years”. For example, if the start time is 30 minutes and the end time is 10 minutes, the query returns matching data points that occurred between the last 30 minutes up to and including the last 10 minutes. If not specified, the end time is assumed to the current date and time.</p>
 </div>
 <div class="section" id="metric-properties">
 <h2>Metric Properties<a class="headerlink" href="#metric-properties" title="Permalink to this headline">¶</a></h2>
@@ -223,7 +220,7 @@ The relative end time is the current date and time minus the specified value and
 <dl class="docutils">
 <dt><em>Success</em></dt>
 <dd><p class="first">The response contains either the metric values or possible error values. Returns 200 for successful queries.</p>
-<div class="last highlight-json"><div class="highlight"><pre>
+<div class="last highlight-json"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
 </dd>
@@ -231,34 +228,34 @@ The relative end time is the current date and time minus the specified value and
 <dl class="docutils">
 <dt>{</dt>
 <dd><dl class="first last docutils">
-<dt>&#8220;queries&#8221;: [</dt>
+<dt>“queries”: [</dt>
 <dd><dl class="first docutils">
 <dt>{</dt>
 <dd><dl class="first docutils">
-<dt>&#8220;results&#8221;: [</dt>
+<dt>“results”: [</dt>
 <dd><dl class="first docutils">
 <dt>{</dt>
-<dd><p class="first">&#8220;name&#8221;: &#8220;abc_123&#8221;,
-&#8220;tags&#8221;: {</p>
+<dd><p class="first">“name”: “abc_123”,
+“tags”: {</p>
 <blockquote>
-<div>&#8220;host&#8221;: [&#8220;server1&#8221;],
-&#8220;dc&#8221;: [&#8220;awsuse&#8221;, &#8220;awsusw&#8221;],
-&#8220;type&#8221;: [&#8220;bar&#8221;]</div></blockquote>
+<div>“host”: [“server1”],
+“dc”: [“awsuse”, “awsusw”],
+“type”: [“bar”]</div></blockquote>
 <p class="last">},
-&#8220;values&#8221;: [[1492602706055,0],[1492602711000,0],[1492602712000,0],[1492602716055,0]]</p>
+“values”: [[1492602706055,0],[1492602711000,0],[1492602712000,0],[1492602716055,0]]</p>
 </dd>
 </dl>
 <p>},
 {</p>
 <blockquote>
-<div><p>&#8220;name&#8221;: &#8220;xyz_123&#8221;,
-&#8220;tags&#8221;: {</p>
+<div><p>“name”: “xyz_123”,
+“tags”: {</p>
 <blockquote>
-<div>&#8220;host&#8221;: [&#8220;server1&#8221;,&#8221;server2&#8221;],
-&#8220;dc&#8221;: [&#8220;awsuse&#8221;],
-&#8220;type&#8221;: [&#8220;bar&#8221;]</div></blockquote>
+<div>“host”: [“server1”,”server2”],
+“dc”: [“awsuse”],
+“type”: [“bar”]</div></blockquote>
 <p>},
-&#8220;values&#8221;: [[1492602706055,0],[1492602711000,42],[1492602712000,0],[1492602716055,42]]</p>
+“values”: [[1492602706055,0],[1492602711000,42],[1492602712000,0],[1492602716055,42]]</p>
 </div></blockquote>
 <p class="last">}</p>
 </dd>
@@ -294,8 +291,8 @@ The relative end time is the current date and time minus the specified value and
       
     </p>
     <p>
-        &copy; Copyright 2015, KairosDB Team.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.6.<br/>
+        &copy; Copyright 2022, KairosDB Team.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.7.<br/>
     </p>
   </div>
 </footer>

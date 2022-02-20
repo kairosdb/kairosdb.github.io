@@ -1,27 +1,24 @@
 
 <!DOCTYPE html>
 
-
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
-    <title>Using The Event Buss &mdash; KairosDB 1.0.1 documentation</title>
-    
+    <title>Using The Event Buss &#8212; KairosDB 1.3.0 documentation</title>
     <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../_static/bootstrap-3.3.4/css/bootstrap.min.css" type="text/css" />
     <link rel="stylesheet" href="../_static/bootstrap-3.3.4/css/bootstrap-none.min.css" type="text/css" />
     <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="../_static/kairosdb.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '1.0.1',
+        VERSION:     '1.3.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
@@ -32,8 +29,8 @@
     <script type="text/javascript" src="../_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.png"/>
-    <link rel="top" title="KairosDB 1.0.1 documentation" href="../index.html" />
-    <link rel="up" title="Kairos Development" href="index.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Editing Kairos with IntelliJ" href="IntelliJSetup.html" />
     <link rel="prev" title="Custom Data" href="CustomData.html" />
 <meta charset='utf-8'>
@@ -42,7 +39,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 
   </head>
-  <body role="document">
+  <body>
 
 
 
@@ -102,7 +99,7 @@
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Kairos Development</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="Plugins.html">Plugins</a></li>
 <li class="toctree-l2"><a class="reference internal" href="CustomData.html">Custom Data</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">Using The Event Buss</a><ul>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Using The Event Buss</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#publishing-events">Publishing events</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#subscribing-to-events">Subscribing to events</a></li>
 </ul>
@@ -142,7 +139,7 @@ points are passed through the event bus.</p>
 <p>In order to publish events you will need to inject into your code an instance of
 <cite>FilterEventBus</cite>.  You will then want to call <cite>createPublisher</cite> and pass in the class
 that you will be publishing.</p>
-<div class="highlight-java"><div class="highlight"><pre><span class="n">Publisher</span><span class="o">&lt;</span><span class="n">DataPointEvent</span><span class="o">&gt;</span> <span class="n">publisher</span> <span class="o">=</span> <span class="n">eventBus</span><span class="o">.</span><span class="na">createPublisher</span><span class="o">(</span><span class="n">DataPointEvent</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+<div class="highlight-java"><div class="highlight"><pre><span></span><span class="n">Publisher</span><span class="o">&lt;</span><span class="n">DataPointEvent</span><span class="o">&gt;</span> <span class="n">publisher</span> <span class="o">=</span> <span class="n">eventBus</span><span class="o">.</span><span class="na">createPublisher</span><span class="o">(</span><span class="n">DataPointEvent</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
 </pre></div>
 </div>
 <p>The publisher that is returned should be a long lived object.</p>
@@ -152,7 +149,7 @@ that you will be publishing.</p>
 <p>Subscriptions are based on Java class object types.  To subscribe you annotate a single
 argument method with the <cite>&#64;Subscribe</cite> annotation.  The argument of the method is the
 type of event you want to receive.  Here is an example from <cite>CassandraDatastore.java</cite></p>
-<div class="highlight-java"><div class="highlight"><pre><span class="nd">@Subscribe</span>
+<div class="highlight-java"><div class="highlight"><pre><span></span><span class="nd">@Subscribe</span>
 <span class="kd">public</span> <span class="kt">void</span> <span class="nf">putDataPoint</span><span class="o">(</span><span class="n">DataPointEvent</span> <span class="n">dataPointEvent</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">DatastoreException</span>
 </pre></div>
 </div>
@@ -197,8 +194,8 @@ from a client that is sending bad data.</p>
       
     </p>
     <p>
-        &copy; Copyright 2015, KairosDB Team.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.6.<br/>
+        &copy; Copyright 2022, KairosDB Team.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.7.<br/>
     </p>
   </div>
 </footer>

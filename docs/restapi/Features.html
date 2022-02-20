@@ -1,27 +1,24 @@
 
 <!DOCTYPE html>
 
-
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
-    <title>Features &mdash; KairosDB 1.0.1 documentation</title>
-    
+    <title>Features &#8212; KairosDB 1.3.0 documentation</title>
     <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../_static/bootstrap-3.3.4/css/bootstrap.min.css" type="text/css" />
     <link rel="stylesheet" href="../_static/bootstrap-3.3.4/css/bootstrap-none.min.css" type="text/css" />
     <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="../_static/kairosdb.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '1.0.1',
+        VERSION:     '1.3.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
@@ -32,8 +29,8 @@
     <script type="text/javascript" src="../_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.png"/>
-    <link rel="top" title="KairosDB 1.0.1 documentation" href="../index.html" />
-    <link rel="up" title="REST API" href="index.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Health Checks" href="Health.html" />
     <link rel="prev" title="Delete Metric" href="DeleteMetric.html" />
 <meta charset='utf-8'>
@@ -42,7 +39,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 
   </head>
-  <body role="document">
+  <body>
 
 
 
@@ -106,7 +103,7 @@
 <li class="toctree-l2"><a class="reference internal" href="AddDataPoints.html">Add Data Points</a></li>
 <li class="toctree-l2"><a class="reference internal" href="DeleteDataPoints.html">Delete Data Points</a></li>
 <li class="toctree-l2"><a class="reference internal" href="DeleteMetric.html">Delete Metric</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">Features</a><ul>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Features</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#method">Method</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#request">Request</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#body">Body</a></li>
@@ -180,55 +177,55 @@ API will return metadata about aggregators and GroupBys.</p>
 <dl class="docutils">
 <dt><em>Success</em></dt>
 <dd><p class="first">Returns 200 when successful.</p>
-<div class="last highlight-python"><div class="highlight"><pre>[{
-    &quot;name&quot;: &quot;groupby&quot;,
-            &quot;label&quot;: &quot;Group By&quot;,
-            &quot;properties&quot;: [{
-                    &quot;name&quot;: &quot;tag&quot;,
-                    &quot;label&quot;: &quot;Tag&quot;,
-                    &quot;description&quot;: &quot;Groups data points by tag names.&quot;,
-                    &quot;properties&quot;: [{
-                            &quot;name&quot;: &quot;tags&quot;,
-                            &quot;label&quot;: &quot;Tags&quot;,
-                            &quot;description&quot;: &quot;A list of tags to group by.&quot;,
-                            &quot;optional&quot;: false,
-                            &quot;type&quot;: &quot;array&quot;,
-                            &quot;options&quot;: [],
-                            &quot;defaultValue&quot;: &quot;[]&quot;,
-                            &quot;autocomplete&quot;: &quot;tags&quot;,
-                            &quot;multiline&quot;: false,
-                            &quot;validations&quot;: [{
-                                    &quot;expression&quot;: &quot;value.length \u003e 0&quot;,
-                                    &quot;type&quot;: &quot;js&quot;,
-                                    &quot;message&quot;: &quot;Tags can\u0027t be empty.&quot;
-                            }]
-                    }]
-            },
-            ...
-    },
-    {
-            &quot;name&quot;: &quot;aggregators&quot;,
-            &quot;label&quot;: &quot;Aggregator&quot;,
-            &quot;properties&quot;: [{
-                    &quot;name&quot;: &quot;avg&quot;,
-                    &quot;label&quot;: &quot;AVG&quot;,
-                    &quot;description&quot;: &quot;Averages the data points together.&quot;,
-                    &quot;properties&quot;: [{
-                            &quot;name&quot;: &quot;align_sampling&quot;,
-                            &quot;label&quot;: &quot;Align sampling&quot;,
-                            &quot;description&quot;: &quot;When set to true the time for the aggregated data point for each range will fall on the start of the range instead of being the value for the first data point within that range. Note that align_sampling, align_start_time, and align_end_time are mutually exclusive. If more than one are set, unexpected results will occur.&quot;,
-                            &quot;optional&quot;: false,
-                            &quot;type&quot;: &quot;boolean&quot;,
-                            &quot;options&quot;: [],
-                            &quot;defaultValue&quot;: &quot;true&quot;,
-                            &quot;autocomplete&quot;: &quot;&quot;,
-                            &quot;multiline&quot;: false,
-                            &quot;validations&quot;: []
-                    }]
-            },
-            ...
-            }]
-    }]
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="p">[{</span>
+    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;groupby&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;label&quot;</span><span class="p">:</span> <span class="s2">&quot;Group By&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;properties&quot;</span><span class="p">:</span> <span class="p">[{</span>
+                    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;tag&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;label&quot;</span><span class="p">:</span> <span class="s2">&quot;Tag&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Groups data points by tag names.&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;properties&quot;</span><span class="p">:</span> <span class="p">[{</span>
+                            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;tags&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;label&quot;</span><span class="p">:</span> <span class="s2">&quot;Tags&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;A list of tags to group by.&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;optional&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+                            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;array&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;options&quot;</span><span class="p">:</span> <span class="p">[],</span>
+                            <span class="s2">&quot;defaultValue&quot;</span><span class="p">:</span> <span class="s2">&quot;[]&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;autocomplete&quot;</span><span class="p">:</span> <span class="s2">&quot;tags&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;multiline&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+                            <span class="s2">&quot;validations&quot;</span><span class="p">:</span> <span class="p">[{</span>
+                                    <span class="s2">&quot;expression&quot;</span><span class="p">:</span> <span class="s2">&quot;value.length </span><span class="se">\u003e</span><span class="s2"> 0&quot;</span><span class="p">,</span>
+                                    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;js&quot;</span><span class="p">,</span>
+                                    <span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Tags can</span><span class="se">\u0027</span><span class="s2">t be empty.&quot;</span>
+                            <span class="p">}]</span>
+                    <span class="p">}]</span>
+            <span class="p">},</span>
+            <span class="o">...</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;aggregators&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;label&quot;</span><span class="p">:</span> <span class="s2">&quot;Aggregator&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;properties&quot;</span><span class="p">:</span> <span class="p">[{</span>
+                    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;avg&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;label&quot;</span><span class="p">:</span> <span class="s2">&quot;AVG&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Averages the data points together.&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;properties&quot;</span><span class="p">:</span> <span class="p">[{</span>
+                            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;align_sampling&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;label&quot;</span><span class="p">:</span> <span class="s2">&quot;Align sampling&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;When set to true the time for the aggregated data point for each range will fall on the start of the range instead of being the value for the first data point within that range. Note that align_sampling, align_start_time, and align_end_time are mutually exclusive. If more than one are set, unexpected results will occur.&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;optional&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+                            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;boolean&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;options&quot;</span><span class="p">:</span> <span class="p">[],</span>
+                            <span class="s2">&quot;defaultValue&quot;</span><span class="p">:</span> <span class="s2">&quot;true&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;autocomplete&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;multiline&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+                            <span class="s2">&quot;validations&quot;</span><span class="p">:</span> <span class="p">[]</span>
+                    <span class="p">}]</span>
+            <span class="p">},</span>
+            <span class="o">...</span>
+            <span class="p">}]</span>
+    <span class="p">}]</span>
 </pre></div>
 </div>
 </dd>
@@ -256,83 +253,83 @@ API will return metadata about aggregators and GroupBys.</p>
 <dl class="docutils">
 <dt><em>Success</em></dt>
 <dd><p class="first">Returns 200 when successful.</p>
-<div class="last highlight-python"><div class="highlight"><pre>{
-            &quot;name&quot;: &quot;aggregators&quot;,
-            &quot;label&quot;: &quot;Aggregator&quot;,
-            &quot;properties&quot;: [{
-                    &quot;name&quot;: &quot;avg&quot;,
-                    &quot;label&quot;: &quot;AVG&quot;,
-                    &quot;description&quot;: &quot;Averages the data points together.&quot;,
-                    &quot;properties&quot;: [{
-                            &quot;name&quot;: &quot;align_sampling&quot;,
-                            &quot;label&quot;: &quot;Align sampling&quot;,
-                            &quot;description&quot;: &quot;When set to true the time for the aggregated data point for each range will fall on the start of the range instead of being the value for the first data point within that range. Note that align_sampling, align_start_time, and align_end_time are mutually exclusive. If more than one are set, unexpected results will occur.&quot;,
-                            &quot;optional&quot;: false,
-                            &quot;type&quot;: &quot;boolean&quot;,
-                            &quot;options&quot;: [],
-                            &quot;defaultValue&quot;: &quot;true&quot;,
-                            &quot;autocomplete&quot;: &quot;&quot;,
-                            &quot;multiline&quot;: false,
-                            &quot;validations&quot;: []
-                    }, {
-                            &quot;name&quot;: &quot;align_start_time&quot;,
-                            &quot;label&quot;: &quot;Align start time&quot;,
-                            &quot;description&quot;: &quot;Setting this to true will cause the aggregation range to be aligned based on the sampling size. For example if your sample size is either milliseconds, seconds, minutes or hours then the start of the range will always be at the top of the hour. The effect of setting this to true is that your data will take the same shape when graphed as you refresh the data. Note that align_sampling, align_start_time, and align_end_time are mutually exclusive. If more than one are set, unexpected results will occur.&quot;,
-                            &quot;optional&quot;: false,
-                            &quot;type&quot;: &quot;boolean&quot;,
-                            &quot;options&quot;: [],
-                            &quot;defaultValue&quot;: &quot;false&quot;,
-                            &quot;autocomplete&quot;: &quot;&quot;,
-                            &quot;multiline&quot;: false,
-                            &quot;validations&quot;: []
-                    }, {
-    &quot;name&quot;: &quot;align_end_time&quot;,
-    &quot;label&quot;: &quot;Align end time&quot;,
-    &quot;description&quot;: &quot;Setting this to true will cause the aggregation range to be aligned based on the sampling size. For example if your sample size is either milliseconds, seconds, minutes or hours then the start of the range will always be at the top of the hour. The difference between align_start_time and align_end_time is that align_end_time sets the timestamp for the datapoint to the beginning of the following period versus the beginning of the current period. As with align_start_time, setting this to true will cause your data to take the same shape when graphed as you refresh the data. Note that align_start_time and align_end_time are mutually exclusive. If more than one are set, unexpected results will occur.&quot;,
-    &quot;optional&quot;: false,
-    &quot;type&quot;: &quot;boolean&quot;,
-    &quot;options&quot;: [],
-    &quot;defaultValue&quot;: &quot;false&quot;,
-    &quot;autocomplete&quot;: &quot;&quot;,
-    &quot;multiline&quot;: false,
-    &quot;validations&quot;: []
-  }, {
-                            &quot;name&quot;: &quot;sampling&quot;,
-                            &quot;label&quot;: &quot;Sampling&quot;,
-                            &quot;optional&quot;: false,
-                            &quot;type&quot;: &quot;Object&quot;,
-                            &quot;multiline&quot;: false,
-                            &quot;properties&quot;: [{
-                                    &quot;name&quot;: &quot;value&quot;,
-                                    &quot;label&quot;: &quot;Value&quot;,
-                                    &quot;description&quot;: &quot;The number of units for the aggregation buckets&quot;,
-                                    &quot;optional&quot;: false,
-                                    &quot;type&quot;: &quot;long&quot;,
-                                    &quot;options&quot;: [],
-                                    &quot;defaultValue&quot;: &quot;1&quot;,
-                                    &quot;autocomplete&quot;: &quot;&quot;,
-                                    &quot;multiline&quot;: false,
-                                    &quot;validations&quot;: [{
-                                            &quot;expression&quot;: &quot;value \u003e 0&quot;,
-                                            &quot;type&quot;: &quot;js&quot;,
-                                            &quot;message&quot;: &quot;Value must be greater than 0.&quot;
-                                    }]
-                            }, {
-                                    &quot;name&quot;: &quot;unit&quot;,
-                                    &quot;label&quot;: &quot;Unit&quot;,
-                                    &quot;description&quot;: &quot;The time unit for the sampling rate&quot;,
-                                    &quot;optional&quot;: false,
-                                    &quot;type&quot;: &quot;enum&quot;,
-                                    &quot;options&quot;: [&quot;MILLISECONDS&quot;, &quot;SECONDS&quot;, &quot;MINUTES&quot;, &quot;HOURS&quot;, &quot;DAYS&quot;, &quot;WEEKS&quot;, &quot;MONTHS&quot;, &quot;YEARS&quot;],
-                                    &quot;defaultValue&quot;: &quot;MILLISECONDS&quot;,
-                                    &quot;autocomplete&quot;: &quot;&quot;,
-                                    &quot;multiline&quot;: false,
-                                    &quot;validations&quot;: []
-                            }]
-                    }]
-            }
-            ...
-    }]
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;aggregators&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;label&quot;</span><span class="p">:</span> <span class="s2">&quot;Aggregator&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;properties&quot;</span><span class="p">:</span> <span class="p">[{</span>
+                    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;avg&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;label&quot;</span><span class="p">:</span> <span class="s2">&quot;AVG&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Averages the data points together.&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;properties&quot;</span><span class="p">:</span> <span class="p">[{</span>
+                            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;align_sampling&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;label&quot;</span><span class="p">:</span> <span class="s2">&quot;Align sampling&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;When set to true the time for the aggregated data point for each range will fall on the start of the range instead of being the value for the first data point within that range. Note that align_sampling, align_start_time, and align_end_time are mutually exclusive. If more than one are set, unexpected results will occur.&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;optional&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+                            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;boolean&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;options&quot;</span><span class="p">:</span> <span class="p">[],</span>
+                            <span class="s2">&quot;defaultValue&quot;</span><span class="p">:</span> <span class="s2">&quot;true&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;autocomplete&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;multiline&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+                            <span class="s2">&quot;validations&quot;</span><span class="p">:</span> <span class="p">[]</span>
+                    <span class="p">},</span> <span class="p">{</span>
+                            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;align_start_time&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;label&quot;</span><span class="p">:</span> <span class="s2">&quot;Align start time&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Setting this to true will cause the aggregation range to be aligned based on the sampling size. For example if your sample size is either milliseconds, seconds, minutes or hours then the start of the range will always be at the top of the hour. The effect of setting this to true is that your data will take the same shape when graphed as you refresh the data. Note that align_sampling, align_start_time, and align_end_time are mutually exclusive. If more than one are set, unexpected results will occur.&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;optional&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+                            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;boolean&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;options&quot;</span><span class="p">:</span> <span class="p">[],</span>
+                            <span class="s2">&quot;defaultValue&quot;</span><span class="p">:</span> <span class="s2">&quot;false&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;autocomplete&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;multiline&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+                            <span class="s2">&quot;validations&quot;</span><span class="p">:</span> <span class="p">[]</span>
+                    <span class="p">},</span> <span class="p">{</span>
+    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;align_end_time&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;label&quot;</span><span class="p">:</span> <span class="s2">&quot;Align end time&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Setting this to true will cause the aggregation range to be aligned based on the sampling size. For example if your sample size is either milliseconds, seconds, minutes or hours then the start of the range will always be at the top of the hour. The difference between align_start_time and align_end_time is that align_end_time sets the timestamp for the datapoint to the beginning of the following period versus the beginning of the current period. As with align_start_time, setting this to true will cause your data to take the same shape when graphed as you refresh the data. Note that align_start_time and align_end_time are mutually exclusive. If more than one are set, unexpected results will occur.&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;optional&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;boolean&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;options&quot;</span><span class="p">:</span> <span class="p">[],</span>
+    <span class="s2">&quot;defaultValue&quot;</span><span class="p">:</span> <span class="s2">&quot;false&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;autocomplete&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;multiline&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+    <span class="s2">&quot;validations&quot;</span><span class="p">:</span> <span class="p">[]</span>
+  <span class="p">},</span> <span class="p">{</span>
+                            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;sampling&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;label&quot;</span><span class="p">:</span> <span class="s2">&quot;Sampling&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;optional&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+                            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Object&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;multiline&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+                            <span class="s2">&quot;properties&quot;</span><span class="p">:</span> <span class="p">[{</span>
+                                    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;value&quot;</span><span class="p">,</span>
+                                    <span class="s2">&quot;label&quot;</span><span class="p">:</span> <span class="s2">&quot;Value&quot;</span><span class="p">,</span>
+                                    <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;The number of units for the aggregation buckets&quot;</span><span class="p">,</span>
+                                    <span class="s2">&quot;optional&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+                                    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;long&quot;</span><span class="p">,</span>
+                                    <span class="s2">&quot;options&quot;</span><span class="p">:</span> <span class="p">[],</span>
+                                    <span class="s2">&quot;defaultValue&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+                                    <span class="s2">&quot;autocomplete&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+                                    <span class="s2">&quot;multiline&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+                                    <span class="s2">&quot;validations&quot;</span><span class="p">:</span> <span class="p">[{</span>
+                                            <span class="s2">&quot;expression&quot;</span><span class="p">:</span> <span class="s2">&quot;value </span><span class="se">\u003e</span><span class="s2"> 0&quot;</span><span class="p">,</span>
+                                            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;js&quot;</span><span class="p">,</span>
+                                            <span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Value must be greater than 0.&quot;</span>
+                                    <span class="p">}]</span>
+                            <span class="p">},</span> <span class="p">{</span>
+                                    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;unit&quot;</span><span class="p">,</span>
+                                    <span class="s2">&quot;label&quot;</span><span class="p">:</span> <span class="s2">&quot;Unit&quot;</span><span class="p">,</span>
+                                    <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;The time unit for the sampling rate&quot;</span><span class="p">,</span>
+                                    <span class="s2">&quot;optional&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+                                    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;enum&quot;</span><span class="p">,</span>
+                                    <span class="s2">&quot;options&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;MILLISECONDS&quot;</span><span class="p">,</span> <span class="s2">&quot;SECONDS&quot;</span><span class="p">,</span> <span class="s2">&quot;MINUTES&quot;</span><span class="p">,</span> <span class="s2">&quot;HOURS&quot;</span><span class="p">,</span> <span class="s2">&quot;DAYS&quot;</span><span class="p">,</span> <span class="s2">&quot;WEEKS&quot;</span><span class="p">,</span> <span class="s2">&quot;MONTHS&quot;</span><span class="p">,</span> <span class="s2">&quot;YEARS&quot;</span><span class="p">],</span>
+                                    <span class="s2">&quot;defaultValue&quot;</span><span class="p">:</span> <span class="s2">&quot;MILLISECONDS&quot;</span><span class="p">,</span>
+                                    <span class="s2">&quot;autocomplete&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+                                    <span class="s2">&quot;multiline&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+                                    <span class="s2">&quot;validations&quot;</span><span class="p">:</span> <span class="p">[]</span>
+                            <span class="p">}]</span>
+                    <span class="p">}]</span>
+            <span class="p">}</span>
+            <span class="o">...</span>
+    <span class="p">}]</span>
 </pre></div>
 </div>
 </dd>
@@ -352,8 +349,8 @@ API will return metadata about aggregators and GroupBys.</p>
       
     </p>
     <p>
-        &copy; Copyright 2015, KairosDB Team.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.6.<br/>
+        &copy; Copyright 2022, KairosDB Team.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.7.<br/>
     </p>
   </div>
 </footer>

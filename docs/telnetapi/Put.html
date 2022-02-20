@@ -1,27 +1,24 @@
 
 <!DOCTYPE html>
 
-
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
-    <title>Put &mdash; KairosDB 1.0.1 documentation</title>
-    
+    <title>Put &#8212; KairosDB 1.3.0 documentation</title>
     <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../_static/bootstrap-3.3.4/css/bootstrap.min.css" type="text/css" />
     <link rel="stylesheet" href="../_static/bootstrap-3.3.4/css/bootstrap-none.min.css" type="text/css" />
     <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="../_static/kairosdb.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '1.0.1',
+        VERSION:     '1.3.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
@@ -32,8 +29,8 @@
     <script type="text/javascript" src="../_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.png"/>
-    <link rel="top" title="KairosDB 1.0.1 documentation" href="../index.html" />
-    <link rel="up" title="Telnet API" href="index.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Putm" href="Putm.html" />
     <link rel="prev" title="Overview" href="Overview.html" />
 <meta charset='utf-8'>
@@ -42,7 +39,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 
   </head>
-  <body role="document">
+  <body>
 
 
 
@@ -103,7 +100,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../restapi/index.html">REST API</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Telnet API</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="Overview.html">Overview</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">Put</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Put</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Putm.html">Putm</a></li>
 <li class="toctree-l2"><a class="reference internal" href="SpecialTags.html">Special Tags</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Version.html">Version</a></li>
@@ -129,7 +126,7 @@
 <h1>Put<a class="headerlink" href="#put" title="Permalink to this headline">¶</a></h1>
 <p>You can submit data either with the telnet protocol on port 4242. The port can be changed in the kairosdb.properties file.</p>
 <p>The format of the data is</p>
-<div class="highlight-python"><div class="highlight"><pre>put &lt;metric name&gt; &lt;time stamp&gt; &lt;value&gt; &lt;tag&gt; &lt;tag&gt;... \n
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">put</span> <span class="o">&lt;</span><span class="n">metric</span> <span class="n">name</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">time</span> <span class="n">stamp</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">tag</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">tag</span><span class="o">&gt;...</span> \<span class="n">n</span>
 </pre></div>
 </div>
 <p><strong>Metric name</strong> must be one word and is limited to to utf8 characters.</p>
@@ -138,7 +135,7 @@
 <p><strong>Tag</strong> is in the form of key=value.</p>
 <p>Be aware that the data sent must be followed by a line feed character.</p>
 <p>Here is a simple shell script that inserts data using netcat.</p>
-<div class="highlight-python"><div class="highlight"><pre>#!/bin/bash
+<div class="highlight-default"><div class="highlight"><pre><span></span>#!/bin/bash
 
 # Current time in milliseconds
 now=$(($(date +%s%N)/1000000))
@@ -163,8 +160,8 @@ echo &quot;put $metric $now $value host=A&quot; | nc -w 30 $host 4242
       
     </p>
     <p>
-        &copy; Copyright 2015, KairosDB Team.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.6.<br/>
+        &copy; Copyright 2022, KairosDB Team.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.7.<br/>
     </p>
   </div>
 </footer>

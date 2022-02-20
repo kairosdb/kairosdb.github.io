@@ -1,27 +1,24 @@
 
 <!DOCTYPE html>
 
-
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
-    <title>Importing and Exporting Data &mdash; KairosDB 1.0.1 documentation</title>
-    
+    <title>Importing and Exporting Data &#8212; KairosDB 1.3.0 documentation</title>
     <link rel="stylesheet" href="_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/bootstrap-3.3.4/css/bootstrap.min.css" type="text/css" />
     <link rel="stylesheet" href="_static/bootstrap-3.3.4/css/bootstrap-none.min.css" type="text/css" />
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="_static/kairosdb.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '1.0.1',
+        VERSION:     '1.3.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
@@ -32,7 +29,8 @@
     <script type="text/javascript" src="_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
     <link rel="shortcut icon" href="_static/favicon.png"/>
-    <link rel="top" title="KairosDB 1.0.1 documentation" href="index.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Web UI" href="WebUI.html" />
     <link rel="prev" title="Querying data" href="QueryingData.html" />
 <meta charset='utf-8'>
@@ -41,7 +39,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 
   </head>
-  <body role="document">
+  <body>
 
 
 
@@ -89,7 +87,7 @@
 <li class="toctree-l1"><a class="reference internal" href="FAQ.html">Frequently Asked Questions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="PushingData.html">Pushing data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="QueryingData.html">Querying data</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">Importing and Exporting Data</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Importing and Exporting Data</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#exporting-data">Exporting Data</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#export-switches">Export Switches</a></li>
 </ul>
@@ -134,32 +132,32 @@
 <div class="section" id="exporting-data">
 <h2>Exporting Data<a class="headerlink" href="#exporting-data" title="Permalink to this headline">¶</a></h2>
 <p>To export data from KairosDB run the following command:</p>
-<div class="highlight-python"><div class="highlight"><pre>&gt; bin/kairosdb.sh export -f export.txt
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="nb">bin</span><span class="o">/</span><span class="n">kairosdb</span><span class="o">.</span><span class="n">sh</span> <span class="n">export</span> <span class="o">-</span><span class="n">f</span> <span class="n">export</span><span class="o">.</span><span class="n">txt</span>
 </pre></div>
 </div>
 <p>The format of the export is one metric per line in the form of a json object.  This can be really verbose but it lets you do interesting things with the data after exporting.  If size is an issue try this:</p>
-<div class="highlight-python"><div class="highlight"><pre>&gt; bin/kairosdb.sh export | gzip &gt; export.gz
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="nb">bin</span><span class="o">/</span><span class="n">kairosdb</span><span class="o">.</span><span class="n">sh</span> <span class="n">export</span> <span class="o">|</span> <span class="n">gzip</span> <span class="o">&gt;</span> <span class="n">export</span><span class="o">.</span><span class="n">gz</span>
 </pre></div>
 </div>
 <div class="section" id="export-switches">
 <h3>Export Switches<a class="headerlink" href="#export-switches" title="Permalink to this headline">¶</a></h3>
-<p>-f <cite>&lt;filename&gt;</cite> &#8211; file to write output to. If not specified, the output goes to stdout.</p>
-<p>-n <cite>&lt;metricName&gt;</cite> &#8211; name of metric to export. If not specified, then all metrics are exported.</p>
+<p>-f <cite>&lt;filename&gt;</cite> – file to write output to. If not specified, the output goes to stdout.</p>
+<p>-n <cite>&lt;metricName&gt;</cite> – name of metric to export. If not specified, then all metrics are exported.</p>
 </div>
 </div>
 <div class="section" id="importing-data">
 <h2>Importing Data<a class="headerlink" href="#importing-data" title="Permalink to this headline">¶</a></h2>
 <p>To import the data we exported in the step above you can do this:</p>
-<div class="highlight-python"><div class="highlight"><pre>&gt; bin/kairosdb.sh import -f export.txt
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="nb">bin</span><span class="o">/</span><span class="n">kairosdb</span><span class="o">.</span><span class="n">sh</span> <span class="kn">import</span> <span class="o">-</span><span class="n">f</span> <span class="n">export</span><span class="o">.</span><span class="n">txt</span>
 </pre></div>
 </div>
 <p>If you happened to compress the export you can pipe it back into the system like this:</p>
-<div class="highlight-python"><div class="highlight"><pre>&gt; gzip -dc export.gz | bin/kairosdb.sh import
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">gzip</span> <span class="o">-</span><span class="n">dc</span> <span class="n">export</span><span class="o">.</span><span class="n">gz</span> <span class="o">|</span> <span class="nb">bin</span><span class="o">/</span><span class="n">kairosdb</span><span class="o">.</span><span class="n">sh</span> <span class="kn">import</span>
 </pre></div>
 </div>
 <div class="section" id="import-switches">
 <h3>Import Switches<a class="headerlink" href="#import-switches" title="Permalink to this headline">¶</a></h3>
-<p>-f <cite>&lt;filename&gt;</cite> &#8211; file to import. If not specified the input comes from stdin.</p>
+<p>-f <cite>&lt;filename&gt;</cite> – file to import. If not specified the input comes from stdin.</p>
 </div>
 </div>
 <div class="section" id="performance-numbers">
@@ -208,8 +206,8 @@
       
     </p>
     <p>
-        &copy; Copyright 2015, KairosDB Team.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.6.<br/>
+        &copy; Copyright 2022, KairosDB Team.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.7.<br/>
     </p>
   </div>
 </footer>

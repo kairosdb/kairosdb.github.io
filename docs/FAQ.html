@@ -1,27 +1,24 @@
 
 <!DOCTYPE html>
 
-
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
-    <title>Frequently Asked Questions &mdash; KairosDB 1.0.1 documentation</title>
-    
+    <title>Frequently Asked Questions &#8212; KairosDB 1.3.0 documentation</title>
     <link rel="stylesheet" href="_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/bootstrap-3.3.4/css/bootstrap.min.css" type="text/css" />
     <link rel="stylesheet" href="_static/bootstrap-3.3.4/css/bootstrap-none.min.css" type="text/css" />
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="_static/kairosdb.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '1.0.1',
+        VERSION:     '1.3.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
@@ -32,7 +29,8 @@
     <script type="text/javascript" src="_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
     <link rel="shortcut icon" href="_static/favicon.png"/>
-    <link rel="top" title="KairosDB 1.0.1 documentation" href="index.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Pushing data" href="PushingData.html" />
     <link rel="prev" title="Getting Started" href="GettingStarted.html" />
 <meta charset='utf-8'>
@@ -41,7 +39,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 
   </head>
-  <body role="document">
+  <body>
 
 
 
@@ -86,9 +84,10 @@
         <div id="sidebar" class="bs-sidenav"><h3><a href="index.html">Table Of Contents</a></h3>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="GettingStarted.html">Getting Started</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">Frequently Asked Questions</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Frequently Asked Questions</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#why-do-i-need-a-time-series-database">Why do I need a Time-Series database?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#why-would-i-pre-aggregate">Why would I pre-aggregate?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#can-i-run-kairos-in-kubernetes">Can I run Kairos in Kubernetes?</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="PushingData.html">Pushing data</a></li>
@@ -133,11 +132,15 @@
 <p>Lets say you have a graph of your data that shows 1 hour averages of your data for a week.  You update this graph several times a day, each time you do the code queries a week of data and aggregates it.  Each time you run the query you are re processing 99% of the same data you processed the last time you ran the query.  What can be done?</p>
 <p>There are several strategies here:</p>
 <ol class="arabic simple">
-<li>Pre-aggregate the data before it is written.  The challenge here is that not all of the data is necessarily coming in through the same K* node.  In a load balanced system incoming metrics are spread across several K* nodes so aggregating on the K* node doesn&#8217;t really work.</li>
+<li>Pre-aggregate the data before it is written.  The challenge here is that not all of the data is necessarily coming in through the same K* node.  In a load balanced system incoming metrics are spread across several K* nodes so aggregating on the K* node doesn’t really work.</li>
 <li>Only query the new data.  The idea here is that your visualization tool is smart enough to only query the new data and merge it into the graph.  Cubism.js is a tool that claims such functionality.</li>
 <li>Batch jobs that pre-aggregate and write to a new metric.  The new metric can then be queried and used to graph the data.  This could be done with a cron job.  There is some discussion about making the batch job part of K* but, there is work to be done before this can happen.</li>
 </ol>
 <p>Additional FAQ can be found here: <a class="reference external" href="https://github.com/kairosdb/kairosdb/wiki/Frequently-Asked-Questions">https://github.com/kairosdb/kairosdb/wiki/Frequently-Asked-Questions</a></p>
+</div>
+<div class="section" id="can-i-run-kairos-in-kubernetes">
+<h2>Can I run Kairos in Kubernetes?<a class="headerlink" href="#can-i-run-kairos-in-kubernetes" title="Permalink to this headline">¶</a></h2>
+<p>KairosDB runs just fine under Kubernetes.  Kairos for the most part is stateless which lends itself to be easily deployed in Kubernetes.  Cassandra on the other hand is not so easy.  Many people have tried and failed to get Cassandra to work efficiently in Kubernetes.</p>
 </div>
 </div>
 
@@ -153,8 +156,8 @@
       
     </p>
     <p>
-        &copy; Copyright 2015, KairosDB Team.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.6.<br/>
+        &copy; Copyright 2022, KairosDB Team.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.7.<br/>
     </p>
   </div>
 </footer>
