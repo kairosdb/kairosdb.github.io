@@ -3,27 +3,20 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Query Metric Tags &#8212; KairosDB 1.3.0 documentation</title>
     <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/bootstrap-3.3.4/css/bootstrap.min.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/bootstrap-3.3.4/css/bootstrap-none.min.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/kairosdb.css" type="text/css" />
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '../',
-        VERSION:     '1.3.0',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
-      };
-    </script>
+    <link rel="stylesheet" type="text/css" href="../_static/bootstrap-3.3.4/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/bootstrap-3.3.4/css/bootstrap-none.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/bootstrap-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/kairosdb.css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
     <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
     <script type="text/javascript" src="../_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
@@ -38,8 +31,7 @@
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
 <meta name="apple-mobile-web-app-capable" content="yes">
 
-  </head>
-  <body>
+  </head><body>
 
 
 
@@ -172,7 +164,7 @@ can return tags for up to a 3 week period. See <a class="reference internal" hre
 </div>
 <div class="section" id="body">
 <h2>Body<a class="headerlink" href="#body" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
    <span class="nt">&quot;start_absolute&quot;</span><span class="p">:</span> <span class="mi">1357023600000</span><span class="p">,</span>
    <span class="nt">&quot;end_relative&quot;</span><span class="p">:</span> <span class="p">{</span>
        <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;5&quot;</span><span class="p">,</span>
@@ -217,65 +209,43 @@ The relative end time is the current date and time minus the specified value and
 </div>
 <div class="section" id="response">
 <h2>Response<a class="headerlink" href="#response" title="Permalink to this headline">¶</a></h2>
-<dl class="docutils">
-<dt><em>Success</em></dt>
-<dd><p class="first">The response contains either the metric values or possible error values. Returns 200 for successful queries.</p>
-<div class="last highlight-json"><div class="highlight"><pre><span></span>
+<p><em>Success</em></p>
+<blockquote>
+<div><p>The response contains either the metric values or possible error values. Returns 200 for successful queries.</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;queries&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;results&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;abc_123&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;tags&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;host&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;server1&quot;</span><span class="p">],</span>
+            <span class="nt">&quot;dc&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;awsuse&quot;</span><span class="p">,</span> <span class="s2">&quot;awsusw&quot;</span><span class="p">],</span>
+            <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;bar&quot;</span><span class="p">]</span>
+          <span class="p">},</span>
+        <span class="nt">&quot;values&quot;</span><span class="p">:</span> <span class="p">[]</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;xyz_123&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;tags&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;host&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;server1&quot;</span><span class="p">,</span><span class="s2">&quot;server2&quot;</span><span class="p">],</span>
+            <span class="nt">&quot;dc&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;awsuse&quot;</span><span class="p">],</span>
+            <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;bar&quot;</span><span class="p">]</span>
+          <span class="p">},</span>
+        <span class="nt">&quot;values&quot;</span><span class="p">:</span> <span class="p">[]</span>
+        <span class="p">}</span>
+      <span class="p">]</span>
+    <span class="p">}</span>
+  <span class="p">]</span>
+<span class="p">}</span>
 </pre></div>
 </div>
-</dd>
-</dl>
-<dl class="docutils">
-<dt>{</dt>
-<dd><dl class="first last docutils">
-<dt>“queries”: [</dt>
-<dd><dl class="first docutils">
-<dt>{</dt>
-<dd><dl class="first docutils">
-<dt>“results”: [</dt>
-<dd><dl class="first docutils">
-<dt>{</dt>
-<dd><p class="first">“name”: “abc_123”,
-“tags”: {</p>
-<blockquote>
-<div>“host”: [“server1”],
-“dc”: [“awsuse”, “awsusw”],
-“type”: [“bar”]</div></blockquote>
-<p class="last">},
-“values”: [[1492602706055,0],[1492602711000,0],[1492602712000,0],[1492602716055,0]]</p>
-</dd>
-</dl>
-<p>},
-{</p>
-<blockquote>
-<div><p>“name”: “xyz_123”,
-“tags”: {</p>
-<blockquote>
-<div>“host”: [“server1”,”server2”],
-“dc”: [“awsuse”],
-“type”: [“bar”]</div></blockquote>
-<p>},
-“values”: [[1492602706055,0],[1492602711000,42],[1492602712000,0],[1492602716055,42]]</p>
 </div></blockquote>
-<p class="last">}</p>
-</dd>
-</dl>
-<p class="last">]</p>
-</dd>
-</dl>
-<p class="last">}</p>
-</dd>
-</dl>
-</dd>
-</dl>
-<div class="section" id="id1">
-<h3>]<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
 <p><em>Failure</em></p>
 <blockquote>
 <div><p>The response will be 400 Bad Request if the request is invalid.</p>
 <p>The response will be 500 Internal Server Error if an error occurs retrieving data.</p>
 </div></blockquote>
-</div>
 </div>
 </div>
 
@@ -292,7 +262,7 @@ The relative end time is the current date and time minus the specified value and
     </p>
     <p>
         &copy; Copyright 2022, KairosDB Team.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.7.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.5.<br/>
     </p>
   </div>
 </footer>

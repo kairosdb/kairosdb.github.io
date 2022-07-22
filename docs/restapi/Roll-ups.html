@@ -3,27 +3,20 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Roll-ups &#8212; KairosDB 1.3.0 documentation</title>
     <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/bootstrap-3.3.4/css/bootstrap.min.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/bootstrap-3.3.4/css/bootstrap-none.min.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/kairosdb.css" type="text/css" />
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '../',
-        VERSION:     '1.3.0',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
-      };
-    </script>
+    <link rel="stylesheet" type="text/css" href="../_static/bootstrap-3.3.4/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/bootstrap-3.3.4/css/bootstrap-none.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/bootstrap-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/kairosdb.css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
     <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
     <script type="text/javascript" src="../_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
@@ -38,8 +31,7 @@
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
 <meta name="apple-mobile-web-app-capable" content="yes">
 
-  </head>
-  <body>
+  </head><body>
 
 
 
@@ -203,7 +195,7 @@ A roll-up is a query (see <a class="reference internal" href="QueryMetrics.html"
 </div>
 <div class="section" id="body">
 <h2>Body<a class="headerlink" href="#body" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;MyRollup&quot;</span><span class="p">,</span>
        <span class="s2">&quot;execution_interval&quot;</span><span class="p">:</span> <span class="p">{</span>
                <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
@@ -258,7 +250,7 @@ An array of roll-ups. A roll-up consists of</p>
 <p><em>Success</em></p>
 <blockquote>
 <div><p>The response contains either the metric resource created. Returns 200 when successful.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;7b2893fc-7654-4764-851a-a311e854ee75&quot;</span><span class="p">,</span>
     <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;MyRollupTaskName&quot;</span><span class="p">,</span>
     <span class="s2">&quot;attributes&quot;</span><span class="p">:</span> <span class="p">{</span>
@@ -272,7 +264,7 @@ An array of roll-ups. A roll-up consists of</p>
 <blockquote>
 <div><p>The response will be 400 Bad Request if the request is invalid.</p>
 <p>The response will be 500 Internal Server Error if an error occurs retrieving data.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">&quot;errors&quot;</span><span class="p">:</span> <span class="p">[</span>
         <span class="s2">&quot;metrics[0].aggregate must be one of MIN,SUM,MAX,AVG,DEV&quot;</span><span class="p">,</span>
         <span class="s2">&quot;metrics[0].sampling.unit must be one of  SECONDS,MINUTES,HOURS,DAYS,WEEKS,YEARS&quot;</span>
@@ -306,7 +298,7 @@ An array of roll-ups. A roll-up consists of</p>
 <p><em>Success</em></p>
 <blockquote>
 <div><p>The response contains a list of roll-up tasks. Returns 200 for success.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">[{</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[{</span>
     <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;ce55e623-0610-4451-a725-3daee896afd9&quot;</span><span class="p">,</span>
     <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;MyRollup&quot;</span><span class="p">,</span>
     <span class="s2">&quot;execution_interval&quot;</span><span class="p">:</span> <span class="p">{</span>
@@ -372,7 +364,7 @@ An array of roll-ups. A roll-up consists of</p>
 <p><em>Success</em></p>
 <blockquote>
 <div><p>The response contains the roll-up for the given id. Returns 200 for success.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;ce55e623-0610-4451-a725-3daee896afd9&quot;</span><span class="p">,</span>
     <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;MyRollup&quot;</span><span class="p">,</span>
     <span class="s2">&quot;execution_interval&quot;</span><span class="p">:</span> <span class="p">{</span>
@@ -463,7 +455,7 @@ An array of roll-ups. A roll-up consists of</p>
 <div class="section" id="id15">
 <h2>Body<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h2>
 <blockquote>
-<div><div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
         <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;MyRollup&quot;</span><span class="p">,</span>
         <span class="s2">&quot;execution_interval&quot;</span><span class="p">:</span> <span class="p">{</span>
                 <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
@@ -506,7 +498,7 @@ An array of roll-ups. A roll-up consists of</p>
 <p><em>Success</em></p>
 <blockquote>
 <div><p>The response contains the roll-up for the given id. Returns 200 for success.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;ce55e623-0610-4451-a725-3daee896afd9&quot;</span><span class="p">,</span>
     <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;MyRollup&quot;</span><span class="p">,</span>
     <span class="s2">&quot;execution_interval&quot;</span><span class="p">:</span> <span class="p">{</span>
@@ -605,7 +597,7 @@ The format is yyyy-MM-dd-HH-mm-ss-SSS. That is year-month-day-hour-minute-second
     </p>
     <p>
         &copy; Copyright 2022, KairosDB Team.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.7.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.5.<br/>
     </p>
   </div>
 </footer>

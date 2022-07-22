@@ -3,27 +3,20 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Grouping by Bin &#8212; KairosDB 1.3.0 documentation</title>
     <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/bootstrap-3.3.4/css/bootstrap.min.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/bootstrap-3.3.4/css/bootstrap-none.min.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/kairosdb.css" type="text/css" />
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '../',
-        VERSION:     '1.3.0',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
-      };
-    </script>
+    <link rel="stylesheet" type="text/css" href="../_static/bootstrap-3.3.4/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/bootstrap-3.3.4/css/bootstrap-none.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/bootstrap-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/kairosdb.css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
     <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
     <script type="text/javascript" src="../_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
@@ -36,8 +29,7 @@
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
 <meta name="apple-mobile-web-app-capable" content="yes">
 
-  </head>
-  <body>
+  </head><body>
 
 
 
@@ -119,18 +111,18 @@
 <div class="section" id="syntax">
 <h2>Syntax<a class="headerlink" href="#syntax" title="Permalink to this headline">¶</a></h2>
 <p>The name for this grouper is “bin”.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;bin&quot;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;bin&quot;</span>
 </pre></div>
 </div>
 <p>The grouper requires a bins property. This is a list of bin values.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="s2">&quot;bins&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">bin1</span><span class="p">,</span> <span class="n">bin2</span><span class="p">,</span> <span class="n">bin3</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;bins&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">bin1</span><span class="p">,</span> <span class="n">bin2</span><span class="p">,</span> <span class="n">bin3</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="example">
 <h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
 <p>This example groups values into groups of 2.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="s2">&quot;group_by&quot;</span><span class="p">:</span> <span class="p">[</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;group_by&quot;</span><span class="p">:</span> <span class="p">[</span>
       <span class="p">{</span>
         <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;bin&quot;</span><span class="p">,</span>
         <span class="s2">&quot;bins&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;2&quot;</span><span class="p">,</span> <span class="s2">&quot;4&quot;</span><span class="p">,</span> <span class="s2">&quot;6&quot;</span><span class="p">,</span> <span class="s2">&quot;8&quot;</span><span class="p">]</span>
@@ -140,7 +132,7 @@
 </div>
 <p>Each object of the response JSON contains the <em>group_by</em> information you specified in the query as well as a <em>group</em> object. The <em>group</em> object contains the group number starting with a group number of 0. For example,
 the first group (bin number 0) contains data points whose values are between 0 and 2. The second group (bin number 1) contains data points whose values are between 2 and 4, etc.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="s2">&quot;queries&quot;</span><span class="p">:</span> <span class="p">[</span>
       <span class="p">{</span>
           <span class="s2">&quot;results&quot;</span><span class="p">:</span> <span class="p">[</span>
@@ -245,7 +237,7 @@ the first group (bin number 0) contains data points whose values are between 0 a
     </p>
     <p>
         &copy; Copyright 2022, KairosDB Team.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.7.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.5.<br/>
     </p>
   </div>
 </footer>

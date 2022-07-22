@@ -3,27 +3,20 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Logging &#8212; KairosDB 1.3.0 documentation</title>
     <link rel="stylesheet" href="_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/bootstrap-3.3.4/css/bootstrap.min.css" type="text/css" />
-    <link rel="stylesheet" href="_static/bootstrap-3.3.4/css/bootstrap-none.min.css" type="text/css" />
-    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
-    <link rel="stylesheet" href="_static/kairosdb.css" type="text/css" />
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    './',
-        VERSION:     '1.3.0',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
-      };
-    </script>
+    <link rel="stylesheet" type="text/css" href="_static/bootstrap-3.3.4/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/bootstrap-3.3.4/css/bootstrap-none.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="_static/kairosdb.css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
     <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
     <script type="text/javascript" src="_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
@@ -38,8 +31,7 @@
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
 <meta name="apple-mobile-web-app-capable" content="yes">
 
-  </head>
-  <body>
+  </head><body>
 
 
 
@@ -117,7 +109,7 @@
       
   <div class="section" id="logging">
 <h1>Logging<a class="headerlink" href="#logging" title="Permalink to this headline">¶</a></h1>
-<p>KairosDB creates its log files in <code class="docutils literal"><span class="pre">/opt/kairosdb/log/</span></code>.  Log rotation works on a daily
+<p>KairosDB creates its log files in <code class="docutils literal notranslate"><span class="pre">/opt/kairosdb/log/</span></code>.  Log rotation works on a daily
 basis, so every day a new log is created and named as <strong>kairosdb.log</strong>; when the
 next day comes <em>kairosdb.log</em> is compressed and renamed to <em>kairosdb.&lt;YYYY-MM-DD&gt;.log</em>,
 where &lt;YYYY-MM-DD&gt; is the date when this specific log file was created.</p>
@@ -130,7 +122,7 @@ end of the day, when a new log file will be generated too).</p>
 <div><strong>Note:</strong> KairosDB uses the well-known Logback framework to manage its log
 files. If you have questions about Logback, please refer to their forums.</div></blockquote>
 <p>If you want to change these logging settings, please take a look at
-<code class="docutils literal"><span class="pre">/opt/kairosdb/conf/logging/logback.xml</span></code> and at <a class="reference external" href="http://logback.qos.ch/manual/configuration.html">Logback documentation</a>.</p>
+<code class="docutils literal notranslate"><span class="pre">/opt/kairosdb/conf/logging/logback.xml</span></code> and at <a class="reference external" href="http://logback.qos.ch/manual/configuration.html">Logback documentation</a>.</p>
 </div>
 
 
@@ -146,7 +138,7 @@ files. If you have questions about Logback, please refer to their forums.</div><
     </p>
     <p>
         &copy; Copyright 2022, KairosDB Team.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.7.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.5.<br/>
     </p>
   </div>
 </footer>
